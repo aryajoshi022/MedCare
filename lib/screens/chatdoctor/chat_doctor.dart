@@ -91,58 +91,59 @@ class _ChatDoctorState extends State<ChatDoctor> {
 
   // Widget _buildDoctorList(Map<String, dynamic> list) {
   //   return Container(
-  //     margin: EdgeInsets.symmetric(vertical: 8),
+  //     color: Colors.blue,
+  //     // margin: EdgeInsets.symmetric(vertical: 8),
   //     // padding: EdgeInsets.only(top: 14, bottom: 14, left: 6, right: 6),
-  //     child: Row(
-  //       children: [
-  //         SizedBox(
-  //           width: 64,
-  //           height: 64,
-  //           child: Image.asset(
-  //             list['image'],
-  //             fit: BoxFit.cover,
-  //           ),
-  //         ),
-  //         SizedBox(width: 16),
-  //         Expanded(
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.start,
-  //             children: [
-  //               Text(
-  //                 list['name'],
-  //               ),
-  //               Row(
-  //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //                 children: [
-  //                   Text(
-  //                     list['specialist'],
-  //                   ),
-  //                   Text('.'),
-  //                   Text(
-  //                     list['experience'],
-  //                   ),
-  //                 ],
-  //               ),
-  //               Container(
-  //                 width: 124,
-  //                 height: 19,
-  //                 padding: EdgeInsets.only(top: 6, bottom: 6, left: 12, right: 12),
-  //                 decoration: BoxDecoration(
-  //                   borderRadius: BorderRadius.circular(2),
-  //                   color: Color(0xffDCFFDD)
-  //                 ),
-  //                 child: Text(
-  //                   list['available_on'],
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //         Icon(
-  //           list['arrow'],
-  //         ),
-  //       ],
-  //     ),
+  //     // child: Row(
+  //     //   children: [
+  //     //     SizedBox(
+  //     //       width: 64,
+  //     //       height: 64,
+  //     //       child: Image.asset(
+  //     //         list['image'],
+  //     //         fit: BoxFit.cover,
+  //     //       ),
+  //     //     ),
+  //     //     SizedBox(width: 16),
+  //     //     Expanded(
+  //     //       child: Column(
+  //     //         crossAxisAlignment: CrossAxisAlignment.start,
+  //     //         children: [
+  //     //           Text(
+  //     //             list['name'],
+  //     //           ),
+  //     //           Row(
+  //     //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //     //             children: [
+  //     //               Text(
+  //     //                 list['specialist'],
+  //     //               ),
+  //     //               Text('.'),
+  //     //               Text(
+  //     //                 list['experience'],
+  //     //               ),
+  //     //             ],
+  //     //           ),
+  //     //           Container(
+  //     //             width: 124,
+  //     //             height: 19,
+  //     //             padding: EdgeInsets.only(top: 6, bottom: 6, left: 12, right: 12),
+  //     //             decoration: BoxDecoration(
+  //     //               borderRadius: BorderRadius.circular(2),
+  //     //               color: Color(0xffDCFFDD)
+  //     //             ),
+  //     //             child: Text(
+  //     //               list['available_on'],
+  //     //             ),
+  //     //           ),
+  //     //         ],
+  //     //       ),
+  //     //     ),
+  //     //     Icon(
+  //     //       list['arrow'],
+  //     //     ),
+  //     //   ],
+  //     // ),
   //   );
   // }
 }
