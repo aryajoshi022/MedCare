@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
-import 'package:medcare/splashscreen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
