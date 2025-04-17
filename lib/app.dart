@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import 'package:medcare/splashscreen.dart';
 
 class App extends StatelessWidget {
@@ -11,8 +12,9 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.dark,
       //theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: //GoogleSignInScreen(),
-          SplashScreen(),
+      // home: //GoogleSignInScreen(),
+      // home: SplashScreen(),
+      home: ChatDoctor(),
       routes: {},
     );
   }
