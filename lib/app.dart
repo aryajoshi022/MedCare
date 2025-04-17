@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/splashscreen.dart';
 
 class App extends StatelessWidget {
@@ -6,14 +8,19 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sonic AI',
-      themeMode: ThemeMode.dark,
-      //theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      home: //GoogleSignInScreen(),
-          SplashScreen(),
-      routes: {},
+    return ScreenUtilInit(
+      designSize: const Size(428,926), // 👈 Match Figma design
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          title: 'MedCare',
+          themeMode: ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen(), // or SplashScreen(),
+          routes: {},
+        );
+      },
     );
   }
 }
