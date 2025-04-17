@@ -7,8 +7,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Sonic AI',
-      themeMode: ThemeMode.dark,
+      title: 'MedCare',
+      themeMode: ThemeMode.light,
       //theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
       // home: //GoogleSignInScreen(),
