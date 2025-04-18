@@ -18,13 +18,15 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 3),
       () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => onBoardingScreen()),
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Text('Splash Screen'));
+    return Scaffold(
+      body: Center(child: Image.asset('assets/images/splash_logo.png')),
+    );
   }
 }
