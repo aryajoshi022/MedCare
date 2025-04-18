@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       SvgPicture.asset(contents[i].image, height: 300),
                       Text(
                         contents[i].title,
-                        style: TextStyle(
+                        style:TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
