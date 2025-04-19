@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medcare/screens/home/home_screen.dart';
-import 'package:medcare/splashscreen.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428, 926), // Match Figma design
+      designSize: const Size(428,926), // Match Figma design
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -17,9 +16,9 @@ class App extends StatelessWidget {
           title: 'MedCare',
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: //const HomeScreen(),
-              SplashScreen(),
-          // home: ChatDoctor(),
+          // home: const HomeScreen(),
+          // or SplashScreen(),
+          home: ChatDoctor(),
           routes: {},
         );
       },

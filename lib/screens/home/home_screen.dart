@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(
           "Hi, Alexander",
-          style: GoogleFonts.teko(
+          style: GoogleFonts.khula(
             color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.w600,

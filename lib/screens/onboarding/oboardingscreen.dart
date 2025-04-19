@@ -65,7 +65,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   padding: const EdgeInsets.all(40),
                   child: Column(
                     children: [
-                      SvgPicture.asset(contents[i].image, height: 300),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 191.04),
+                        child: Image.asset(contents[i].image, height: 300),
+                      ),
                       Text(
                         contents[i].title,
                         style:TextStyle(
