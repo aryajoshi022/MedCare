@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medcare/screens/home/home_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -18,19 +16,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       title: 'Online Consultation',
       image: 'assets/images/onboard_layer1.png',
       description:
-      "Connect with healthcare professionals virtually for convenient medical advice and support.",
+          "Connect with healthcare professionals virtually for convenient medical advice and support.",
     ),
     OnboardingContent(
       title: '24 Hours Ready to Serve',
       image: 'assets/images/onboard_layer2.png',
       description:
-      "Instant access to expert medical assistance. Get the care you need, when you need it, with our app.",
+          "Instant access to expert medical assistance. Get the care you need, when you need it, with our app.",
     ),
     OnboardingContent(
       title: 'Medical Record Data Patient',
       image: 'assets/images/onboard_layer3.png',
       description:
-      "Easily manage and access comprehensive health records, including medical history, test results, and treatment plans, all in one secure place.",
+          "Easily manage and access comprehensive health records, including medical history, test results, and treatment plans, all in one secure place.",
     ),
   ];
 
@@ -49,6 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Expanded(
@@ -66,13 +65,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 191.04),
+                        padding: const EdgeInsets.only(top: 121.04),
                         child: Image.asset(contents[i].image, height: 300),
                       ),
                       Text(
                         contents[i].title,
-                        style:TextStyle(
-                          fontSize: 20,
+                        style: TextStyle(
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -80,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       Text(
                         contents[i].description,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
                       ),
                     ],
                   ),
@@ -92,7 +91,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
               contents.length,
-                  (index) => buildDot(index, context),
+              (index) => buildDot(index, context),
             ),
           ),
           Container(
@@ -107,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 if (currentIndex == contents.length - 1) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => HomeScreen()),
+                    MaterialPageRoute(builder: (_) => getstartedScreen()),
                   );
                 } else {
                   _controller.nextPage(
@@ -117,7 +116,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 }
               },
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: Theme.of(context).primaryColor,
+                foregroundColor: Colors.white,
+                backgroundColor: Theme.of(context).primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -142,11 +142,38 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 }
 
+//Onboarding screen
 class OnboardingContent {
   late final String title, image, description;
   OnboardingContent({
     required this.title,
     required this.description,
-    required this.image
-});
+    required this.image,
+  });
+}
+
+class getstartedScreen extends StatelessWidget {
+  const getstartedScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Center(child: Image.asset('assets/images/splash_logo.png')),
+          ElevatedButton(
+            child: Text('Register', style: TextStyle(fontSize: 16)),
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
+}
