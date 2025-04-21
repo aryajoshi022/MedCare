@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../widgets/bottom bar/custom_bottom_bar.dart';
+
 class ChatDoctor extends StatefulWidget {
   const ChatDoctor({super.key});
 
@@ -37,30 +39,38 @@ class _ChatDoctorState extends State<ChatDoctor> {
       'specialty': 'General Surgery',
       'experience': '2 Years',
       'availability': 'Available on Wed - Sat',
-      'image': 'assets/images/Dr_Luca_Rossi.png',
+      'image': 'assets/images/Dr_Rajesh_Patel.png',
     },
     {
       'name': 'Dr. Anna Schmidt',
       'specialty': 'General Practitioner',
       'experience': '10 Years',
       'availability': 'Available on Wed - Sat',
-      'image': 'assets/images/Dr_Luca_Rossi.png',
+      'image': 'assets/images/Dr_Anna_Schmidt.png',
     },
     {
       'name': 'Dr. Emma Andersen',
       'specialty': 'Specialis Neurologi',
       'experience': '4 Years',
       'availability': 'Available on Wed - Sat',
-      'image': 'assets/images/Dr_Luca_Rossi.png',
+      'image': 'assets/images/Dr_Emma_Andersen.png',
     },
     {
       'name': 'Dr. Fabian Weber',
       'specialty': 'General Surgery',
       'experience': '6 Years',
       'availability': 'Available on Wed - Sat',
-      'image': 'assets/images/Dr_Luca_Rossi.png',
+      'image': 'assets/images/Dr_Fabian_Weber.png',
     },
   ];
+
+  int _selectedIndex = 0;
+
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +94,15 @@ class _ChatDoctorState extends State<ChatDoctor> {
             letterSpacing: 1,
           ),
         ),
+        surfaceTintColor: Colors.white,
+      ),
+      bottomNavigationBar: CustomBottomAppBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
       body: Column(
         children: [
@@ -147,7 +166,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: Image.asset('assets/images/Dr_Luca_Rossi.png',
+              child: Image.asset(
+                doctor['image']!,
                 height: 64.h,
                 width: 64.h,
                 fit: BoxFit.cover,
@@ -197,6 +217,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                 ],
               ),
             ),
+            // SizedBox(width: 16.w),
             Icon(Icons.chevron_right),
             // IconButton(
             //   onPressed: (){},
