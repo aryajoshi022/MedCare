@@ -8,13 +8,13 @@ class AppTextTheme {
   static TextTheme lightTextTheme = TextTheme(
       titleLarge: const TextStyle(
           fontSize: 22,
-          fontFamily: 'SansFran',
+          fontFamily: 'Khula',
           color: AppColors.textPrimary
       ),
     titleMedium: const TextStyle(
       fontSize: 15,
       color:AppColors.textSecondary,
-      fontFamily: 'SansFran'
+      fontFamily: 'Khula'
     ),
 
   );
@@ -22,23 +22,23 @@ class AppTextTheme {
   static TextTheme darkTextTheme = TextTheme(
     displayMedium: TextStyle(
       color: AppColors.textPrimary,
-      fontFamily: 'SansFran',
+      fontFamily: 'Khula',
       letterSpacing: -0.4,
     ),
     labelMedium: TextStyle(
       color: AppColors.textSecondary,
-      fontFamily: 'SansFran',
+      fontFamily: 'Khula',
       letterSpacing: -0.4,
     ),
     titleLarge: const TextStyle(
       fontSize: 22,
-      fontFamily: 'SansFran',
+      fontFamily: 'Khula',
       color: AppColors.textPrimary
     ),
     titleMedium: const TextStyle(
         fontSize: 15,
         color:AppColors.textSecondary,
-        fontFamily: 'SansFran'
+        fontFamily: 'Khula'
     ),
   );
 }
