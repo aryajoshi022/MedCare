@@ -82,6 +82,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.white,
       child: SizedBox(
         height: 60.h,
         child: Row(
