@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/util/constants/colors.dart';
 
-import '../signin/signinscreen.dart';
 
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
 import '../../util/constants/colors.dart';
