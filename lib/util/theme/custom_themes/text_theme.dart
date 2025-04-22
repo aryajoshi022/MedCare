@@ -6,16 +6,17 @@ class AppTextTheme {
   AppTextTheme._();
 
   static TextTheme lightTextTheme = TextTheme(
-    titleLarge: const TextStyle(
-      fontSize: 20,
-      fontFamily: 'Khula',
-      color: AppColors.textPrimary,
-    ),
+      titleLarge: const TextStyle(
+          fontSize: 22,
+          fontFamily: 'Khula',
+          color: AppColors.textPrimary
+      ),
     titleMedium: const TextStyle(
-      fontSize: 15,
-      color: AppColors.textSecondary,
-      fontFamily: 'Khula',
+      fontSize: 16,
+      color:AppColors.textSecondary,
+      fontFamily: 'Khula'
     ),
+
   );
 
   static TextTheme darkTextTheme = TextTheme(
@@ -32,12 +33,12 @@ class AppTextTheme {
     titleLarge: const TextStyle(
       fontSize: 22,
       fontFamily: 'Khula',
-      color: AppColors.textPrimary,
+      color: AppColors.textPrimary
     ),
     titleMedium: const TextStyle(
-      fontSize: 15,
-      color: AppColors.textSecondary,
-      fontFamily: 'Khula',
+        fontSize: 15,
+        color:AppColors.textSecondary,
+        fontFamily: 'Khula'
     ),
   );
 }

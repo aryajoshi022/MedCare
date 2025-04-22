@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
 import '../../util/constants/colors.dart';
@@ -107,10 +108,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             Container(
-              height: 91,
+              height: 91.h,
               padding: EdgeInsets.only(top: 40),
               //margin: EdgeInsets.all(40),
-              width: 372,
+              width: 372.w,
               child: ElevatedButton(
                 child: Text(
                   currentIndex == contents.length - 1 ? "Continue" : "Next",
