@@ -12,7 +12,7 @@ class AppTextTheme {
           color: AppColors.textPrimary
       ),
     titleMedium: const TextStyle(
-      fontSize: 15,
+      fontSize: 16,
       color:AppColors.textSecondary,
       fontFamily: 'Khula'
     ),

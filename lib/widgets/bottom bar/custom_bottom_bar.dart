@@ -55,7 +55,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(6.w),
+              // padding: EdgeInsets.all(6.w),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
@@ -69,7 +69,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
             Text(
               label,
               style: TextStyle(
-                fontSize: 12.sp,
+                fontSize: 12,
                 color: isSelected ? const Color(0xff4D4D4D) : const Color(0xff8F8F8F),
               ),
             ),
