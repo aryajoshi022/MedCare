@@ -7,9 +7,9 @@ class AppTextTheme {
 
   static TextTheme lightTextTheme = TextTheme(
       titleLarge: const TextStyle(
-          fontSize: 22,
+          fontSize: 20,
           fontFamily: 'Khula',
-          color: AppColors.textPrimary
+          color: AppColors.textWhite,
       ),
     titleMedium: const TextStyle(
       fontSize: 16,

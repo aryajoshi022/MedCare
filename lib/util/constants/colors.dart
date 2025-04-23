@@ -14,7 +14,7 @@ class AppColors {
   static const Color textBrand = Color(0xFFB4B2FF);
   static const Color textBtn = Color(0xFF26408B);
   static const Color textDisabled = Color(0xff8F8F8F);
-  static const Color textError = Color(0xFFDCFFDD);
+  static const Color textWhite = Color(0xFFFFFFFF);
 
 
   // Button Colors
