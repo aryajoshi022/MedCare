@@ -369,7 +369,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: days.map((day) {
-          bool isSelected = day.startsWith('Wed'); // Highlight Wednesday as in the example
+          // bool isSelected = day.startsWith('Wed'); // Highlight Wednesday as in the example
           return Container(
             margin: EdgeInsets.only(right: 12),
             padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
