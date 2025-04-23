@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
@@ -145,115 +146,117 @@ class _ChatDoctorState extends State<ChatDoctor> {
   }
 
   Widget _buildDoctorItem({required Map<String, dynamic> doctor}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 28),
-      child: Container(
-        width: 372.w,
-        color: Colors.purple,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 14),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 336.w,
+    return Container(
+      // padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+      margin: EdgeInsets.symmetric(horizontal: 28.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+        child: Row(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Image.asset(
+                doctor['image']!,
                 height: 64.h,
-                color: Colors.blue,
-                child: Row(
-                  children: [
-                    Image.asset('assets/images/Dr_Luca_Rossi.png',
-                      fit: BoxFit.cover,
+                width: 64.h,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(width: 16.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    doctor['name']!,
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      letterSpacing: 1,
+                      color: Color(0xff090909),
                     ),
-                    Text('data')
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    '${doctor['specialty']!} • ${doctor['experience']!}',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      letterSpacing: 1,
+                      color: Color(0xff4D4D4D),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2),
+                      color: Color(0xffDCFFDD),
+                    ),
+                    child: Text(
+                      doctor['availability']!,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                        letterSpacing: 1,
+                        color: Color(0xff4D4D4D),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              Container(
-                width: 24.w,
-                height: 24.h,
-                color: Colors.green,
+            ),
+            // SizedBox(width: 16.w),
+            // Icon(Icons.chevron_right),
+            IconButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
+              },
+              icon: Icon(Icons.chevron_right,
+                color: Color(0xff4D4D4D),
               ),
-            ],
-          ),
+              constraints: BoxConstraints.loose(Size.fromWidth(2)),
+            ),
+          ],
         ),
       ),
     );
-    // return Container(
-    //   // padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
-    //   margin: EdgeInsets.symmetric(horizontal: 28.w),
-    //   decoration: BoxDecoration(
-    //     color: Colors.white,
-    //     borderRadius: BorderRadius.circular(6.0),
-    //   ),
-    //   child: Padding(
-    //     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
-    //     child: Row(
-    //       children: [
-    //         Container(
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(4),
-    //           ),
-    //           child: Image.asset(
-    //             doctor['image']!,
+    // return Padding(
+    //   padding: const EdgeInsets.symmetric(horizontal: 28),
+    //   child: Container(
+    //     width: 372.w,
+    //     color: Colors.purple,
+    //     child: Padding(
+    //       padding: EdgeInsets.symmetric(vertical: 14),
+    //       child: Row(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: [
+    //           Container(
+    //             width: 336.w,
     //             height: 64.h,
-    //             width: 64.h,
-    //             fit: BoxFit.cover,
+    //             color: Colors.blue,
+    //             child: Row(
+    //               children: [
+    //                 Image.asset('assets/images/Dr_Luca_Rossi.png',
+    //                   fit: BoxFit.cover,
+    //                 ),
+    //                 Text('data')
+    //               ],
+    //             ),
     //           ),
-    //         ),
-    //         SizedBox(width: 16.w),
-    //         Expanded(
-    //           child: Column(
-    //             crossAxisAlignment: CrossAxisAlignment.start,
-    //             children: [
-    //               Text(
-    //                 doctor['name']!,
-    //                 style: GoogleFonts.khula(
-    //                   fontWeight: FontWeight.w600,
-    //                   fontSize: 14,
-    //                   letterSpacing: 1,
-    //                   color: Color(0xff090909),
-    //                 ),
-    //               ),
-    //               SizedBox(height: 10.h),
-    //               Text(
-    //                 '${doctor['specialty']!} • ${doctor['experience']!}',
-    //                 style: GoogleFonts.khula(
-    //                   fontWeight: FontWeight.w400,
-    //                   fontSize: 12,
-    //                   letterSpacing: 1,
-    //                   color: Color(0xff4D4D4D),
-    //                 ),
-    //               ),
-    //               SizedBox(height: 10.h),
-    //               Container(
-    //                 padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
-    //                 decoration: BoxDecoration(
-    //                   borderRadius: BorderRadius.circular(2),
-    //                   color: Color(0xffDCFFDD),
-    //                 ),
-    //                 child: Text(
-    //                   doctor['availability']!,
-    //                   style: GoogleFonts.khula(
-    //                     fontWeight: FontWeight.w400,
-    //                     fontSize: 10,
-    //                     letterSpacing: 1,
-    //                     color: Color(0xff4D4D4D),
-    //                   ),
-    //                 ),
-    //               ),
-    //             ],
+    //           Container(
+    //             width: 24.w,
+    //             height: 24.h,
+    //             color: Colors.green,
     //           ),
-    //         ),
-    //         // SizedBox(width: 16.w),
-    //         Icon(Icons.chevron_right),
-    //         // IconButton(
-    //         //   onPressed: (){},
-    //         //   icon: Icon(Icons.chevron_right,
-    //         //     color: Color(0xff4D4D4D),
-    //         //   ),
-    //         //   constraints: BoxConstraints.loose(Size.fromWidth(2)),
-    //         // ),
-    //       ],
+    //         ],
+    //       ),
     //     ),
     //   ),
     // );

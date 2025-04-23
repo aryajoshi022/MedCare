@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 
 class App extends StatelessWidget {
@@ -18,8 +19,8 @@ class App extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           // home: const HomeScreen(),
           // home: SplashScreen(),
-          // home: ChatDoctor(),
-          home: DoctorDetails(),
+          home: ChatDoctor(),
+          // home: DoctorDetails(),
           routes: {},
         );
       },

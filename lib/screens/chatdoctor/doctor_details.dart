@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 
 import '../../util/constants/colors.dart';
 class DoctorDetails extends StatefulWidget {
@@ -81,6 +82,65 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ],
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(top: 14, bottom: 28, left: 28, right: 28),
+        child: Row(
+          children: [
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24.w)
+                ),
+                side: BorderSide(
+                  width: 1,
+                  color: Color(0xff26408B),
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h)
+              ),
+              onPressed: (){},
+              icon: Icon(Icons.chat_outlined,
+              color: Color(0xff26408B),
+              ),
+              label: Text('Chat',
+                style: GoogleFonts.khula(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  // letterSpacing: 1,
+                  color: Color(0xff26408B)
+                ),
+              ),
+            ),
+            SizedBox(width: 12),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle hug action
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff26408B),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.w)
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                  // side: BorderSide(
+                  //   width: 1,
+                  //   color: Color(0xff26408B),
+                  // ),
+                ),
+                child: Text('Make An Appointment',
+                  style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      // letterSpacing: 1,
+                      color: Colors.white
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       // appBar: AppBar(
       //   backgroundColor: Colors.white,
       //   leading: IconButton(
@@ -125,7 +185,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               color: AppColors.textSecondary
             ),
             onPressed: () {
-              // Navigator.pop(context); // Handle back navigation
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDoctor(),));
             },
           ),
           Expanded(
@@ -293,7 +353,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   Widget _buildPracticeLocationDropdown(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 21.5.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         color: Color(0xffF9F8FD)
@@ -309,10 +369,12 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               color: Color(0xff26408B)
             ),
           ),
-          Icon(
-            Icons.keyboard_arrow_down_sharp,
-            color: Color(0xff4D4D4D),
-            size: 24,
+          IconButton(
+            onPressed: (){},
+            icon: Icon(Icons.keyboard_arrow_down,
+              color: Color(0xff4D4D4D),
+              size: 24,
+            ),
           ),
         ],
       ),
@@ -400,21 +462,94 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   Widget _buildReviewSection(BuildContext context) {
     return Row(
       children: [
-        Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.grey, width: 1)
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(20.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.w),
+              // border: Border.all(
+              //     width: 1.w,
+              //     color: Color(0xffE3E3E3)
+              // ),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xffE3E3E3),
+                  blurRadius: 10,
+                  spreadRadius: 5,offset: Offset(4, 4),blurStyle: BlurStyle.outer
+                ),
+              ],
+            ),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 28,
+                      backgroundImage: AssetImage('assets/images/Emily_Johnson.png'),
+                    ),
+                    SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Emily Johnson',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              letterSpacing: 1,
+                              color: Color(0xff090909)
+                          ),
+                        ),
+                        Text('1 day ago',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 10,
+                              letterSpacing: 1,
+                              color: Color(0xff4D4D4D)
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+                            Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 16.h),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text('My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
+                        style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            letterSpacing: 1,
+                            color: Color(0xff4D4D4D)
+                        ),
+                      ),
+                    ),
+                    // Text('More view',
+                    //   style: GoogleFonts.khula(
+                    //       fontWeight: FontWeight.w600,
+                    //       fontSize: 14,
+                    //       letterSpacing: 1,
+                    //       color: Color(0xff26408B)
+                    //   ),
+                    // ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-        SizedBox(width: 12,),
-        Container(
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.grey, width: 1)
-          ),
-        ),
+        SizedBox(width: 16.w),
       ],
     );
   }
