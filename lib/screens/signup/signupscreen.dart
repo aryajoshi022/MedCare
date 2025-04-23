@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart' show AnimatedContainer, BorderRadius, BoxDecoration, BuildContext, Checkbox, Colors, Column, CrossAxisAlignment, Curves, DropdownButtonFormField, DropdownMenuItem, EdgeInsets, ElevatedButton, Expanded, FontWeight, GestureDetector, Icon, IconButton, Icons, InputDecoration, MainAxisAlignment, Navigator, OutlineInputBorder, Padding, PageController, PageView, RoundedRectangleBorder, Row, SafeArea, Scaffold, SizedBox, State, StatefulWidget, Text, TextField, TextStyle, Widget;
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/util/constants/colors.dart';
-
 
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
@@ -59,7 +58,8 @@ class _SignScreenState extends State<SignScreen> {
 
   Widget _signInPage() {
     return Scaffold(
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
           Text('No Phone*', style: TextStyle(fontSize: 16)),
@@ -130,7 +130,12 @@ class _SignScreenState extends State<SignScreen> {
               ),
               child: ElevatedButton(
                 child: Text('Register', style: TextStyle(fontSize: 16)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => _signInotp()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: AppColors.btnPrimary,
@@ -148,13 +153,14 @@ class _SignScreenState extends State<SignScreen> {
 
   Widget _signUpPage() {
     return Scaffold(
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: 20),
           Text('Email', style: TextStyle(fontSize: 16)),
           TextField(
             decoration: InputDecoration(
-              hintText: 'Enter phone number',
+              hintText: 'Enter email',
               border: OutlineInputBorder(),
             ),
           ),
@@ -219,7 +225,12 @@ class _SignScreenState extends State<SignScreen> {
               ),
               child: ElevatedButton(
                 child: Text('Register', style: TextStyle(fontSize: 16)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => (_signupotp())),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: AppColors.btnPrimary,
@@ -231,6 +242,516 @@ class _SignScreenState extends State<SignScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  //Otp Verification Screens
+  Widget _signInotp() {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios, weight: 7),
+                  ),
+                  Text(
+                    'Register',
+                    style: TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 145.h),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(
+                      'Enter the 4-digit verification code (OTP) sent to your phone',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '(+66) 6152 625 612',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textBtn,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                  SizedBox(
+                    height: 91,
+                    width: 372,
+
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        bottom: 20,
+                        right: 10,
+                        left: 10,
+                      ),
+                      child: ElevatedButton(
+                        child: Text('Continue', style: TextStyle(fontSize: 16)),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => _verificationcompleted(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: AppColors.btnPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text('Resend in 60 seconds'),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _signupotp() {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(28),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back_ios, weight: 7),
+                  ),
+                  Text(
+                    'Register',
+                    style: TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 145.h),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Text(
+                      'Enter the 4-digit verification code (OTP) sent to your email',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'info@gmail.com',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textBtn,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                  SizedBox(
+                    height: 91,
+                    width: 372,
+
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        bottom: 20,
+                        right: 10,
+                        left: 10,
+                      ),
+                      child: ElevatedButton(
+                        child: Text('Continue', style: TextStyle(fontSize: 16)),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => _verificationcompleted(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: AppColors.btnPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text('Resend in 60 seconds'),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  //For Otp verification Box
+  Widget _buildPinBox() {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        '7', // Placeholder for input
+        style: TextStyle(fontSize: 24),
+      ),
+    );
+  }
+
+  Widget _nophonelogin() {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          Text(
+            'No phone',
+            style: TextStyle(
+              fontSize: 16,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Enter phone number',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Is there an issue with your phone number?',
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Spacer(),
+          SizedBox(
+            height: 91,
+            width: 372,
+
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+                right: 10,
+                left: 10,
+              ),
+              child: ElevatedButton(
+                child: Text('Login', style: TextStyle(fontSize: 16)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => _signInotp()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: AppColors.btnPrimary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Don`t have a MedCare Account yet ? ',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.btnPrimary,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _emaillogin() {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 20),
+          Text(
+            'No phone',
+            style: TextStyle(
+              fontSize: 16,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Enter phone number',
+              border: OutlineInputBorder(),
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Is there an issue with your phone number?',
+            style: TextStyle(
+              fontSize: 14,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          Spacer(),
+          SizedBox(
+            height: 91,
+            width: 372,
+
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+                right: 10,
+                left: 10,
+              ),
+              child: ElevatedButton(
+                child: Text('Login', style: TextStyle(fontSize: 16)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => _signInotp()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: AppColors.btnPrimary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Don`t have a MedCare Account yet ?',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.btnPrimary,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _verifylogin() {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(
+            left: 28,
+            right: 28,
+            bottom: 60,
+            top: 40,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.arrow_back_ios, weight: 7),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Enter your phone number or email',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+              ),
+              SizedBox(height: 30.h),
+              _buildToggleTabs(),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  onPageChanged:
+                      (index) => setState(() => _currentIndex = index),
+                  children: [_nophonelogin(), _emaillogin()],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _verificationcompleted() {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 300,
+              bottom: 60,
+              right: 28,
+              left: 28,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/icons/verification_icon.png',
+                  height: 133,
+                  width: 126,
+                ),
+                SizedBox(height: 60.h),
+                Text(
+                  'Verification Success',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 33, right: 33),
+                  child: Text(
+                    'Congratulations, your account has been verified',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.textSecondary,
+                      wordSpacing: 1,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                Spacer(),
+                SizedBox(
+                  height: 91,
+                  width: 372,
+
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 20,
+                      bottom: 20,
+                      right: 10,
+                      left: 10,
+                    ),
+                    child: ElevatedButton(
+                      child: Text('Continue', style: TextStyle(fontSize: 16)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => _signInotp()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppColors.btnPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -274,7 +795,8 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
 
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Already have an account? ',

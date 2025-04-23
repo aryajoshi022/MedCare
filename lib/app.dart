@@ -18,8 +18,8 @@ class App extends StatelessWidget {
           title: 'MedCare',
           themeMode: ThemeMode.light,
           debugShowCheckedModeBanner: false,
-          home: const HomeScreen(),
-          // home: SplashScreen(),
+          //home: const HomeScreen(),
+           home: SplashScreen(),
           // home: ChatDoctor(),
           routes: {},
         );

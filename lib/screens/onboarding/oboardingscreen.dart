@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
 import '../../util/constants/colors.dart';
@@ -245,6 +246,7 @@ class getstartedScreen extends StatelessWidget {
                     child: ElevatedButton(
                       child: Text('Next', style: TextStyle(fontSize: 16)),
                       onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>SignInScreen() ));
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
