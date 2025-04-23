@@ -244,7 +244,8 @@ class getstartedScreen extends StatelessWidget {
                     ),
                     child: ElevatedButton(
                       child: Text('Next', style: TextStyle(fontSize: 16)),
-                      onPressed: () {},
+                      onPressed: () {
+                      },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         backgroundColor: AppColors.btnPrimary,
@@ -278,7 +279,7 @@ class getstartedScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => SignUpScreen(),
+                            builder: (context) => SignScreen(),
                           ),
                         );
                       },
