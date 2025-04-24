@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
+import '../../screens/chatdoctor/chat_doctor.dart';
+
 class CustomBottomAppBar extends StatefulWidget {
   final int selectedIndex;
   final Function(int) onItemTapped;
@@ -28,7 +30,10 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
         );
         break;
       case 1:
-      // Navigate to Services Screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ChatDoctor()),
+        );
         break;
       case 2:
       // Navigate to History Screen
