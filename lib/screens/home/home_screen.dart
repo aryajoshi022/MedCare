@@ -150,9 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Text(
                             "Fill Your Profile Now!",
-                            style: TextStyle(
+                            style: GoogleFonts.khula(
                               fontSize: 12,
-                              fontFamily: 'Khula',
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -183,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       // Bell action
                     },
                   ),
-                  prefixIconConstraints: BoxConstraints(minWidth:3.05.w),
+                  prefixIconConstraints: BoxConstraints(minWidth:15.05.w),
                   hintText: 'Find a doctor, medicine or health services',
                   hintStyle: GoogleFonts.khula(
                     letterSpacing: 1,
@@ -215,9 +214,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 32,horizontal: 28),
               child: Container(
-                height: 183.h,
-                width: 372.w,
                 child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   itemCount: categories.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
@@ -236,43 +235,52 @@ class _HomeScreenState extends State<HomeScreen> {
 
             //Consultaion Button
             Padding(
-              padding: EdgeInsets.only(left: 28.w,right: 28.w,top: 32.h),
-              child: TextField(
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 67),
-                  prefixIconColor: Color(0xff8F8F8F),
-                  hintText: 'Consultation with a specialist',
-                  hintStyle: GoogleFonts.khula(
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Color(0xff090909),
-                  ),
-
-                  labelText: 'Promote health via chat or call',
-                  labelStyle: GoogleFonts.khula(
-                    letterSpacing: 1,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    color: Color(0xff4D4D4D),
-                  ),
-
-                  suffixIconConstraints: BoxConstraints(minWidth:31.w),
-                  suffixIcon: IconButton(
-                    icon: Image.asset('assets/icons/Filtter.png', height: 20.h),
-                    onPressed: () {
-                      // Bell action
-                    },
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide: BorderSide(
-                        color: Color(0xFFC2E7D9),
-                        width: 1
+              padding: const EdgeInsets.symmetric(horizontal:28),
+              child: Container(
+                height: 82.h,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(6),
                     ),
                   ),
-                  filled: true,
-                  fillColor: Color(0xffF9F9F9),
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 217.w,
+                        child: Column(
+                          children: [
+                            Text(
+                              "Consultation with a specialist",
+                              style: GoogleFonts.khula(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff090909),
+                                letterSpacing: 1
+                              ),
+                            ),
+                            Text(
+                              "Promote health via chat or call",
+                              style: GoogleFonts.khula(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff090909),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 97,),
+                      IconButton(
+                        icon: Image.asset('assets/icons/Arrow.png', height: 24.h),
+                        onPressed: () {
+                          // Bell action
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

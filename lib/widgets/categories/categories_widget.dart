@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:ui';
 
 class CategoryItem extends StatelessWidget {
   final String iconPath;
@@ -25,9 +26,10 @@ class CategoryItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(6),
             boxShadow: [
               BoxShadow(
-                offset: Offset(2, 2), // x=2, y=2
-                blurRadius: 10,      // blur amount
-                spreadRadius: 0,     // spread amount
+                color: Colors.black.withOpacity(0.1), // shadow color with opacity
+                spreadRadius: 2,   // how wide the shadow spreads
+                blurRadius: 10,     // how soft the shadow is
+                offset: Offset(0, 5), // x,y offset of shadow
               ),
             ],
           ),

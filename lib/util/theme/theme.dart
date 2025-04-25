@@ -16,7 +16,7 @@ class AppTheme {
     appBarTheme: AppAppbarTheme.lightAppbarTheme,
     buttonTheme: AppButtonTheme.lightButtonTheme,
     inputDecorationTheme: InputTheme.lightInputTheme,
-    scaffoldBackgroundColor: AppColors.bgAlert,
+    scaffoldBackgroundColor: AppColors.bgPrimary,
     fontFamily: 'Khula',
 
 
