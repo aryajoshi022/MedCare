@@ -19,13 +19,13 @@ class App extends StatelessWidget {
         return MaterialApp(
           title: 'MedCare',
           themeMode: ThemeMode.light,
-          // theme: AppTheme.lightTheme,
+          theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-          home: const HomeScreen(),
+         // home: const HomeScreen(),
           // home: SplashScreen(),
           // home: ChatDoctor(),
           // home: DoctorDetails(),
-          // home: HealthShopScreen(),
+           home: HealthShopScreen(),
           routes: {},
         );
       },

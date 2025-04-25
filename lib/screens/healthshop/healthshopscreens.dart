@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/util/constants/colors.dart';
 
@@ -13,6 +14,7 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //backgroundColor: AppColors.bgAlert,
       body: SafeArea(
         child: Column(
           children: [
@@ -31,8 +33,8 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 48,
-                    width: 288,
+                    height: 48.h,
+                    width: 288.w,
                     child: TextFormField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
@@ -77,24 +79,50 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 40,
-                  width: 44,
-                  child: FloatingActionButton(
-                    onPressed: () {},
-                    child: Image.asset('assets/icons/shop_filter.png',),
-                    backgroundColor: AppColors.bgAlert,
-                  ),
-                ),
-              ],
-            ),
+            SizedBox(height: 20.h),
+
           ],
         ),
       ),
     );
   }
+}
+
+Widget _scroller(){
+  return Scaffold(
+    body:             Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: 40.h,
+          width: 44.w,
+          child: FloatingActionButton(
+            onPressed: () {},
+            child: Image.asset('assets/icons/shop_filter.png',),
+            backgroundColor: AppColors.bgAlert,
+          ),
+        ),
+        SizedBox(
+          height: 40.h,
+          width: 162.w,
+          child: FloatingActionButton(
+            onPressed: () {},
+            child: Text('Medicine & Treatment'),
+            backgroundColor: AppColors.bgAlert,
+          ),
+        ),
+        SizedBox(
+          height: 40.h,
+          width: 50.w,
+          child: FloatingActionButton(
+            onPressed: () {},
+            child: Text('Milk'),
+            backgroundColor: AppColors.bgAlert,
+          ),
+        ),
+
+      ],
+    ),
+
+  );
 }
