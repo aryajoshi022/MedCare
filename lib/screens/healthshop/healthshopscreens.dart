@@ -80,7 +80,6 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
               ),
             ),
             SizedBox(height: 20.h),
-
           ],
         ),
       ),
@@ -88,9 +87,9 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
   }
 }
 
-Widget _scroller(){
+Widget _scroller() {
   return Scaffold(
-    body:             Row(
+    body: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
@@ -98,7 +97,7 @@ Widget _scroller(){
           width: 44.w,
           child: FloatingActionButton(
             onPressed: () {},
-            child: Image.asset('assets/icons/shop_filter.png',),
+            child: Image.asset('assets/icons/shop_filter.png'),
             backgroundColor: AppColors.bgAlert,
           ),
         ),
@@ -120,9 +119,7 @@ Widget _scroller(){
             backgroundColor: AppColors.bgAlert,
           ),
         ),
-
       ],
     ),
-
   );
 }
