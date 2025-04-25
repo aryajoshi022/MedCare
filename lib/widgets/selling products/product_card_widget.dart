@@ -1,33 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductCard extends StatelessWidget {
   final String imagePath;
   final String productName;
-  final String price;
 
   const ProductCard({
     super.key,
     required this.imagePath,
     required this.productName,
-    required this.price,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 140,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.grey.shade100,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
         children: [
-          Image.asset(imagePath, height: 80, fit: BoxFit.contain),
-          const SizedBox(height: 8),
-          Text(productName, style: TextStyle(fontWeight: FontWeight.bold)),
-          Text(price, style: TextStyle(color: Colors.green)),
+          SizedBox(
+            height: 81.h,
+            width: 81.w,
+            child: Image.asset(
+              imagePath,
+              height: 81.h,
+              width: 81.w,
+              fit: BoxFit.cover,
+            ),
+          ),
+          // Centered Column
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      productName,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 10.sp,
+                        letterSpacing: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
