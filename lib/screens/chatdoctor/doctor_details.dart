@@ -176,7 +176,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   Widget _buildHeaderSection(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 16.0, left: 16.0, right: 16.0, bottom: 16.0),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 16.h, left: 16.w, right: 16.w, bottom: 16.h),
       color: Color(0xffF6F1FF),
       child: Row(
         children: [
