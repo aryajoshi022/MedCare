@@ -10,7 +10,7 @@ import 'custom_themes/text_theme.dart';
 class AppTheme {
   AppTheme._();
 
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData lighttheme = ThemeData(
     useMaterial3: true,
     textTheme: AppTextTheme.lightTextTheme,
     appBarTheme: AppAppbarTheme.lightAppbarTheme,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 import 'package:medcare/screens/healthshop/healthshopscreens.dart';
+import 'package:medcare/util/theme/theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
         return MaterialApp(
           title: 'MedCare',
           themeMode: ThemeMode.light,
+          theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
           // home: const HomeScreen(),
           // home: SplashScreen(),
