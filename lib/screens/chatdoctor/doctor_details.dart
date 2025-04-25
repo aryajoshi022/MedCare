@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
+import 'package:medcare/screens/chatdoctor/confirmation.dart';
 
 import '../../util/constants/colors.dart';
 class DoctorDetails extends StatefulWidget {
@@ -115,7 +116,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  // Handle hug action
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmation(),));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff26408B),
@@ -460,97 +461,224 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   Widget _buildReviewSection(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.all(20.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.w),
-              // border: Border.all(
-              //     width: 1.w,
-              //     color: Color(0xffE3E3E3)
-              // ),
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0xffE3E3E3),
-                  blurRadius: 10,
-                  spreadRadius: 5,offset: Offset(4, 4),blurStyle: BlurStyle.outer
+    return SingleChildScrollView( // Make the row scrollable horizontally
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start, // Align items to the top
+        children: [
+          _buildReviewCard(
+            name: 'Emily Johnson',
+            daysAgo: '1 day ago',
+            rating: 4,
+            reviewText:
+            'My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
+            image: 'assets/images/Emily_Johnson.png',
+          ),
+          SizedBox(width: 16.0),
+          _buildReviewCard(
+            name: 'Daniel Anderson',
+            daysAgo: '8 days ago',
+            rating: 5,
+            reviewText:
+            'My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
+            image: 'assets/images/Daniel_Anderson.png',
+          ),
+          SizedBox(width: 16.0),
+          // Add more review cards here as needed
+        ],
+      ),
+    );
+    // return Row(
+    //   children: [
+    //     Expanded(
+    //       child: Container(
+    //         padding: EdgeInsets.all(20.w),
+    //         decoration: BoxDecoration(
+    //           borderRadius: BorderRadius.circular(12.w),
+    //           // border: Border.all(
+    //           //     width: 1.w,
+    //           //     color: Color(0xffE3E3E3)
+    //           // ),
+    //           boxShadow: [
+    //             BoxShadow(
+    //               color: Color(0xffE3E3E3),
+    //               blurRadius: 10,
+    //               spreadRadius: 5,offset: Offset(4, 4),blurStyle: BlurStyle.outer
+    //             ),
+    //           ],
+    //         ),
+    //         child: Column(
+    //           children: [
+    //             Row(
+    //               children: [
+    //                 CircleAvatar(
+    //                   radius: 28,
+    //                   backgroundImage: AssetImage('assets/images/Emily_Johnson.png'),
+    //                 ),
+    //                 SizedBox(width: 12),
+    //                 Column(
+    //                   crossAxisAlignment: CrossAxisAlignment.start,
+    //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                   children: [
+    //                     Text('Emily Johnson',
+    //                       style: GoogleFonts.khula(
+    //                           fontWeight: FontWeight.w400,
+    //                           fontSize: 14,
+    //                           letterSpacing: 1,
+    //                           color: Color(0xff090909)
+    //                       ),
+    //                     ),
+    //                     Text('1 day ago',
+    //                       style: GoogleFonts.khula(
+    //                           fontWeight: FontWeight.w400,
+    //                           fontSize: 10,
+    //                           letterSpacing: 1,
+    //                           color: Color(0xff4D4D4D)
+    //                       ),
+    //                     ),
+    //                     Row(
+    //                       mainAxisAlignment: MainAxisAlignment.center,
+    //                       children: [
+    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
+    //                         Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
+    //                       ],
+    //                     ),
+    //                   ],
+    //                 ),
+    //               ],
+    //             ),
+    //             SizedBox(height: 16.h),
+    //             Row(
+    //               children: [
+    //                 Expanded(
+    //                   child: Text('My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
+    //                     style: GoogleFonts.khula(
+    //                         fontWeight: FontWeight.w400,
+    //                         fontSize: 14,
+    //                         letterSpacing: 1,
+    //                         color: Color(0xff4D4D4D)
+    //                     ),
+    //                   ),
+    //                 ),
+    //                 // Text('More view',
+    //                   style: GoogleFonts.khula(
+    //                       fontWeight: FontWeight.w600,
+    //                       fontSize: 14,
+    //                       letterSpacing: 1,
+    //                       color: Color(0xff26408B)
+    //                   ),
+    //                 // ),
+    //               ],
+    //             ),
+    //           ],
+    //         ),
+    //       ),
+    //     ),
+    //     SizedBox(width: 16.w),
+    //   ],
+    // );
+  }
+}
+
+Widget _buildReviewCard({
+  required String name,
+  required String daysAgo,
+  required int rating,
+  required String reviewText,
+  required String image,
+}) {
+  return Container(
+    width: 269.w, // Set a fixed width for each review card
+    padding: EdgeInsets.all(20.w),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(12.w),
+      border: Border.all(
+          width: 1.w,
+          color: Color(0xffE3E3E3)
+      ),
+      // boxShadow: [
+      //   BoxShadow(
+      //     color: Color(0xffE3E3E3),
+      //     blurRadius: 10,
+      //     spreadRadius: 0,offset: Offset(4, 4),blurStyle: BlurStyle.outer
+      //   ),
+      // ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            CircleAvatar(
+              radius: 28.w,
+              backgroundImage: AssetImage(image),
+            ),
+            SizedBox(width: 12.w),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  name,
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    letterSpacing: 1,
+                    color: Color(0xff090909)
+                  ),
+                ),
+                Text(
+                  daysAgo,
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 10,
+                    letterSpacing: 1,
+                    color: Color(0xff4D4D4D)
+                  ),
+                ),
+                Row(
+                  children: List.generate(5, (index) {
+                    return Icon(
+                      index < rating ? Icons.star_rounded : Icons.star_border_rounded,
+                      color: Color(0xffFFA740),
+                      size: 14.0,
+                    );
+                  }),
                 ),
               ],
             ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    CircleAvatar(
-                      radius: 28,
-                      backgroundImage: AssetImage('assets/images/Emily_Johnson.png'),
-                    ),
-                    SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Emily Johnson',
-                          style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              letterSpacing: 1,
-                              color: Color(0xff090909)
-                          ),
-                        ),
-                        Text('1 day ago',
-                          style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 10,
-                              letterSpacing: 1,
-                              color: Color(0xff4D4D4D)
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                            Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                            Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16.h),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text('My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            letterSpacing: 1,
-                            color: Color(0xff4D4D4D)
-                        ),
-                      ),
-                    ),
-                    // Text('More view',
-                    //   style: GoogleFonts.khula(
-                    //       fontWeight: FontWeight.w600,
-                    //       fontSize: 14,
-                    //       letterSpacing: 1,
-                    //       color: Color(0xff26408B)
-                    //   ),
-                    // ),
-                  ],
-                ),
-              ],
+          ],
+        ),
+        SizedBox(height: 16.0),
+        Text(
+          reviewText,
+          style: GoogleFonts.khula(
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            letterSpacing: 1,
+            color: Color(0xff4D4D4D)
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: TextButton(
+            onPressed: () {
+              // Handle more view action
+            },
+            child: Text('More view',
+              style: GoogleFonts.khula(
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+                letterSpacing: 1,
+                color: Color(0xff26408B)
+              ),
             ),
           ),
         ),
-        SizedBox(width: 16.w),
       ],
-    );
-  }
+    ),
+  );
 }

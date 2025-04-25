@@ -64,7 +64,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
       'image': 'assets/images/Dr_Fabian_Weber.png',
     },
   ];
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   @override
   Widget build(BuildContext context) {
