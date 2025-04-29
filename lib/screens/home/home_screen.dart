@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
+import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
 import '../chatdoctor/doctor_details.dart';
@@ -201,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                     borderSide: BorderSide(
-                        color: Color(0xFFC2E7D9),
+                        color: Color(0xffC2E7D9),
                         width: 1
                     ),
                   ),
@@ -455,6 +456,63 @@ class _HomeScreenState extends State<HomeScreen> {
                             Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)'
                         ),
                         SizedBox(width: 10),
+
+
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            //Health Article
+            SizedBox(height: 32.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Text(
+                    'Health Article',
+                    style: GoogleFonts.khula(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff090909),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 28,right: 28),
+                  child: SizedBox(
+                    child: ListView(
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        HealthArticle(
+                            imge: 'assets/images/Health Artical/Disease Prevention.png',
+                            Artical: 'Disease Prevention',
+                            ArticalDiscrptipon: 'Understanding Vaccination,The Importance of Preventative',
+                            Date: '14 - Jun - 2023',
+                        ),
+                        SizedBox(height: 15),
+                        HealthArticle(
+                          imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
+                          Artical: 'Healthy Lifestyle',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
+                          Date: '14 - Jun - 2023',
+                        ),
+                        SizedBox(height: 15),
+                        HealthArticle(
+                          imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
+                          Artical: 'Healthy Lifestyle',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
+                          Date: '14 - Jun - 2023',
+                        ),
+                        SizedBox(height: 15),
+
+
 
 
                       ],

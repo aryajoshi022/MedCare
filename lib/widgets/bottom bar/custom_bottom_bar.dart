@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
 import '../../screens/chatdoctor/chat_doctor.dart';
+import '../../screens/services/services_screen.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
   final int selectedIndex;
@@ -32,7 +33,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const ChatDoctor()),
+          MaterialPageRoute(builder: (context) => const ServicesScreenScreen()),
         );
         break;
       case 2:

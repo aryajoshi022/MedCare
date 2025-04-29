@@ -65,9 +65,11 @@ flutter:
   assets:
     - assets/images/
     - assets/images/Doctor/
+    - assets/images/Health Artical/
     - assets/images/Selling Product/
     - assets/images/Hospitals/
     - assets/images/health_shop/
+    - assets/images/Services/
     - assets/icons/
     - assets/icons/bottombar/
     - assets/icons/categories/
