@@ -7,6 +7,7 @@ import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
+import '../chatdoctor/doctor_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -233,64 +234,182 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            //Consultaion Button
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:28),
-              child: Container(
-                height: 82.h,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 217.w,
-                        child: Column(
-                          children: [
-                            Text(
-                              "Consultation with a specialist",
-                              style: GoogleFonts.khula(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff090909),
-                                letterSpacing: 1
-                              ),
-                            ),
-                            Text(
-                              "Promote health via chat or call",
-                              style: GoogleFonts.khula(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff090909),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 97,),
-                      IconButton(
-                        icon: Image.asset('assets/icons/Arrow.png', height: 24.h),
-                        onPressed: () {
-                          // Bell action
-                        },
-                      ),
-                    ],
-                  ),
+            //Consultation Button
+            Container(
+              height: 82.h,
+              width: 372.w,
+              margin: EdgeInsets.symmetric(horizontal: 28.w),
+              decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6.0),
+                border: Border.all(
+                    color: Color(0xFFC2E7D9),
+                    width: 1
                 ),
               ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+                child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 17,right: 17),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Consultation with a specialist",
+                          style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            letterSpacing: 1,
+                            color: Color(0xff090909),
+                          ),
+                        ),
+                        Text(
+                          "Promote health via chat or call",
+                          style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            letterSpacing: 1,
+                            color: Color(0xff4D4D4D),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                // SizedBox(width: 16.w),
+                // Icon(Icons.chevron_right),
+                  IconButton(
+                    icon: Image.asset('assets/icons/Arrow.png', height: 24.h),
+                    onPressed: () {
+                      // Cart action
+                    },
+                  ),
+              ],
+            ),
+          ),
+        ),
+
+            //Chat Doctor
+            SizedBox(height: 32.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Text(
+                    'Chat Doctor',
+                    style: GoogleFonts.khula(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff090909),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: SizedBox(
+                    height: 160.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        ChatDoctorCard(
+                          name: 'Dr Leonard Campbell',
+                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          specialization: 'Heart Specialist',
+                        ),
+                        ChatDoctorCard(
+                          name: 'Dr Leonard Campbell',
+                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          specialization: 'Heart Specialist',
+                        ),
+                        ChatDoctorCard(
+                          name: 'Dr Leonard Campbell',
+                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          specialization: 'Heart Specialist',
+                        ),
+                        ChatDoctorCard(
+                          name: 'Dr Leonard Campbell',
+                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          specialization: 'Heart Specialist',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
 
-            ChatDoctorCard(name: 'Dr. Aisha', imagePath: 'assets/images/doctor1.png', specialization: 'Cardiologist'),
 
-            ProductCard(imagePath: 'assets/images/product1.png', productName: 'Stethoscope', price: '\$40'),
+            SizedBox(height: 32.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Text(
+                    'Best Selling Products',
+                    style: GoogleFonts.khula(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff090909),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: SizedBox(
+                    height: 81.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
+                        ProductCard(
+                            imagePath: 'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine'
+                        ),
 
-            HospitalCard(name: 'City Hospital', imagePath: 'assets/images/hospital1.png', location: 'MG Road'),
 
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // HospitalCard(name: 'City Hospital', imagePath: 'assets/images/hospital1.png', location: 'MG Road'),
 
           ],
         ),

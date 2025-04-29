@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChatDoctorCard extends StatelessWidget {
   final String name;
@@ -15,26 +17,55 @@ class ChatDoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          children: [
-            CircleAvatar(backgroundImage: AssetImage(imagePath), radius: 24),
-            const SizedBox(width: 12),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-                Text(specialization, style: TextStyle(fontSize: 12, color: Colors.grey)),
-              ],
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          SizedBox(
+            height: 160.h,
+            width: 160.w,
+            child: Image.asset(
+              imagePath,
+              height: 160.h,
+              width: 160.w,
+              fit: BoxFit.cover,
             ),
-            const Spacer(),
-            Icon(Icons.chat, color: Colors.blue),
-          ],
-        ),
+          ),
+          // Centered Column
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      name,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12.sp,
+                        letterSpacing: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      specialization,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12.sp,
+                        letterSpacing: 1,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
+
   }
 }
