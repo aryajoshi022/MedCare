@@ -9,6 +9,7 @@ import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
 import '../chatdoctor/doctor_details.dart';
+import '../home/home_screen.dart';
 
 class ServicesScreenScreen extends StatefulWidget {
   const ServicesScreenScreen({Key? key}) : super(key: key);
@@ -48,7 +49,10 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
             IconButton(
               icon: Image.asset('assets/icons/Back Arrow.png', height: 24.h),
               onPressed: () {
-                // Bell action
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                );
               },
             ),
               SizedBox(width: 115),
