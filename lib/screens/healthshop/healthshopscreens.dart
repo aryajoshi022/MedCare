@@ -80,6 +80,108 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
               ),
             ),
             SizedBox(height: 20.h),
+            Container(
+              width: 500.w,
+              height: 280.h,
+              //decoration: BoxDecoration(),
+              color: AppColors.borderThirsty,
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: 372,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Official store',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            'see all',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.bgPrimary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Special offers from various renowned brands',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    SingleChildScrollView(scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 140.h,
+                            width: 140.w,
+                            decoration: BoxDecoration(
+                              border: Border.fromBorderSide(
+                                BorderSide(
+                                  color: AppColors.textDisabled,
+                                  width: 20,
+                                ),
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Image.asset(
+                              'assets/images/health_shop/brand.png',
+                            ),
+                          ),
+                          SizedBox(width: 12,),
+                          Container(
+                            height: 140.h,
+                            width: 140.w,
+                            decoration: BoxDecoration(
+                              border: Border.fromBorderSide(
+                                BorderSide(
+                                  color: AppColors.textDisabled,
+                                  width: 20,
+                                ),
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Image.asset(
+                              'assets/images/health_shop/brand.png',
+                            ),
+                          ),
+                          SizedBox(width: 12,),
+                          Container(
+                            height: 140.h,
+                            width: 140.w,
+                            decoration: BoxDecoration(
+                              border: Border.fromBorderSide(
+                                BorderSide(
+                                  color: AppColors.textDisabled,
+                                  width: 20,
+                                ),
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Image.asset(
+                              'assets/images/health_shop/brand.png',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

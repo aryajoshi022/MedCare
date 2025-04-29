@@ -31,6 +31,6 @@ class AppColors {
   static const Color borderError = Color(0xFFFD6C6C);
   static const Color borderBrand = Color(0xFFA099FF);
   static const Color borderWhite = Color(0xFFFFFFFF);
-static const Color borderbtn=Color(0xFFE3E3E3);
+  static const Color borderbtn=Color(0xFFE3E3E3);
   
 }
