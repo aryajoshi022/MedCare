@@ -316,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: const EdgeInsets.only(left: 28,),
                   child: SizedBox(
                     height: 160.h,
                     child: ListView(
@@ -324,24 +324,28 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
-                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
                         ),
+                        SizedBox(width: 10),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
-                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
                         ),
+                        SizedBox(width: 10),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
-                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
                         ),
+                        SizedBox(width: 10),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
-                          imagePath: 'assets/Images/Doctor/Dr Leonard Campbell.png',
+                          imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
                         ),
+                        SizedBox(width: 10),
                       ],
                     ),
                   ),
@@ -349,7 +353,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
 
-
+            //Best Selling Products
             SizedBox(height: 32.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -377,30 +381,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             imagePath: 'assets/images/Selling Product/Vaccine.png',
                             productName: 'Vaccine'
                         ),
+                        SizedBox(width: 10),
                         ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
+                            imagePath: 'assets/images/Selling Product/Braces.png',
+                            productName: 'Braces'
                         ),
+                        SizedBox(width: 10),
                         ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
+                            imagePath: 'assets/images/Selling Product/Wheelchair.png',
+                            productName: 'Wheelchair'
                         ),
+                        SizedBox(width: 10),
                         ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
+                            imagePath: 'assets/images/Selling Product/Mask.png',
+                            productName: 'Mask'
                         ),
+                        SizedBox(width: 10),
                         ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
+                            imagePath: 'assets/images/Selling Product/Braces.png',
+                            productName: 'Braces'
                         ),
-                        ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
-                        ),
-                        ProductCard(
-                            imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
-                        ),
+                        SizedBox(width: 10),
 
 
                       ],
@@ -409,7 +410,59 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            // HospitalCard(name: 'City Hospital', imagePath: 'assets/images/hospital1.png', location: 'MG Road'),
+
+            //Nearby Hospitals
+            SizedBox(height: 32.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Text(
+                    'Nearby Hospitals',
+                    style: GoogleFonts.khula(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff090909),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: SizedBox(
+                    height: 160.h,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        HospitalCard(
+                            HospitalLogo: 'assets/images/Hospitals/rscm.png',
+                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)'
+                        ),
+                        SizedBox(width: 10),
+                        HospitalCard(
+                            HospitalLogo: 'assets/images/Hospitals/MKH.png',
+                            Hospital: 'Mitra Keluarga\nHospital\n'
+                        ),
+                        SizedBox(width: 10),
+                        HospitalCard(
+                            HospitalLogo: 'assets/images/Hospitals/MH.png',
+                            Hospital: 'Mayapada \nHospital\n'
+                        ),
+                        SizedBox(width: 10),
+                        HospitalCard(
+                            HospitalLogo: 'assets/images/Hospitals/rscm.png',
+                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)'
+                        ),
+                        SizedBox(width: 10),
+
+
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
 
           ],
         ),
