@@ -78,7 +78,7 @@ class _ConfirmationState extends State<Confirmation> {
           IconButton(
             icon: Icon(
                 Icons.chevron_left,
-                color: AppColors.textSecondary
+                color: AppColors.btnSecondary
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
@@ -92,7 +92,7 @@ class _ConfirmationState extends State<Confirmation> {
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
                   letterSpacing: 1,
-                  color: Color(0xff090909),
+                  color: AppColors.textNormal,
                 ),
               ),
             ),
