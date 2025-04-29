@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
 import '../../screens/chatdoctor/chat_doctor.dart';
+import '../../screens/chatdoctor/history_upcoming.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
   final int selectedIndex;
@@ -36,7 +37,10 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
         );
         break;
       case 2:
-      // Navigate to History Screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HistoryUpcoming()),
+        );
         break;
       case 3:
       // Navigate to Profile Screen
