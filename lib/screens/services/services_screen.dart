@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
@@ -27,12 +27,12 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final List<Map<String, String>> categories = [
-      {'icon': 'assets/images/Services/Chat Doctor.png', 'label': 'Chat Doctor'},
+    final List<Map<String, dynamic>> categories = [
+      {'icon': 'assets/images/Services/Chat Doctor.png', 'label': 'Chat Doctor', 'route': (BuildContext context) => const ChatDoctor()},
       {'icon': 'assets/images/Services/Hospitals.png', 'label': 'Hospitals'},
-      {'icon': 'assets/images/Services/Emergency Services.png', 'label': 'Emergency\nServices\n'},
+      {'icon': 'assets/images/Services/Emergency Services.png', 'label': 'Emergency\nServices'},
       {'icon': 'assets/images/Services/Articel.png', 'label': 'Articel'},
-      {'icon': 'assets/images/Services/Medication Reminder.png', 'label': 'Medication\nReminder\n'},
+      {'icon': 'assets/images/Services/Medication Reminder.png', 'label': 'Medication\nReminder'},
       {'icon': 'assets/images/Services/Specialization.png', 'label': 'Specialization'},
 
     ];
@@ -94,6 +94,14 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
                     return CategoryItem(
                       iconPath: categories[index]['icon']!,
                       label: categories[index]['label']!,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: categories[index]['route']!, // Call the function to create the screen
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
