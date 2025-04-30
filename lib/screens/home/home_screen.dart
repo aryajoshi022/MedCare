@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:medcare/util/constants/colors.dart';
 import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
 import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
-import '../chatdoctor/doctor_details.dart';
+import '../chatdoctor/chat_doctor.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,19 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final List<Map<String, String>> categories = [
-      {'icon': 'assets/icons/categories/All.png', 'label': 'All'},
+    final List<Map<String, dynamic>> categories = [
+      {'icon': 'assets/icons/categories/All.png', 'label': 'All','route': (BuildContext context) => const ChatDoctor()},
       {'icon': 'assets/icons/categories/General Practitioner.png', 'label': 'General\nPractitioner'},
       {'icon': 'assets/icons/categories/Dentistry.png', 'label': 'Dentistry'},
       {'icon': 'assets/icons/categories/Gynecology.png', 'label': 'Gynecology'},
       {'icon': 'assets/icons/categories/Ophthalmology.png', 'label': 'Ophthalmology'},
       {'icon': 'assets/icons/categories/Neurology.png', 'label': 'Neurology'},
-      {'icon': 'assets/icons/categories/Otorhinolaryngology.png', 'label': 'Otorhinolaryng\nology'},
+      {'icon': 'assets/icons/categories/Otorhinolaryngology.png', 'label': 'Otorhinolaryngo\nlogy'},
       {'icon': 'assets/icons/categories/Pulmonologist.png', 'label': 'Pulmonologist'},
     ];
 
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: AppColors.bgAlert,
         title: Row(
           children: [
             Text.rich(
@@ -118,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left:26,top: 40),
+                  padding: const EdgeInsets.only(top: 40,left:26),
                   child: Container(
                     height: 80,
                     child: Text(
@@ -229,6 +230,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     return CategoryItem(
                       iconPath: categories[index]['icon']!,
                       label: categories[index]['label']!,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: categories[index]['route']!, // Call the function to create the screen
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
@@ -317,7 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28,),
+                  padding: const EdgeInsets.only(left: 28),
                   child: SizedBox(
                     height: 160.h,
                     child: ListView(
@@ -403,7 +412,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             productName: 'Braces'
                         ),
                         SizedBox(width: 10),
-
 
                       ],
                     ),

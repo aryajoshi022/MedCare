@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
+import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
-import '../../widgets/health articles/health_article.dart';
-import '../../widgets/nearby hospitals/hospital_card_widget.dart';
-import '../../widgets/selling products/product_card_widget.dart';
-import '../chatdoctor/doctor_details.dart';
 import '../home/home_screen.dart';
 
 class ServicesScreenScreen extends StatefulWidget {
@@ -31,8 +27,8 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final List<Map<String, String>> categories = [
-      {'icon': 'assets/images/Services/Chat Doctor.png', 'label': 'Chat Doctor'},
+    final List<Map<String, dynamic>> categories = [
+      {'icon': 'assets/images/Services/Chat Doctor.png', 'label': 'Chat Doctor', 'route': (BuildContext context) => const ChatDoctor()},
       {'icon': 'assets/images/Services/Hospitals.png', 'label': 'Hospitals'},
       {'icon': 'assets/images/Services/Emergency Services.png', 'label': 'Emergency\nServices'},
       {'icon': 'assets/images/Services/Articel.png', 'label': 'Articel'},
@@ -43,6 +39,7 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: AppColors.bgAlert,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -97,6 +94,14 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
                     return CategoryItem(
                       iconPath: categories[index]['icon']!,
                       label: categories[index]['label']!,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: categories[index]['route']!, // Call the function to create the screen
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
