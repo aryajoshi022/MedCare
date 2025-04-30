@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/util/constants/colors.dart';
 
+import '../../widgets/selling products/product_card_widget.dart';
+
 class HealthShopScreen extends StatefulWidget {
   const HealthShopScreen({super.key});
 
@@ -737,11 +739,39 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Container(
+                      color: Colors.blue,
                       height: 178.h,
                       width: 178.w,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(44)),
-                      child: Image.asset(
-                        'assets/images/health_shop/vaccine_img.png',
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          ProductCard(
+                              imagePath: 'assets/images/Selling Product/Vaccine.png',
+                              productName: 'Vaccine'
+                          ),
+                          SizedBox(width: 10),
+                          ProductCard(
+                              imagePath: 'assets/images/Selling Product/Braces.png',
+                              productName: 'Braces'
+                          ),
+                          SizedBox(width: 10),
+                          ProductCard(
+                              imagePath: 'assets/images/Selling Product/Wheelchair.png',
+                              productName: 'Wheelchair'
+                          ),
+                          SizedBox(width: 10),
+                          ProductCard(
+                              imagePath: 'assets/images/Selling Product/Mask.png',
+                              productName: 'Mask'
+                          ),
+                          SizedBox(width: 10),
+                          ProductCard(
+                              imagePath: 'assets/images/Selling Product/Braces.png',
+                              productName: 'Braces'
+                          ),
+                          SizedBox(width: 10),
+
+                        ],
                       ),
                     ),
                   ),
