@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
+import 'package:medcare/util/constants/colors.dart';
 
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
@@ -89,7 +90,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
             letterSpacing: 1,
           ),
         ),
-        surfaceTintColor: Colors.white,
+        surfaceTintColor: AppColors.bgAlert,
       ),
       bottomNavigationBar: CustomBottomAppBar(
         selectedIndex: _selectedIndex,

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
 import '../../screens/chatdoctor/chat_doctor.dart';
+import '../../screens/chatdoctor/history_upcoming.dart';
 import '../../screens/services/services_screen.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
@@ -33,11 +34,14 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const ServicesScreenScreen()),
+          MaterialPageRoute(builder: (context) => const ChatDoctor()),
         );
         break;
       case 2:
-      // Navigate to History Screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HistoryUpcoming()),
+        );
         break;
       case 3:
       // Navigate to Profile Screen
