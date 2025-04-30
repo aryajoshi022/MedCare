@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/util/constants/colors.dart';
 
 import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
@@ -43,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
+        surfaceTintColor: AppColors.bgAlert,
         title: Row(
           children: [
             Text.rich(
@@ -403,7 +405,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             productName: 'Braces'
                         ),
                         SizedBox(width: 10),
-
 
                       ],
                     ),
