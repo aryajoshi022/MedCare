@@ -5,6 +5,7 @@ import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 import 'package:medcare/screens/healthshop/healthshopscreens.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/util/theme/theme.dart';
+import 'package:medcare/widgets/health%20shop/scroller.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
