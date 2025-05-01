@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/healthshop/shoppingfilterscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/widgets/health%20shop/health_product_card.dart';
 
@@ -8,7 +9,6 @@ import '../../widgets/selling products/product_card_widget.dart';
 
 class HealthShopScreen extends StatelessWidget {
   const HealthShopScreen({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,9 @@ class HealthShopScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SingleChildScrollView( scrollDirection: Axis.horizontal,
+              //Filter Scroller
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     Padding(
@@ -147,7 +149,10 @@ class HealthShopScreen extends StatelessWidget {
                               vertical: 12.0,
                               horizontal: 20.0,
                             ),
-                            child: Text('Sexual Health', style: TextStyle(fontSize: 14)),
+                            child: Text(
+                              'Sexual Health',
+                              style: TextStyle(fontSize: 14),
+                            ),
                           ),
                         ),
                       ),
@@ -158,6 +163,7 @@ class HealthShopScreen extends StatelessWidget {
 
               //Scroller
               SizedBox(height: 20.h),
+
               //Out Brands
               Container(
                 width: 500.w,
@@ -860,47 +866,6 @@ class HealthShopScreen extends StatelessWidget {
   }
 }
 
-Widget _scroller() {
-  return Scaffold(
-    body: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 40.h,
-          width: 44.w,
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: Image.asset('assets/icons/shop_filter.png'),
-            backgroundColor: AppColors.bgAlert,
-          ),
-        ),
-        Container(child: _Scroller()),
-      ],
-    ),
-  );
-}
-
-Widget _Scroller() {
-  return Scaffold(
-    body: SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CustomButton(text: 'Medicine & Treatment'),
-            SizedBox(width: 10), // Space between buttons
-            CustomButton(text: 'Milk'),
-            SizedBox(width: 10), // Space between buttons
-            CustomButton(text: 'Sexual Health'),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
 class CustomButton extends StatelessWidget {
   final String text;
 
@@ -925,7 +890,10 @@ class CustomButton extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // Action to perform on button press
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => ShoppingFilterScreen()),
+            );
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
