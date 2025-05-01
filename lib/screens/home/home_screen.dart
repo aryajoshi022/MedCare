@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        surfaceTintColor: AppColors.bgAlert,
+        backgroundColor: AppColors.bgAlert,
         title: Row(
           children: [
             Text.rich(
@@ -94,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
       ),
       body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         child: Column(
           children: [
         
@@ -101,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               children: [
                 Container(
-                  height: 210.h,
+                  // height: 210.h,
                   child: Image.asset(
                     'assets/images/Home_Screen_Background.png',
                   ),
@@ -121,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Padding(
                   padding: const EdgeInsets.only(top: 40,left:26),
                   child: Container(
-                    height: 80,
+                    // height: 80,
                     child: Text(
                       "Experience Seamless\nHealthcare Management\nwith MediConnect",
                       style: GoogleFonts.khula(
@@ -137,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.only(top: 140, left: 26),
                   child: SizedBox(
                     height: 32.h,
-                    width: 164.w,
+                    // width: 164.w,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff26408B),
@@ -223,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: categories.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
-                    mainAxisSpacing: 16,
+                    mainAxisSpacing: 6,
                     crossAxisSpacing: 6,
                   ),
                   itemBuilder: (context, index) {
@@ -246,9 +247,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
             //Consultation Button
             Container(
-              height: 82.h,
+              // height: 82.h,
               width: 372.w,
-              margin: EdgeInsets.symmetric(horizontal: 28.w),
+              // margin: EdgeInsets.symmetric(horizontal: 28.w),
               decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(6.0),
@@ -258,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 14.w),
                 child: Row(
                 children: [
                   Container(
@@ -267,32 +268,29 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 17,right: 17),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Consultation with a specialist",
-                          style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
-                            color: Color(0xff090909),
-                          ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Consultation with a specialist",
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          color: Color(0xff090909),
                         ),
-                        Text(
-                          "Promote health via chat or call",
-                          style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            letterSpacing: 1,
-                            color: Color(0xff4D4D4D),
-                          ),
+                      ),
+                      Text(
+                        "Promote health via chat or call",
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                          letterSpacing: 1,
+                          color: Color(0xff4D4D4D),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 // SizedBox(width: 16.w),
@@ -491,8 +489,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28,right: 28),
-                  child: SizedBox(
+                  padding: const EdgeInsets.only(left: 28),
+                  child: Container(
+                    alignment: Alignment.center,
                     child: ListView(
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -501,28 +500,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         HealthArticle(
                             imge: 'assets/images/Health Artical/Disease Prevention.png',
                             Artical: 'Disease Prevention',
-                            ArticalDiscrptipon: 'Understanding Vaccination,The Importance of Preventative',
+                            ArticalDiscrptipon: 'Understanding Vaccination,The\nImportance of Preventative',
                             Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 15),
+                        SizedBox(height: 14),
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
-                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 15),
+                        SizedBox(height: 14),
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
-                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 15),
-
-
-
-
+                        SizedBox(height: 14),
                       ],
                     ),
                   ),

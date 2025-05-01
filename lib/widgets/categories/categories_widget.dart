@@ -23,8 +23,8 @@ class CategoryItem extends StatelessWidget {
         children: [
           // Icon container
           Container(
-            height: 81.h,
-            width: 81.w,
+            // height: 81.h,
+            // width: 81.w,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(6),
@@ -37,33 +37,36 @@ class CategoryItem extends StatelessWidget {
                 ),
               ],
             ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 13.5),
-                  child: Container(
-                    height: 36.h,
-                    child: Image.asset(iconPath),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 3,right: 3),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 13.5),
+                    child: Container(
+                      height: 36.h,
+                      child: Image.asset(iconPath),
+                    ),
                   ),
-                ),
-                SizedBox(height: 6),
-                Container(
-                  height: 24.h,
-                  alignment: Alignment.topCenter,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      label,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 10,
-                        color: Color(0xff26408B),
+                  SizedBox(height: 6),
+                  Container(
+                    height: 24.h,
+                    alignment: Alignment.topCenter,
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        label,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10,
+                          color: Color(0xff26408B),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
 
