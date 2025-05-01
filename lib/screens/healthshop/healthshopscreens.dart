@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/healthshop/shoppingfilterscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
+import 'package:medcare/widgets/health%20shop/health_product_card.dart';
 
 import '../../widgets/selling products/product_card_widget.dart';
 
-class HealthShopScreen extends StatefulWidget {
+class HealthShopScreen extends StatelessWidget {
   const HealthShopScreen({super.key});
 
-  @override
-  State<HealthShopScreen> createState() => _HealthShopScreenState();
-}
-
-class _HealthShopScreenState extends State<HealthShopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +81,89 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
                   ],
                 ),
               ),
+              //Filter Scroller
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: SizedBox(
+                        height: 50.h,
+                        width: 44.w,
+                        child: FloatingActionButton(
+                          onPressed: () {},
+                          elevation: 0,
+                          //highlightElevation: 0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              6,
+                            ), // Rounded corners
+                            side: BorderSide(
+                              color: AppColors.borderBtn,
+                              width: 1,
+                            ), // Border color
+                          ),
+                          child: Image.asset('assets/icons/shop_filter.png'),
+                          backgroundColor: AppColors.bgAlert,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      padding: EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomButton(text: 'Medicine & Treatment'),
+                          SizedBox(width: 10), // Space between buttons
+                          CustomButton(text: 'Milk'),
+                          SizedBox(width: 10), // Space between buttons
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                      width: 199,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.black,
+                            backgroundColor: Colors.white, // Text color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                6,
+                              ), // Rounded corners
+                              side: BorderSide(
+                                color: AppColors.borderBtn,
+                                width: 1,
+                              ), // Border color
+                            ),
+                          ),
+                          onPressed: () {
+                            // Action to perform on button press
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 12.0,
+                              horizontal: 20.0,
+                            ),
+                            child: Text(
+                              'Sexual Health',
+                              style: TextStyle(fontSize: 14),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              //Scroller
               SizedBox(height: 20.h),
+
               //Out Brands
               Container(
                 width: 500.w,
@@ -739,38 +818,40 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Container(
-                      color: Colors.blue,
                       height: 178.h,
-                      width: 178.w,
+                      width: 405.w,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          ProductCard(
-                              imagePath: 'assets/images/Selling Product/Vaccine.png',
-                              productName: 'Vaccine'
+                          HealthProductCard(
+                            imagePath:
+                                'assets/images/Selling Product/Vaccine.png',
+                            productName: 'Vaccine',
                           ),
                           SizedBox(width: 10),
-                          ProductCard(
-                              imagePath: 'assets/images/Selling Product/Braces.png',
-                              productName: 'Braces'
+                          HealthProductCard(
+                            imagePath:
+                                'assets/images/Selling Product/Braces.png',
+                            productName: 'Braces',
                           ),
                           SizedBox(width: 10),
-                          ProductCard(
-                              imagePath: 'assets/images/Selling Product/Wheelchair.png',
-                              productName: 'Wheelchair'
+                          HealthProductCard(
+                            imagePath:
+                                'assets/images/Selling Product/Wheelchair.png',
+                            productName: 'Wheelchair',
                           ),
                           SizedBox(width: 10),
-                          ProductCard(
-                              imagePath: 'assets/images/Selling Product/Mask.png',
-                              productName: 'Mask'
+                          HealthProductCard(
+                            imagePath: 'assets/images/Selling Product/Mask.png',
+                            productName: 'Mask',
                           ),
                           SizedBox(width: 10),
-                          ProductCard(
-                              imagePath: 'assets/images/Selling Product/Braces.png',
-                              productName: 'Braces'
+                          HealthProductCard(
+                            imagePath:
+                                'assets/images/Selling Product/Braces.png',
+                            productName: 'Braces',
                           ),
                           SizedBox(width: 10),
-
                         ],
                       ),
                     ),
@@ -785,39 +866,41 @@ class _HealthShopScreenState extends State<HealthShopScreen> {
   }
 }
 
-Widget _scroller() {
-  return Scaffold(
-    body: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 40.h,
-          width: 44.w,
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: Image.asset('assets/icons/shop_filter.png'),
-            backgroundColor: AppColors.bgAlert,
+class CustomButton extends StatelessWidget {
+  final String text;
+
+  CustomButton({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: 50,
+        width: 162,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white, // Text color
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6), // Rounded corners
+              side: BorderSide(
+                color: AppColors.borderBtn,
+                width: 1,
+              ), // Border color
+            ),
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => ShoppingFilterScreen()),
+            );
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+            child: Text(text, style: TextStyle(fontSize: 16)),
           ),
         ),
-        SizedBox(
-          height: 40.h,
-          width: 162.w,
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: Text('Medicine & Treatment'),
-            backgroundColor: AppColors.bgAlert,
-          ),
-        ),
-        SizedBox(
-          height: 40.h,
-          width: 50.w,
-          child: FloatingActionButton(
-            onPressed: () {},
-            child: Text('Milk'),
-            backgroundColor: AppColors.bgAlert,
-          ),
-        ),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }
