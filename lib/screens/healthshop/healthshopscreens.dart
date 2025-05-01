@@ -91,7 +91,8 @@ class HealthShopScreen extends StatelessWidget {
                         width: 44.w,
                         child: FloatingActionButton(
                           onPressed: () {},
-
+                          elevation: 0,
+                          //highlightElevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               6,
