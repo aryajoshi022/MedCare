@@ -39,7 +39,7 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        surfaceTintColor: AppColors.bgAlert,
+        backgroundColor: AppColors.bgAlert,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -87,7 +87,7 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
                   itemCount: categories.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4,
-                    mainAxisSpacing: 16,
+                    mainAxisSpacing: 6,
                     crossAxisSpacing: 6,
                   ),
                   itemBuilder: (context, index) {

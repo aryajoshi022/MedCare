@@ -19,8 +19,6 @@ class  HealthArticle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 88.h,
-      child: Container(
         // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         child: Row(
           children: [
@@ -35,10 +33,10 @@ class  HealthArticle extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10,top: 5),
+              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 10),
               child: Container(
-                width: 268.w,
-                height: 88.h,
+                // width: 268.w,
+                // height: 88.h,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,  // from top
                   crossAxisAlignment: CrossAxisAlignment.start, // from left
@@ -79,8 +77,7 @@ class  HealthArticle extends StatelessWidget {
 
           ],
         ),
-      ),
-    );
+      );
 
   }
 }
