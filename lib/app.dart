@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428,926), // Match Figma design
+      designSize: const Size(428, 926), // Match Figma design
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -22,11 +22,11 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-         //home: const HomeScreen(),
-         //  home: SplashScreen(),
-         //  home: ChatDoctor(),
+          //home: const HomeScreen(),
+          // home: SplashScreen(),
+          //  home: ChatDoctor(),
           // home: DoctorDetails(),
-            home: HealthShopScreen(),
+          home: HealthShopScreen(),
           routes: {},
         );
       },
