@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/healthshop/descriptionscreen.dart';
 
 import '../../util/constants/colors.dart';
 import '../../widgets/health shop/scroller.dart';
@@ -16,8 +17,9 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: SingleChildScrollView(
-        child: Column(
+      body: SafeArea(child:
+      SingleChildScrollView(scrollDirection: Axis.vertical,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // AppBar
             Padding(
@@ -159,6 +161,474 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 ],
               ),
             ),
+
+            //Vertical Products
+            Row(mainAxisAlignment: MainAxisAlignment.start,
+
+              children: [
+                Column(mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/productone.png',
+                            ),
+                            Text(
+                              'Promag 10 Tablets',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            SizedBox(height: 34),
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/productsec.png',
+                            ),
+                            Text(
+                              'STRIP NEURODEX 10 TABLET',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/Mylantastrip_img.png',
+                            ),
+                            Text(
+                              'Mylanta Strip ',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/Bufectstrip_img.png',
+                            ),
+                            Text(
+                              'Bufect Strip',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionScreen(),));},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/BODREX_img.png',
+                            ),
+                            Text(
+                              'BODREX MEDICINE 10S PER STRIP',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: Container(
+                        width: 178.w,
+                        height: 298.h,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Image.asset(
+                              'assets/images/health_shop/Paratusin_img.png',
+                            ),
+                            Text(
+                              'Paratusin 10 Tablets',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              'Per Strip',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            SizedBox(height: 12),
+                            Text(
+                              'Start from',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '\$2,00',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textBtn,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 90,
+                                  height: 32,
+                                  child: ElevatedButton(
+                                    child: Text(
+                                      'Add',
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      foregroundColor: AppColors.btnPrimary,
+                                      backgroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(24),
+                                        side: BorderSide(
+                                          color: AppColors.btnPrimary,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+              ],
+            ),
+
 
           ],
         ),
