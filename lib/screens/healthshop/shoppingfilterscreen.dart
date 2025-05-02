@@ -26,7 +26,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {Navigator.pop(context);},
                     icon: Icon(
                       Icons.chevron_left,
                       color: Color(0xff4D4D4D),
