@@ -34,7 +34,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
       case 1:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const ChatDoctor()),
+          MaterialPageRoute(builder: (context) => const ServicesScreenScreen()),
         );
         break;
       case 2:
