@@ -100,28 +100,6 @@ class _ConfirmationState extends State<Confirmation> {
         ],
       ),
     );
-    // return Container(
-    //   padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 16.0, left: 16.0, right: 16.0, bottom: 16.0),
-    //   child: Row(
-    //     children: [
-    //       IconButton(
-    //         icon: Icon(Icons.arrow_back, color: Colors.black),
-    //         onPressed: () {
-    //           Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
-    //         },
-    //       ),
-    //       Expanded(
-    //         child: Center(
-    //           child: Text(
-    //             'Confirmation',
-    //             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0),
-    //           ),
-    //         ),
-    //       ),
-    //       SizedBox(width: 48.0), // Space for alignment
-    //     ],
-    //   ),
-    // );
   }
 
   Widget _buildDoctorInfoCard(BuildContext context) {

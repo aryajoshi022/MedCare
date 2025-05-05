@@ -13,6 +13,8 @@ class DoctorDetails extends StatefulWidget {
 }
 
 class _DoctorDetailsState extends State<DoctorDetails> {
+  bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -407,6 +409,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 width: 1.w,
                 color: Color(0xffE3E3E3)
             ),
+            color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
           ),
           child: Center(
             child: Text(
@@ -415,7 +418,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   fontWeight: FontWeight.w400,
                   fontSize: 14,
                   // letterSpacing: 1,
-                  color: Color(0xff4D4D4D)
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
               ),
               // textAlign: TextAlign.center,
             ),
@@ -437,9 +440,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             margin: EdgeInsets.only(right: 12),
             padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
             decoration: BoxDecoration(
-              // color: isSelected ? Colors.blue[100] : Colors.grey[200],
               borderRadius: BorderRadius.circular(6.0),
               border: Border.all(width: 1, color: Color(0xffE3E3E3)),
+              color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
               // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
             ),
             child: Center(
@@ -450,7 +453,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   fontWeight: FontWeight.w400,
                   // color: isSelected ? Color(0xff26408B) : Color(0xff4D4D4D),
                   fontSize: 14,
-                  color: Color(0xff4D4D4D)
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
                 ),
               ),
             ),
