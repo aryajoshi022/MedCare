@@ -26,7 +26,7 @@ class _HospitalScreen extends State<HospitalScreen> {
 
   final List<Map<String, String>> hospitals = [
     {
-      'image': 'assets/images/hospital1.png',
+      'img': 'assets/images/Hospitals/ospedale.png',
       'name': 'Ospedale San Raffaele',
       'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
       'phone': '(+22) 2361 6257 1726',
@@ -97,10 +97,11 @@ class _HospitalScreen extends State<HospitalScreen> {
                 ),
               ),
 
+              //Search Provinces
               SizedBox(height: 24.h),
               _buildPracticeLocationDropdown(context),
 
-              SizedBox(height: 24.h),
+              //List of Hospitals
               _buildHospitalList(), // List here
             ],
           ),
@@ -150,130 +151,143 @@ class _HospitalScreen extends State<HospitalScreen> {
 
   Widget _buildHospitalList() {
     return ListView.builder(
-      physics: NeverScrollableScrollPhysics(), // because in SingleChildScrollView
+      physics: NeverScrollableScrollPhysics(), // because inside SingleChildScrollView
       shrinkWrap: true,
       itemCount: hospitals.length,
       itemBuilder: (context, index) {
         final hospital = hospitals[index];
-        return Container(
-          width: 372.w,
-          height: 175.h,
-          margin: EdgeInsets.only(bottom: 16.h),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12.w),
-            border: Border.all(color: const Color(0xffE0E0E0), width: 1),
-          ),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(6.w),
-                    child: Image.asset(
-                      hospital['image']!,
-                      width: 90.w,
-                      height: 74.h,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: 20.w),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          hospital['name']!,
-                          style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14.sp,
-                            letterSpacing: 1,
-                            color: const Color(0xff90909),
-                          ),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          hospital['address']!,
-                          style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 10.sp,
-                            letterSpacing: 1,
-                            color: const Color(0xff4D4D4D),
-                          ),
-                        ),
-                        SizedBox(height: 10.h),
-                        Text(
-                          hospital['phone']!,
-                          style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 10.sp,
-                            color: const Color(0xff26408B),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 12.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Color(0xff26408B)),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Text(
-                        'Bed Detail',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xff26408B),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12.sp,
-                        ),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+          child: Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Color(0xffE3E3E3))
+            ),
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: Image.asset(
+                        hospital['img']!,
+                        height: 74.h,
+                        width: 74.w,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                  SizedBox(width: 12.w),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xff26408B),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    SizedBox(width: 20.w),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Location',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12.sp,
-                              color: Colors.white,
+                            hospital['name']!,
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14.sp,
+                              letterSpacing: 1,
+                              color: Color(0xff090909),
                             ),
                           ),
-                          SizedBox(width: 4.w),
-                          const Icon(
-                            Icons.arrow_forward_ios,
-                            size: 14,
-                            color: Colors.white,
+                          SizedBox(height: 6.h),
+                          Text(
+                            hospital['address']!,
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
+                              letterSpacing: 0.5,
+                              color: Color(0xff4D4D4D),
+                            ),
+                          ),
+                          SizedBox(height: 6.h),
+                          Row(
+                            children: [
+                              Image.asset(
+                                'assets/icons/Phone.png',
+                                height: 12.h,
+                              ),
+                              SizedBox(width: 6.w),
+                              Text(
+                                hospital['phone']!,
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 11.sp,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+
+                ),
+                SizedBox(height: 16.h),
+                Divider(color: AppColors.borderBtn),
+                SizedBox(height: 16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 47.5.w, vertical: 14.h),
+                        side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24.w),
+                        ),
+                      ),
+                      child: Text(
+                        "Bed Detail",
+                        style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: AppColors.textBtn
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 16.w),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(horizontal: 41.5.w, vertical: 14.h),
+                          backgroundColor: AppColors.btnPrimary,
+                          foregroundColor: AppColors.textWhite,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.w),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Location',
+                              style: GoogleFonts.khula(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                letterSpacing: 1,
+                                color: AppColors.textWhite,
+                              ),
+                            ),
+                            SizedBox(width: 2.5.w),
+                            Icon(Icons.arrow_forward_ios,color: Colors.white,size: 12)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
     );
   }
+
 }
