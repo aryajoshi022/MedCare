@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
-import '../../screens/chatdoctor/chat_doctor.dart';
 import '../../screens/chatdoctor/history_screen.dart';
 import '../../screens/services/services_screen.dart';
 
