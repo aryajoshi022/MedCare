@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
+import 'package:medcare/screens/chatdoctor/history.dart';
+import 'package:medcare/screens/chatdoctor/history_upcoming.dart';
 import 'package:medcare/screens/healthshop/healthshopscreens.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/hospital/hospital_screen.dart';
@@ -23,12 +25,14 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-          home: const HomeScreen(),
+          // home: const HomeScreen(),
           // home: const HospitalScreen(),
          //  home: SplashScreen(),
          //  home: ChatDoctor(),
           // home: DoctorDetails(),
           // home: HealthShopScreen(),
+          // home: HistoryScreen(),
+          home: HistoryUpcoming(),
           routes: {},
         );
       },

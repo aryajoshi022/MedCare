@@ -144,35 +144,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           ],
         ),
       ),
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   leading: IconButton(
-      //     onPressed: (){},
-      //     icon: Icon(Icons.chevron_left,
-      //       color: Color(0xff4D4D4D),
-      //       // size: 16,
-      //     ),
-      //   ),
-      //   leadingWidth: 67,
-      //   titleSpacing: 0,
-      //   title: Text('Doctor Details',
-      //     style: GoogleFonts.khula(
-      //       fontWeight: FontWeight.w400,
-      //       fontSize: 16,
-      //       color: Color(0xff090909),
-      //       letterSpacing: 1,
-      //     ),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(Icons.share, color: Colors.black),
-      //       onPressed: () {
-      //         // Handle share button action
-      //       },
-      //     ),
-      //   ],
-      //   surfaceTintColor: Colors.white,
-      // ),
     );
   }
 

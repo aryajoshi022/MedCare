@@ -30,7 +30,6 @@ class AppColors {
   static const Color borderPrimary = Color(0xFF4F4F4F);
   static const Color borderSecondary = Color(0xFFA6CFD5);
   static const Color borderThirsty=Color(0xFFC2E7D9);
-
   static const Color borderError = Color(0xFFFD6C6C);
   static const Color borderBrand = Color(0xFFA099FF);
   static const Color borderWhite = Color(0xFFFFFFFF);
