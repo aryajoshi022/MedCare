@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
-import '../../screens/chatdoctor/chat_doctor.dart';
-import '../../screens/chatdoctor/history_upcoming.dart';
+import '../../screens/chatdoctor/history_screen.dart';
 import '../../screens/services/services_screen.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
@@ -40,7 +39,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HistoryUpcoming()),
+          MaterialPageRoute(builder: (context) => const HistoryScreen()),
         );
         break;
       case 3:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/chatdoctor/history_upcoming.dart';
+import 'package:medcare/screens/chatdoctor/history_screen.dart';
 
 import '../../util/constants/colors.dart';
 
@@ -56,7 +56,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   )
                 ),
                   onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryUpcoming(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen(),));
                   },
                   child: Text('Go to details',
                     style: GoogleFonts.khula(
