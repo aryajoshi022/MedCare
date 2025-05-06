@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medcare/screens/chatdoctor/history_upcoming.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
+import 'package:medcare/screens/chatdoctor/doctor_details.dart';
+import 'package:medcare/screens/healthshop/descriptionscreen.dart';
+import 'package:medcare/screens/healthshop/healthshopscreens.dart';
+import 'package:medcare/screens/home/home_screen.dart';
+import 'package:medcare/splashscreen.dart';
 import 'package:medcare/util/theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -9,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428,926), // Match Figma design
+      designSize: const Size(428, 926), // Match Figma design
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -18,14 +23,13 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-          // home: const HomeScreen(),
-          // home: const HospitalScreen(),
-         //  home: SplashScreen(),
-         //  home: ChatDoctor(),
+          //home: const HomeScreen(),
+          // home: SplashScreen(),
+          //  home: ChatDoctor(),
           // home: DoctorDetails(),
-          // home: HealthShopScreen(),
-          // home: HistoryScreen(),
-          home: HistoryUpcoming(),
+          home: HealthShopScreen(),
+          //Tab Bar
+          //home:MedicationDetailsScreen(),
           routes: {},
         );
       },
