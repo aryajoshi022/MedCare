@@ -70,28 +70,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: (){},
-          icon: Icon(Icons.chevron_left,
-            color: Color(0xff4D4D4D),
-            // size: 16,
-          ),
-        ),
-        leadingWidth: 67,
-        titleSpacing: 0,
-        title: Text('Chat Doctor',
-          style: GoogleFonts.khula(
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-            color: Color(0xff090909),
-            letterSpacing: 1,
-          ),
-        ),
-        surfaceTintColor: AppColors.bgAlert,
-      ),
+      backgroundColor: AppColors.bgAlert,
       bottomNavigationBar: CustomBottomAppBar(
         selectedIndex: _selectedIndex,
         onItemTapped: (index) {
@@ -100,45 +79,50 @@ class _ChatDoctorState extends State<ChatDoctor> {
           });
         },
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 28.w, right: 28.w),
-            child: TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 16),
-                prefixIconColor: Color(0xff8F8F8F),
-                prefixIcon: Icon(Icons.search_sharp,
-                  size: 20,
-                ),
-                // prefixIconConstraints: BoxConstraints(minHeight: 7),
-                hintText: 'Find a doctor',
-                hintStyle: GoogleFonts.khula(
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: Color(0xff8F8F8F),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(
-                    color: Color(0xFFC2E7D9),
-                    width: 1
-                  ),
-                ),
-                filled: true,
-                fillColor: Color(0xffF9F9F9),
+      body: SafeArea(
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildCustomAppBar(context),
+            SizedBox(height: 24.h),
+            _buildSearchField(context),
+            SizedBox(height: 24.h),
+            Expanded(
+              child: ListView.builder(
+                itemCount: doctorList.length,
+                itemBuilder: (context, index) {
+                  final doctor = doctorList[index];
+                  return _buildDoctorItem(doctor: doctor);
+                },
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCustomAppBar(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w).copyWith(top: 16.h),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          IconButton(
+            onPressed: (){},
+            icon: Icon(Icons.chevron_left,
+              color: Color(0xff4D4D4D),
+              // size: 16,
+            ),
           ),
-          SizedBox(height: 24.h),
           Expanded(
-            child: ListView.builder(
-              itemCount: doctorList.length,
-              itemBuilder: (context, index) {
-                final doctor = doctorList[index];
-                return _buildDoctorItem(doctor: doctor);
-              },
+            child:  Text('Chat Doctor',
+              style: GoogleFonts.khula(
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xff090909),
+                letterSpacing: 1,
+              ),
             ),
           ),
         ],
@@ -146,26 +130,57 @@ class _ChatDoctorState extends State<ChatDoctor> {
     );
   }
 
-  Widget _buildDoctorItem({required Map<String, dynamic> doctor}) {
-    return Container(
-      // padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
-      margin: EdgeInsets.symmetric(horizontal: 28.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6.0),
+  Widget _buildSearchField(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 28.w),
+      child: TextField(
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 16),
+          prefixIconColor: Color(0xff8F8F8F),
+          prefixIcon: Icon(Icons.search_sharp,
+            size: 20,
+          ),
+          // prefixIconConstraints: BoxConstraints(minHeight: 7),
+          hintText: 'Find a doctor',
+          hintStyle: GoogleFonts.khula(
+            letterSpacing: 1,
+            fontWeight: FontWeight.w400,
+            fontSize: 14,
+            color: Color(0xff8F8F8F),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            borderSide: BorderSide(
+                color: Color(0xFFC2E7D9),
+                width: 1
+            ),
+          ),
+          filled: true,
+          fillColor: Color(0xffF9F9F9),
+        ),
       ),
-      child: Padding(
+    );
+  }
+
+  Widget _buildDoctorItem({required Map<String, dynamic> doctor}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 28.w),
+      child: Container(
         padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+        // margin: EdgeInsets.symmetric(horizontal: 28.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6.0),
+        ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4),
-              ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4.w),
               child: Image.asset(
                 doctor['image']!,
-                height: 64.h,
-                width: 64.h,
+                width: 64,
+                height: 64,
                 fit: BoxFit.cover,
               ),
             ),
@@ -179,21 +194,23 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      letterSpacing: 1,
+                      // letterSpacing: 1,
                       color: Color(0xff090909),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  // SizedBox(height: 10.h),
+                  SizedBox(height: 4.h),
                   Text(
                     '${doctor['specialty']!} • ${doctor['experience']!}',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
-                      letterSpacing: 1,
+                      // letterSpacing: 1,
                       color: Color(0xff4D4D4D),
                     ),
                   ),
-                  SizedBox(height: 10.h),
+                  // SizedBox(height: 10.h),
+                  SizedBox(height: 6.h),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
                     decoration: BoxDecoration(
@@ -205,7 +222,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 10,
-                        letterSpacing: 1,
+                        // letterSpacing: 1,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
