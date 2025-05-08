@@ -15,6 +15,23 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:false,
+      appBar: AppBar(
+        scrolledUnderElevation: 0.0,
+        backgroundColor: AppColors.bgAlert,
+
+        leading: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+        title: Text('Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 24),
+            child: Image.asset(
+              'assets/icons/share_icon.png',
+              color: AppColors.textSecondary,
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -23,29 +40,6 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.chevron_left,
-                        color: Color(0xff4D4D4D),
-                        // size: 16,
-                      ),
-                    ),
-                    Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(
-                        'assets/icons/share_icon.png',
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: 32.h),
                 SizedBox(
                   width: 372.w,
@@ -89,6 +83,8 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                   ),
                 ),
                 SizedBox(height: 64),
+
+                //Product description
                 Text(
                   'Product Description',
                   style: TextStyle(
@@ -107,8 +103,10 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                 ),
                 SizedBox(height: 32),
 
+                //Benefits
+
                 Text(
-                  'Benifits',
+                  'Benefits',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -358,7 +356,8 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                   child: Row(
                     children: [
                       Container(
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               //crossAxisAlignment: CrossAxisAlignment.start,
@@ -401,7 +400,9 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                 ),
                               ],
                             ),
-                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                            SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
                                   'My consultation with Dr. Luca Rossi\n was excellent. He`s knowledgeable,\n attentive, and provid...',
@@ -411,14 +412,25 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                     color: AppColors.textSecondary,
                                   ),
                                 ),
-                                TextButton(onPressed: () {}, child: Text('More view',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AppColors.textBtn),))
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'More view',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               //crossAxisAlignment: CrossAxisAlignment.start,
@@ -461,7 +473,8 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                 ),
                               ],
                             ),
-                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
                                   'My consultation with Dr. Luca Rossi\n was excellent. He`s knowledgeable,\n attentive, and provid...',
@@ -471,7 +484,17 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                                     color: AppColors.textSecondary,
                                   ),
                                 ),
-                                TextButton(onPressed: () {}, child: Text('More view',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AppColors.textBtn),))
+                                TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'More view',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ],
@@ -480,8 +503,287 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 32,),
+                SizedBox(height: 32),
+
+                //Related Products
+                Text(
+                  'Related products',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textNormal,
+                  ),
+                ),
+                SizedBox(height: 16),
+
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Container(
+                          width: 178.w,
+                          height: 272.h,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productone.png',
+                              ),
+                              Text(
+                                'Promag 10 Tablets',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 34),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            24,
+                                          ),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Container(
+                          width: 178.w,
+                          height: 272.h,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                              ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            24,
+                                          ),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Container(
+                          width: 178.w,
+                          height: 272.h,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                              ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 12),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            24,
+                                          ),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 33),
               ],
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          top: 20,
+          bottom: 20,
+          right: 10,
+          left: 10,
+        ),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.transparent),
+
+          width: 380,
+          height: 51,
+          child: ElevatedButton(
+            child: Text('Add to cart', style: TextStyle(fontSize: 16)),
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              foregroundColor: AppColors.textWhite,
+              backgroundColor: AppColors.btnPrimary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
             ),
           ),
         ),
@@ -511,96 +813,107 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
   }
 }
 
-class MedicationDetailsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Medication Name'),
-          bottom: TabBar(
-            tabs: [
-              Tab(text: 'Description'),
-              Tab(text: 'Details'),
-              Tab(text: 'Reviews'),
-            ],
+Widget _description() {
+  return Scaffold(
+    body: Column(
+      children: [
+        //Product description
+        Text(
+          'Product Description',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textNormal,
           ),
         ),
-        body: TabBarView(
+        Text(
+          'Bufect is a reliable and effective medication presented in a convenient strip containing four tablets. Each tablet is meticulously formulated to provide targeted relief from various ailments. With its user-friendly packaging and easy-to-carry design, Bufect ensures quick access to relief whenever and wherever needed. Trust Bufect for fast-acting and dependable relief from discomfort.',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
+            color: AppColors.textSecondary,
+          ),
+        ),
+        SizedBox(height: 32),
+
+        //Benefits
+
+        Text(
+          'Benefits',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: AppColors.textNormal,
+          ),
+        ),
+
+        Row(
           children: [
-            // Description Tab
-            Center(child: Text('Description Content')),
-            // Details Tab
-            DetailsTab(),
-            // Reviews Tab
-            Center(child: Text('Reviews Content')),
+            Image.asset('assets/icons/dot_img.png'),
+            SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                '\nProvides fast and effective relief from pain and discomfort',
+                style: TextStyle(
+                  color: AppColors.textNormal,
+                  fontSize: 16,
+                  height: 1.5,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
           ],
         ),
-      ),
-    );
-  }
+        Row(
+          children: [
+            Image.asset('assets/icons/dot_img.png'),
+            SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                '\n\nSuitable for a wide range of ailments, including headaches, muscle aches, fever, and menstrual cramps',
+                style: TextStyle(
+                  color: AppColors.textNormal,
+                  fontSize: 16,
+                  height: 1.5,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Image.asset('assets/icons/dot_img.png'),
+            SizedBox(width: 5),
+            Expanded(
+              child: Text(
+                '\nEach tablet is individually sealed for freshness and potency.',
+                style: TextStyle(
+                  color: AppColors.textNormal,
+                  fontSize: 16,
+                  height: 1.5,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ],
+        ),
+
+      ],
+    ),
+  );
 }
 
-class DetailsTab extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Active Ingredients:',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          SizedBox(height: 8),
-          RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: '• Acetaminophen (500 mg)\n',
-                  style: TextStyle(color: Colors.black),
-                ),
-                TextSpan(
-                  text: '• Ibuprofen (200 mg)\n',
-                  style: TextStyle(color: Colors.black),
-                ),
-                TextSpan(
-                  text: '• Caffeine (50 mg)\n',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Dosage Information:',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          SizedBox(height: 8),
-          Text(
-            '• Adults: Take 1 tablet every 4 to 6 hours as needed. '
-            'Do not exceed 4 tablets in 24 hours.\n'
-            '• Children (ages 6-12): Take half a tablet every 4 to 6 hours as needed. '
-            'Do not exceed 2 tablets in 24 hours.\n'
-            '• Children under 6 years: Consult a healthcare professional before use.',
-            style: TextStyle(color: Colors.black),
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Storage Information:',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'For optimal potency and safety, it is recommended to store this medication '
-            'in a cool, dry place, away from direct sunlight. '
-            'Exposure to excessive heat or moisture may compromise the quality of the product.',
-            style: TextStyle(color: Colors.black),
-          ),
-        ],
-      ),
-    );
-  }
+Widget _details() {
+  return Scaffold(
+    body: Column(
+      children: [
+
+      ],
+    ),
+  );
+}
+
+Widget _reviews() {
+  return Scaffold();
 }
