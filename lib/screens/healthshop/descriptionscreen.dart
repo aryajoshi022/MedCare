@@ -352,10 +352,135 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     color: AppColors.textNormal,
                   ),
                 ),
+                SizedBox(height: 16),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(children: [Column()]),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    'assets/images/health_shop/girl_review.jpg',
+                                    height: 56,
+                                    width: 56,
+                                  ),
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                                SizedBox(width: 12),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Emily johnson',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        wordSpacing: 1.5,
+                                      ),
+                                    ),
+                                    SizedBox(height: 13),
+                                    Text(
+                                      '1 day ago',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.textSecondary,
+                                      ),
+                                    ),
+                                    SizedBox(height: 13),
+
+                                    Image.asset('assets/icons/star_icon.png'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'My consultation with Dr. Luca Rossi\n was excellent. He`s knowledgeable,\n attentive, and provid...',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                TextButton(onPressed: () {}, child: Text('More view',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AppColors.textBtn),))
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+
+                              children: [
+                                ClipRRect(
+                                  child: Image.asset(
+                                    'assets/images/health_shop/boy_review.jpg',
+                                    height: 56,
+                                    width: 56,
+                                  ),
+                                  borderRadius: BorderRadius.circular(48),
+                                ),
+                                SizedBox(width: 12),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Daniel Anderson',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 14,
+                                        wordSpacing: 1.5,
+                                      ),
+                                    ),
+                                    SizedBox(height: 13),
+                                    Text(
+                                      '1 day ago',
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColors.textSecondary,
+                                      ),
+                                    ),
+                                    SizedBox(height: 13),
+
+                                    Image.asset('assets/icons/star_icon.png'),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'My consultation with Dr. Luca Rossi\n was excellent. He`s knowledgeable,\n attentive, and provid...',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textSecondary,
+                                  ),
+                                ),
+                                TextButton(onPressed: () {}, child: Text('More view',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,color: AppColors.textBtn),))
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                SizedBox(height: 32,),
               ],
             ),
           ),
