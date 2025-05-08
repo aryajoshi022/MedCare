@@ -7,6 +7,7 @@ import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
 import '../home/home_screen.dart';
 import '../services/services_screen.dart';
+import 'detail_hospital.dart';
 
 class HospitalScreen extends StatefulWidget {
   const HospitalScreen({Key? key}) : super(key: key);
@@ -16,21 +17,51 @@ class HospitalScreen extends StatefulWidget {
 }
 
 class _HospitalScreen extends State<HospitalScreen> {
-  int _selectedIndex = 1;
+  int index = 1;
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      index = index;
     });
   }
 
-  final List<Map<String, String>> hospitals = [
+  final List<Map<String, dynamic>> hospitals = [
     {
       'img': 'assets/images/Hospitals/ospedale.png',
       'name': 'Ospedale San Raffaele',
       'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
       'phone': '(+22) 2361 6257 1726',
+      'bedDetailRoute': (BuildContext context) => const DetailHospital(),
+      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
     },
+
+    {
+      'img': 'assets/images/Hospitals/Ospedale1.png',
+      'name': 'Ospedale San Raffaele',
+      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
+      'phone': '(+22) 2361 6257 1726',
+      'bedDetailRoute': (BuildContext context) => const HomeScreen(),
+      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
+    },
+
+    {
+      'img': 'assets/images/Hospitals/IRCCS.png',
+      'name': 'Ospedale San Raffaele',
+      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
+      'phone': '(+22) 2361 6257 1726',
+      'bedDetailRoute': (BuildContext context) => const HomeScreen(),
+      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
+    },
+
+    {
+      'img': 'assets/images/Hospitals/ospedale.png',
+      'name': 'Ospedale San Raffaele',
+      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
+      'phone': '(+22) 2361 6257 1726',
+      'bedDetailRoute': (BuildContext context) => const HomeScreen(),
+      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
+    },
+
   ];
 
   @override
@@ -41,6 +72,7 @@ class _HospitalScreen extends State<HospitalScreen> {
           padding: const EdgeInsets.only(top: 60, left: 28, right: 28),
           child: Column(
             children: [
+
               //Search Bar
               Container(
                 width: 372.w,
@@ -96,13 +128,13 @@ class _HospitalScreen extends State<HospitalScreen> {
                   ],
                 ),
               ),
+              SizedBox(height: 24.h),
 
               //Search Provinces
-              SizedBox(height: 24.h),
               _buildPracticeLocationDropdown(context),
 
               //List of Hospitals
-              _buildHospitalList(), // List here
+              _buildHospitalList(),
             ],
           ),
         ),
@@ -112,7 +144,7 @@ class _HospitalScreen extends State<HospitalScreen> {
 
   Widget _buildPracticeLocationDropdown(BuildContext context) {
     return Container(
-      height: 48.h,
+      // height: 48.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         border: Border.all(color: Color(0xffE3E3E3), width: 1),
@@ -151,36 +183,39 @@ class _HospitalScreen extends State<HospitalScreen> {
 
   Widget _buildHospitalList() {
     return ListView.builder(
+      scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(), // because inside SingleChildScrollView
       shrinkWrap: true,
       itemCount: hospitals.length,
       itemBuilder: (context, index) {
         final hospital = hospitals[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-          child: Container(
-            padding: EdgeInsets.all(12),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Color(0xffE3E3E3))
-            ),
-            child: Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Image.asset(
-                        hospital['img']!,
-                        height: 74.h,
-                        width: 74.w,
-                        fit: BoxFit.cover,
-                      ),
+        return Container(
+          margin: EdgeInsets.only(bottom: 24.h),
+          padding: EdgeInsets.all(12),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Color(0xffC2E7D9))
+          ),
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: Image.asset(
+                      hospital['img']!,
+                      height: 74.h,
+                      width: 90.w,
+                      fit: BoxFit.cover,
                     ),
-                    SizedBox(width: 20.w),
-                    Expanded(
+                  ),
+                  // SizedBox(width: 20.w),
+                  Container(
+                    width: 230.w,
+                    padding: EdgeInsets.only(left: 20.w),
+                    child: Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -190,6 +225,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
                               letterSpacing: 1,
+                              height: 1.h,
                               color: Color(0xff090909),
                             ),
                           ),
@@ -199,7 +235,8 @@ class _HospitalScreen extends State<HospitalScreen> {
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
                               fontSize: 11.sp,
-                              letterSpacing: 0.5,
+                              letterSpacing: 1,
+                              // height: 1.h,
                               color: Color(0xff4D4D4D),
                             ),
                           ),
@@ -216,6 +253,8 @@ class _HospitalScreen extends State<HospitalScreen> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp,
+                                  letterSpacing: 1,
+                                  height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
                               ),
@@ -224,66 +263,80 @@ class _HospitalScreen extends State<HospitalScreen> {
                         ],
                       ),
                     ),
-                  ],
+                  ),
+                ],
 
-                ),
-                SizedBox(height: 16.h),
-                Divider(color: AppColors.borderBtn),
-                SizedBox(height: 16.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 47.5.w, vertical: 14.h),
-                        side: BorderSide(color: AppColors.borderSecondary, width: 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24.w),
+              ),
+              SizedBox(height: 16.h),
+              Divider(color: AppColors.borderBtn),
+              SizedBox(height: 16.h),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  OutlinedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => hospitals[index]['bedDetailRoute'](context),
                         ),
-                      ),
-                      child: Text(
-                        "Bed Detail",
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: AppColors.textBtn
-                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 47.5.w, vertical: 14.h),
+                      side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24.w),
                       ),
                     ),
-                    SizedBox(width: 16.w),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(horizontal: 41.5.w, vertical: 14.h),
-                          backgroundColor: AppColors.btnPrimary,
-                          foregroundColor: AppColors.textWhite,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24.w),
-                          ),
+                    child: Text(
+                      "Bed Detail",
+                      style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: AppColors.textBtn
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => hospitals[index]['locationRoute'](context),
                         ),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Location',
-                              style: GoogleFonts.khula(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                letterSpacing: 1,
-                                color: AppColors.textWhite,
-                              ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 14.h),
+                      backgroundColor: AppColors.btnPrimary,
+                      foregroundColor: AppColors.textWhite,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24.w),
+                      ),
+                    ),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Text(
+                            'Location',
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              letterSpacing: 1,
+                              color: AppColors.textWhite,
                             ),
-                            SizedBox(width: 2.5.w),
-                            Icon(Icons.arrow_forward_ios,color: Colors.white,size: 12)
-                          ],
-                        ),
+                          ),
+                          SizedBox(width: 5.w),
+                          Icon(Icons.arrow_forward_ios,color: Color(0xffFFFFFF),size: 12)
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         );
       },
