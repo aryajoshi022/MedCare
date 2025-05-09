@@ -30,8 +30,35 @@ class _DetailHospital extends State<DetailHospital> {
 
   final List<Map<String, dynamic>> typeofroom = [
     {
-      'name': '(4 persons per room)',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
+      'Word': 'General Ward',
+      'Space': '(4 persons per room)',
+      'total beds':'120',
+      'Availability':'10 beds',
+      'Price':'\$100-\$150',
+    },
+
+    {
+      'Word': 'Semi-Private Rooms',
+      'Space': '(2 persons per room)',
+      'total beds':'80',
+      'Availability':'30 beds',
+      'Price':'\$170-\$210',
+    },
+
+    {
+      'Word': 'Private Rooms',
+      'Space': '',
+      'total beds':'40',
+      'Availability':'20 beds',
+      'Price':'\$350-\$450',
+    },
+
+    {
+      'Word': 'Deluxe Suites',
+      'Space': '',
+      'total beds':'12',
+      'Availability':'0 beds',
+      'Price':'\$600-\$1,000',
     },
 
   ];
@@ -46,6 +73,7 @@ class _DetailHospital extends State<DetailHospital> {
       {'icon': 'assets/icons/categories/Ophthalmology.png', 'label': 'Ophthalmology'},
       {'icon': 'assets/icons/categories/Neurology.png', 'label': 'Neurology'},
       {'icon': 'assets/icons/categories/Otorhinolaryngology.png', 'label': 'Otorhinolaryngo\nlogy'},
+      {'icon': 'assets/icons/categories/Psychiatrist.png', 'label': 'Psychiatrist'},
     ];
 
     return Scaffold(
@@ -284,65 +312,110 @@ class _DetailHospital extends State<DetailHospital> {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 20.w),
+                padding: EdgeInsets.only(left: 10.w,top: 10.h,bottom: 10.h,right: 10.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
-                        Text.rich(
-                          TextSpan(
-                            text: 'Hi, ',
-                            style: GoogleFonts.khula(
-                              color: Color(0xff090909),
-                              fontSize: 20,
-                              fontWeight: FontWeight.normal,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: 'Alexander', // bold text
-                                style: GoogleFonts.khula(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                        Text(
+                          hospital['Word'],
+                          style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                            letterSpacing: 1,
+                            // height: 1.h,
+                            color: Color(0xff26408B),
+                          ),
+                        ),
+                        SizedBox(width: 3.w),
+                        Text(
+                          hospital['Space']!,
+                          style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14.sp,
+                            letterSpacing: 1,
+                            // height: 1.h,
+                            color: Color(0xff090909),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(height: 21.h),
+                    SizedBox(height: 10.h),
                     Container(
                       child: Column(
                         children: [
-                          Text(
-                            hospital['address']!,
-                            style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11.sp,
-                              letterSpacing: 1,
-                              // height: 1.h,
-                              color: Color(0xff4D4D4D),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Total beds : ',
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                              Text(
+                                hospital['total beds']!,
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            hospital['address']!,
-                            style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11.sp,
-                              letterSpacing: 1,
-                              // height: 1.h,
-                              color: Color(0xff4D4D4D),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Remaining Availability : ',
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                              Text(
+                                hospital['Availability']!,
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            hospital['address']!,
-                            style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 11.sp,
-                              letterSpacing: 1,
-                              // height: 1.h,
-                              color: Color(0xff4D4D4D),
-                            ),
+                          Row(
+                            children: [
+                              Text(
+                                'Price per night : ',
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                              Text(
+                                hospital['Price']!,
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14.sp,
+                                  letterSpacing: 1,
+                                  // height: 1.h,
+                                  color: Color(0xff4D4D4D),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
