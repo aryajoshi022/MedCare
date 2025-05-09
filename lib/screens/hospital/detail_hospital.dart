@@ -28,6 +28,14 @@ class _DetailHospital extends State<DetailHospital> {
     });
   }
 
+  final List<Map<String, dynamic>> typeofroom = [
+    {
+      'name': '(4 persons per room)',
+      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
+    },
+
+  ];
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> categories = [
@@ -46,13 +54,6 @@ class _DetailHospital extends State<DetailHospital> {
         'icon': 'assets/icons/categories/Otorhinolaryngology.png',
         'label': 'Otorhinolaryngo\nlogy'
       },
-    ];
-    final List<Map<String, dynamic>> typeofroom = [
-      {
-        'name': 'Ospedale San Raffaele',
-        'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      },
-
     ];
 
     return Scaffold(
@@ -219,7 +220,7 @@ class _DetailHospital extends State<DetailHospital> {
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 4,
                           mainAxisSpacing: 6,
-                          crossAxisSpacing: 6,
+                          crossAxisSpacing: 8,
                         ),
                         itemBuilder: (context, index) {
                           return CategoryItem(
@@ -275,14 +276,15 @@ class _DetailHospital extends State<DetailHospital> {
 
   Widget _buildtypeofroom() {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(), // because inside SingleChildScrollView
       shrinkWrap: true,
-      itemCount: typeofroom().length,
+      itemCount: typeofroom.length,
       itemBuilder: (context, index) {
         final hospital = typeofroom[index];
         return Container(
-          margin: EdgeInsets.only(bottom: 24.h),
+          margin: EdgeInsets.only(bottom: 18.h),
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -291,67 +293,72 @@ class _DetailHospital extends State<DetailHospital> {
           ),
           child: Column(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 20.w),
-                    child: Expanded(
+              Container(
+                padding: EdgeInsets.only(left: 20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text.rich(
+                          TextSpan(
+                            text: 'Hi, ',
+                            style: GoogleFonts.khula(
+                              color: Color(0xff090909),
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: 'Alexander', // bold text
+                                style: GoogleFonts.khula(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 21.h),
+                    Container(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            hospital['name']!,
+                            hospital['address']!,
                             style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
                               letterSpacing: 1,
-                              height: 1.h,
-                              color: Color(0xff090909),
+                              // height: 1.h,
+                              color: Color(0xff4D4D4D),
                             ),
                           ),
-                          SizedBox(height: 21.h),
-                          Container(
-                            child: Column(
-                              children: [
-                                Text(
-                                  hospital['address']!,
-                                  style: GoogleFonts.khula(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11.sp,
-                                    letterSpacing: 1,
-                                    // height: 1.h,
-                                    color: Color(0xff4D4D4D),
-                                  ),
-                                ),
-                                Text(
-                                  hospital['address']!,
-                                  style: GoogleFonts.khula(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11.sp,
-                                    letterSpacing: 1,
-                                    // height: 1.h,
-                                    color: Color(0xff4D4D4D),
-                                  ),
-                                ),
-                                Text(
-                                  hospital['address']!,
-                                  style: GoogleFonts.khula(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 11.sp,
-                                    letterSpacing: 1,
-                                    // height: 1.h,
-                                    color: Color(0xff4D4D4D),
-                                  ),
-                                ),
-                              ],
+                          Text(
+                            hospital['address']!,
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
+                              letterSpacing: 1,
+                              // height: 1.h,
+                              color: Color(0xff4D4D4D),
+                            ),
+                          ),
+                          Text(
+                            hospital['address']!,
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 11.sp,
+                              letterSpacing: 1,
+                              // height: 1.h,
+                              color: Color(0xff4D4D4D),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
