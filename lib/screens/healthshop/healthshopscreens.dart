@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/healthshop/cart_screen.dart';
 import 'package:medcare/screens/healthshop/shoppingfilterscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/widgets/health%20shop/health_product_card.dart';
@@ -27,7 +28,9 @@ class HealthShopScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       icon: Icon(
                         Icons.chevron_left,
                         color: Color(0xff4D4D4D),
@@ -72,7 +75,9 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
+                      },
                       icon: Image.asset(
                         'assets/icons/add_cart.png',
                         color: AppColors.textPrimary,
