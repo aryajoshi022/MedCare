@@ -30,7 +30,6 @@ class App extends StatelessWidget {
           // home: DoctorDetails(),
            home: HealthShopScreen(),
           //home: DescriptionScreen(),
-          //Tab Bar
           //home:MedicationDetailsScreen(),
           routes: {},
         );
