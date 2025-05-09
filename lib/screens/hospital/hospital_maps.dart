@@ -8,16 +8,23 @@ import '../../widgets/categories/categories_widget.dart';
 import '../home/home_screen.dart';
 import '../services/services_screen.dart';
 import 'detail_hospital.dart';
-import 'hospital_maps.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class HospitalScreen extends StatefulWidget {
-  const HospitalScreen({Key? key}) : super(key: key);
+class HospitalMaps extends StatefulWidget {
+  const HospitalMaps({Key? key}) : super(key: key);
 
   @override
-  State<HospitalScreen> createState() => _HospitalScreen();
+  State<HospitalMaps> createState() => _HospitalMaps();
 }
 
-class _HospitalScreen extends State<HospitalScreen> {
+class _HospitalMaps extends State<HospitalMaps> {
+
+  late GoogleMapController mapController;
+  final LatLng _center = const LatLng(45.5055, 9.2481); // Example: Milano
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
   int index = 1;
 
   void _onItemTapped(int index) {
@@ -27,6 +34,7 @@ class _HospitalScreen extends State<HospitalScreen> {
   }
 
   final List<Map<String, dynamic>> hospitals = [
+
     {
       'img': 'assets/images/Hospitals/ospedale.png',
       'name': 'Ospedale San Raffaele',
@@ -36,148 +44,97 @@ class _HospitalScreen extends State<HospitalScreen> {
       'locationRoute': (BuildContext context) => const HospitalMaps(),
     },
 
-    {
-      'img': 'assets/images/Hospitals/Ospedale1.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => const DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
-    },
-
-    {
-      'img': 'assets/images/Hospitals/IRCCS.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
-    },
-
-    {
-      'img': 'assets/images/Hospitals/ospedale.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
-    },
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 60, left: 28, right: 28),
-          child: Column(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 60),
+        child: Container(
+          child: Stack(
             children: [
 
-              //Search Bar
-              Container(
-                width: 372.w,
-                height: 48.h,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 24.w,
-                      child: IconButton(
-                        icon:
-                        Image.asset('assets/icons/Back Arrow.png', height: 24.h),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const ServicesScreenScreen()),
-                          );
-                        },
-                      ),
-                    ),
-                    SizedBox(width: 12),
-                    Container(
-                      width: 330.w,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(left: 16, top: 14),
-                          prefixIconColor: Color(0xff8F8F8F),
-                          prefixIcon: IconButton(
-                            icon: Image.asset('assets/icons/Search.png',
-                                height: 20.h),
-                            onPressed: () {},
-                          ),
-                          prefixIconConstraints: BoxConstraints(minWidth: 15.05.w),
-                          hintText: 'Search product or store',
-                          hintStyle: GoogleFonts.khula(
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            color: Color(0xff8F8F8F),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                            borderSide:
-                            BorderSide(color: Color(0xffC2E7D9), width: 1),
-                          ),
-                          filled: true,
-                          fillColor: Color(0xffF9F9F9),
-                        ),
-                      ),
-                    ),
-                  ],
+              GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(45.5055, 9.2481), // San Francisco
+                  zoom: 14.0,
                 ),
+                onMapCreated: (controller) {
+                  setState(() {
+                    mapController = controller;
+                  });
+                },
               ),
-              SizedBox(height: 24.h),
 
-              //Search Provinces
-              _buildPracticeLocationDropdown(context),
+          //     GoogleMap(
+          //       onMapCreated: _onMapCreated,
+          //       initialCameraPosition: CameraPosition(
+          //       target: _center,
+          //         zoom: 14.0,
+          //       ),
+          //   markers: {
+          //     Marker(
+          //       markerId: MarkerId('hospitalMarker'),
+          //       position: _center,
+          //       infoWindow: InfoWindow(
+          //         title: 'Ospedale San Raffaele',
+          //         snippet: 'Via Olgettina, 60, Milano',
+          //       ),
+          //     ),
+          //   },
+          // ),
 
-              //List of Hospitals
+              //Search Bar
+              // Container(
+              //   // width: 372.w,
+              //   // height: 48.h,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.start,
+              //     children: [
+              //       Container(
+              //         // width: 330.w,
+              //         child: TextField(
+              //           decoration: InputDecoration(
+              //             contentPadding: EdgeInsets.all(12.w),
+              //             prefixIconColor: Color(0xff8F8F8F),
+              //             prefixIcon: IconButton(
+              //               icon: Image.asset('assets/icons/Search.png',
+              //                   height: 20.h,width: 20.w),
+              //               onPressed: () {},
+              //             ),
+              //             prefixIconConstraints: BoxConstraints(minWidth: 15.05.w),
+              //             hintText: 'Search this area',
+              //             hintStyle: GoogleFonts.khula(
+              //               letterSpacing: 1,
+              //               fontWeight: FontWeight.w400,
+              //               fontSize: 14,
+              //               color: Color(0xff8F8F8F),
+              //             ),
+              //             border: OutlineInputBorder(
+              //               borderRadius: BorderRadius.circular(12.0),
+              //               borderSide:
+              //               BorderSide(color: Color(0xffC2E7D9), width: 1),
+              //             ),
+              //             filled: true,
+              //             fillColor: Color(0xffF9F9F9),
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+
+              // List of Hospitals
+
+              //Hospital List
+
+              //Hospital Card
+
               _buildHospitalList(),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildPracticeLocationDropdown(BuildContext context) {
-    return Container(
-      // height: 48.h,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.w),
-        border: Border.all(color: Color(0xffE3E3E3), width: 1),
-        color: Color(0xffFFFFFF),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(left: 24.w),
-            child: Text(
-              'Search Provinces',
-              style: GoogleFonts.khula(
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                letterSpacing: 1,
-                color: Color(0xff26408B),
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(right: 12.5.w),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.keyboard_arrow_down,
-                color: Color(0xff26408B),
-                size: 24,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -191,7 +148,7 @@ class _HospitalScreen extends State<HospitalScreen> {
       itemBuilder: (context, index) {
         final hospital = hospitals[index];
         return Container(
-          margin: EdgeInsets.only(bottom: 24.h),
+          margin: EdgeInsets.only(bottom: 40.h,left: 28.w,right:28.w,top: 600.h ),
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
               color: Colors.white,
