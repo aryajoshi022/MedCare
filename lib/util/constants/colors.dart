@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
@@ -6,6 +6,7 @@ class AppColors {
   // Background Colors
   static const Color bgPrimary = Color(0xFF26408B);
   static const Color bgAlert = Color(0xFFFFFFFF);
+  static const Color bgWhite = Color(0xFFFAFAFA);
 
 
   //  Text Colors
@@ -14,7 +15,7 @@ class AppColors {
   static const Color textSecondary = Color(0xFF4D4D4D);
   static const Color textBrand = Color(0xFFB4B2FF);
   static const Color textBtn = Color(0xFF26408B);
-  static const Color textDisabled = Color(0xff8F8F8F);
+  static const Color textDisabled = Color(0xFF8F8F8F);
   static const Color textWhite = Color(0xFFFFFFFF);
 
   // Button Colors
@@ -25,6 +26,7 @@ class AppColors {
   static const Color btnDisabled = Color(0xFF5B578A);
   static const Color btnSuccess = Color(0xFF36F279);
   static const Color btnColor = Color(0xFFF9F8FD);
+  static const Color btnWhite = Color(0xFFFAFAFA);
 
   // Stroke Colors
   static const Color borderPrimary = Color(0xFF4F4F4F);
@@ -34,5 +36,6 @@ class AppColors {
   static const Color borderBrand = Color(0xFFA099FF);
   static const Color borderWhite = Color(0xFFFFFFFF);
   static const Color borderBtn=Color(0xFFE3E3E3);
-  
+  static const Color borderDisabled = Color(0xFF8F8F8F);
+
 }

@@ -19,37 +19,54 @@ class _ConfirmationState extends State<Confirmation> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgAlert,
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(top: 14, bottom: 28, left: 28, right: 28),
-        child: Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff26408B),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24.w)
+      bottomNavigationBar: Container(
+        height: 132.h,
+        color: AppColors.bgAlert,
+        child: Padding(
+          padding: EdgeInsets.only(top: 14, left: 28, right: 28),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff26408B),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24.w)
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                        // side: BorderSide(
+                        //   width: 1,
+                        //   color: Color(0xff26408B),
+                        // ),
+                      ),
+                      child: Text('Check In',
+                        style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 16,
+                            // letterSpacing: 1,
+                            color: Colors.white
+                        ),
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                  // side: BorderSide(
-                  //   width: 1,
-                  //   color: Color(0xff26408B),
-                  // ),
-                ),
-                child: Text('Check In',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      // letterSpacing: 1,
-                      color: Colors.white
                   ),
+                ],
+              ),
+              SizedBox(height: 16.h),
+              Text('Swipe to check in',
+                style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    letterSpacing: 1,
+                    color: AppColors.textSecondary
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -61,9 +78,9 @@ class _ConfirmationState extends State<Confirmation> {
             _buildDoctorInfoCard(context),
             SizedBox(height: 28.h),
             _buildDetailAppointmentCard(context),
-            SizedBox(height: 20.0),
+            SizedBox(height: 20.h),
             _buildActivateNotificationsSection(context),
-            SizedBox(height: 32.0),
+            SizedBox(height: 32.h),
           ],
         ),
       ),
@@ -330,17 +347,23 @@ class _ConfirmationState extends State<Confirmation> {
               ),
             ),
             Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Rossi Cardiology Clinic\nVia Garibaldi 15, Milan, Italy',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      // letterSpacing: 1,
-                      color: Color(0xff090909)
+                Container(
+                  width: 181.w,
+                  child: Text(
+                    'Rossi Cardiology Clinic Via Garibaldi 15, Milan, Italy',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        // letterSpacing: 1,
+                        color: Color(0xff090909)
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
+                // SizedBox(width: 40.w),
                 TextButton(
                   onPressed: () {
                     // Handle see maps
@@ -366,7 +389,7 @@ class _ConfirmationState extends State<Confirmation> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.w),
           border: Border.all(
@@ -378,8 +401,13 @@ class _ConfirmationState extends State<Confirmation> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.notification_important_outlined, color: Color(0xff26408B), size: 24,),
+                Image.asset(
+                  'assets/icons/cart.png',
+                  height: 24.h,
+                  color: AppColors.bgPrimary,
+                ),
                 SizedBox(width: 8.w),
                 Text('Activate notifications',
                   style: GoogleFonts.khula(

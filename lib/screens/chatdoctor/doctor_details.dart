@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
+import 'package:medcare/screens/chatdoctor/chat_screen.dart';
 import 'package:medcare/screens/chatdoctor/confirmation.dart';
 
 import '../../util/constants/colors.dart';
@@ -26,7 +27,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             _buildHeaderSection(context),
             _buildDoctorInfoSection(context),
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(28.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -53,9 +54,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         color: Color(0xff090909)
                     ),
                   ),
-                  // SizedBox(height: 16.0),
+                  SizedBox(height: 16.h),
                   _buildWorkingHoursGrid(context),
-                  SizedBox(height: 29.0),
+                  SizedBox(height: 29.h),
                   Text(
                     'Schedule',
                     style: GoogleFonts.khula(
@@ -65,9 +66,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         color: Color(0xff090909)
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 16.h),
                   _buildScheduleDays(context),
-                  SizedBox(height: 29.0),
+                  SizedBox(height: 29.h),
                   Text(
                     'Review',
                     style: GoogleFonts.khula(
@@ -77,7 +78,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         color: Color(0xff090909)
                     ),
                   ),
-                  SizedBox(height: 16.0),
+                  SizedBox(height: 16.h),
                   _buildReviewSection(context),
                 ],
               ),
@@ -101,7 +102,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h)
               ),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
+              },
               icon: Icon(Icons.chat_outlined,
               color: Color(0xff26408B),
               ),
@@ -118,7 +121,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmation(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmation()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xff26408B),
@@ -362,7 +365,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       crossAxisCount: 4,
       crossAxisSpacing: 12,
       mainAxisSpacing: 12,
-      childAspectRatio: 2.0,
+      childAspectRatio: 1.75,
       children: <String>[
         '9.00 AM',
         '10.00 AM',
@@ -373,7 +376,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       ].map((time) {
         return Container(
           // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 21.5.h),
-          padding: EdgeInsets.all(0),
+          // padding: EdgeInsets.all(14.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.w),
             border: Border.all(
@@ -404,28 +407,25 @@ class _DoctorDetailsState extends State<DoctorDetails> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: days.map((day) {
           // bool isSelected = day.startsWith('Wed'); // Highlight Wednesday as in the example
           return Container(
-            margin: EdgeInsets.only(right: 12),
-            padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+            margin: EdgeInsets.only(right: 12.w),
+            padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.0),
+              borderRadius: BorderRadius.circular(6.w),
               border: Border.all(width: 1, color: Color(0xffE3E3E3)),
               color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
               // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
             ),
-            child: Center(
-              child: Text(
-                day,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w400,
-                  // color: isSelected ? Color(0xff26408B) : Color(0xff4D4D4D),
-                  fontSize: 14,
-                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
-                ),
+            child: Text(
+              day,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.khula(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: isSelected ? AppColors.textWhite : AppColors.textSecondary
               ),
             ),
           );
@@ -435,10 +435,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   Widget _buildReviewSection(BuildContext context) {
-    return SingleChildScrollView( // Make the row scrollable horizontally
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start, // Align items to the top
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildReviewCard(
             name: 'Emily Johnson',
@@ -448,7 +448,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             'My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
             image: 'assets/images/Emily_Johnson.png',
           ),
-          SizedBox(width: 16.0),
+          SizedBox(width: 16.w),
           _buildReviewCard(
             name: 'Daniel Anderson',
             daysAgo: '8 days ago',
@@ -457,103 +457,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             'My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
             image: 'assets/images/Daniel_Anderson.png',
           ),
-          SizedBox(width: 16.0),
-          // Add more review cards here as needed
         ],
       ),
     );
-    // return Row(
-    //   children: [
-    //     Expanded(
-    //       child: Container(
-    //         padding: EdgeInsets.all(20.w),
-    //         decoration: BoxDecoration(
-    //           borderRadius: BorderRadius.circular(12.w),
-    //           // border: Border.all(
-    //           //     width: 1.w,
-    //           //     color: Color(0xffE3E3E3)
-    //           // ),
-    //           boxShadow: [
-    //             BoxShadow(
-    //               color: Color(0xffE3E3E3),
-    //               blurRadius: 10,
-    //               spreadRadius: 5,offset: Offset(4, 4),blurStyle: BlurStyle.outer
-    //             ),
-    //           ],
-    //         ),
-    //         child: Column(
-    //           children: [
-    //             Row(
-    //               children: [
-    //                 CircleAvatar(
-    //                   radius: 28,
-    //                   backgroundImage: AssetImage('assets/images/Emily_Johnson.png'),
-    //                 ),
-    //                 SizedBox(width: 12),
-    //                 Column(
-    //                   crossAxisAlignment: CrossAxisAlignment.start,
-    //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                   children: [
-    //                     Text('Emily Johnson',
-    //                       style: GoogleFonts.khula(
-    //                           fontWeight: FontWeight.w400,
-    //                           fontSize: 14,
-    //                           letterSpacing: 1,
-    //                           color: Color(0xff090909)
-    //                       ),
-    //                     ),
-    //                     Text('1 day ago',
-    //                       style: GoogleFonts.khula(
-    //                           fontWeight: FontWeight.w400,
-    //                           fontSize: 10,
-    //                           letterSpacing: 1,
-    //                           color: Color(0xff4D4D4D)
-    //                       ),
-    //                     ),
-    //                     Row(
-    //                       mainAxisAlignment: MainAxisAlignment.center,
-    //                       children: [
-    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-    //                         Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-    //                         Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
-    //                       ],
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ],
-    //             ),
-    //             SizedBox(height: 16.h),
-    //             Row(
-    //               children: [
-    //                 Expanded(
-    //                   child: Text('My consultation with Dr. Luca Rossi was excellent. He\'s knowledgeable, attentive, and provid...',
-    //                     style: GoogleFonts.khula(
-    //                         fontWeight: FontWeight.w400,
-    //                         fontSize: 14,
-    //                         letterSpacing: 1,
-    //                         color: Color(0xff4D4D4D)
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 // Text('More view',
-    //                   style: GoogleFonts.khula(
-    //                       fontWeight: FontWeight.w600,
-    //                       fontSize: 14,
-    //                       letterSpacing: 1,
-    //                       color: Color(0xff26408B)
-    //                   ),
-    //                 // ),
-    //               ],
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //     ),
-    //     SizedBox(width: 16.w),
-    //   ],
-    // );
   }
 }
 
@@ -565,7 +471,7 @@ Widget _buildReviewCard({
   required String image,
 }) {
   return Container(
-    width: 269.w, // Set a fixed width for each review card
+    width: 269.w,
     padding: EdgeInsets.all(20.w),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12.w),
@@ -583,9 +489,9 @@ Widget _buildReviewCard({
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
+      children: [
         Row(
-          children: <Widget>[
+          children: [
             CircleAvatar(
               radius: 28.w,
               backgroundImage: AssetImage(image),
@@ -626,7 +532,7 @@ Widget _buildReviewCard({
             ),
           ],
         ),
-        SizedBox(height: 16.0),
+        SizedBox(height: 16.h),
         Text(
           reviewText,
           style: GoogleFonts.khula(

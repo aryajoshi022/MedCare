@@ -22,7 +22,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
     'Dr. Luca Rossi': false,
   };
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,7 +162,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           specialty: "General Surgery",
           date: "Wednesday, 29 Feb 04.00 pm",
           location: "Bella Vista Surgery Clinic, Via Garibaldi 10, Milan, Italy",
-          image: "assets/images/Dr_Luca_Rossi.png",
+          image: "assets/images/Dr_Fabian_Weber.png",
           isNotificationOn: _notificationStatus["Dr. Giovanni Bianchi"] ?? false,
           onNotificationChange: (val) {
             setState(() {
@@ -200,7 +199,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           date: "Wednesday, 29 Feb 04.00 pm",
           location:
           "Bella Vista Surgery Clinic, Via Garibaldi 10, Milan, Italy",
-          image: "assets/images/Dr_Luca_Rossi.png",
+          image: "assets/images/Dr_Fabian_Weber.png",
           showStars: false,
         ),
         const SizedBox(height: 16),
@@ -210,7 +209,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           date: "Wednesday, 29 Feb 04.00 pm",
           location:
           "Bella Vista Surgery Clinic, Via Garibaldi 10, Milan, Italy",
-          image: "assets/images/Dr_Luca_Rossi.png",
+          image: "assets/images/Dr_Fabian_Weber.png",
           showStars: true,
         ),
       ],
@@ -554,7 +553,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
-                        // letterSpacing: 1,
+                        letterSpacing: 1,
                         color: AppColors.textBtn
                     ),
                   ),
@@ -576,6 +575,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
+                        letterSpacing: 1,
                         color: AppColors.textBtn
                     ),
                     maxLines: 1,
