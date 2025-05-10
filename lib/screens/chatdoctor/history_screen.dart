@@ -364,25 +364,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
               SizedBox(width: 16.w),
               Expanded(
                 child: ElevatedButton(
-                  onPressed: _showRescheduleSheet,
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-                    backgroundColor: AppColors.btnPrimary,
-                    foregroundColor: AppColors.textWhite,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.w),
-                    ),
-                  ),
-                  child: Text(
-                    'Reschedule',
-                    style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      letterSpacing: 1,
-                      color: AppColors.textWhite,
-                    ),
+                onPressed: _showRescheduleSheet,
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
+                  backgroundColor: AppColors.btnPrimary,
+                  foregroundColor: AppColors.textWhite,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24.w),
                   ),
                 ),
+                child: Text(
+                  'Reschedule',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    letterSpacing: 1,
+                    color: AppColors.textWhite,
+                  ),
+                ),
+              ),
               ),
             ],
           ),
