@@ -194,23 +194,23 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      // letterSpacing: 1,
+                      letterSpacing: 1,
                       color: Color(0xff090909),
                     ),
                   ),
-                  // SizedBox(height: 10.h),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 10.h),
+                  // SizedBox(height: 4.h),
                   Text(
                     '${doctor['specialty']!} • ${doctor['experience']!}',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
-                      // letterSpacing: 1,
+                      letterSpacing: 1,
                       color: Color(0xff4D4D4D),
                     ),
                   ),
-                  // SizedBox(height: 10.h),
-                  SizedBox(height: 6.h),
+                  SizedBox(height: 10.h),
+                  // SizedBox(height: 6.h),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
                     decoration: BoxDecoration(
@@ -222,7 +222,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 10,
-                        // letterSpacing: 1,
+                        letterSpacing: 1,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -230,7 +230,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                 ],
               ),
             ),
-            // SizedBox(width: 16.w),
+            SizedBox(width: 16.w),
             // Icon(Icons.chevron_right),
             IconButton(
               onPressed: (){
@@ -245,38 +245,5 @@ class _ChatDoctorState extends State<ChatDoctor> {
         ),
       ),
     );
-    // return Padding(
-    //   padding: const EdgeInsets.symmetric(horizontal: 28),
-    //   child: Container(
-    //     width: 372.w,
-    //     color: Colors.purple,
-    //     child: Padding(
-    //       padding: EdgeInsets.symmetric(vertical: 14),
-    //       child: Row(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           Container(
-    //             width: 336.w,
-    //             height: 64.h,
-    //             color: Colors.blue,
-    //             child: Row(
-    //               children: [
-    //                 Image.asset('assets/images/Dr_Luca_Rossi.png',
-    //                   fit: BoxFit.cover,
-    //                 ),
-    //                 Text('data')
-    //               ],
-    //             ),
-    //           ),
-    //           Container(
-    //             width: 24.w,
-    //             height: 24.h,
-    //             color: Colors.green,
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }
