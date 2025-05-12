@@ -5,6 +5,7 @@ import 'package:medcare/screens/healthshop/descriptionscreen.dart';
 
 import '../../util/constants/colors.dart';
 import '../../widgets/health shop/scroller.dart';
+import 'cart_screen.dart';
 
 class ShoppingFilterScreen extends StatefulWidget {
   const ShoppingFilterScreen({super.key});
@@ -28,7 +29,9 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   IconButton(
-                    onPressed: () {Navigator.pop(context);},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Icon(
                       Icons.chevron_left,
                       color: Color(0xff4D4D4D),
@@ -37,7 +40,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                   ),
                   SizedBox(
                     height: 48.h,
-                    width: 288.w,
+                    width: 318.w,
                     child: TextFormField(
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(
@@ -72,8 +75,11 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                     ),
                   ),
+                  Spacer(),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
+                    },
                     icon: Image.asset(
                       'assets/icons/add_cart.png',
                       color: AppColors.textPrimary,
@@ -82,6 +88,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 ],
               ),
             ),
+
             //Filter Scroller
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,

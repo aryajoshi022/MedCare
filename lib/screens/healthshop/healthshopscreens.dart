@@ -29,7 +29,7 @@ class HealthShopScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () {
-
+                      Navigator.pop(context);
                       },
                       icon: Icon(
                         Icons.chevron_left,
@@ -39,7 +39,7 @@ class HealthShopScreen extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 48.h,
-                      width: 288.w,
+                      width: 318.w,
                       child: TextFormField(
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
@@ -74,6 +74,7 @@ class HealthShopScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Spacer(),
                     IconButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
