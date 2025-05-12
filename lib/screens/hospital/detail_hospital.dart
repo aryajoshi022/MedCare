@@ -3,14 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/hospital/hospital_maps.dart';
 import 'package:medcare/util/constants/colors.dart';
-import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
-import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
-import '../../widgets/health articles/health_article.dart';
-import '../../widgets/nearby hospitals/hospital_card_widget.dart';
-import '../../widgets/selling products/product_card_widget.dart';
-import '../chatdoctor/chat_doctor.dart';
-import '../services/services_screen.dart';
 
 class DetailHospital extends StatefulWidget {
   const DetailHospital({Key? key}) : super(key: key);
