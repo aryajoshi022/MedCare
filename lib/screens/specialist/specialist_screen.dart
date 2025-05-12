@@ -7,16 +7,16 @@ import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
 import '../home/home_screen.dart';
 import '../hospital/hospital_screen.dart';
-import '../specialist/specialist_screen.dart';
+import '../services/services_screen.dart';
 
-class ServicesScreenScreen extends StatefulWidget {
-  const ServicesScreenScreen({Key? key}) : super(key: key);
+class SpecialistScreenScreen extends StatefulWidget {
+  const SpecialistScreenScreen({Key? key}) : super(key: key);
 
   @override
-  State<ServicesScreenScreen> createState() => _ServicesScreenScreen();
+  State<SpecialistScreenScreen> createState() => _SpecialistScreenScreen();
 }
 
-class _ServicesScreenScreen extends State<ServicesScreenScreen> {
+class _SpecialistScreenScreen extends State<SpecialistScreenScreen> {
 
   int _selectedIndex = 1;
 
@@ -30,18 +30,29 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
   Widget build(BuildContext context) {
 
     final List<Map<String, dynamic>> categories = [
-      {'icon': 'assets/images/Services/Chat Doctor.png', 'label': 'Chat Doctor', 'route': (BuildContext context) => const ChatDoctor()},
-      {'icon': 'assets/images/Services/Hospitals.png', 'label': 'Hospitals' , 'route': (BuildContext context) => const HospitalScreen()},
-      {'icon': 'assets/images/Services/Emergency Services.png', 'label': 'Emergency\nServices'},
-      {'icon': 'assets/images/Services/Articel.png', 'label': 'Articel'},
-      {'icon': 'assets/images/Services/Medication Reminder.png', 'label': 'Medication\nReminder'},
-      {'icon': 'assets/images/Services/Specialization.png', 'label': 'Specialization', 'route': (BuildContext context) => const SpecialistScreenScreen()},
-
+      {'icon': 'assets/icons/categories/All.png', 'label': 'All','route': (BuildContext context) => const ChatDoctor()},
+      {'icon': 'assets/icons/categories/General Practitioner.png', 'label': 'General\nPractitioner'},
+      {'icon': 'assets/icons/categories/Dentistry.png', 'label': 'Dentistry'},
+      {'icon': 'assets/icons/categories/Gynecology.png', 'label': 'Gynecology'},
+      {'icon': 'assets/icons/categories/Ophthalmology.png', 'label': 'Ophthalmology'},
+      {'icon': 'assets/icons/categories/Neurology.png', 'label': 'Neurology'},
+      {'icon': 'assets/icons/categories/Otorhinolaryngology.png', 'label': 'Otorhinolaryngo\nlogy'},
+      {'icon': 'assets/icons/categories/Pulmonologist.png', 'label': 'Pulmonologist'},
+      {'icon': 'assets/icons/categories/Pediatrician.png', 'label': 'Pediatrician'},
+      {'icon': 'assets/icons/categories/Neurology2.png', 'label': 'Neurology'},
+      {'icon': 'assets/icons/categories/Psychiatrist.png', 'label': 'Psychiatrist'},
+      {'icon': 'assets/icons/categories/Cardiologist.png', 'label': 'Cardiologist'},
+      {'icon': 'assets/icons/categories/Gastoenterologi.png', 'label': 'Gastoenterol\nogi'},
+      {'icon': 'assets/icons/categories/Virus.png', 'label': 'Virus'},
+      {'icon': 'assets/icons/categories/Orthopedi.png', 'label': 'Orthopedi'},
+      {'icon': 'assets/icons/categories/Endocrin.png', 'label': 'Endocrin'},
+      {'icon': 'assets/icons/categories/Dermatologist.png', 'label': 'Dermatologist'},
     ];
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
+        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -50,19 +61,20 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const ServicesScreenScreen()),
                 );
               },
             ),
-              SizedBox(width: 115),
-              Text(
-                 'Services ',
-                style: GoogleFonts.khula(
-                  color: Color(0xff090909),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+            SizedBox(width: 110.w),
+            Text(
+              'Specialist ',
+              style: GoogleFonts.khula(
+                color: Color(0xff090909),
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 1
               ),
+            ),
             // Spacer(), // Automatically pushes the icons to the right
           ],
         ),
