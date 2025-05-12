@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/appointment_success.dart';
@@ -21,6 +22,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     'Dr. Giovanni Bianchi': true,
     'Dr. Luca Rossi': false,
   };
+  double rating = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -854,134 +856,156 @@ class _HistoryScreenState extends State<HistoryScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
       ),
       builder: (context) {
-        return Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom + 36.h,
-            top: 16.h,
-            left: 24.w,
-            right: 24.w,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  width: 80.w,
-                  height: 4.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.borderSecondary,
-                    borderRadius: BorderRadius.circular(4.w),
-                  ),
-                ),
+        return StatefulBuilder(
+          builder: (context, setModalState){
+            return Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom + 36.h,
+                top: 16.h,
+                left: 24.w,
+                right: 24.w,
               ),
-              SizedBox(height: 34.h),
-              Center(
-                child: Text(
-                  'Review',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      color: AppColors.textNormal
-                  ),
-                ),
-              ),
-              SizedBox(height: 36.h),
-              Text(
-                'Ratings',
-                style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
-                    color: AppColors.textSecondary
-                ),
-              ),
-              SizedBox(height: 16.h),
-              Row(
-                children: List.generate(
-                  5,
-                  (index) => const Icon(
-                    Icons.star_border_rounded,
-                    color: Color(0xffFFA740),
-                    size: 24,
-                  ),
-                ),
-              ),
-              SizedBox(height: 36.h),
-              Text(
-                'Your review',
-                style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
-                    color: AppColors.textSecondary
-                ),
-              ),
-              SizedBox(height: 16.h),
-              TextField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
-                  hintText: "Write your review",
-                  hintStyle: GoogleFonts.khula(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: AppColors.textDisabled
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6.w),
-                    borderSide: BorderSide(width: 1, color: AppColors.borderBtn),
-                  ),
-                ),
-              ),
-              SizedBox(height: 36.h),
-              Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                        side: BorderSide(color: AppColors.borderThirsty, width: 1),
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-                      ),
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text(
-                        'Cancel',
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
-                            color: AppColors.textBtn
-                        ),
+                  Center(
+                    child: Container(
+                      width: 80.w,
+                      height: 4.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.borderSecondary,
+                        borderRadius: BorderRadius.circular(4.w),
                       ),
                     ),
                   ),
-                  SizedBox(width: 8.w),
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-                        backgroundColor: AppColors.btnPrimary,
-                      ),
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text(
-                        'Reschedule',
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
-                            color: AppColors.textWhite
-                        ),
+                  SizedBox(height: 34.h),
+                  Center(
+                    child: Text(
+                      'Review',
+                      style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          color: AppColors.textNormal
                       ),
                     ),
+                  ),
+                  SizedBox(height: 36.h),
+                  Text(
+                    'Ratings',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        letterSpacing: 1,
+                        color: AppColors.textSecondary
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  // Row(
+                  //   children: List.generate(
+                  //     5,
+                  //     (index) => const Icon(
+                  //       Icons.star_border_rounded,
+                  //       color: Color(0xffFFA740),
+                  //       size: 24,
+                  //     ),
+                  //   ),
+                  // ),
+                  RatingBar.builder(
+                    initialRating: 0,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    itemCount: 5,
+                    itemSize: 24,
+                    itemPadding: EdgeInsets.only(left: 0, right: 4.w),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star_rounded,
+                      color: Color(0xffFFA740),
+                      // size: 24,
+                    ),
+                    onRatingUpdate: (value) {
+                      setModalState(() {
+                        rating = value;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 36.h),
+                  Text(
+                    'Your review',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        letterSpacing: 1,
+                        color: AppColors.textSecondary
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  TextField(
+                    maxLines: 4,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                      hintText: "Write your review",
+                      hintStyle: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        letterSpacing: 1,
+                        color: AppColors.textDisabled
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6.w),
+                        borderSide: BorderSide(width: 1, color: AppColors.borderBtn),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 36.h),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                            side: BorderSide(color: AppColors.borderThirsty, width: 1),
+                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                          ),
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text(
+                            'Cancel',
+                            style: GoogleFonts.khula(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                letterSpacing: 1,
+                                color: AppColors.textBtn
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 8.w),
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                            backgroundColor: AppColors.btnPrimary,
+                          ),
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text(
+                            'Reschedule',
+                            style: GoogleFonts.khula(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                letterSpacing: 1,
+                                color: AppColors.textWhite
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
+            );
+          }
         );
       },
     );

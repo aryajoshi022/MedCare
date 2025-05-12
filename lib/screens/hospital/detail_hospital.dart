@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/hospital/hospital_maps.dart';
-import 'package:medcare/screens/hospital/my_map.dart';
 import 'package:medcare/util/constants/colors.dart';
 import '../../widgets/Chat with doctor/chat_doctor_widget.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';

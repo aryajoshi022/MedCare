@@ -477,7 +477,7 @@ Widget _buildReviewCard({
       borderRadius: BorderRadius.circular(12.w),
       border: Border.all(
           width: 1.w,
-          color: Color(0xffE3E3E3)
+          color: AppColors.borderBtn
       ),
       // boxShadow: [
       //   BoxShadow(
@@ -500,7 +500,7 @@ Widget _buildReviewCard({
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: [
                 Text(
                   name,
                   style: GoogleFonts.khula(
