@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
+import 'package:medcare/screens/services/services_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
@@ -109,7 +110,9 @@ class _ChatDoctorState extends State<ChatDoctor> {
         // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ServicesScreenScreen(),));
+            },
             icon: Icon(Icons.chevron_left,
               color: Color(0xff4D4D4D),
               // size: 16,

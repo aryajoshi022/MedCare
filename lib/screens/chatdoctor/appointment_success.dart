@@ -55,9 +55,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     side: BorderSide(width: 1, color: Color(0xffA6CFD5))
                   )
                 ),
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen(),));
-                  },
+                  onPressed: (){},
                   child: Text('Go to details',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
