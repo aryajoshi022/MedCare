@@ -337,7 +337,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+        children: [
           Text('Rossi Cardiology Clinic',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
@@ -461,6 +461,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       ),
     );
   }
+
 }
 
 Widget _buildReviewCard({
