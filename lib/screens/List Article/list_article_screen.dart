@@ -294,7 +294,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 95., left: 16),
+            padding: const EdgeInsets.only(top: 95, left: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
