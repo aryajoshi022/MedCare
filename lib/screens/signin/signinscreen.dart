@@ -30,13 +30,14 @@ class _SignInScreenState extends State<SignInScreen> {
         margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(30),
+          //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
+          //borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: isActive ? Colors.white : Colors.black,
+            color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
+            //color: isActive ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
           ),
         ),

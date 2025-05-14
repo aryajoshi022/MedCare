@@ -196,7 +196,10 @@ class getstartedScreen extends StatelessWidget {
                     ),
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      elevation: 0.0,
+                      shadowColor: Colors.transparent,
                       foregroundColor: Colors.white,
+                      backgroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
                           color: AppColors.borderSecondary,

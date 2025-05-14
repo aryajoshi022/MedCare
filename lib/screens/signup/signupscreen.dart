@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 class SignScreen extends StatefulWidget {
@@ -42,13 +43,13 @@ class _SignScreenState extends State<SignScreen> {
         margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(30),
+          //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
+          //borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: isActive ? Colors.white : Colors.black,
+            color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -735,7 +736,7 @@ class _SignScreenState extends State<SignScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => _signInotp()),
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(
