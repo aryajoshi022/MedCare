@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/MedicationReminder/medication_reminder_empty.dart';
 import 'package:medcare/screens/services/services_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
+
+import 'drug_details.dart';
 
 class MedicationReminder extends StatefulWidget {
   const MedicationReminder({super.key});
@@ -17,14 +20,16 @@ class _MedicationReminderState extends State<MedicationReminder> {
     return Scaffold(
       backgroundColor: AppColors.bgAlert,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildCustomAppBar(),
-            SizedBox(height: 31.h),
-            _buildReminderOfMedicine(),
-            SizedBox(height: 24.h),
-            _buildHistoryOfMedicine(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildCustomAppBar(),
+              // SizedBox(height: 31.h),
+              _buildReminderOfMedicine(),
+              SizedBox(height: 24.h),
+              _buildHistoryOfMedicine(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(
@@ -37,7 +42,7 @@ class _MedicationReminderState extends State<MedicationReminder> {
         child: Expanded(
           child: ElevatedButton(
             onPressed: () {
-              // Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => DrugDetails(),));
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.bgPrimary,
@@ -115,7 +120,9 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 ),
               ),
               TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminderEmpty()));
+                },
                 child: Text('Lihat Semua  >',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
@@ -233,4 +240,5 @@ class _MedicationReminderState extends State<MedicationReminder> {
       ),
     );
   }
+
 }

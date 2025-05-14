@@ -65,9 +65,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 Icons.chevron_left,
                 color: AppColors.btnSecondary
             ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
-            },
+            onPressed: () {},
           ),
           Spacer(flex: 2,),
           Text(

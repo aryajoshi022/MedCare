@@ -6,6 +6,7 @@ import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 import '../../widgets/categories/categories_widget.dart';
 import '../List Article/list_article_screen.dart';
+import '../MedicationReminder/medication_reminder.dart';
 import '../home/home_screen.dart';
 import '../hospital/hospital_screen.dart';
 import '../specialist/specialist_screen.dart';
@@ -35,7 +36,7 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
       {'icon': 'assets/images/Services/Hospitals.png', 'label': 'Hospitals' , 'route': (BuildContext context) => const HospitalScreen()},
       {'icon': 'assets/images/Services/Emergency Services.png', 'label': 'Emergency\nServices'},
       {'icon': 'assets/images/Services/Articel.png', 'label': 'Articel', 'route': (BuildContext context) => const ListArticleScreen()},
-      {'icon': 'assets/images/Services/Medication Reminder.png', 'label': 'Medication\nReminder'},
+      {'icon': 'assets/images/Services/Medication Reminder.png', 'label': 'Medication\nReminder', 'route': (BuildContext context) => const MedicationReminder()},
       {'icon': 'assets/images/Services/Specialization.png', 'label': 'Specialization', 'route': (BuildContext context) => const SpecialistScreenScreen()},
 
     ];
