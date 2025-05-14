@@ -97,7 +97,7 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(height: 20),
           Text(
             'Email',
-            style: TextStyle(fontSize: 16, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
           TextField(
             decoration: InputDecoration(
