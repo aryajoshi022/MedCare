@@ -69,6 +69,8 @@ flutter:
     - assets/images/
     - assets/images/Doctor/
     - assets/images/Article/Slider/
+    - assets/images/Article/Hot Topic/
+    - assets/images/Article/Article List/
     - assets/images/Health Artical/
     - assets/images/Selling Product/
     - assets/images/Hospitals/
