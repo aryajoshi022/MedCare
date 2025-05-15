@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 class SignScreen extends StatefulWidget {
@@ -42,13 +43,13 @@ class _SignScreenState extends State<SignScreen> {
         margin: EdgeInsets.symmetric(horizontal: 8),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
-          color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(30),
+          //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
+          //borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           title,
           style: TextStyle(
-            color: isActive ? Colors.white : Colors.black,
+            color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -58,190 +59,196 @@ class _SignScreenState extends State<SignScreen> {
 
   Widget _signInPage() {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20),
-          Text('No Phone*', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter phone number',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text('Full Name', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your full name',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text('Gender', style: TextStyle(fontSize: 16)),
-          DropdownButtonFormField<String>(
-            items: [
-              DropdownMenuItem(value: 'Male', child: Text('Male')),
-              DropdownMenuItem(value: 'Female', child: Text('Female')),
-              DropdownMenuItem(value: 'Other', child: Text('Other')),
-            ],
-            onChanged: (value) {},
-            decoration: InputDecoration(border: OutlineInputBorder()),
-          ),
-          SizedBox(height: 10),
-          Text('Date of Birth', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your date of birth',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Checkbox(
-                tristate: true, // Example with tristate
-                value: value,
-                onChanged: (bool? newValue) {
-                  setState(() {
-                    value = newValue;
-                  });
-                },
+      body: SingleChildScrollView(scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Text('No Phone*', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter phone number',
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width: 1,color: AppColors.borderSecondary)),
               ),
-              Expanded(
-                child: Text(
-                  'You agree to receive information and notifications sent by MedCare.',
-                  style: TextStyle(fontSize: 14),
+            ),
+            SizedBox(height: 10),
+            Text('Full Name', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter your full name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            Text('Gender', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            DropdownButtonFormField<String>(
+              items: [
+                DropdownMenuItem(value: 'Male', child: Text('Male')),
+                DropdownMenuItem(value: 'Female', child: Text('Female')),
+                DropdownMenuItem(value: 'Other', child: Text('Other')),
+              ],
+              dropdownColor: Colors.white,
+              onChanged: (value) {},
+              decoration: InputDecoration(border: OutlineInputBorder()),
+            ),
+            SizedBox(height: 10),
+            Text('Date of Birth', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter your date of birth',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Checkbox(
+                  tristate: true, // Example with tristate
+                  value: value,
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      value = newValue;
+                    });
+                  },
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            height: 91,
-            width: 372,
+                Expanded(
+                  child: Text(
+                    'You agree to receive information and notifications sent by MedCare.',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            SizedBox(
+              height: 91,
+              width: 372,
 
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-                right: 10,
-                left: 10,
-              ),
-              child: ElevatedButton(
-                child: Text('Register', style: TextStyle(fontSize: 16)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => _signInotp()),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: AppColors.btnPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 20,
+                  right: 10,
+                  left: 10,
+                ),
+                child: ElevatedButton(
+                  child: Text('Register', style: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => _signInotp()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget _signUpPage() {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20),
-          Text('Email', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter email',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text('Full Name', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your full name',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 10),
-          Text('Gender', style: TextStyle(fontSize: 16)),
-          DropdownButtonFormField<String>(
-            items: [
-              DropdownMenuItem(value: 'Male', child: Text('Male')),
-              DropdownMenuItem(value: 'Female', child: Text('Female')),
-              DropdownMenuItem(value: 'Other', child: Text('Other')),
-            ],
-            onChanged: (value) {},
-            decoration: InputDecoration(border: OutlineInputBorder()),
-          ),
-          SizedBox(height: 10),
-          Text('Date of Birth', style: TextStyle(fontSize: 16)),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Enter your date of birth',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              Checkbox(
-                tristate: true, // Example with tristate
-                value: value,
-                onChanged: (bool? newValue) {
-                  setState(() {
-                    value = newValue;
-                  });
-                },
+      body: SingleChildScrollView(scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Text('Email', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter email',
+                border: OutlineInputBorder(),
               ),
-              Expanded(
-                child: Text(
-                  'You agree to receive information and notifications sent by MedCare.',
-                  style: TextStyle(fontSize: 14),
+            ),
+            SizedBox(height: 10),
+            Text('Full Name', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter your full name',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 10),
+            Text('Gender', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            DropdownButtonFormField<String>(
+              items: [
+                DropdownMenuItem(value: 'Male', child: Text('Male',)),
+                DropdownMenuItem(value: 'Female', child: Text('Female')),
+                DropdownMenuItem(value: 'Other', child: Text('Other')),
+              ],
+              dropdownColor: Colors.white,
+              onChanged: (value) {},
+              decoration: InputDecoration(border: OutlineInputBorder(),filled: true,fillColor: Colors.white,),
+            ),
+            SizedBox(height: 10),
+            Text('Date of Birth', style: TextStyle(fontSize: 16,color: AppColors.btnPrimary)),
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter your date of birth',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                Checkbox(
+                  tristate: true, // Example with tristate
+                  value: value,
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      value = newValue;
+                    });
+                  },
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            height: 91,
-            width: 372,
+                Expanded(
+                  child: Text(
+                    'You agree to receive information and notifications sent by MedCare.',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            SizedBox(
+              height: 91,
+              width: 372,
 
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-                right: 10,
-                left: 10,
-              ),
-              child: ElevatedButton(
-                child: Text('Register', style: TextStyle(fontSize: 16)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => (_signupotp())),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: AppColors.btnPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 20,
+                  bottom: 20,
+                  right: 10,
+                  left: 10,
+                ),
+                child: ElevatedButton(
+                  child: Text('Register', style: TextStyle(fontSize: 16)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => (_signupotp())),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -735,7 +742,7 @@ class _SignScreenState extends State<SignScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => _signInotp()),
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
                         );
                       },
                       style: ElevatedButton.styleFrom(

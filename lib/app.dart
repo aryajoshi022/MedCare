@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/MedicationReminder/medication_reminder.dart';
-import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
-import 'package:medcare/screens/chatdoctor/doctor_details.dart';
-import 'package:medcare/screens/healthshop/desc.dart';
-import 'package:medcare/screens/healthshop/descriptionscreen.dart';
-import 'package:medcare/screens/healthshop/healthshopscreens.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/splashscreen.dart';
 import 'package:medcare/util/theme/theme.dart';
@@ -31,8 +26,8 @@ class App extends StatelessWidget {
           // home: DoctorDetails(),
           // home: HealthShopScreen(),
           //home: DescriptionScreen(),
-          // home:MedicationDetailsScreen(),
-          // home:MedicationReminder(),
+          // home: MedicationDetailsScreen(),
+          // home: MedicationReminder(),
           routes: {},
         );
       },
