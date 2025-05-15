@@ -28,9 +28,10 @@ class App extends StatelessWidget {
           // home: SplashScreen(),
           // home: ChatDoctor(),
           // home: DoctorDetails(),
-          // home: HealthShopScreen(),
+           home: HealthShopScreen(),
           //home: DescriptionScreen(),
-          home:MedicationDetailsScreen(),
+          //home:MedicationDetailsScreen(),
+
           routes: {},
         );
       },
