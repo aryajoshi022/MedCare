@@ -16,6 +16,62 @@ class ShoppingFilterScreen extends StatefulWidget {
 
 class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
   @override
+  void showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        int quantity = 1;
+        return StatefulBuilder(
+          builder: (context, setState) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset('assets/images/health_shop/productone.png', height: 80),
+                const Text('Promag 10 Tablets', style: TextStyle(fontSize: 18)),
+                const Text('Per Strip'),
+                const SizedBox(height: 8),
+                const Text('Start from: \$2.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        if (quantity > 1) {
+                          setState(() => quantity--);
+                        }
+                      },
+                    ),
+                    Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () => setState(() => quantity++),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));},
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: AppColors.bgPrimary,
+                  ),
+                  child: const Text('Add to Cart',style: TextStyle(color: AppColors.textWhite),),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(child:
@@ -231,7 +287,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                       'Add',
                                       style: TextStyle(fontSize: 16),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {showBottomSheet(context);},
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: AppColors.btnPrimary,
                                       backgroundColor: Colors.white,

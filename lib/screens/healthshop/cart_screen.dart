@@ -107,10 +107,13 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Text('Per Strip',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: AppColors.borderThirsty),),
-              ],
+            Text(
+              '\nPer Strip',
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: AppColors.borderThirsty,
+              ),
             ),
           ],
         ),

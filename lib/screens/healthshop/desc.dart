@@ -18,11 +18,6 @@ class MedicationDetailsScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             // Description Tab
-            Center(child: Text('Description Content')),
-            // Details Tab
-            DetailsTab(),
-            // Reviews Tab
-            Center(child: Text('Reviews Content')),
           ],
         ),
       ),

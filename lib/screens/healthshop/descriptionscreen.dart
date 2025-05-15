@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/healthshop/cart_screen.dart';
 
 import '../../util/constants/colors.dart';
 
@@ -13,15 +14,100 @@ class DescriptionScreen extends StatefulWidget {
 
 class _DescriptionScreenState extends State<DescriptionScreen> {
   @override
+  //ShowBottomSheet
+  void showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        int quantity = 1;
+        return StatefulBuilder(
+          builder:
+              (context, setState) => Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.asset(
+                      'assets/images/health_shop/Bufectstrip_img.png',
+                      height: 80,
+                    ),
+                    const Text(
+                      'Bufect Strip 4 tablets',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    const Text('Per Strip'),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Start from: \$2.00',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.remove),
+                          onPressed: () {
+                            if (quantity > 1) {
+                              setState(() => quantity--);
+                            }
+                          },
+                        ),
+                        Text(
+                          quantity.toString(),
+                          style: const TextStyle(fontSize: 16),
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.add),
+                          onPressed: () => setState(() => quantity++),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CartScreen()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(double.infinity, 50),
+                        backgroundColor: AppColors.bgPrimary,
+                      ),
+                      child: const Text(
+                        'Add to Cart',
+                        style: TextStyle(color: AppColors.textWhite),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+        );
+      },
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset:false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         scrolledUnderElevation: 0.0,
         backgroundColor: AppColors.bgAlert,
-
-        leading: Icon(Icons.chevron_left, color: AppColors.textSecondary),
-        title: Text('Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700),),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+        ),
+        title: Text(
+          'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24),
@@ -104,7 +190,6 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                 SizedBox(height: 32),
 
                 //Benefits
-
                 Text(
                   'Benefits',
                   style: TextStyle(
@@ -777,7 +862,9 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
           height: 51,
           child: ElevatedButton(
             child: Text('Add to cart', style: TextStyle(fontSize: 16)),
-            onPressed: () {},
+            onPressed: () {
+              showBottomSheet(context);
+            },
             style: ElevatedButton.styleFrom(
               foregroundColor: AppColors.textWhite,
               backgroundColor: AppColors.btnPrimary,
@@ -837,7 +924,6 @@ Widget _description() {
         SizedBox(height: 32),
 
         //Benefits
-
         Text(
           'Benefits',
           style: TextStyle(
@@ -898,20 +984,13 @@ Widget _description() {
             ),
           ],
         ),
-
       ],
     ),
   );
 }
 
 Widget _details() {
-  return Scaffold(
-    body: Column(
-      children: [
-
-      ],
-    ),
-  );
+  return Scaffold(body: Column(children: []));
 }
 
 Widget _reviews() {
