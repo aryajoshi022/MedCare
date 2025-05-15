@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import 'package:medcare/screens/chatdoctor/chat_screen.dart';
 import 'package:medcare/screens/chatdoctor/confirmation.dart';
-
 import '../../util/constants/colors.dart';
 class DoctorDetails extends StatefulWidget {
   const DoctorDetails({super.key});
@@ -128,7 +127,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24.w)
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                  // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
                   // side: BorderSide(
                   //   width: 1,
                   //   color: Color(0xff26408B),
@@ -140,7 +139,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                       fontSize: 16,
                       // letterSpacing: 1,
                       color: Colors.white
-                  ),
+                  ),maxLines: 1,overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
@@ -281,9 +280,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
-                    // letterSpacing: 1,
+                    letterSpacing: 1,
                     color: Color(0xff26408B)
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -316,9 +317,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
-                    // letterSpacing: 1,
+                    letterSpacing: 1,
                     color: Color(0xff26408B)
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
@@ -330,7 +333,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   Widget _buildPracticeLocationDropdown(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+      padding: EdgeInsets.only(left: 16.w),
+      // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         color: Color(0xffF9F8FD)
@@ -349,7 +353,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           IconButton(
             onPressed: (){},
             icon: Icon(Icons.keyboard_arrow_down,
-              color: Color(0xff4D4D4D),
+              color: AppColors.btnSecondary,
               size: 24,
             ),
           ),

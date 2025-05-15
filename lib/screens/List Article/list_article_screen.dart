@@ -10,6 +10,7 @@ import '../hospital/detail_hospital.dart';
 import '../hospital/hospital_maps.dart';
 import '../services/services_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:medcare/util/theme/theme.dart';
 
 class ListArticleScreen extends StatefulWidget {
   const ListArticleScreen({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class ListArticleScreen extends StatefulWidget {
 class _ListArticleScreen extends State<ListArticleScreen> {
 
   int _selectedIndex = 3;
+  bool isSelected = true;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -29,44 +31,59 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     });
   }
 
-  final List<Map<String, dynamic>> hospitals = [
+  final List<Map<String, dynamic>> articles = [
     {
-      'img': 'assets/images/Hospitals/ospedale.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => const DetailHospital(),
-      'locationRoute': (BuildContext context) => const HospitalMaps(),
+      'img': 'assets/images/Article/Slider/firest.png',
+      'title': 'Understanding Diabetes: Symptoms, Risk Factors, and Prevention Tips',
+    },
+    {
+      'img': 'assets/images/Article/Slider/Center.png',
+      'title': '5 Tips for Boosting Your Immune System Naturally',
+    },
+    {
+      'img': 'assets/images/Article/Slider/last.png',
+      'title': 'The Importance of Mental Health: Strategies for Stress Management',
+    },
+  ];
+
+  final List<Map<String, dynamic>> hottopic = [
+
+    {
+      'imgPath': 'assets/images/Article/Hot Topic/Mental Health.png',
+      'title': 'Mental Health',
     },
 
     {
-      'img': 'assets/images/Hospitals/Ospedale1.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => const DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
+      'imgPath': 'assets/images/Article/Hot Topic/Lifestyle.png',
+      'title': 'Mental Health',
     },
 
     {
-      'img': 'assets/images/Hospitals/IRCCS.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
-    },
-
-    {
-      'img': 'assets/images/Hospitals/ospedale.png',
-      'name': 'Ospedale San Raffaele',
-      'address': 'Via Olgettina, 60, 20132 Milano MI, Italy',
-      'phone': '(+22) 2361 6257 1726',
-      'bedDetailRoute': (BuildContext context) => DetailHospital(),
-      'locationRoute': (BuildContext context) => const ServicesScreenScreen(),
+      'imgPath': 'assets/images/Article/Hot Topic/Mental Health.png',
+      'title': 'Mental Health',
     },
 
   ];
+
+  final List<Map<String, dynamic>> articleList = [
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults1.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults2.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults3.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -150,6 +167,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                 ),
               ),
               SizedBox(height: 24.h),
+
+              //Hot Article
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -171,15 +190,89 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                       autoPlay: true,
                       aspectRatio: 2.0,
                       enlargeCenterPage: true,
+                      enableInfiniteScroll: true,
                     ),
-                    items: [
-                      _buildItem(),
-                    ],
+                    items: articles.map((item) {
+                      return _buildItem(item['img'], item['title']);
+                    }).toList(),
                   ),
+
                 ],
               ),
+              SizedBox(height: 24.h),
 
+              //Hot Topic
+              Padding(
+                padding: const EdgeInsets.only(left: 28,right: 28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Hot Topic',
+                      style: GoogleFonts.khula(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
+                        color: Color(0xff090909),
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: hottopic.map((topic) {
+                          return Padding(
+                            padding: EdgeInsets.only(right: 12.w),
+                            child: _buildHotTopicBanner(topic['imgPath'], topic['title']),
+                          );
+                        }).toList(),
+                      ),
+                    )
 
+                  ],
+                ),
+              ),
+              SizedBox(height: 24.h),
+
+              //Latest Article
+              Padding(
+                padding: const EdgeInsets.only(left: 28,right: 28),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Latest Article',
+                      style: GoogleFonts.khula(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
+                        color: Color(0xff090909),
+                      ),
+                    ),
+                    SizedBox(height: 16.h),
+                    _buildScheduleDays(context),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 24.h),
+
+              //List View
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 28),
+                child: Column(
+                  children: articleList.map((article) {
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: 12.h),
+                      child: _buildArticleList(
+                        imagePath: article['imgPath'],
+                        articleType: article['type'],
+                        articleDescription: article['description'],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              )
             ],
           ),
         ),
@@ -187,24 +280,26 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     );
   }
 
-  Widget _buildItem() {
+  Widget _buildItem(String imgPath, String title) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: Color(0xffC2E7D9),width:1)
+      ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
         children: [
           Image.asset(
-            'assets/images/Article/Slider/Center.png',
+            imgPath,
             width: 340.w,
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 95,left: 16),
+            padding: const EdgeInsets.only(top: 95, left: 16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  '5 Tips for Boosting Your Immune System Naturally',
+                  title,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
@@ -215,20 +310,14 @@ class _ListArticleScreen extends State<ListArticleScreen> {
               ],
             ),
           ),
-          SizedBox(height: 16.h),
           Padding(
-            padding: const EdgeInsets.only(top: 141,left: 16),
+            padding: const EdgeInsets.only(top: 141, left: 16),
             child: Container(
               height: 23.h,
               width: 87.w,
               child: ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => hospitals[index]['locationRoute'](context),
-                  //   ),
-                  // );
+                  // Add your navigation or action here
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -239,26 +328,148 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                   ),
                 ),
                 child: Center(
-                  child: Row(
-                    children: [
-                      Text(
-                        'Read Article',
-                        style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 10.sp,
-                          letterSpacing: 1,
-                          color: AppColors.textWhite,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    'Read Article',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 10.sp,
+                      letterSpacing: 1,
+                      color: AppColors.textWhite,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-
         ],
       ),
     );
   }
+
+  Widget _buildHotTopicBanner(String imagePath, String productName) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6),
+      side: BorderSide(color: Color(0xffC2E7D9),width: 1)
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          Image.asset(
+            imagePath,
+            width: 160.w,
+            fit: BoxFit.cover,
+          ),
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 35),
+                child: Text(
+                  productName,
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14.sp,
+                    letterSpacing: 1,
+                    color: Color(0xffFFFFFF),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildScheduleDays(BuildContext context) {
+    final days = ['All Article', 'Adults', 'Infants and Toddlers', 'Children'];
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: days.map((day) {
+          bool isSelected = day.startsWith('All Article'); // Highlight Wednesday as in the example
+          return Container(
+            margin: EdgeInsets.only(right: 8.w),
+            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24.w),
+                border: Border.all(width: 1, color: Color(0xffC2E7D9)),
+                color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
+              // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
+            ),
+            child: Text(
+              day,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.khula(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildArticleList({
+    required String imagePath,
+    required String articleType,
+    required String articleDescription,
+  }) {return Container(
+      decoration: BoxDecoration(
+        // border: Border.all(color: Color(0xFFC2E7D9), width: 1),
+        // borderRadius: BorderRadius.circular(6),
+      ),
+      padding: EdgeInsets.all(8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(6),
+            child: Image.asset(
+              imagePath,
+              width: 80.w,
+              // height: 60.h,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    articleType,
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10.sp,
+                      letterSpacing: 1,
+                      color: Color(0xff8F8F8F),
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    articleDescription,
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                      letterSpacing: 1,
+                      color: Color(0xff090909),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );}
+
+
+
 }

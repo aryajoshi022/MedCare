@@ -38,7 +38,7 @@ class _ConfirmationState extends State<Confirmation> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(24.w)
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                          // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
                         // side: BorderSide(
                         //   width: 1,
                         //   color: Color(0xff26408B),
@@ -74,7 +74,7 @@ class _ConfirmationState extends State<Confirmation> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildCustomAppBar(context),
-            SizedBox(height: 24.h),
+            // SizedBox(height: 24.h),
             _buildDoctorInfoCard(context),
             SizedBox(height: 28.h),
             _buildDetailAppointmentCard(context),
@@ -101,19 +101,17 @@ class _ConfirmationState extends State<Confirmation> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
             },
           ),
-          Expanded(
-            child: Center(
-              child: Text(
-                'Confirmation',
-                style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                  color: AppColors.textNormal,
-                ),
-              ),
+          Spacer(flex: 2),
+          Text(
+            'Confirmation',
+            style: GoogleFonts.khula(
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              letterSpacing: 1,
+              color: AppColors.textNormal,
             ),
           ),
+          Spacer(flex: 3),
         ],
       ),
     );
@@ -228,9 +226,11 @@ class _ConfirmationState extends State<Confirmation> {
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
-                              // letterSpacing: 1,
+                              letterSpacing: 1,
                               color: Color(0xff26408B)
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
@@ -263,9 +263,11 @@ class _ConfirmationState extends State<Confirmation> {
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
-                              // letterSpacing: 1,
+                              letterSpacing: 1,
                               color: Color(0xff26408B)
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),

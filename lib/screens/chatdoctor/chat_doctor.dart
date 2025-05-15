@@ -85,7 +85,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildCustomAppBar(context),
-            SizedBox(height: 24.h),
+            // SizedBox(height: 24.h),
             _buildSearchField(context),
             SizedBox(height: 24.h),
             Expanded(
@@ -169,7 +169,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 14.w),
+        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 6.w),
         // margin: EdgeInsets.symmetric(horizontal: 28.w),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -200,6 +200,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
                       letterSpacing: 1,
                       color: Color(0xff090909),
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 10.h),
                   // SizedBox(height: 4.h),
@@ -211,6 +213,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
                       letterSpacing: 1,
                       color: Color(0xff4D4D4D),
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 10.h),
                   // SizedBox(height: 6.h),
@@ -228,6 +232,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
                         letterSpacing: 1,
                         color: Color(0xff4D4D4D),
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
@@ -240,7 +246,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
               },
               icon: Icon(Icons.chevron_right,
-                color: Color(0xff4D4D4D),
+                color: AppColors.btnSecondary,
               ),
               constraints: BoxConstraints.loose(Size.fromWidth(2)),
             ),

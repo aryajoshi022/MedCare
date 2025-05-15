@@ -65,9 +65,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 Icons.chevron_left,
                 color: AppColors.btnSecondary
             ),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
-            },
+            onPressed: () {},
           ),
           Spacer(flex: 2,),
           Text(
@@ -804,7 +802,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
                         side: BorderSide(color: AppColors.borderThirsty, width: 1),
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                        // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                       ),
                       onPressed: () => Navigator.of(ctx).pop(),
                       child: Text(
@@ -823,7 +821,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                        // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                         backgroundColor: AppColors.btnPrimary,
                       ),
                       onPressed: () => Navigator.of(ctx).pop(),
@@ -966,7 +964,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           style: TextButton.styleFrom(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
                             side: BorderSide(color: AppColors.borderThirsty, width: 1),
-                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                            // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                           ),
                           onPressed: () => Navigator.of(context).pop(),
                           child: Text(
@@ -985,7 +983,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                            // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                             backgroundColor: AppColors.btnPrimary,
                           ),
                           onPressed: () => Navigator.of(context).pop(),
@@ -1063,7 +1061,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   ),
                   SizedBox(height: 36.h),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                    // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.w),
                       border: Border.all(
@@ -1101,7 +1100,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24.w)),
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
+                        // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                         backgroundColor: AppColors.btnPrimary,
                       ),
                       onPressed: () {

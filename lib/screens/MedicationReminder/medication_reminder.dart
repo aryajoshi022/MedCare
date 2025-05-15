@@ -24,7 +24,7 @@ class _MedicationReminderState extends State<MedicationReminder> {
           child: Column(
             children: [
               _buildCustomAppBar(),
-              SizedBox(height: 31.h),
+              // SizedBox(height: 31.h),
               _buildReminderOfMedicine(),
               SizedBox(height: 24.h),
               _buildHistoryOfMedicine(),
