@@ -151,7 +151,14 @@ class _ChatDoctorState extends State<ChatDoctor> {
             fontSize: 14,
             color: Color(0xff8F8F8F),
           ),
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            borderSide: BorderSide(
+                color: Color(0xFFC2E7D9),
+                width: 1
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12.0),
             borderSide: BorderSide(
                 color: Color(0xFFC2E7D9),
@@ -159,7 +166,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
             ),
           ),
           filled: true,
-          fillColor: Color(0xffF9F9F9),
+          fillColor: AppColors.btnInputField,
         ),
       ),
     );
@@ -203,8 +210,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 10.h),
-                  // SizedBox(height: 4.h),
+                  // SizedBox(height: 10.h),
+                  SizedBox(height: 4.h),
                   Text(
                     '${doctor['specialty']!} • ${doctor['experience']!}',
                     style: GoogleFonts.khula(
@@ -216,8 +223,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 10.h),
-                  // SizedBox(height: 6.h),
+                  // SizedBox(height: 10.h),
+                  SizedBox(height: 6.h),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
                     decoration: BoxDecoration(

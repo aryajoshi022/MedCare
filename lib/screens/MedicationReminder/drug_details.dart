@@ -13,6 +13,33 @@ class DrugDetails extends StatefulWidget {
 
 class _DrugDetailsState extends State<DrugDetails> {
   bool _notificationsEnabled = true;
+  final List<String> dropdownLabels = [
+    'Dosage',
+    'Period of Taking Medicine',
+    'How Many Times a Day',
+    'Time to Take Medicine',
+    'Drinking Rules',
+    'Drinking Start Date',
+    'Duration of Consumption',
+  ];
+  final Map<String, String?> selectedDropdownValues = {
+    'Dosage': null,
+    'Period of Taking Medicine': null,
+    'How Many Times a Day': null,
+    'Time to Take Medicine': null,
+    'Drinking Rules': null,
+    'Drinking Start Date': null,
+    'Duration of Consumption': null,
+  };
+  final Map<String, List<String>> dropdownOptions = {
+    'Dosage': ['2.0 Caplets'],
+    'Period of Taking Medicine': ['Every Day'],
+    'How Many Times a Day': ['2 Times'],
+    'Time to Take Medicine': ['07.00, 12.00'],
+    'Drinking Rules': ['After Meals'],
+    'Drinking Start Date': ['Monday, February 19, 2024'],
+    'Duration of Consumption': ['2 Weeks'],
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -27,36 +54,7 @@ class _DrugDetailsState extends State<DrugDetails> {
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.w),
-                        border: Border.all(color: AppColors.borderBtn, width: 1),
-                        color: AppColors.borderThirsty
-                      ),
-                      padding: EdgeInsets.all(24.w),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Paracetamol 500 mg',
-                            style: GoogleFonts.khula(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                letterSpacing: 1,
-                                color: AppColors.textNormal
-                            ),
-                          ),
-                          SizedBox(height: 12.h),
-                          Text('Take 1 tablet every 6 hours as needed to reduce fever or pain.',
-                            style: GoogleFonts.khula(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14,
-                                letterSpacing: 1,
-                                color: AppColors.textSecondary
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    _buildDrugInfo(),
                     SizedBox(height: 24.h),
                     _buildMedicineDetails(),
                     SizedBox(height: 24.h),
@@ -83,7 +81,8 @@ class _DrugDetailsState extends State<DrugDetails> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.w)
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                padding: EdgeInsets.only(left: 10.w)
             ),
             child: Text('Save',
               style: GoogleFonts.khula(
@@ -129,196 +128,32 @@ class _DrugDetailsState extends State<DrugDetails> {
     );
   }
 
-  Widget _buildMedicineDetails() {
+  Widget _buildDrugInfo() {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.w),
           border: Border.all(color: AppColors.borderBtn, width: 1),
-          color: AppColors.bgAlert
+          color: AppColors.borderThirsty
       ),
       padding: EdgeInsets.all(24.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Medicine Details',
-                style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: AppColors.textNormal
-                ),
-              ),
-              SizedBox(height: 14.h),
-              Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  // borderRadius: BorderRadius.circular(40.w),
-                  border: Border.all(color: AppColors.borderBtn, width: 1),
-                  color: AppColors.bgAlert
-                ),
-                padding: EdgeInsets.all(18.w),
-                child: IconButton(
-                  onPressed: (){},
-                  icon: Image.asset(
-                    'assets/icons/Camera_Linear.png',
-                    width: 44.w,
-                    height: 44.h,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 24.h),
-          Text('Dosage',
+          Text('Paracetamol 500 mg',
             style: GoogleFonts.khula(
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
+                fontSize: 16,
                 letterSpacing: 1,
                 color: AppColors.textNormal
             ),
           ),
           SizedBox(height: 12.h),
-          Container(
-            padding: EdgeInsets.only(left: 14.w),
-            // padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.w),
-              border: Border.all(width: 1, color: AppColors.borderSecondary)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Choose',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      // letterSpacing: 1,
-                      color: AppColors.textDisabled
-                  ),
-                ),
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.keyboard_arrow_down,
-                    color: AppColors.btnSecondary,
-                    size: 16,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 24.h),
-          Text('Period of Taking Medicine',
+          Text('Take 1 tablet every 6 hours as needed to reduce fever or pain.',
             style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w400,
                 fontSize: 14,
                 letterSpacing: 1,
-                color: AppColors.textNormal
-            ),
-          ),
-          SizedBox(height: 12.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.w),
-                border: Border.all(width: 1, color: AppColors.borderSecondary)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Choose',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      // letterSpacing: 1,
-                      color: AppColors.textDisabled
-                  ),
-                ),
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.keyboard_arrow_down,
-                    color: Color(0xff4D4D4D),
-                    size: 24,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 24.h),
-          Text('How Many Times a Day',
-            style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-                letterSpacing: 1,
-                color: AppColors.textNormal
-            ),
-          ),
-          SizedBox(height: 12.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.w),
-                border: Border.all(width: 1, color: AppColors.borderSecondary)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Choose',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      // letterSpacing: 1,
-                      color: AppColors.textDisabled
-                  ),
-                ),
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.keyboard_arrow_down,
-                    color: Color(0xff4D4D4D),
-                    size: 24,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 24.h),
-          Text('Time to Take Medicine',
-            style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
-                letterSpacing: 1,
-                color: AppColors.textNormal
-            ),
-          ),
-          SizedBox(height: 12.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.w),
-                border: Border.all(width: 1, color: AppColors.borderSecondary)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Choose',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      // letterSpacing: 1,
-                      color: AppColors.textDisabled
-                  ),
-                ),
-                IconButton(
-                  onPressed: (){},
-                  icon: Icon(Icons.keyboard_arrow_down,
-                    color: Color(0xff4D4D4D),
-                    size: 24,
-                  ),
-                ),
-              ],
+                color: AppColors.textSecondary
             ),
           ),
         ],
@@ -326,9 +161,148 @@ class _DrugDetailsState extends State<DrugDetails> {
     );
   }
 
+  Widget _buildMedicineDetails() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6.w),
+        border: Border.all(color: AppColors.borderBtn, width: 1),
+        color: AppColors.bgAlert,
+      ),
+      padding: EdgeInsets.all(24.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Medicine Details',
+            style: GoogleFonts.khula(
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              letterSpacing: 1,
+              color: AppColors.textNormal,
+            ),
+          ),
+          SizedBox(height: 14.h),
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.borderSecondary, width: 1),
+              color: AppColors.bgAlert,
+            ),
+            padding: EdgeInsets.all(18.w),
+            child: IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'assets/icons/Camera_Linear.png',
+                width: 44.w,
+                height: 44.h,
+                fit: BoxFit.contain,
+                color: AppColors.borderSecondary,
+              ),
+            ),
+          ),
+          SizedBox(height: 24.h),
+          for (var label in dropdownLabels) ...[
+            _buildDropdownField(label),
+            SizedBox(height: 24.h),
+          ],
+          Text(
+            'Notes (Optional)',
+            style: GoogleFonts.khula(
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+              letterSpacing: 1,
+              color: AppColors.textNormal,
+            ),
+          ),
+          SizedBox(height: 12.h),
+          TextField(
+            maxLines: 1,
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+              hintText: "Add your notes",
+              hintStyle: GoogleFonts.khula(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                letterSpacing: 1,
+                color: AppColors.textDisabled,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6.w),
+                borderSide: BorderSide(width: 1, color: AppColors.borderSecondary),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6.w),
+                borderSide: BorderSide(width: 1, color: AppColors.borderSecondary),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDropdownField(String label) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: GoogleFonts.khula(
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+            letterSpacing: 1,
+            color: AppColors.textNormal,
+          ),
+        ),
+        SizedBox(height: 12.h),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 14.w),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.w),
+            border: Border.all(width: 1, color: AppColors.borderSecondary),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              borderRadius: BorderRadius.circular(6.w),
+              dropdownColor: AppColors.bgAlert,
+              value: selectedDropdownValues[label],
+              hint: Text(
+                'Choose',
+                style: GoogleFonts.khula(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                  color: AppColors.textDisabled,
+                ),
+              ),
+              isExpanded: true,
+              icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnArrow,size: 16),
+              items: dropdownOptions[label]!
+                  .map((option) => DropdownMenuItem<String>(
+                value: option,
+                child: Text(
+                  option,
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: AppColors.textBtn,
+                  ),
+                ),
+              )).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedDropdownValues[label] = value;
+                });
+              },
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   Widget _buildActivateNotificationsSection(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 17.w, vertical: 14.h),
+      padding: EdgeInsets.only(left: 17.w, right: 19.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.w),
         border: Border.all(
@@ -358,6 +332,7 @@ class _DrugDetailsState extends State<DrugDetails> {
             ],
           ),
           Switch(
+            padding: EdgeInsets.all(3.w),
             value: _notificationsEnabled,
             activeColor: AppColors.btnGrey,
             activeTrackColor: AppColors.btnPrimary,// Replace with actual state

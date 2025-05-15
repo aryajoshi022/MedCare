@@ -59,7 +59,8 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.w)
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
+                padding: EdgeInsets.only(left: 10)
               // side: BorderSide(
               //   width: 1,
               //   color: Color(0xff26408B),

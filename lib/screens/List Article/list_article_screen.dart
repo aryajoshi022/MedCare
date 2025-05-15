@@ -418,7 +418,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     required String imagePath,
     required String articleType,
     required String articleDescription,
-  }) {return Container(
+  }) {
+    return Container(
       decoration: BoxDecoration(
         // border: Border.all(color: Color(0xFFC2E7D9), width: 1),
         // borderRadius: BorderRadius.circular(6),
@@ -468,7 +469,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
           )
         ],
       ),
-    );}
+    );
+  }
 
 
 

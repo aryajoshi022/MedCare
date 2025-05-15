@@ -214,30 +214,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ),
       ],
     );
-    // return ListView(
-    //   padding: EdgeInsets.symmetric(horizontal: 28.w),
-    //   children: [
-    //     _buildAppointmentCard(
-    //       doctorName: 'Dr. Giovanni Bianchi',
-    //       specialty: 'General Surgery',
-    //       date: 'Wednesday, 29 Feb 04.00 pm',
-    //       location: 'Bella Vista Surgery Clinic, Via Garibaldi 10, Milan, Italy',
-    //       notificationsOn: null,
-    //       actionLabel: 'Add Review',
-    //       onAction: _showReviewSheet,
-    //     ),
-    //     SizedBox(height: 16.h),
-    //     _buildAppointmentCard(
-    //       doctorName: 'Dr. Giovanni Bianchi',
-    //       specialty: 'General Surgery',
-    //       date: 'Wednesday, 29 Feb 04.00 pm',
-    //       location: 'Bella Vista Surgery Clinic, Via Garibaldi 10, Milan, Italy',
-    //       notificationsOn: null,
-    //       actionLabel: 'Next Appointment',
-    //       onAction: _showReviewSheet,
-    //     ),
-    //   ],
-    // );
   }
 
   Widget _buildUpcomingCard({

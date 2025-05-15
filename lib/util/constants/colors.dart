@@ -27,6 +27,7 @@ class AppColors {
   static const Color btnSuccess = Color(0xFF36F279);
   static const Color btnColor = Color(0xFFF9F8FD);
   static const Color btnWhite = Color(0xFFFAFAFA);
+  static const Color btnArrow = Color(0xFF334155);
 
   // Stroke Colors
   static const Color borderPrimary = Color(0xFF4F4F4F);
