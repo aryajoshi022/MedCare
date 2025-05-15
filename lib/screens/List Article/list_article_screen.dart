@@ -70,6 +70,37 @@ class _ListArticleScreen extends State<ListArticleScreen> {
       'imgPath': 'assets/images/Article/Article List/Adults1.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ChatDoctor()
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults2.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults3.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults1.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults2.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults3.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
+    },
+    {
+      'imgPath': 'assets/images/Article/Article List/Adults1.png',
+      'type': 'Adults',
+      'description': 'Getting to know Hanta Virus Disease from Rodents',
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults2.png',
@@ -84,9 +115,32 @@ class _ListArticleScreen extends State<ListArticleScreen> {
   ];
 
 
+  List<Map<String, String>> filteredArticles = [];
+
+  TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _filteredArticles = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(_filterArticles);
+  }
+
+  void _filterArticles() {
+    String query = _searchController.text.toLowerCase();
+    setState(() {
+      _filteredArticles = articleList.where((article) {
+        return article['type'].toLowerCase().contains(query) ||
+            article['description'].toLowerCase().contains(query);
+      }).toList();
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    bool isSearching = _searchController.text.isNotEmpty;
+
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(
         selectedIndex: _selectedIndex,
@@ -95,7 +149,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             _selectedIndex = index;
           });
         },
-      ),      body: SingleChildScrollView(
+      ),
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 60),
           child: Column(
@@ -129,6 +184,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                       Container(
                         width: 330.w,
                         child: TextField(
+                          controller: _searchController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 16, top: 14),
                             prefixIconColor: Color(0xff8F8F8F),
@@ -166,113 +222,157 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: 24.h),
 
-              //Hot Article
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 28),
-                    child: Text(
-                      'Hot Article',
-                      style: GoogleFonts.khula(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                        color: Color(0xff090909),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16.h),
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      aspectRatio: 2.0,
-                      enlargeCenterPage: true,
-                      enableInfiniteScroll: true,
-                    ),
-                    items: articles.map((item) {
-                      return _buildItem(item['img'], item['title']);
-                    }).toList(),
-                  ),
-
-                ],
-              ),
-              SizedBox(height: 24.h),
-
-              //Hot Topic
-              Padding(
-                padding: const EdgeInsets.only(left: 28,right: 28),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hot Topic',
-                      style: GoogleFonts.khula(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                        color: Color(0xff090909),
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: hottopic.map((topic) {
-                          return Padding(
-                            padding: EdgeInsets.only(right: 12.w),
-                            child: _buildHotTopicBanner(topic['imgPath'], topic['title']),
-                          );
-                        }).toList(),
-                      ),
-                    )
-
-                  ],
-                ),
-              ),
-              SizedBox(height: 24.h),
-
-              //Latest Article
-              Padding(
-                padding: const EdgeInsets.only(left: 28,right: 28),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Latest Article',
-                      style: GoogleFonts.khula(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 1,
-                        color: Color(0xff090909),
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-                    _buildScheduleDays(context),
-
-                  ],
-                ),
-              ),
-              SizedBox(height: 24.h),
-
-              //List View
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 28),
-                child: Column(
-                  children: articleList.map((article) {
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 12.h),
-                      child: _buildArticleList(
+              // Show this only when searching
+              if (isSearching)
+                Padding(
+                  padding: const EdgeInsets.only(left: 28,right: 28,top: 24),
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: _filteredArticles.length,
+                    itemBuilder: (context, index) {
+                      final article = _filteredArticles[index];
+                      return _buildArticleList(
                         imagePath: article['imgPath'],
                         articleType: article['type'],
                         articleDescription: article['description'],
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                              builder: (context) => article['route']!(context),
+                          ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                )
+
+              else
+              Column(
+                children: [
+
+                  //Hot Article
+                  SizedBox(height: 24.h),
+                  Column(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 28),
+                            child: Text(
+                              'Hot Article',
+                              style: GoogleFonts.khula(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 1,
+                                color: Color(0xff090909),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 16.h),
+                          CarouselSlider(
+                            options: CarouselOptions(
+                              autoPlay: true,
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: true,
+                              enableInfiniteScroll: true,
+                            ),
+                            items: articles.map((item) {
+                              return _buildItem(item['img'], item['title']);
+                            }).toList(),
+                          ),
+
+                        ],
                       ),
-                    );
-                  }).toList(),
-                ),
-              )
+                    ],
+                  ),
+                  SizedBox(height: 24.h),
+
+                  //Hot Topic
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28,right: 28),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hot Topic',
+                          style: GoogleFonts.khula(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                            color: Color(0xff090909),
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: hottopic.map((topic) {
+                              return Padding(
+                                padding: EdgeInsets.only(right: 12.w),
+                                child: _buildHotTopicBanner(topic['imgPath'], topic['title']),
+                              );
+                            }).toList(),
+                          ),
+                        )
+
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+
+                  //Latest Article
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28,right: 28),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Latest Article',
+                          style: GoogleFonts.khula(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                            color: Color(0xff090909),
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        _buildScheduleDays(context),
+
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+
+                  //List View
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 28),
+                    child: Column(
+                      children: articleList.map((article) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 12.h),
+                          child: _buildArticleList(
+                            imagePath: article['imgPath'],
+                            articleType: article['type'],
+                            articleDescription: article['description'],
+                            onTap: article.containsKey('route')
+                                ? () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => article['route'](context)),
+                            )
+                                : null,
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  )
+                ],
+              ),
             ],
           ),
         ),
@@ -321,7 +421,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  backgroundColor: AppColors.btnPrimary,
+                  backgroundColor: Color(0xff26408B),
                   foregroundColor: AppColors.textWhite,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4.w),
@@ -418,58 +518,63 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     required String imagePath,
     required String articleType,
     required String articleDescription,
-  }) {return Container(
-      decoration: BoxDecoration(
-        // border: Border.all(color: Color(0xFFC2E7D9), width: 1),
-        // borderRadius: BorderRadius.circular(6),
-      ),
-      padding: EdgeInsets.all(8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(6),
-            child: Image.asset(
-              imagePath,
-              width: 80.w,
-              // height: 60.h,
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(width: 12.w),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    articleType,
-                    style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 10.sp,
-                      letterSpacing: 1,
-                      color: Color(0xff8F8F8F),
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    articleDescription,
-                    style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
-                      letterSpacing: 1,
-                      color: Color(0xff090909),
-                    ),
-                  ),
-                ],
+    required VoidCallback? onTap,
+
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          // border: Border.all(color: Color(0xFFC2E7D9), width: 1),
+          // borderRadius: BorderRadius.circular(6),
+        ),
+        padding: EdgeInsets.all(8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(6),
+              child: Image.asset(
+                imagePath,
+                width: 80.w,
+                // height: 60.h,
+                fit: BoxFit.cover,
               ),
             ),
-          )
-        ],
+            SizedBox(width: 12.w),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      articleType,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10.sp,
+                        letterSpacing: 1,
+                        color: Color(0xff8F8F8F),
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      articleDescription,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        letterSpacing: 1,
+                        color: Color(0xff090909),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
       ),
-    );}
-
-
+    );
+  }
 
 }
