@@ -45,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
+        automaticallyImplyLeading: false,
         title: Row(
           children: [
             Text.rich(
