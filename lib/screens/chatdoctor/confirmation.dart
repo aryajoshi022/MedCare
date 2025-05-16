@@ -391,7 +391,8 @@ class _ConfirmationState extends State<Confirmation> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
+        padding: EdgeInsets.only(left: 17.w, right: 19.w),
+        // padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.w),
           border: Border.all(

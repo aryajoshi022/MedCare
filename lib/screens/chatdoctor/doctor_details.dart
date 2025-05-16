@@ -14,6 +14,7 @@ class DoctorDetails extends StatefulWidget {
 
 class _DoctorDetailsState extends State<DoctorDetails> {
   bool isSelected = false;
+  bool _isLocationExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +54,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                         color: Color(0xff090909)
                     ),
                   ),
-                  SizedBox(height: 16.h),
+                  // SizedBox(height: 16.h),
                   _buildWorkingHoursGrid(context),
                   SizedBox(height: 29.h),
                   Text(
@@ -333,30 +334,80 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   Widget _buildPracticeLocationDropdown(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16.w),
-      // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
-        color: Color(0xffF9F8FD)
+        color: const Color(0xffF9F8FD),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Rossi Cardiology Clinic',
-            style: GoogleFonts.khula(
-              fontWeight: FontWeight.w600,
-              fontSize: 14,
-              // letterSpacing: 1,
-              color: Color(0xff26408B)
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _isLocationExpanded = !_isLocationExpanded;
+              });
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Rossi Cardiology Clinic',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14,
+                    color: const Color(0xff26408B),
+                  ),
+                ),
+                AnimatedRotation(
+                  turns: _isLocationExpanded ? 0.5 : 0,
+                  duration: Duration(milliseconds: 200),
+                  child: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: AppColors.btnSecondary,
+                    size: 24,
+                  ),
+                ),
+              ],
             ),
           ),
-          IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.keyboard_arrow_down,
-              color: AppColors.btnSecondary,
-              size: 24,
+          if (_isLocationExpanded) ...[
+            SizedBox(height: 13.h),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.location_on_outlined, size: 14, color: AppColors.textSecondary),
+                SizedBox(width: 6.w),
+                Expanded(
+                  child: Text(
+                    'Rossi Cardiology Clinic Via Garibaldi 15, Milan, Italy',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: AppColors.textSecondary,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
             ),
-          ),
+            SizedBox(height: 12.h),
+            Row(
+              children: [
+                Icon(Icons.phone, size: 14, color: AppColors.textSecondary),
+                SizedBox(width: 6.w),
+                Text(
+                  '(+21) 6125 7162  7126',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Color(0xff7266D7),
+                  ),
+                ),
+              ],
+            ),
+          ]
         ],
       ),
     );
