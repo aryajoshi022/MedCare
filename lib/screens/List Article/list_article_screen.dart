@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
-import '../../widgets/categories/categories_widget.dart';
-import '../home/home_screen.dart';
-import '../hospital/detail_hospital.dart';
-import '../hospital/hospital_maps.dart';
 import '../services/services_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:medcare/util/theme/theme.dart';
+import 'article_details_screen.dart';
 
 class ListArticleScreen extends StatefulWidget {
   const ListArticleScreen({Key? key}) : super(key: key);
@@ -70,47 +65,55 @@ class _ListArticleScreen extends State<ListArticleScreen> {
       'imgPath': 'assets/images/Article/Article List/Adults1.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
-      'route': (BuildContext context) => const ChatDoctor()
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults2.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults3.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults1.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults2.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults3.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults1.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults2.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
     {
       'imgPath': 'assets/images/Article/Article List/Adults3.png',
       'type': 'Adults',
       'description': 'Getting to know Hanta Virus Disease from Rodents',
+      'route': (BuildContext context) => const ArticleDetailsScreen()
     },
   ];
 
