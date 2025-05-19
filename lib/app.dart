@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/MedicationReminder/medication_reminder.dart';
 import 'package:medcare/screens/home/home_screen.dart';
+import 'package:medcare/screens/profile/prescription_history.dart';
 import 'package:medcare/splashscreen.dart';
 import 'package:medcare/util/theme/theme.dart';
 
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-          home: const HomeScreen(),
+          home: PrescriptionHistory(),
           // home: SplashScreen(),
           // home: ChatDoctor(),
           // home: DoctorDetails(),

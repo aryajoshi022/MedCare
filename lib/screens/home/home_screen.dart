@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 IconButton(
-                  icon: Image.asset('assets/icons/cart.png', height: 24.h),
+                  icon: Image.asset('assets/icons/Notifications.png', height: 24.h),
                   onPressed: () {
                     // Cart action
                   },

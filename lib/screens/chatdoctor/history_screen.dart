@@ -30,7 +30,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
     '4.00 PM',
   ];
   String _selectedHour = '';
-  final List<String> _scheduleDays = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
+  final List<String> _scheduleDays = [
+    'Wed\n22',
+    'Thu\n23',
+    'Fri\n24',
+    'Sat\n25',
+    'Sun\n26',
+    'Mon\n27'
+  ];
   String _selectedDay = '';
 
   @override
@@ -309,7 +316,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           child: Row(
             children: [
               Image.asset(
-                'assets/icons/cart.png',
+                'assets/icons/Notifications.png',
                 height: 16.h,
                 color: AppColors.textSecondary,
               ),
