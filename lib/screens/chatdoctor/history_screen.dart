@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/chatdoctor/appointment_success.dart';
-
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
@@ -23,6 +21,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
     'Dr. Luca Rossi': false,
   };
   double rating = 0;
+  final List<String> _workingHours = [
+    '9.00 AM',
+    '10.00 AM',
+    '1.00 PM',
+    '2.00 PM',
+    '3.00 PM',
+    '4.00 PM',
+  ];
+  String _selectedHour = '';
+  final List<String> _scheduleDays = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
+  String _selectedDay = '';
 
   @override
   Widget build(BuildContext context) {
@@ -629,192 +638,185 @@ class _HistoryScreenState extends State<HistoryScreen> {
   }
 
   void _showRescheduleSheet() {
-    final days = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
     showModalBottomSheet(
       backgroundColor: AppColors.bgAlert,
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
       ),
-      builder: (ctx) => DraggableScrollableSheet(
-        expand: false,
-        initialChildSize: 0.5,
-        minChildSize: 0.3,
-        maxChildSize: 0.8,
-        builder: (ctx, scrollCtrl) => Padding(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(ctx).viewInsets.bottom + 36.h,
-            top: 16.h,
-            left: 24.w,
-            right: 24.w,
-          ),
-          child: ListView(
-            controller: scrollCtrl,
-            children: [
-              Center(
-                child: Container(
-                  width: 80.w,
-                  height: 4.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.borderSecondary,
-                    borderRadius: BorderRadius.circular(4.w),
+      builder: (ctx) => StatefulBuilder(
+        builder: (context, setModalState) => DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.5,
+          minChildSize: 0.3,
+          maxChildSize: 0.8,
+          builder: (ctx, scrollCtrl) => Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(ctx).viewInsets.bottom + 36.h,
+              top: 16.h,
+              left: 24.w,
+              right: 24.w,
+            ),
+            child: ListView(
+              controller: scrollCtrl,
+              children: [
+                Center(
+                  child: Container(
+                    width: 80.w,
+                    height: 4.h,
+                    decoration: BoxDecoration(
+                      color: AppColors.borderSecondary,
+                      borderRadius: BorderRadius.circular(4.w),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 34.h),
-              Center(
-                child: Text(
-                  'Reschedule Appointment',
-                  style: GoogleFonts.khula(
+                SizedBox(height: 34.h),
+                Center(
+                  child: Text(
+                    'Reschedule Appointment',
+                    style: GoogleFonts.khula(
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
                       letterSpacing: 1,
-                      color: AppColors.textNormal
+                      color: AppColors.textNormal,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 36.h),
-              Text(
-                'Working Hours',
-                style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                  color: AppColors.textSecondary
-                ),
-              ),
-              SizedBox(height: 16.h),
-              GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 4,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                childAspectRatio: 2.0,
-                children: <String>[
-                  '9.00 AM',
-                  '10.00 AM',
-                  '1.00 PM',
-                  '2.00 PM',
-                  '3.00 PM',
-                  '4.00 PM',
-                ].map((time) {
-                  return Container(
-                    // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 21.5.h),
-                    padding: EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.w),
-                        border: Border.all(
-                            width: 1.w,
-                            color: Color(0xffE3E3E3)
-                        ),
-                        // color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-                    ),
-                    child: Center(
-                      child: Text(
-                        time,
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            color: AppColors.textSecondary
-                            // letterSpacing: 1,
-                            // color: isSelected ? AppColors.textWhite : AppColors.textSecondary
-                        ),
-                        // textAlign: TextAlign.center,
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-              SizedBox(height: 24.h),
-              Text(
-                'Schedule',
-                style: GoogleFonts.khula(
+                SizedBox(height: 36.h),
+                Text(
+                  'Working Hours',
+                  style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
                     letterSpacing: 1,
-                    color: AppColors.textSecondary
+                    color: AppColors.textSecondary,
+                  ),
                 ),
-              ),
-              SizedBox(height: 16.h),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: days.map((day) {
-                    // bool isSelected = day.startsWith('Wed'); // Highlight Wednesday as in the example
-                    return Container(
-                      margin: EdgeInsets.only(right: 12),
-                      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6.0),
-                          border: Border.all(width: 1, color: Color(0xffE3E3E3)),
-                          color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-                        // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
-                      ),
-                      child: Center(
-                        child: Text(
-                          day,
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              // color: isSelected ? Color(0xff26408B) : Color(0xff4D4D4D),
+                SizedBox(height: 16.h),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1.75,
+                  children: _workingHours.map((time) {
+                    bool isSelected = time == _selectedHour;
+                    return GestureDetector(
+                      onTap: () {
+                        setModalState(() {
+                          _selectedHour = time;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6.w),
+                          border: Border.all(width: 1.w, color: AppColors.borderBtn),
+                          color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
+                        ),
+                        child: Center(
+                          child: Text(
+                            time,
+                            style: GoogleFonts.khula(
+                              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                               fontSize: 14,
-                              color: AppColors.textSecondary
-                              // color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+                              color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                            ),
                           ),
                         ),
                       ),
                     );
                   }).toList(),
                 ),
-              ),
-              SizedBox(height: 36.h),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                        side: BorderSide(color: AppColors.borderThirsty, width: 1),
-                        // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-                      ),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                      child: Text(
-                        'Cancel',
-                        style: GoogleFonts.khula(
+                SizedBox(height: 24.h),
+                Text(
+                  'Schedule',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    letterSpacing: 1,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                SizedBox(height: 16.h),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: _scheduleDays.map((day) {
+                      bool isSelected = day == _selectedDay;
+                      return GestureDetector(
+                        onTap: () {
+                          setModalState(() {
+                            _selectedDay = day;
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(right: 12.w),
+                          padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6.w),
+                            border: Border.all(width: 1, color: AppColors.borderBtn),
+                            color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
+                          ),
+                          child: Text(
+                            day,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.khula(
+                              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                              fontSize: 14,
+                              color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+                SizedBox(height: 36.h),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                          side: BorderSide(color: AppColors.borderThirsty, width: 1),
+                        ),
+                        onPressed: () => Navigator.of(ctx).pop(),
+                        child: Text(
+                          'Cancel',
+                          style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                             letterSpacing: 1,
-                            color: AppColors.textBtn
+                            color: AppColors.textBtn,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 8.w),
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                        // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-                        backgroundColor: AppColors.btnPrimary,
-                      ),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                      child: Text(
-                        'Reschedule',
-                        style: GoogleFonts.khula(
+                    SizedBox(width: 8.w),
+                    Expanded(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                          backgroundColor: AppColors.btnPrimary,
+                        ),
+                        onPressed: () => Navigator.of(ctx).pop(),
+                        child: Text(
+                          'Reschedule',
+                          style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                             letterSpacing: 1,
-                            color: AppColors.textWhite
+                            color: AppColors.textWhite,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

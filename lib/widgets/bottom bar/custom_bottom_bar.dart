@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 
 import '../../screens/chatdoctor/history_screen.dart';
+import '../../screens/profile/profile_screen.dart';
 import '../../screens/services/services_screen.dart';
 
 class CustomBottomAppBar extends StatefulWidget {
@@ -43,7 +44,10 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
         );
         break;
       case 3:
-      // Navigate to Profile Screen
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const ProfileScreen()),
+        );
         break;
     }
   }

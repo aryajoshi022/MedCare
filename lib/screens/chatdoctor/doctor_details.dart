@@ -15,6 +15,17 @@ class DoctorDetails extends StatefulWidget {
 class _DoctorDetailsState extends State<DoctorDetails> {
   bool isSelected = false;
   bool _isLocationExpanded = false;
+  final List<String> _workingHours = [
+    '9.00 AM',
+    '10.00 AM',
+    '1.00 PM',
+    '2.00 PM',
+    '3.00 PM',
+    '4.00 PM',
+  ];
+  String _selectedHour = '';
+  final List<String> _scheduleDays = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
+  String _selectedDay = '';
 
   @override
   Widget build(BuildContext context) {
@@ -421,35 +432,29 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       crossAxisSpacing: 12,
       mainAxisSpacing: 12,
       childAspectRatio: 1.75,
-      children: <String>[
-        '9.00 AM',
-        '10.00 AM',
-        '1.00 PM',
-        '2.00 PM',
-        '3.00 PM',
-        '4.00 PM',
-      ].map((time) {
-        return Container(
-          // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 21.5.h),
-          // padding: EdgeInsets.all(14.w),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6.w),
-            border: Border.all(
-                width: 1.w,
-                color: Color(0xffE3E3E3)
+      children: _workingHours.map((time) {
+        bool isSelected = time == _selectedHour;
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              _selectedHour = time;
+            });
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(6.w),
+              border: Border.all(width: 1.w, color: AppColors.borderBtn),
+              color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
             ),
-            color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-          ),
-          child: Center(
-            child: Text(
-              time,
-              style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w400,
+            child: Center(
+              child: Text(
+                time,
+                style: GoogleFonts.khula(
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   fontSize: 14,
-                  // letterSpacing: 1,
-                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                ),
               ),
-              // textAlign: TextAlign.center,
             ),
           ),
         );
@@ -458,29 +463,33 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   }
 
   Widget _buildScheduleDays(BuildContext context) {
-    final days = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: days.map((day) {
-          // bool isSelected = day.startsWith('Wed'); // Highlight Wednesday as in the example
-          return Container(
-            margin: EdgeInsets.only(right: 12.w),
-            padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.w),
-              border: Border.all(width: 1, color: Color(0xffE3E3E3)),
-              color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-              // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
-            ),
-            child: Text(
-              day,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.khula(
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+        children: _scheduleDays.map((day) {
+          bool isSelected = day == _selectedDay;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedDay = day;
+              });
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 12.w),
+              padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6.w),
+                border: Border.all(width: 1, color: AppColors.borderBtn),
+                color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
+              ),
+              child: Text(
+                day,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.khula(
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+                  fontSize: 14,
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                ),
               ),
             ),
           );
