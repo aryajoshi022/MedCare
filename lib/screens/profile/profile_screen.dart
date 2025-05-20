@@ -13,21 +13,47 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   int _selectedIndex = 3;
+  bool _notificationsEnabled = false;
   final List<Map<String, dynamic>> menuList = [
     {
-      'image': 'assets/icons/Book_Outline.png',
+      'image': 'assets/icons/Prescription_History.png',
       'title': 'Prescription History',
       'subtitle': 'Check out the full prescription history here',
     },
     {
-      'image': 'assets/icons/Health.png',
+      'image': 'assets/icons/Health_History.png',
       'title': 'Health History',
       'subtitle': 'Check details regarding your medical history',
     },
     {
-      'image': 'assets/icons/Transaction.png',
+      'image': 'assets/icons/Transactions.png',
       'title': 'Transactions',
       'subtitle': 'Look back at your previous transactions',
+    },
+  ];
+  final List<Map<String, dynamic>> generalInfo = [
+    {
+      'image': 'assets/icons/Account_Settings.png',
+      'name': 'Account Settings',
+      'isSwitch': false,
+      // 'route': (context) => AccountSettingsScreen(),
+    },
+    {
+      'image': 'assets/icons/Notifications.png',
+      'name': 'Notifications',
+      'isSwitch': false,
+      // 'route': (context) => NotificationsScreen(),
+    },
+    {
+      'image': 'assets/icons/Reference_Settings.png',
+      'name': 'Reference Settings',
+      'isSwitch': false,
+      // 'route': (context) => ReferenceSettingsScreen(),
+    },
+    {
+      'image': 'assets/icons/Dark_Mode.png',
+      'name': 'Dark Mode',
+      'isSwitch': true,
     },
   ];
 
@@ -36,50 +62,84 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: AppColors.bgAlert,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildCustomAppBar(context),
-            SizedBox(height: 20.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildUserCard(context),
-                  SizedBox(height: 32.h),
-                  Text('Menu',
-                    style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                        color: AppColors.textSecondary
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildCustomAppBar(context),
+              // SizedBox(height: 20.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 28.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildUserCard(context),
+                    SizedBox(height: 32.h),
+                    Text('Menu',
+                      style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          color: AppColors.textSecondary
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 24.h),
-                  Column(
-                    children: menuList.map((menu) {
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 0.h),
-                        child: _buildMenuCard(
-                          image: menu['image'],
-                          title: menu['title'],
-                          subtitle: menu['subtitle'],
-                          onTap: menu.containsKey('route')
-                              ? () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => menu['route'](context)),
-                          )
-                              : null,
-                        ),
-                      );
-                    }).toList(),
+                    SizedBox(height: 24.h),
+                    Column(
+                      children: menuList.map((menu) {
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 0.h),
+                          child: _buildMenuCard(
+                            image: menu['image'],
+                            title: menu['title'],
+                            subtitle: menu['subtitle'],
+                            onTap: menu.containsKey('route')
+                                ? () => Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => menu['route'](context)),
+                              )
+                                : null,
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 32.h),
+                    Text('General Information',
+                      style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          color: AppColors.textSecondary
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: 24.h),
+                    Column(
+                      children: generalInfo.map((info) {
+                        bool isDarkMode = info['name'] == 'Dark Mode';
+
+                        return _buildGeneralInfoCard(
+                          image: info['image'],
+                          name: info['name'],
+                          isSwitch: isDarkMode,
+                          switchValue: _notificationsEnabled,
+                          onSwitchChanged: (value) {
+                            setState(() {
+                              _notificationsEnabled = value;
+                            });
+                          },
+                          onTap: isDarkMode ? null : () {},
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 32.h),
+                    _buildLogOut(context),
+                  ],
+                ),
               ),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomAppBar(
@@ -136,9 +196,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 radius: 40.w,
                 backgroundImage: AssetImage('assets/images/Profile_Lorenzo_Ricci.png'),
               ),
-              CircleAvatar(
-                radius: 12.w,
-                backgroundImage: AssetImage('assets/images/Profile_Lorenzo_Ricci.png'),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: CircleAvatar(
+                  radius: 12.w,
+                  backgroundImage: AssetImage('assets/icons/Edit_Option.png'),
+                ),
               ),
             ],
           ),
@@ -147,169 +211,215 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Lorenzo Ricci',
+                Text(
+                  'Lorenzo Ricci',
                   style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      color: AppColors.textNormal
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    letterSpacing: 1,
+                    color: AppColors.textNormal,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
+                SizedBox(height: 4.h), // Smaller spacing
                 TextButton.icon(
-                  style: ButtonStyle(
-                    alignment: Alignment.topLeft,
-                    padding: WidgetStatePropertyAll(EdgeInsets.zero)
-                  ),
-                  onPressed: (){},
-                  label: Text('lorenzoricci@example.com',
-                    style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        letterSpacing: 1,
-                        color: AppColors.textSecondary
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  icon: Image.asset('assets/icons/Mail.png',
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/icons/Mail.png',
                     width: 16.w,
                     height: 16.h,
                     fit: BoxFit.contain,
                     color: AppColors.textSecondary,
+                  ),
+                  label: Text(
+                    'lorenzoricci@example.com',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      letterSpacing: 1,
+                      color: AppColors.textSecondary,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  style: ButtonStyle(
+                    alignment: Alignment.centerLeft,
+                    padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    minimumSize: WidgetStatePropertyAll(Size.zero),
                   ),
                 ),
+                SizedBox(height: 2.h),
                 TextButton.icon(
-                  style: ButtonStyle(
-                    alignment: Alignment.topLeft,
-                    padding: WidgetStatePropertyAll(EdgeInsets.zero)
-                  ),
-                  onPressed: (){},
-                  label: Text('+39 1234567890',
-                    style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        letterSpacing: 1,
-                        color: AppColors.textSecondary
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  icon: Image.asset('assets/icons/Phone.png',
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/icons/Phone.png',
                     width: 16.w,
                     height: 16.h,
                     fit: BoxFit.contain,
                     color: AppColors.textSecondary,
+                  ),
+                  label: Text(
+                    '+39 1234567890',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      letterSpacing: 1,
+                      color: AppColors.textSecondary,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  style: ButtonStyle(
+                    alignment: Alignment.centerLeft,
+                    padding: WidgetStatePropertyAll(EdgeInsets.zero),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    minimumSize: WidgetStatePropertyAll(Size.zero),
                   ),
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
   }
 
   Widget _buildMenuCard({
-    required image,
-    required title,
-    required subtitle,
-    Future Function()?
-    onTap
+    required String image,
+    required String title,
+    required String subtitle,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.w),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Image.asset(
-                image,
-                height: 36.h,
-                width: 36.w,
-                // fit: BoxFit.contain,
-                color: AppColors.bgPrimary,
-              ),
-              Column(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.w),
+          color: AppColors.bgAlert,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              image,
+              height: 36.h,
+              width: 36.w,
+              color: AppColors.bgPrimary,
+            ),
+            SizedBox(width: 16.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
+                  Text(
+                    title,
                     style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                        color: AppColors.textNormal
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      letterSpacing: 1,
+                      color: AppColors.textNormal,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Text(subtitle,
+                  SizedBox(height: 4.h),
+                  Text(
+                    subtitle,
                     style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        letterSpacing: 1,
-                        color: AppColors.textSecondary
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      letterSpacing: 1,
+                      color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
-  // Widget _buildMenuCard({required Map<String, dynamic> menu}) {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text('Menu',
-  //         style: GoogleFonts.khula(
-  //             fontWeight: FontWeight.w400,
-  //             fontSize: 16,
-  //             letterSpacing: 1,
-  //             color: AppColors.textSecondary
-  //         ),
-  //         maxLines: 1,
-  //         overflow: TextOverflow.ellipsis,
-  //       ),
-  //       SizedBox(height: 24.h),
-  //       Container(
-  //         decoration: BoxDecoration(
-  //           borderRadius: BorderRadius.circular(12.w),
-  //         ),
-  //         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Row(
-  //               children: [
-  //                 Image.asset('assets/icons/Book_Outline.png',
-  //                   height: 36.h,
-  //                   width: 36.w,
-  //                   fit: BoxFit.contain,
-  //                   color: AppColors.bgPrimary,
-  //                 ),
-  //                 Column(
-  //                   children: [
-  //                     Text('data')
-  //                   ],
-  //                 ),
-  //               ],
-  //             ),
-  //           ],
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
+
+  Widget _buildGeneralInfoCard({
+    required String image,
+    required String name,
+    bool isSwitch = false,
+    bool switchValue = false,
+    VoidCallback? onTap,
+    ValueChanged<bool>? onSwitchChanged,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(24.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.w),
+          color: AppColors.bgAlert,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Image.asset(
+                  image,
+                  height: 36.h,
+                  width: 36.w,
+                  color: AppColors.bgPrimary,
+                ),
+                SizedBox(width: 16.w),
+                Text(
+                  name,
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    letterSpacing: 1,
+                    color: AppColors.textNormal,
+                  ),
+                ),
+              ],
+            ),
+            if (isSwitch)
+              Switch(
+                value: switchValue,
+                onChanged: onSwitchChanged,
+                activeColor: AppColors.btnPrimary,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLogOut(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.w)),
+          backgroundColor: AppColors.bgAlert,
+          side: BorderSide(width: 1, color: AppColors.borderThirsty),
+        ),
+        onPressed: () {},
+        child: Text(
+          'Log Out',
+          style: GoogleFonts.khula(
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            letterSpacing: 1,
+            color: AppColors.textRed,
+          ),
+        ),
+      ),
+    );
+  }
 
 }
-
-

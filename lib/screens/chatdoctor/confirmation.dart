@@ -407,7 +407,7 @@ class _ConfirmationState extends State<Confirmation> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/icons/cart.png',
+                  'assets/icons/Notifications.png',
                   height: 24.h,
                   color: AppColors.bgPrimary,
                 ),

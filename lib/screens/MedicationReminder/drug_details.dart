@@ -317,7 +317,7 @@ class _DrugDetailsState extends State<DrugDetails> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/icons/cart.png',
+                'assets/icons/Notifications.png',
                 height: 24.h,
                 color: AppColors.bgPrimary,
               ),
