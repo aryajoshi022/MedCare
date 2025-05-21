@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -15,7 +16,13 @@ class TransactionScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.bgAlert,
-        leading: Icon(Icons.arrow_back_ios, color: AppColors.textNormal),
+        leading: IconButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+          },
+          icon: Icon(Icons.arrow_back_ios,
+            color: AppColors.textNormal)
+        ),
         title: Text(
           'Transaction',
           style: TextStyle(
