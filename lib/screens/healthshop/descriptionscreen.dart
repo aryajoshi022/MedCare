@@ -1,18 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/healthshop/cart_screen.dart';
+import 'package:medcare/util/constants/colors.dart';
 
-import '../../util/constants/colors.dart';
-
-class DescriptionScreen extends StatefulWidget {
-  const DescriptionScreen({super.key});
-
-  @override
-  State<DescriptionScreen> createState() => _DescriptionScreenState();
-}
-
-class _DescriptionScreenState extends State<DescriptionScreen> {
+class DescriptionScreen extends StatelessWidget {
   @override
   //ShowBottomSheet
   void showBottomSheet(BuildContext context) {
@@ -27,97 +18,155 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
         return StatefulBuilder(
           builder:
               (context, setState) => Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  'assets/images/health_shop/Bufectstrip_img.png',
+                  height: 80,
+                ),
+                const Text(
+                  'Bufect Strip 4 tablets',
+                  style: TextStyle(fontSize: 18),
+                ),
+                const Text('Per Strip'),
+                const SizedBox(height: 8),
+                const Text(
+                  'Start from: \$2.00',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      'assets/images/health_shop/Bufectstrip_img.png',
-                      height: 80,
-                    ),
-                    const Text(
-                      'Bufect Strip 4 tablets',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    const Text('Per Strip'),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Start from: \$2.00',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: () {
-                            if (quantity > 1) {
-                              setState(() => quantity--);
-                            }
-                          },
-                        ),
-                        Text(
-                          quantity.toString(),
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.add),
-                          onPressed: () => setState(() => quantity++),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    ElevatedButton(
+                    IconButton(
+                      icon: const Icon(Icons.remove),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CartScreen()),
-                        );
+                        if (quantity > 1) {
+                          setState(() => quantity--);
+                        }
                       },
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50),
-                        backgroundColor: AppColors.bgPrimary,
-                      ),
-                      child: const Text(
-                        'Add to Cart',
-                        style: TextStyle(color: AppColors.textWhite),
-                      ),
+                    ),
+                    Text(
+                      quantity.toString(),
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () => setState(() => quantity++),
                     ),
                   ],
                 ),
-              ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartScreen()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: AppColors.bgPrimary,
+                  ),
+                  child: const Text(
+                    'Add to Cart',
+                    style: TextStyle(color: AppColors.textWhite),
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
     );
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        scrolledUnderElevation: 0.0,
-        backgroundColor: AppColors.bgAlert,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          scrolledUnderElevation: 0.0,
+          backgroundColor: AppColors.bgAlert,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+          ),
+          title: Text(
+            'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 24),
+              child: Image.asset(
+                'assets/icons/share_icon.png',
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ],
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Description'),
+              Tab(text: 'Details'),
+              Tab(text: 'Reviews'),
+            ],
+          ),
         ),
-        title: Text(
-          'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+        body: TabBarView(
+          children: [
+            // Description Tab
+            DescriptionTab(),
+            //Details Tab
+            DetailsTab(),
+
+            //Reviews Tab
+            ReviewsTab(),
+          ],
+        ),      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          top: 20,
+          bottom: 20,
+          right: 10,
+          left: 10,
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 24),
-            child: Image.asset(
-              'assets/icons/share_icon.png',
-              color: AppColors.textSecondary,
+        child: Container(
+          decoration: BoxDecoration(color: Colors.transparent),
+
+          width: 380,
+          height: 51,
+          child: ElevatedButton(
+            child: Text('Add to cart', style: TextStyle(fontSize: 16)),
+            onPressed: () {
+              showBottomSheet(context);
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: AppColors.textWhite,
+              backgroundColor: AppColors.btnPrimary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
             ),
           ),
-        ],
+        ),
       ),
+
+      ),
+    );
+  }
+}
+
+//Description Tab
+class DescriptionTab extends StatelessWidget {
+  const DescriptionTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -250,8 +299,62 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     ),
                   ],
                 ),
-
                 SizedBox(height: 32),
+                Text(
+                  'Composition',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textNormal,
+                  ),
+                ),
+
+                _buildBulletPoint('Acetaminophen (500 mg)'),
+                _buildBulletPoint('Ibuprofen (200 mg)'),
+                _buildBulletPoint('Caffeine (50 mg)'),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBulletPoint(String text) {
+    return Row(
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.asset('assets/icons/dot_img.png'),
+        SizedBox(width: 5),
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: AppColors.textNormal,
+              fontSize: 16,
+              height: 1.5,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+//Details Tab
+class DetailsTab extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Text(
                   'Composition',
                   style: TextStyle(
@@ -426,8 +529,114 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 32),
-                Text(
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBulletPoint(String text) {
+    return Row(
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.asset('assets/icons/dot_img.png'),
+        SizedBox(width: 5),
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyle(
+              color: AppColors.textNormal,
+              fontSize: 16,
+              height: 1.5,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+//Reviews Tab
+
+class ReviewsTab extends StatelessWidget {
+  const ReviewsTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 32),
+                const Text(
+                  'Special Precautions',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textNormal,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Image.asset('assets/icons/dot_img.png'),
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: Text(
+                        '\nDo not exceed the recommended dosage.',
+                        style: TextStyle(
+                          color: AppColors.textNormal,
+                          fontSize: 16,
+                          height: 1.5,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Image.asset('assets/icons/dot_img.png'),
+                    const SizedBox(width: 5),
+                    const Expanded(
+                      child: Text(
+                        '\n\nConsult a healthcare professional before use if pregnant, breastfeeding, or taking other medications',
+                        style: TextStyle(
+                          color: AppColors.textNormal,
+                          fontSize: 16,
+                          height: 1.5,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Image.asset('assets/icons/dot_img.png'),
+                    const SizedBox(width: 5),
+                    const Expanded(
+                      child: Text(
+                        '\nDiscontinue use and seek medical advice if adverse reactions occur.',
+                        style: TextStyle(
+                          color: AppColors.textNormal,
+                          fontSize: 16,
+                          height: 1.5,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 32),
+                const Text(
                   'Review',
                   style: TextStyle(
                     fontSize: 16,
@@ -435,7 +644,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                     color: AppColors.textNormal,
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -642,7 +851,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
@@ -720,7 +929,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
@@ -798,7 +1007,7 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                               ),
                               Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
@@ -843,156 +1052,12 @@ class _DescriptionScreenState extends State<DescriptionScreen> {
                   ),
                 ),
                 SizedBox(height: 33),
+
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(
-          top: 20,
-          bottom: 20,
-          right: 10,
-          left: 10,
-        ),
-        child: Container(
-          decoration: BoxDecoration(color: Colors.transparent),
-
-          width: 380,
-          height: 51,
-          child: ElevatedButton(
-            child: Text('Add to cart', style: TextStyle(fontSize: 16)),
-            onPressed: () {
-              showBottomSheet(context);
-            },
-            style: ElevatedButton.styleFrom(
-              foregroundColor: AppColors.textWhite,
-              backgroundColor: AppColors.btnPrimary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24),
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
-
-  Widget _buildBulletPoint(String text) {
-    return Row(
-      //crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image.asset('assets/icons/dot_img.png'),
-        SizedBox(width: 5),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: AppColors.textNormal,
-              fontSize: 16,
-              height: 1.5,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-Widget _description() {
-  return Scaffold(
-    body: Column(
-      children: [
-        //Product description
-        Text(
-          'Product Description',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textNormal,
-          ),
-        ),
-        Text(
-          'Bufect is a reliable and effective medication presented in a convenient strip containing four tablets. Each tablet is meticulously formulated to provide targeted relief from various ailments. With its user-friendly packaging and easy-to-carry design, Bufect ensures quick access to relief whenever and wherever needed. Trust Bufect for fast-acting and dependable relief from discomfort.',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: AppColors.textSecondary,
-          ),
-        ),
-        SizedBox(height: 32),
-
-        //Benefits
-        Text(
-          'Benefits',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textNormal,
-          ),
-        ),
-
-        Row(
-          children: [
-            Image.asset('assets/icons/dot_img.png'),
-            SizedBox(width: 5),
-            Expanded(
-              child: Text(
-                '\nProvides fast and effective relief from pain and discomfort',
-                style: TextStyle(
-                  color: AppColors.textNormal,
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Image.asset('assets/icons/dot_img.png'),
-            SizedBox(width: 5),
-            Expanded(
-              child: Text(
-                '\n\nSuitable for a wide range of ailments, including headaches, muscle aches, fever, and menstrual cramps',
-                style: TextStyle(
-                  color: AppColors.textNormal,
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Image.asset('assets/icons/dot_img.png'),
-            SizedBox(width: 5),
-            Expanded(
-              child: Text(
-                '\nEach tablet is individually sealed for freshness and potency.',
-                style: TextStyle(
-                  color: AppColors.textNormal,
-                  fontSize: 16,
-                  height: 1.5,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
-}
-
-Widget _details() {
-  return Scaffold(body: Column(children: []));
-}
-
-Widget _reviews() {
-  return Scaffold();
 }

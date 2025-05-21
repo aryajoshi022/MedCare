@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/healthshop/descriptionscreen.dart';
-
 import '../../util/constants/colors.dart';
 import '../../widgets/health shop/scroller.dart';
 import 'cart_screen.dart';
@@ -179,7 +178,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomButton(text: 'Medicine & Treatment'),
+                        CustomButton2(text: 'Medicine & Treatment'),
                         SizedBox(width: 10), // Space between buttons
                         CustomButton(text: 'Milk'),
                         SizedBox(width: 10), // Space between buttons
@@ -203,7 +202,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               color: AppColors.borderBtn,
                               width: 1,
                             ), // Border color
-                          ),
+                          ),elevation: 0.0
                         ),
                         onPressed: () {
                           // Action to perform on button press
@@ -696,6 +695,87 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
           ],
         ),
       )),
+    );
+  }
+
+}
+
+class CustomButton2 extends StatelessWidget {
+  final String text;
+
+  CustomButton2({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: 50,
+        width: 162,
+
+        child: ElevatedButton(
+
+          style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white, // Text color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6), // Rounded corners
+                side: BorderSide(
+                  color: AppColors.bgPrimary,
+                  width: 1,
+
+                ), // Border color
+              ),elevation: 0.0
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ShoppingFilterScreen()),
+            );
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+            child: Text(text, style: TextStyle(fontSize: 16)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final String text;
+
+  CustomButton({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: 50,
+        width: 162,
+
+        child: ElevatedButton(
+
+          style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white, // Text color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6), // Rounded corners
+                side: BorderSide(
+                  color: AppColors.borderBtn,
+                  width: 1,
+                ), // Border color
+              ),elevation: 0.0
+          ),
+          onPressed: () {
+
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+            child: Text(text, style: TextStyle(fontSize: 16)),
+          ),
+        ),
+      ),
     );
   }
 }

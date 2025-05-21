@@ -115,7 +115,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               width: 372.w,
               child: ElevatedButton(
                 child: Text(
-                  currentIndex == contents.length - 1 ? "Continue" : "Next",
+                  currentIndex == contents.length - 1 ? "Start" : "Next",
                 ),
                 onPressed: () {
                   if (currentIndex == contents.length - 1) {
@@ -191,7 +191,7 @@ class getstartedScreen extends StatelessWidget {
                       'English',
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textPrimary,
+                        color: AppColors.textSecondary,
                       ),
                     ),
                     onPressed: () {},
@@ -214,6 +214,7 @@ class getstartedScreen extends StatelessWidget {
             ),
             SizedBox(height: 250),
             Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(child: Image.asset('assets/images/medcare_img.png')),
@@ -236,13 +237,13 @@ class getstartedScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 167),
                 SizedBox(
-                  height: 91,
+                  height: 75,
                   width: 372,
 
                   child: Padding(
                     padding: const EdgeInsets.only(
                       top: 20,
-                      bottom: 20,
+                     // bottom: 20,
                       right: 10,
                       left: 10,
                     ),
@@ -261,14 +262,15 @@ class getstartedScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 SizedBox(
-                  height: 91,
+                  height: 75,
                   width: 372,
 
                   child: Padding(
                     padding: const EdgeInsets.only(
                       top: 20,
-                      bottom: 20,
+                    //  bottom: 20,
                       right: 10,
                       left: 10,
                     ),
@@ -290,6 +292,7 @@ class getstartedScreen extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
+                        backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: AppColors.btnPrimary,

@@ -121,7 +121,7 @@ class HealthShopScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomButton(text: 'Medicine & Treatment'),
+                          CustomButton2(text: 'Medicine & Treatment'),
                           SizedBox(width: 10), // Space between buttons
                           CustomButton(text: 'Milk'),
                           SizedBox(width: 10), // Space between buttons
@@ -145,7 +145,7 @@ class HealthShopScreen extends StatelessWidget {
                                 color: AppColors.borderBtn,
                                 width: 1,
                               ), // Border color
-                            ),
+                            ),elevation: 0.0
                           ),
                           onPressed: () {
                             // Action to perform on button press
@@ -883,7 +883,9 @@ class CustomButton extends StatelessWidget {
       child: SizedBox(
         height: 50,
         width: 162,
+
         child: ElevatedButton(
+
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.black,
             backgroundColor: Colors.white, // Text color
@@ -893,7 +895,45 @@ class CustomButton extends StatelessWidget {
                 color: AppColors.borderBtn,
                 width: 1,
               ), // Border color
-            ),
+            ),elevation: 0.0
+          ),
+          onPressed: () {
+          },
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+            child: Text(text, style: TextStyle(fontSize: 16)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomButton2 extends StatelessWidget {
+  final String text;
+
+  CustomButton2({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: SizedBox(
+        height: 50,
+        width: 162,
+
+        child: ElevatedButton(
+
+          style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.white, // Text color
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6), // Rounded corners
+                side: BorderSide(
+                  color: AppColors.borderBtn,
+                  width: 1,
+
+                ), // Border color
+              ),elevation: 0.0
           ),
           onPressed: () {
             Navigator.push(
