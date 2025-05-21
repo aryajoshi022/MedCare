@@ -66,6 +66,10 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
 
               //Search Provinces
               _buildPracticeLocationDropdown(context),
+              SizedBox(height: 24.h),
+
+              //Listview
+              _buildHealthHistroylist(),
 
             ],
           ),
@@ -161,4 +165,12 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
     );
   }
 
+  Widget _buildHealthHistroylist() {
+    return Container(
+      height: 129.h,
+      color: Color(0xff121212),
+    );
+  }
+
 }
+

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/home/home_screen.dart';
+import 'package:medcare/screens/profile/health_history_screen.dart';
+import 'package:medcare/screens/profile/notification_screen.dart';
+import 'package:medcare/screens/profile/prescription_history.dart';
+import 'package:medcare/screens/profile/transaction_screen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
@@ -19,16 +24,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'image': 'assets/icons/Prescription_History.png',
       'title': 'Prescription History',
       'subtitle': 'Check out the full prescription history here',
+      'route': (context) => PrescriptionHistory(),
     },
     {
       'image': 'assets/icons/Health_History.png',
       'title': 'Health History',
       'subtitle': 'Check details regarding your medical history',
+      'route': (context) => HealthHistoryScreen(),
     },
     {
       'image': 'assets/icons/Transactions.png',
       'title': 'Transactions',
       'subtitle': 'Look back at your previous transactions',
+      'route': (context) => TransactionScreen(),
     },
   ];
   final List<Map<String, dynamic>> generalInfo = [
@@ -36,24 +44,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'image': 'assets/icons/Account_Settings.png',
       'name': 'Account Settings',
       'isSwitch': false,
-      // 'route': (context) => AccountSettingsScreen(),
+      // 'route': (context) => AccountSettingsScreen(), // ✅ Add this
     },
     {
       'image': 'assets/icons/Notifications.png',
       'name': 'Notifications',
       'isSwitch': false,
-      // 'route': (context) => NotificationsScreen(),
+      'route': (context) => NotificationScreen(), // ✅ Add this
     },
     {
       'image': 'assets/icons/Reference_Settings.png',
       'name': 'Reference Settings',
       'isSwitch': false,
-      // 'route': (context) => ReferenceSettingsScreen(),
+      // 'route': (context) => ReferenceSettingsScreen(), // ✅ Add this
     },
     {
       'image': 'assets/icons/Dark_Mode.png',
       'name': 'Dark Mode',
       'isSwitch': true,
+
     },
   ];
 
@@ -87,19 +96,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 24.h),
                     Column(
                       children: menuList.map((menu) {
-                        return Padding(
-                          padding: EdgeInsets.only(bottom: 0.h),
-                          child: _buildMenuCard(
-                            image: menu['image'],
-                            title: menu['title'],
-                            subtitle: menu['subtitle'],
-                            onTap: menu.containsKey('route')
-                                ? () => Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => menu['route'](context)),
-                              )
-                                : null,
-                          ),
+                        return _buildMenuCard(
+                          image: menu['image'],
+                          title: menu['title'],
+                          subtitle: menu['subtitle'],
+                          onTap: menu['route'] != null
+                              ? () => Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => menu['route'](context)),
+                          )
+                              : null,
                         );
                       }).toList(),
                     ),
@@ -117,7 +123,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 24.h),
                     Column(
                       children: generalInfo.map((info) {
-                        bool isDarkMode = info['name'] == 'Dark Mode';
+                        bool isDarkMode = info['isSwitch'] == true;
+                        final routeBuilder = info['route'] as Widget Function(BuildContext)?;
 
                         return _buildGeneralInfoCard(
                           image: info['image'],
@@ -129,7 +136,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               _notificationsEnabled = value;
                             });
                           },
-                          onTap: isDarkMode ? null : () {},
+                          onTap: isDarkMode || routeBuilder == null
+                              ? null
+                              : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => routeBuilder(context)),
+                            );
+                          },
                         );
                       }).toList(),
                     ),
@@ -160,7 +174,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
               size: 24,

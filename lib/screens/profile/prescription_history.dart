@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/profile/profile_screen.dart';
 
 import '../../util/constants/colors.dart';
 
@@ -42,7 +43,9 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
         // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
               size: 24,

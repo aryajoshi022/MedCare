@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/home/home_screen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
@@ -81,7 +82,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 Icons.chevron_left,
                 color: AppColors.btnSecondary
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
           ),
           Spacer(flex: 2,),
           Text(
@@ -586,7 +589,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Date & Time Column
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -613,7 +615,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ),
         ),
 
-        // Location Column
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -885,16 +886,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     ),
                   ),
                   SizedBox(height: 16.h),
-                  // Row(
-                  //   children: List.generate(
-                  //     5,
-                  //     (index) => const Icon(
-                  //       Icons.star_border_rounded,
-                  //       color: Color(0xffFFA740),
-                  //       size: 24,
-                  //     ),
-                  //   ),
-                  // ),
                   RatingBar.builder(
                     initialRating: 0,
                     minRating: 1,
