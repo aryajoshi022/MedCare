@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/MedicationReminder/medication_reminder.dart';
 import 'package:medcare/screens/healthshop/healthshopscreens.dart';
 import 'package:medcare/screens/home/home_screen.dart';
+import 'package:medcare/screens/profile/account_setting_screen.dart';
 import 'package:medcare/screens/profile/health_history_screen.dart';
 import 'package:medcare/screens/profile/notification_screen.dart';
 import 'package:medcare/screens/profile/prescription_history.dart';
@@ -26,8 +27,6 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-          // home: HealthHistoryScreen(),
-          // home: TransactionScreen(),
           home: const HomeScreen(),
           // home: SplashScreen(),
           // home: ChatDoctor(),

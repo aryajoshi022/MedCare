@@ -44,7 +44,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
   final List<Map<String, dynamic>> hottopic = [
 
     {
-      'imgPath': 'assets/images/Article/Hot Topic/Mental Health_History.png',
+      'imgPath': 'assets/images/Article/Hot Topic/Mental Health.png',
       'title': 'Mental Health',
     },
 
@@ -54,7 +54,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     },
 
     {
-      'imgPath': 'assets/images/Article/Hot Topic/Mental Health_History.png',
+      'imgPath': 'assets/images/Article/Hot Topic/Mental Health.png',
       'title': 'Mental Health',
     },
 
