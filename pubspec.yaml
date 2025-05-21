@@ -78,6 +78,7 @@ flutter:
     - assets/images/health_shop/
     - assets/images/Services/
     - assets/icons/
+    - assets/images/profile/
     - assets/icons/bottombar/
     - assets/icons/categories/
   #   - images/a_dot_ham.jpeg
