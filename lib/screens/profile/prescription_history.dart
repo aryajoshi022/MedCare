@@ -13,14 +13,6 @@ class PrescriptionHistory extends StatefulWidget {
 }
 
 class _PrescriptionHistoryState extends State<PrescriptionHistory> {
-  String selectedOption = 'Active Recipe';
-  final List<String> options = [
-    'Active Recipe',
-    'Past Prescriptions',
-    'Recent Prescriptions',
-    'Oldest Prescriptions',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,85 +66,35 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
     );
   }
 
-  // Widget _buildActiveRecipe(BuildContext context) {
-  //   return Container(
-  //     padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(6.w),
-  //       border: Border.all(width: 1, color: AppColors.borderBtn)
-  //     ),
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         Row(
-  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //           children: [
-  //             Text(
-  //               'Active Recipe',
-  //               style: GoogleFonts.khula(
-  //                 fontWeight: FontWeight.w400,
-  //                 fontSize: 16,
-  //                 color: AppColors.textBtn,
-  //               ),
-  //             ),
-  //             Icon(
-  //               Icons.keyboard_arrow_down,
-  //               color: AppColors.btnSecondary,
-  //               size: 24,
-  //             ),
-  //           ],
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
   Widget _buildActiveRecipe(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
-        border: Border.all(width: 1, color: AppColors.borderBtn), // match screenshot border
-        color: Colors.white,
+        border: Border.all(width: 1, color: AppColors.borderBtn)
       ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: selectedOption,
-          icon: Icon(
-            Icons.keyboard_arrow_up, // use down or up depending on state
-            color: AppColors.btnSecondary,
-            size: 20,
-          ),
-          isExpanded: true,
-          dropdownColor: Colors.white,
-          borderRadius: BorderRadius.circular(6.w),
-          style: GoogleFonts.khula(
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-            color: AppColors.textSecondary,
-          ),
-          items: options.map((option) {
-            return DropdownMenuItem<String>(
-              value: option,
-              child: Text(
-                option,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Active Recipe',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: option == selectedOption
-                      ? AppColors.btnPrimary
-                      : AppColors.textSecondary,
+                  fontSize: 16,
+                  color: AppColors.textBtn,
                 ),
               ),
-            );
-          }).toList(),
-          onChanged: (value) {
-            if (value != null) {
-              setState(() {
-                selectedOption = value;
-              });
-            }
-          },
-        ),
+              Icon(
+                Icons.keyboard_arrow_down,
+                color: AppColors.btnSecondary,
+                size: 24,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
