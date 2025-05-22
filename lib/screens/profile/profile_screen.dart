@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'image': 'assets/icons/Reference_Settings.png',
       'name': 'Reference Settings',
       'isSwitch': false,
-      // 'route': (context) => ReferenceSettingsScreen(), // ✅ Add this
+      // 'route': (context) => ReferenceSettings(), // ✅ Add this
     },
     {
       'image': 'assets/icons/Dark_Mode.png',
