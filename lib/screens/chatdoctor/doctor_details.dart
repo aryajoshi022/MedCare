@@ -209,13 +209,29 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       color: Color(0xffF6F1FF),
       child: Column(
         children: [
-          CircleAvatar(
-            radius: 50.w,
-            backgroundColor: Color(0xffA6CFD5),
-            child: CircleAvatar(
-              radius: 46.w,
-              backgroundImage: AssetImage('assets/images/Dr_Luca_Rossi.png'),
-            ),
+          Stack(
+            children: [
+              CircleAvatar(
+                radius: 50.w,
+                backgroundColor: Color(0xffA6CFD5),
+                child: CircleAvatar(
+                  radius: 46.w,
+                  backgroundImage: AssetImage('assets/images/Dr_Luca_Rossi.png'),
+                ),
+              ),
+              Positioned(
+                bottom: 7,
+                right: 6,
+                child: CircleAvatar(
+                  radius: 10.w,
+                  backgroundColor: Color(0xffA6CFD5),
+                  child: CircleAvatar(
+                    radius: 9.w,
+                    backgroundColor: Color(0xff6E9024),
+                  ),
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 24.h),
           Text('Dr. Luca Rossi',
