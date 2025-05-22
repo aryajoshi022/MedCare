@@ -231,7 +231,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                   ),
                   children: [
                     TextSpan(
-                      text: '${data['doctorName']}', // bold text
+                      text: '${data['doctorName']}',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
                         fontSize: 14,
