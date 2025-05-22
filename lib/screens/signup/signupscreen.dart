@@ -91,7 +91,7 @@ class _SignScreenState extends State<SignScreen> {
                 decoration: InputDecoration(
                   hintText: 'Enter phone number',
                     hintStyle: TextStyle(color: AppColors.textDisabled,),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(6),borderSide: BorderSide(width: 1,color: AppColors.borderSecondary)),
+                  border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderSecondary)),
                 ),
               ),
             ),

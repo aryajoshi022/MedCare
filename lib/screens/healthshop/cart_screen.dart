@@ -31,7 +31,7 @@ class _CartScreenState extends State<CartScreen> {
       'price': '\$2.00',
     },
     {
-      'image': 'assets/images/health_shop/Bufectstrip_img.png',
+      'image': 'assets/images/health_shop/productsec.png',
       'title': 'STRIP NEURODEX 10 TABLET',
       'description': 'Per Strip',
       'price': '\$2.00',
@@ -91,6 +91,11 @@ class _CartScreenState extends State<CartScreen> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
+              Divider(
+                height: 1,
+                color: AppColors.borderBtn,
+              ),
+              SizedBox(height: 8,),
               // Dropdown header
               GestureDetector(
                 onTap: () {
@@ -119,6 +124,11 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
               ),
+              SizedBox(height: 8,),
+              Divider(
+                height: 1,
+                color: AppColors.borderBtn,
+              ),
 
               // Expanded content
               if (_isExpanded) ...[
@@ -146,10 +156,10 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                     suffixText: 'Available',
                     suffixStyle: TextStyle(color: AppColors.textBtn),
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                   ),
                 ),
-                SizedBox(height: 100),
+                SizedBox(height: 80),
 
                 ElevatedButton(
                   onPressed: () {
@@ -192,7 +202,8 @@ class _CartScreenState extends State<CartScreen> {
     return Card(
       elevation: 0,
       color: AppColors.bgAlert,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(side: BorderSide(color: AppColors.borderBtn),borderRadius: BorderRadius.circular(10)),
+
       margin: EdgeInsets.symmetric(vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(10),
