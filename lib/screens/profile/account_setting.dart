@@ -21,6 +21,22 @@ class _AccountSettingState extends State<AccountSetting> {
         child: Column(
           children: [
             _buildCustomAppBar(context),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Password',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      letterSpacing: 1,
+                      color: AppColors.textBtn
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
