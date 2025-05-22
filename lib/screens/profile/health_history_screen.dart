@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 import '../../util/constants/colors.dart';
+import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
 
 class HealthHistoryScreen extends StatefulWidget {
@@ -14,12 +15,48 @@ class HealthHistoryScreen extends StatefulWidget {
 
 class _HealthHistoryScreen extends State<HealthHistoryScreen> {
   int index = 3;
+  int _selectedIndex = 3;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   bool _isLocationExpanded = false;
-
 
   @override
   Widget build(BuildContext context) {
+
+    List<Map<String, dynamic>> _healthHistoryItems = [
+      {
+        'title': 'Type 2 Diabetes',
+        'diagnosisDate': 'January 10, 2022',
+        'buttonLabel': 'Disease History',
+        'route': () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen())),
+      },
+      {
+        'title': 'Hypertension',
+        'diagnosisDate': 'May 15, 2023',
+        'buttonLabel': 'Disease History',
+        'route': () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen())),
+      },
+      {
+        'title': 'Allergy to Legumes',
+        'diagnosisDate': 'Severe, Precautions\n\nAvoid foods containing nuts',
+        'buttonLabel': 'Disease History',
+        'route': () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen())),
+      },
+    ];
+
+
     return Scaffold(
+      bottomNavigationBar: CustomBottomAppBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 60, left: 28, right: 28),
@@ -69,7 +106,14 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
               SizedBox(height: 24.h),
 
               //Listview
-              _buildHealthHistroylist(),
+              Column(
+                children: _healthHistoryItems.map((item) =>
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 16.h),
+                        child: _buildHealthHistoryList(item)
+                    )
+                ).toList(),
+              ),
 
             ],
           ),
@@ -165,12 +209,92 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
     );
   }
 
-  Widget _buildHealthHistroylist() {
+  Widget _buildHealthHistoryList(Map<String, dynamic> item) {
     return Container(
-      height: 129.h,
-      color: Color(0xff121212),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6.w),
+        color: const Color(0xff121212),
+        border: Border.all(color: const Color(0xff121212), width: 1),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  item['title'],
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                    color: const Color(0xff8F8F8F),
+                  ),
+                ),
+                Container(
+                  height: 17.h,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xff4D4D4D),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      item['buttonLabel'],
+                      style: GoogleFonts.khula(
+                        fontSize: 8,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 18.h),
+            Text(
+              'Diagnosis : ${item['diagnosisDate']}',
+              style: GoogleFonts.khula(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+                color: const Color(0xff8F8F8F),
+              ),
+            ),
+            SizedBox(height: 24.h),
+            GestureDetector(
+              onTap: item['route'],
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Color(0xff26408B),
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.only(bottom: 2),
+                child: Text(
+                  'Check Details',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: const Color(0xff26408B),
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
+
 
 }
 
