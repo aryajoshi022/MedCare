@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/profile/profile_screen.dart';
+
+import '../../util/constants/colors.dart';
 
 class AccountSetting extends StatefulWidget {
   const AccountSetting({super.key});
@@ -10,6 +15,46 @@ class AccountSetting extends StatefulWidget {
 class _AccountSettingState extends State<AccountSetting> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: AppColors.bgAlert,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _buildCustomAppBar(context),
+          ],
+        ),
+      ),
+    );
   }
+
+  Widget _buildCustomAppBar(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w).copyWith(top: 16.h),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          IconButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
+            icon: Icon(Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24,
+            ),
+          ),
+          Spacer(flex: 2),
+          Text('Account Setting',
+            style: GoogleFonts.khula(
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+              color: AppColors.textNormal,
+              letterSpacing: 1,
+            ),
+          ),
+          Spacer(flex: 3)
+        ],
+      ),
+    );
+  }
+
 }
