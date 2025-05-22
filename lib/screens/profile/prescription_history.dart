@@ -17,14 +17,12 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
   int _selectedIndex = 3;
   bool isDropdownOpen = false;
   String selectedOption = 'Active Recipe';
-
   final List<String> options = [
     'Active Recipe',
     'Past Prescriptions',
     'Recent Prescriptions',
     'Oldest Prescriptions',
   ];
-
   final List<Map<String, dynamic>> prescriptions = [
     {
       'doctorName': 'Dr. Emily Smith, MD',
