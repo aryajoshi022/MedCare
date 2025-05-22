@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
+import 'package:medcare/widgets/bottom%20bar/custom_bottom_bar.dart';
 
-class TransactionScreen extends StatelessWidget {
+class TransactionScreen extends StatefulWidget {
+  @override
+  State<TransactionScreen> createState() => _TransactionScreenState();
+}
+
+class _TransactionScreenState extends State<TransactionScreen> {
   final appointments = [
     {"date": "13", "month": "May", "price": "\$20,00", "status": "Paid"},
     {"date": "05", "month": "May", "price": "\$50,00", "status": "Paid"},
     {"date": "28", "month": "Mar", "price": "\$20,00", "status": "Paid"},
   ];
+
+  int _selectedIndex = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +25,13 @@ class TransactionScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.bgAlert,
         leading: IconButton(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
           },
-          icon: Icon(Icons.arrow_back_ios,
-            color: AppColors.textNormal)
+          icon: Icon(Icons.arrow_back_ios, color: AppColors.textNormal),
         ),
         title: Text(
           'Transaction',
@@ -44,6 +54,15 @@ class TransactionScreen extends StatelessWidget {
           );
         },
       ),
+      bottomNavigationBar: CustomBottomAppBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
+
     );
   }
 }
@@ -57,6 +76,7 @@ class AppointmentCard extends StatelessWidget {
     required this.price,
     required this.status,
   });
+  int _selectedIndex = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +150,8 @@ class AppointmentCard extends StatelessWidget {
           ),
         ],
       ),
+
     );
   }
+
 }

@@ -15,6 +15,8 @@ class MedicationReminderEmpty extends StatefulWidget {
 
 class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
   bool isSelected = false;
+  final List<String> _scheduleDays = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
+  String _selectedDay = '';
 
   @override
   Widget build(BuildContext context) {
@@ -155,27 +157,33 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
   }
 
   Widget _buildScheduleDays(BuildContext context) {
-    final days = ['Wed\n22', 'Thu\n23', 'Fri\n24', 'Sat\n25', 'Sun\n26', 'Mon\n27'];
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: days.map((day) {
-          return Container(
-            margin: EdgeInsets.only(right: 12.w),
-            padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
-            decoration: BoxDecoration(
+        children: _scheduleDays.map((day) {
+          bool isSelected = day == _selectedDay;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                _selectedDay = day;
+              });
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 12.w),
+              padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.w),
                 border: Border.all(width: 1, color: AppColors.borderBtn),
-                color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-              // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
-            ),
-            child: Text(
-              day,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w400,
+                color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
+              ),
+              child: Text(
+                day,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.khula(
+                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   fontSize: 14,
-                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                ),
               ),
             ),
           );

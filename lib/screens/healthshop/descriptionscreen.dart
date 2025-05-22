@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/healthshop/cart_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
-
+import 'package:medcare/screens/healthshop/cart_with_notif.dart';
 class DescriptionScreen extends StatelessWidget {
   @override
   //ShowBottomSheet
@@ -63,7 +63,7 @@ class DescriptionScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => CartScreen()),
+                      MaterialPageRoute(builder: (context) => CartWithNotif(),),
                     );
                   },
                   style: ElevatedButton.styleFrom(

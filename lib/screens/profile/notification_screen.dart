@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
+import 'package:medcare/widgets/bottom%20bar/custom_bottom_bar.dart';
 
 class NotificationItem {
   final IconData icon;
@@ -45,6 +46,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           "Good morning [User's Name], don't forget to pick up your daily dose of medication,...",
     ),
   ];
+  int _selectedIndex = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -130,6 +132,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   },
                 ),
       ),
+      bottomNavigationBar: CustomBottomAppBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
+
     );
   }
 }
