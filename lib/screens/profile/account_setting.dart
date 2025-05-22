@@ -30,8 +30,49 @@ class _AccountSettingState extends State<AccountSetting> {
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
                       fontSize: 16,
-                      letterSpacing: 1,
+                      letterSpacing: 0,
                       color: AppColors.textBtn
+                    ),
+                  ),
+                  SizedBox(height: 12.h),
+                  TextField(
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+                      hintText: 'Enter your password',
+                      hintStyle: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        letterSpacing: 1,
+                        color: AppColors.textDisabled
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6.w),
+                        borderSide: BorderSide(width: 1, color: AppColors.borderSecondary)
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6.w),
+                        borderSide: BorderSide(width: 1, color: AppColors.borderSecondary)
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+                  Text('Language',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        letterSpacing: 0,
+                        color: AppColors.textBtn
+                    ),
+                  ),
+                  SizedBox(height: 12.h),
+
+                  SizedBox(height: 24.h),
+                  Text('Privacy Settings',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        letterSpacing: 0,
+                        color: AppColors.textBtn
                     ),
                   ),
                 ],

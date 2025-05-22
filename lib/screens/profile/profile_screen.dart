@@ -45,19 +45,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'image': 'assets/icons/Account_Settings.png',
       'name': 'Account Settings',
       'isSwitch': false,
-      'route': (context) => AccountSetting(), // ✅ Add this
+      'route': (context) => AccountSetting(),
     },
     {
       'image': 'assets/icons/Notifications.png',
       'name': 'Notifications',
       'isSwitch': false,
-      'route': (context) => NotificationScreen(), // ✅ Add this
+      'route': (context) => NotificationScreen(),
     },
     {
       'image': 'assets/icons/Reference_Settings.png',
       'name': 'Reference Settings',
       'isSwitch': false,
-      // 'route': (context) => ReferenceSettings(), // ✅ Add this
+      // 'route': (context) => ReferenceSettings(),
     },
     {
       'image': 'assets/icons/Dark_Mode.png',
