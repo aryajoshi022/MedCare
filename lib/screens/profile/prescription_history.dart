@@ -72,10 +72,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
         child: Column(
           children: [
             _buildCustomAppBar(context),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-              child: _buildActiveRecipe(context),
-            ),
+            _buildActiveRecipe(context),
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
@@ -131,72 +128,75 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
   }
 
   Widget _buildActiveRecipe(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.w),
-        border: Border.all(width: 1, color: AppColors.borderBtn),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isDropdownOpen = !isDropdownOpen;
-              });
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    selectedOption,
-                    style: GoogleFonts.khula(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.btnPrimary,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6.w),
+          border: Border.all(width: 1, color: AppColors.borderBtn),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isDropdownOpen = !isDropdownOpen;
+                });
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      selectedOption,
+                      style: GoogleFonts.khula(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.btnPrimary,
+                      ),
                     ),
-                  ),
-                  Icon(
-                    isDropdownOpen
-                        ? Icons.keyboard_arrow_up
-                        : Icons.keyboard_arrow_down,
-                    color: AppColors.btnPrimary,
-                    size: 24,
-                  ),
-                ],
+                    Icon(
+                      isDropdownOpen
+                          ? Icons.keyboard_arrow_up
+                          : Icons.keyboard_arrow_down,
+                      color: AppColors.btnPrimary,
+                      size: 24,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          if (isDropdownOpen)
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: options
-                  .where((item) => item != selectedOption)
-                  .map((option) => GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedOption = option;
-                    isDropdownOpen = false;
-                  });
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-                  child: Text(
-                    option,
-                    style: GoogleFonts.khula(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
+            if (isDropdownOpen)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: options
+                    .where((item) => item != selectedOption)
+                    .map((option) => GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedOption = option;
+                      isDropdownOpen = false;
+                    });
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                    child: Text(
+                      option,
+                      style: GoogleFonts.khula(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ),
-                ),
-              ))
-                  .toList(),
-            ),
-        ],
+                ))
+                    .toList(),
+              ),
+          ],
+        ),
       ),
     );
   }
