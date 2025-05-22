@@ -75,7 +75,7 @@ class _DetailHospital extends State<DetailHospital> {
       bottomNavigationBar: Container(
         height: 93.h,
         child: Padding(
-          padding: const EdgeInsets.only(left: 17,top: 14,bottom: 28,right: 17),
+          padding: EdgeInsets.only(left: 17.w,top: 14.h,bottom: 28.h,right: 17.w),
           child: Row(
             children: [
               Container(
@@ -89,7 +89,7 @@ class _DetailHospital extends State<DetailHospital> {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 32.w),
-                    side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(24.w),
                     ),
@@ -98,9 +98,9 @@ class _DetailHospital extends State<DetailHospital> {
                     "Maps",
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w700,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         color: AppColors.textBtn,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                     ),
                   ),
                 ),
@@ -124,8 +124,8 @@ class _DetailHospital extends State<DetailHospital> {
                         'Contact Now',
                         style: GoogleFonts.khula(
                           fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          letterSpacing: 1,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.w,
                           color: AppColors.textWhite,
                         ),
                       ),
@@ -138,7 +138,7 @@ class _DetailHospital extends State<DetailHospital> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 28,right: 28,top: 60),
+        padding:EdgeInsets.only(left: 28.w,right: 28.w,top: 60.h),
         child: Container(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -180,7 +180,7 @@ class _DetailHospital extends State<DetailHospital> {
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w400,
                             fontSize: 14.sp,
-                            letterSpacing: 1,
+                            letterSpacing: 1.w,
                             color: Color(0xff4D4D4D),
                           ),
                         ),
@@ -225,7 +225,7 @@ class _DetailHospital extends State<DetailHospital> {
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                           color: Color(0xff090909),
-                          letterSpacing: 1
+                          letterSpacing: 1.w
                         ),
                       ),
                       SizedBox(height: 16.h),
@@ -274,7 +274,7 @@ class _DetailHospital extends State<DetailHospital> {
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w600,
                             color: Color(0xff090909),
-                            letterSpacing: 1
+                            letterSpacing: 1.w
                         ),
                       ),
                       SizedBox(height: 16.h),
@@ -302,10 +302,10 @@ class _DetailHospital extends State<DetailHospital> {
         final hospital = typeofroom[index];
         return Container(
           margin: EdgeInsets.only(bottom: 18.h),
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
               border: Border.all(color: Color(0xffC2E7D9))
           ),
           child: Column(
@@ -322,7 +322,7 @@ class _DetailHospital extends State<DetailHospital> {
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
                             fontSize: 16.sp,
-                            letterSpacing: 1,
+                            letterSpacing: 1.w,
                             // height: 1.h,
                             color: Color(0xff26408B),
                           ),
@@ -333,7 +333,7 @@ class _DetailHospital extends State<DetailHospital> {
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w400,
                             fontSize: 14.sp,
-                            letterSpacing: 1,
+                            letterSpacing: 1.w,
                             // height: 1.h,
                             color: Color(0xff090909),
                           ),
@@ -351,7 +351,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -361,7 +361,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -375,7 +375,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -385,7 +385,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -399,7 +399,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -409,7 +409,7 @@ class _DetailHospital extends State<DetailHospital> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 14.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   // height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),

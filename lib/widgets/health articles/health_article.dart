@@ -24,7 +24,7 @@ class  HealthArticle extends StatelessWidget {
           children: [
             // Background image covering card size
             ClipRRect(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(6.r),
               child: Image.asset(
                 imge,
                 width: 88.w,
@@ -33,7 +33,7 @@ class  HealthArticle extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 10,top: 10,bottom: 10),
+              padding: EdgeInsets.only(left: 10.w,top: 10.h,bottom: 10.h),
               child: Container(
                 // width: 268.w,
                 // height: 88.h,

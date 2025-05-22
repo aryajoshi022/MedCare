@@ -57,24 +57,26 @@ class _SpecialistScreenScreen extends State<SpecialistScreenScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
-              icon: Image.asset('assets/icons/Back Arrow.png', height: 24.h),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ServicesScreenScreen()),
-                );
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => ServicesScreenScreen()));
               },
+              icon: Icon(Icons.chevron_left,
+                color: AppColors.btnSecondary,
+                size: 24.sp,
+              ),
             ),
-            SizedBox(width: 110.w),
+            Spacer(flex: 2),
             Text(
               'Specialist ',
               style: GoogleFonts.khula(
                 color: Color(0xff090909),
-                fontSize: 16,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
-                letterSpacing: 1
+                letterSpacing: 1.w
               ),
             ),
+            Spacer(flex: 3),
             // Spacer(), // Automatically pushes the icons to the right
           ],
         ),
@@ -93,7 +95,7 @@ class _SpecialistScreenScreen extends State<SpecialistScreenScreen> {
 
             //GridView
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 28),
+              padding: EdgeInsets.symmetric(vertical: 30.h,horizontal: 28.w),
               child: Container(
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),

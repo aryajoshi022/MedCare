@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import '../../util/constants/colors.dart';
-import '../../widgets/bottom bar/custom_bottom_bar.dart';
-import '../../widgets/categories/categories_widget.dart';
-import '../home/home_screen.dart';
 import '../services/services_screen.dart';
 import 'detail_hospital.dart';
 import 'hospital_maps.dart';
 
 class HospitalScreen extends StatefulWidget {
-  const HospitalScreen({Key? key}) : super(key: key);
+  const HospitalScreen({super.key});
 
   @override
   State<HospitalScreen> createState() => _HospitalScreen();
@@ -19,12 +15,6 @@ class HospitalScreen extends StatefulWidget {
 
 class _HospitalScreen extends State<HospitalScreen> {
   int index = 1;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      index = index;
-    });
-  }
 
   final List<Map<String, dynamic>> hospitals = [
     {
@@ -70,38 +60,40 @@ class _HospitalScreen extends State<HospitalScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 60, left: 28, right: 28),
+          padding: EdgeInsets.only(top: 60.h, left: 28.w, right: 28.w,bottom: 60.h),
           child: Column(
             children: [
 
               //Search Bar
-              Container(
+              SizedBox(
                 width: 372.w,
                 height: 48.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 24.w,
                       child: IconButton(
-                        icon:
-                        Image.asset('assets/icons/Back Arrow.png', height: 24.h),
+                        padding: EdgeInsets.zero, // remove internal padding
+                        constraints: BoxConstraints(), // remove min constraints
+                        alignment: Alignment.centerLeft,
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const ServicesScreenScreen()),
-                          );
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (_) => ServicesScreenScreen()));
                         },
+                        icon: Icon(Icons.chevron_left,
+                          color: AppColors.btnSecondary,
+                          size: 24.sp,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 12),
-                    Container(
-                      width: 330.w,
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      // width: 330.w,
                       child: TextField(
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(left: 16, top: 14),
+                          contentPadding: EdgeInsets.only(left: 16.w, top: 14.h),
                           prefixIconColor: Color(0xff8F8F8F),
                           prefixIcon: IconButton(
                             icon: Image.asset('assets/icons/Search.png',
@@ -113,13 +105,25 @@ class _HospitalScreen extends State<HospitalScreen> {
                           hintStyle: GoogleFonts.khula(
                             letterSpacing: 1,
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             color: Color(0xff8F8F8F),
                           ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
+                            borderRadius: BorderRadius.circular(12.0.r),
                             borderSide:
-                            BorderSide(color: Color(0xffC2E7D9), width: 1),
+                            BorderSide(color: Color(0xffC2E7D9), width: 1.w),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1.w),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1.w),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1.w),
                           ),
                           filled: true,
                           fillColor: Color(0xffF9F9F9),
@@ -160,7 +164,7 @@ class _HospitalScreen extends State<HospitalScreen> {
               'Search Provinces',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 16.sp,
                 letterSpacing: 1,
                 color: Color(0xff26408B),
               ),
@@ -173,7 +177,7 @@ class _HospitalScreen extends State<HospitalScreen> {
               icon: Icon(
                 Icons.keyboard_arrow_down,
                 color: Color(0xff26408B),
-                size: 24,
+                size: 24.sp,
               ),
             ),
           ),
@@ -192,10 +196,10 @@ class _HospitalScreen extends State<HospitalScreen> {
         final hospital = hospitals[index];
         return Container(
           margin: EdgeInsets.only(bottom: 24.h),
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
               border: Border.all(color: Color(0xffC2E7D9))
           ),
           child: Column(
@@ -225,7 +229,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              letterSpacing: 1,
+                              letterSpacing: 1.w,
                               height: 1.h,
                               color: Color(0xff090909),
                             ),
@@ -236,7 +240,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
                               fontSize: 11.sp,
-                              letterSpacing: 1,
+                              letterSpacing: 1.w,
                               // height: 1.h,
                               color: Color(0xff4D4D4D),
                             ),
@@ -254,7 +258,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -285,7 +289,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 47.5.w, vertical: 14.h),
-                      side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                      side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24.w),
                       ),
@@ -294,7 +298,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                       "Bed Detail",
                       style: GoogleFonts.khula(
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           color: AppColors.textBtn
                       ),
                     ),
@@ -324,13 +328,13 @@ class _HospitalScreen extends State<HospitalScreen> {
                             'Location',
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              letterSpacing: 1,
+                              fontSize: 14.sp,
+                              letterSpacing: 1.w,
                               color: AppColors.textWhite,
                             ),
                           ),
                           SizedBox(width: 5.w),
-                          Icon(Icons.arrow_forward_ios,color: Color(0xffFFFFFF),size: 12)
+                          Icon(Icons.arrow_forward_ios,color: Color(0xffFFFFFF),size: 12.sp)
                         ],
                       ),
                     ),

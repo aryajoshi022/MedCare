@@ -40,7 +40,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(left: 28,right: 28,bottom: 60),
+          padding: EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +51,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w600,
                   fontSize: 20.sp,
-                  letterSpacing: 1,
+                  letterSpacing: 1.w,
                   color: Color(0xff090909),
                 ),
               ),
@@ -62,7 +62,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
                   fontSize: 12.sp,
-                  letterSpacing: 1,
+                  letterSpacing: 1.w,
                   height: 1.h,
                   color: Color(0xff8F8F8F),
                 ),
@@ -93,7 +93,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -105,7 +105,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -117,7 +117,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -129,7 +129,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -141,7 +141,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -162,7 +162,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff4D4D4D),
                       ),
                     ),
@@ -206,7 +206,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w400,
               fontSize: 14.sp,
-              letterSpacing: 1,
+              letterSpacing: 1.w,
               color: Color(0xff26408B),
             ),
           ),

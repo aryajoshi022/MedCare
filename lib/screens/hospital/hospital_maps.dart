@@ -50,7 +50,7 @@ class _HospitalMaps extends State<HospitalMaps> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 60),
+        padding: EdgeInsets.only(top: 60.h),
         child: Container(
           child: Stack(
             children: [
@@ -67,71 +67,72 @@ class _HospitalMaps extends State<HospitalMaps> {
                 },
               ),
 
-          //     GoogleMap(
-          //       onMapCreated: _onMapCreated,
-          //       initialCameraPosition: CameraPosition(
-          //       target: _center,
-          //         zoom: 14.0,
-          //       ),
-          //   markers: {
-          //     Marker(
-          //       markerId: MarkerId('hospitalMarker'),
-          //       position: _center,
-          //       infoWindow: InfoWindow(
-          //         title: 'Ospedale San Raffaele',
-          //         snippet: 'Via Olgettina, 60, Milano',
-          //       ),
-          //     ),
-          //   },
-          // ),
-
-              //Search Bar
-              // Container(
-              //   // width: 372.w,
-              //   // height: 48.h,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.start,
-              //     children: [
-              //       Container(
-              //         // width: 330.w,
-              //         child: TextField(
-              //           decoration: InputDecoration(
-              //             contentPadding: EdgeInsets.all(12.w),
-              //             prefixIconColor: Color(0xff8F8F8F),
-              //             prefixIcon: IconButton(
-              //               icon: Image.asset('assets/icons/Search.png',
-              //                   height: 20.h,width: 20.w),
-              //               onPressed: () {},
-              //             ),
-              //             prefixIconConstraints: BoxConstraints(minWidth: 15.05.w),
-              //             hintText: 'Search this area',
-              //             hintStyle: GoogleFonts.khula(
-              //               letterSpacing: 1,
-              //               fontWeight: FontWeight.w400,
-              //               fontSize: 14,
-              //               color: Color(0xff8F8F8F),
-              //             ),
-              //             border: OutlineInputBorder(
-              //               borderRadius: BorderRadius.circular(12.0),
-              //               borderSide:
-              //               BorderSide(color: Color(0xffC2E7D9), width: 1),
-              //             ),
-              //             filled: true,
-              //             fillColor: Color(0xffF9F9F9),
-              //           ),
-              //         ),
+              //     GoogleMap(
+              //       onMapCreated: _onMapCreated,
+              //       initialCameraPosition: CameraPosition(
+              //       target: _center,
+              //         zoom: 14.0,
               //       ),
-              //     ],
-              //   ),
+              //   markers: {
+              //     Marker(
+              //       markerId: MarkerId('hospitalMarker'),
+              //       position: _center,
+              //       infoWindow: InfoWindow(
+              //         title: 'Ospedale San Raffaele',
+              //         snippet: 'Via Olgettina, 60, Milano',
+              //       ),
+              //     ),
+              //   },
               // ),
 
-              // List of Hospitals
+                  //Search Bar
+                  // Container(
+                  //   // width: 372.w,
+                  //   // height: 48.h,
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: [
+                  //       Container(
+                  //         // width: 330.w,
+                  //         child: TextField(
+                  //           decoration: InputDecoration(
+                  //             contentPadding: EdgeInsets.all(12.w),
+                  //             prefixIconColor: Color(0xff8F8F8F),
+                  //             prefixIcon: IconButton(
+                  //               icon: Image.asset('assets/icons/Search.png',
+                  //                   height: 20.h,width: 20.w),
+                  //               onPressed: () {},
+                  //             ),
+                  //             prefixIconConstraints: BoxConstraints(minWidth: 15.05.w),
+                  //             hintText: 'Search this area',
+                  //             hintStyle: GoogleFonts.khula(
+                  //               letterSpacing: 1,
+                  //               fontWeight: FontWeight.w400,
+                  //               fontSize: 14,
+                  //               color: Color(0xff8F8F8F),
+                  //             ),
+                  //             border: OutlineInputBorder(
+                  //               borderRadius: BorderRadius.circular(12.0),
+                  //               borderSide:
+                  //               BorderSide(color: Color(0xffC2E7D9), width: 1),
+                  //             ),
+                  //             filled: true,
+                  //             fillColor: Color(0xffF9F9F9),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
 
-              //Hospital List
+                  // List of Hospitals
 
-              //Hospital Card
+                  //Hospital List
+
+                  //Hospital Card
 
               _buildHospitalList(),
+
             ],
           ),
         ),
@@ -149,10 +150,10 @@ class _HospitalMaps extends State<HospitalMaps> {
         final hospital = hospitals[index];
         return Container(
           margin: EdgeInsets.only(bottom: 40.h,left: 28.w,right:28.w,top: 600.h ),
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(12.w),
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(12.r),
               border: Border.all(color: Color(0xffC2E7D9))
           ),
           child: Column(
@@ -161,7 +162,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(6.r),
                     child: Image.asset(
                       hospital['img']!,
                       height: 74.h,
@@ -182,7 +183,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp,
-                              letterSpacing: 1,
+                              letterSpacing: 1.w,
                               height: 1.h,
                               color: Color(0xff090909),
                             ),
@@ -193,7 +194,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
                               fontSize: 11.sp,
-                              letterSpacing: 1,
+                              letterSpacing: 1.w,
                               // height: 1.h,
                               color: Color(0xff4D4D4D),
                             ),
@@ -211,7 +212,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                                 style: GoogleFonts.khula(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 11.sp,
-                                  letterSpacing: 1,
+                                  letterSpacing: 1.w,
                                   height: 1.h,
                                   color: Color(0xff4D4D4D),
                                 ),
@@ -242,7 +243,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                     },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(horizontal: 47.5.w, vertical: 14.h),
-                      side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                      side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24.w),
                       ),
@@ -251,7 +252,7 @@ class _HospitalMaps extends State<HospitalMaps> {
                       "Bed Detail",
                       style: GoogleFonts.khula(
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           color: AppColors.textBtn
                       ),
                     ),
@@ -281,13 +282,13 @@ class _HospitalMaps extends State<HospitalMaps> {
                             'Location',
                             style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              letterSpacing: 1,
+                              fontSize: 14.sp,
+                              letterSpacing: 1.w,
                               color: AppColors.textWhite,
                             ),
                           ),
                           SizedBox(width: 5.w),
-                          Icon(Icons.arrow_forward_ios,color: Color(0xffFFFFFF),size: 12)
+                          Icon(Icons.arrow_forward_ios,color: Color(0xffFFFFFF),size: 12.sp)
                         ],
                       ),
                     ),

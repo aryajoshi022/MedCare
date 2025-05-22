@@ -82,7 +82,7 @@ class _CustomBottomAppBarState extends State<CustomBottomAppBar> {
             Text(
               label,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 color: isSelected ? const Color(0xff4D4D4D) : const Color(0xff8F8F8F),
               ),
             ),

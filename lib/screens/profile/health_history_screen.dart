@@ -59,7 +59,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 60, left: 28, right: 28),
+          padding: EdgeInsets.only(top: 60.h, left: 28.w, right: 28.w),
           child: Column(
             children: [
 
@@ -73,25 +73,23 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                     Container(
                       width: 24.w,
                       child: IconButton(
-                        icon:
-                        Image.asset('assets/icons/Back Arrow.png', height: 24.h),
                         onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const ProfileScreen()),
-                          );
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (_) => ProfileScreen()));
                         },
+                        icon: Icon(Icons.chevron_left,
+                          color: AppColors.btnSecondary,
+                          size: 24.sp,
+                        ),
                       ),
                     ),
-                    Spacer(flex: 2,),
+                    Spacer(flex: 2),
                     Text(
                       'Health History',
                       style: GoogleFonts.khula(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          letterSpacing: 1,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.w,
                           color: AppColors.textNormal
                       ),
                     ),
@@ -128,7 +126,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         color: const Color(0xffffffff),
-        border: Border.all(color:Color(0xffE3E3E3), width: 1)
+        border: Border.all(color:Color(0xffE3E3E3), width: 1.w)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +144,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                   'Disease History',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: const Color(0xff26408B),
                   ),
                 ),
@@ -156,7 +154,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                   child: Icon(
                     Icons.keyboard_arrow_down,
                     color: AppColors.btnSecondary,
-                    size: 24,
+                    size: 24.sp,
                   ),
                 ),
               ],
@@ -172,7 +170,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                     'Allergy History',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
@@ -186,7 +184,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
               'Allergy History',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 16.sp,
                 color: AppColors.textSecondary,
               ),
               maxLines: 1,
@@ -197,7 +195,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
               'History of Drugs Consumed',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 16.sp,
                 color: AppColors.textSecondary,
               ),
               maxLines: 1,
@@ -214,10 +212,10 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         color: const Color(0xff121212),
-        border: Border.all(color: const Color(0xff121212), width: 1),
+        border: Border.all(color: const Color(0xff121212), width: 1.w),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(24.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -228,7 +226,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                   item['title'],
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: const Color(0xff8F8F8F),
                   ),
                 ),
@@ -239,7 +237,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                       backgroundColor: const Color(0xff4D4D4D),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(4.r),
                       ),
                       padding: EdgeInsets.symmetric(horizontal: 8.w),
                     ),
@@ -247,10 +245,10 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                     child: Text(
                       item['buttonLabel'],
                       style: GoogleFonts.khula(
-                        fontSize: 8,
+                        fontSize: 8.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.white,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                       ),
                     ),
                   ),
@@ -262,7 +260,7 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
               'Diagnosis : ${item['diagnosisDate']}',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 14,
+                fontSize: 14.sp,
                 color: const Color(0xff8F8F8F),
               ),
             ),
@@ -277,14 +275,14 @@ class _HealthHistoryScreen extends State<HealthHistoryScreen> {
                     ),
                   ),
                 ),
-                padding: const EdgeInsets.only(bottom: 2),
+                padding: EdgeInsets.only(bottom: 2.h),
                 child: Text(
                   'Check Details',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: const Color(0xff26408B),
-                    letterSpacing: 1,
+                    letterSpacing: 1.w,
                   ),
                 ),
               ),

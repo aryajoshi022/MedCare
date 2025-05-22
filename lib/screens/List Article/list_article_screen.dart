@@ -155,13 +155,13 @@ class _ListArticleScreen extends State<ListArticleScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 60),
+          padding: EdgeInsets.only(top: 60.h),
           child: Column(
             children: [
 
               //Search Bar
               Padding(
-                padding: const EdgeInsets.only(left: 28, right: 28),
+                padding: EdgeInsets.only(left: 28.w, right: 28.w),
                 child: Container(
                   width: 372.w,
                   height: 48.h,
@@ -171,25 +171,26 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                       Container(
                         width: 24.w,
                         child: IconButton(
-                          icon:
-                          Image.asset('assets/icons/Back Arrow.png', height: 24.h),
+                          padding: EdgeInsets.zero, // remove internal padding
+                          constraints: BoxConstraints(), // remove min constraints
+                          alignment: Alignment.centerLeft,
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const ServicesScreenScreen()),
-                            );
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (_) => ServicesScreenScreen()));
                           },
+                          icon: Icon(Icons.chevron_left,
+                            color: AppColors.btnSecondary,
+                            size: 24.sp,
+                          ),
                         ),
                       ),
-                      SizedBox(width: 12),
+                      SizedBox(width: 12.w),
                       Container(
                         width: 330.w,
                         child: TextField(
                           controller: _searchController,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 16, top: 14),
+                            contentPadding: EdgeInsets.only(left: 16.w, top: 14.h),
                             prefixIconColor: Color(0xff8F8F8F),
                             prefixIcon: IconButton(
                               icon: Image.asset('assets/icons/Search.png', height: 20.h),
@@ -198,9 +199,9 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                             prefixIconConstraints: BoxConstraints(minWidth: 15.05.w),
                             hintText: 'Search product or store',
                             hintStyle: GoogleFonts.khula(
-                              letterSpacing: 1,
+                              letterSpacing: 1.w,
                               fontWeight: FontWeight.w400,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               color: Color(0xff8F8F8F),
                             ),
                             // 🟢 Permanent green border styles
@@ -229,7 +230,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
               // Show this only when searching
               if (isSearching)
                 Padding(
-                  padding: const EdgeInsets.only(left: 28,right: 28,top: 24),
+                  padding: EdgeInsets.only(left: 28.w,right: 28.w,top: 24.h),
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
@@ -266,13 +267,13 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 28),
+                            padding: EdgeInsets.only(left: 28.w),
                             child: Text(
                               'Hot Article',
                               style: GoogleFonts.khula(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w600,
-                                letterSpacing: 1,
+                                letterSpacing: 1.w,
                                 color: Color(0xff090909),
                               ),
                             ),
@@ -298,7 +299,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
                   //Hot Topic
                   Padding(
-                    padding: const EdgeInsets.only(left: 28,right: 28),
+                    padding: EdgeInsets.only(left: 28.w,right: 28.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -307,7 +308,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                           style: GoogleFonts.khula(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 1,
+                            letterSpacing: 1.w,
                             color: Color(0xff090909),
                           ),
                         ),
@@ -331,7 +332,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
                   //Latest Article
                   Padding(
-                    padding: const EdgeInsets.only(left: 28,right: 28),
+                    padding: EdgeInsets.only(left: 28.w,right: 28.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -340,7 +341,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                           style: GoogleFonts.khula(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 1,
+                            letterSpacing: 1.w,
                             color: Color(0xff090909),
                           ),
                         ),
@@ -354,7 +355,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
                   //List View
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 28),
+                    padding: EdgeInsets.symmetric(horizontal: 28.h),
                     child: Column(
                       children: articleList.map((article) {
                         return Padding(
@@ -385,8 +386,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
   Widget _buildItem(String imgPath, String title) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: Color(0xffC2E7D9),width:1)
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r),
+        side: BorderSide(color: Color(0xffC2E7D9),width:1.w)
       ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
@@ -397,7 +398,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 95, left: 16),
+            padding: EdgeInsets.only(top: 95.h, left: 16.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -406,7 +407,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
-                    letterSpacing: 1,
+                    letterSpacing: 1.w,
                     color: Colors.white,
                   ),
                 ),
@@ -414,10 +415,10 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 141, left: 16),
+            padding: EdgeInsets.only(top: 141.h, left: 16.w),
             child: Container(
               height: 23.h,
-              width: 87.w,
+              width: 90.w,
               child: ElevatedButton(
                 onPressed: () {
                   // Add your navigation or action here
@@ -436,7 +437,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
                       fontSize: 10.sp,
-                      letterSpacing: 1,
+                      letterSpacing: 1.w,
                       color: AppColors.textWhite,
                     ),
                   ),
@@ -451,8 +452,8 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
   Widget _buildHotTopicBanner(String imagePath, String productName) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6),
-      side: BorderSide(color: Color(0xffC2E7D9),width: 1)
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.r),
+      side: BorderSide(color: Color(0xffC2E7D9),width: 1.w)
       ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
@@ -466,13 +467,13 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             child: Align(
               alignment: Alignment.center,
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 35),
+                padding: EdgeInsets.symmetric(vertical: 35.w),
                 child: Text(
                   productName,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
                     fontSize: 14.sp,
-                    letterSpacing: 1,
+                    letterSpacing: 1.w,
                     color: Color(0xffFFFFFF),
                   ),
                   textAlign: TextAlign.center,
@@ -507,7 +508,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
               textAlign: TextAlign.center,
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: isSelected ? AppColors.textWhite : AppColors.textSecondary
               ),
             ),
@@ -531,12 +532,12 @@ class _ListArticleScreen extends State<ListArticleScreen> {
           // border: Border.all(color: Color(0xFFC2E7D9), width: 1),
           // borderRadius: BorderRadius.circular(6),
         ),
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(8.w),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(6.r),
               child: Image.asset(
                 imagePath,
                 width: 80.w,
@@ -547,7 +548,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             SizedBox(width: 12.w),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
+                padding: EdgeInsets.symmetric(vertical: 4.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -556,7 +557,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 10.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff8F8F8F),
                       ),
                     ),
@@ -566,7 +567,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        letterSpacing: 1,
+                        letterSpacing: 1.w,
                         color: Color(0xff090909),
                       ),
                     ),

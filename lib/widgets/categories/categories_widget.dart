@@ -27,7 +27,7 @@ class CategoryItem extends StatelessWidget {
             // width: 81.w,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(6.r),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.1), // shadow color with opacity
@@ -38,17 +38,17 @@ class CategoryItem extends StatelessWidget {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.only(left: 3,right: 3),
+              padding: EdgeInsets.only(left: 3.w,right: 3.w),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 13.5),
+                    padding: EdgeInsets.only(top: 13.5.h),
                     child: Container(
                       height: 36.h,
                       child: Image.asset(iconPath),
                     ),
                   ),
-                  SizedBox(height: 6),
+                  SizedBox(height: 6.h),
                   Container(
                     height: 24.h,
                     alignment: Alignment.topCenter,
@@ -59,7 +59,7 @@ class CategoryItem extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w400,
-                          fontSize: 10,
+                          fontSize: 10.sp,
                           color: Color(0xff26408B),
                         ),
                       ),

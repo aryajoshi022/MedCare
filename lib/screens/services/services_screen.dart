@@ -50,23 +50,25 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
-              icon: Image.asset('assets/icons/Back Arrow.png', height: 24.h),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                );
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => HomeScreen()));
               },
+              icon: Icon(Icons.chevron_left,
+                color: AppColors.btnSecondary,
+                size: 24.sp,
+              ),
             ),
-              SizedBox(width: 115),
+            Spacer(flex: 2),
               Text(
                  'Services ',
                 style: GoogleFonts.khula(
                   color: Color(0xff090909),
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                 ),
               ),
+            Spacer(flex: 3),
             // Spacer(), // Automatically pushes the icons to the right
           ],
         ),
@@ -85,7 +87,7 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
 
             //GridView
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 28),
+              padding: EdgeInsets.symmetric(vertical: 30.w,horizontal: 28.h),
               child: Container(
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),

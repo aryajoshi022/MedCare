@@ -9,6 +9,8 @@ import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
 import '../chatdoctor/chat_doctor.dart';
+import '../healthshop/cart_screen.dart';
+import '../profile/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -53,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 text: 'Hi, ',
                 style: GoogleFonts.khula(
                   color: Color(0xff090909),
-                  fontSize: 20,
+                  fontSize: 20.sp,
                   fontWeight: FontWeight.normal,
                 ),
                 children: [
@@ -73,13 +75,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 IconButton(
                   icon: Image.asset('assets/icons/bell.png', height: 24.h),
                   onPressed: () {
-                    // Bell action
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartApp()),
+                    );
                   },
                 ),
                 IconButton(
                   icon: Image.asset('assets/icons/Notifications.png', height: 24.h),
                   onPressed: () {
-                    // Cart action
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => NotificationScreen()),
+                    );
                   },
                 ),
               ],
@@ -110,26 +118,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(
-                      top:59,
-                    left: 264,
+                  padding: EdgeInsets.only(
+                      top:59.h,
+                    left: 264.w,
                   ),
                   child: Container(
-                    height: 151.h,
+                    height: 149.h,
                     child: Image.asset(
                       'assets/images/Home_screen_DocLogo.png',
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 40,left:26),
+                  padding: EdgeInsets.only(top: 40.h,left:26.w),
                   child: Container(
                     // height: 80,
                     child: Text(
                       "Experience Seamless\nHealthcare Management\nwith MediConnect",
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         letterSpacing: 1,
                         color: Color(0xffFFFFFF),
                       ),
@@ -137,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 140, left: 26),
+                  padding: EdgeInsets.only(top: 140.h, left: 26.w),
                   child: SizedBox(
                     height: 32.h,
                     // width: 164.w,
@@ -157,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Text(
                             "Fill Your Profile Now!",
                             style: GoogleFonts.khula(
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
                             ),
@@ -210,6 +218,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 1
                     ),
                   ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1),
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide(color: Color(0xffC2E7D9), width: 1),
+                  ),
                   filled: true,
                   fillColor: Color(0xffF9F9F9),
                 ),
@@ -254,7 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // margin: EdgeInsets.symmetric(horizontal: 28.w),
               decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(6.0),
+              borderRadius: BorderRadius.circular(6.0.r),
                 border: Border.all(
                     color: Color(0xFFC2E7D9),
                     width: 1
@@ -266,7 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(4.r),
                   ),
                 ),
                 Expanded(
@@ -278,7 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Consultation with a specialist",
                         style: GoogleFonts.khula(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           letterSpacing: 1,
                           color: Color(0xff090909),
                         ),
@@ -287,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Promote health via chat or call",
                         style: GoogleFonts.khula(
                           fontWeight: FontWeight.w400,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           letterSpacing: 1,
                           color: Color(0xff4D4D4D),
                         ),
@@ -314,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: Text(
                     'Chat Doctor',
                     style: GoogleFonts.khula(
@@ -326,7 +346,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: SizedBox(
                     height: 160.h,
                     child: ListView(
@@ -337,25 +357,25 @@ class _HomeScreenState extends State<HomeScreen> {
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                       ],
                     ),
                   ),
@@ -369,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: Text(
                     'Best Selling Products',
                     style: GoogleFonts.khula(
@@ -381,7 +401,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: SizedBox(
                     height: 81.h,
                     child: ListView(
@@ -391,27 +411,27 @@ class _HomeScreenState extends State<HomeScreen> {
                             imagePath: 'assets/images/Selling Product/Vaccine.png',
                             productName: 'Vaccine'
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Braces.png',
                             productName: 'Braces'
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Wheelchair.png',
                             productName: 'Wheelchair'
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Mask.png',
                             productName: 'Mask'
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Braces.png',
                             productName: 'Braces'
                         ),
-                        SizedBox(width: 10),
+                        SizedBox(width: 10.w),
 
                       ],
                     ),
@@ -426,7 +446,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: Text(
                     'Nearby Hospitals',
                     style: GoogleFonts.khula(
@@ -438,7 +458,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: SizedBox(
                     height: 160.h,
                     child: ListView(
@@ -479,7 +499,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: Text(
                     'Health Article',
                     style: GoogleFonts.khula(
@@ -491,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 28),
+                  padding: EdgeInsets.only(left: 28.w),
                   child: Container(
                     alignment: Alignment.center,
                     child: ListView(
@@ -505,21 +525,21 @@ class _HomeScreenState extends State<HomeScreen> {
                             ArticalDiscrptipon: 'Understanding Vaccination,The\nImportance of Preventative',
                             Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 14),
+                        SizedBox(height: 14.h),
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 14),
+                        SizedBox(height: 14.h),
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                         ),
-                        SizedBox(height: 14),
+                        SizedBox(height: 14.h),
                       ],
                     ),
                   ),

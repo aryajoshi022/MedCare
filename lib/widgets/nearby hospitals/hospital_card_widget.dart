@@ -15,12 +15,12 @@ class HospitalCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.r)),
       child: Stack(
         children: [
           // Background image covering card size
           ClipRRect(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(6.r),
             child: Image.asset(
               "assets/images/Hospitals/background.png",
               width: 160.w,
@@ -33,7 +33,7 @@ class HospitalCard extends StatelessWidget {
           Container(
             width: 160.w,
             height: 160.h,
-            padding: const EdgeInsets.only(top: 14,left: 14),
+            padding:EdgeInsets.only(top: 14.h,left: 14.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,  // from top
               crossAxisAlignment: CrossAxisAlignment.start, // from left
