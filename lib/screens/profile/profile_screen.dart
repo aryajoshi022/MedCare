@@ -8,6 +8,7 @@ import 'package:medcare/screens/profile/prescription_history.dart';
 import 'package:medcare/screens/profile/transaction_screen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
+import 'account_setting.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -44,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'image': 'assets/icons/Account_Settings.png',
       'name': 'Account Settings',
       'isSwitch': false,
-      // 'route': (context) => AccountSettingsScreen(), // ✅ Add this
+      'route': (context) => AccountSetting(), // ✅ Add this
     },
     {
       'image': 'assets/icons/Notifications.png',
