@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 
 import '../../util/constants/colors.dart';
+import '../../widgets/bottom bar/custom_bottom_bar.dart';
 
 class AccountSetting extends StatefulWidget {
   const AccountSetting({super.key});
@@ -13,6 +14,8 @@ class AccountSetting extends StatefulWidget {
 }
 
 class _AccountSettingState extends State<AccountSetting> {
+  int _selectedIndex = 3;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,7 @@ class _AccountSettingState extends State<AccountSetting> {
           children: [
             _buildCustomAppBar(context),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
+              padding: EdgeInsets.symmetric(horizontal: 28.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -65,7 +68,33 @@ class _AccountSettingState extends State<AccountSetting> {
                     ),
                   ),
                   SizedBox(height: 12.h),
-
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.w),
+                      border: Border.all(width: 1, color: AppColors.borderSecondary),
+                    ),
+                    padding: EdgeInsets.only(left: 14.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('English',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              letterSpacing: 1,
+                              color: AppColors.textNormal
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: (){},
+                          icon: Icon(Icons.keyboard_arrow_down,
+                            size: 16,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 24.h),
                   Text('Privacy Settings',
                     style: GoogleFonts.khula(
@@ -75,11 +104,47 @@ class _AccountSettingState extends State<AccountSetting> {
                         color: AppColors.textBtn
                     ),
                   ),
+                  SizedBox(height: 12.h),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.w),
+                      border: Border.all(width: 1, color: AppColors.borderSecondary),
+                    ),
+                    padding: EdgeInsets.only(left: 14.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Information privacy',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              letterSpacing: 1,
+                              color: AppColors.textNormal
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: (){},
+                          icon: Icon(Icons.chevron_right,
+                            size: 16,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: CustomBottomAppBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
       ),
     );
   }
