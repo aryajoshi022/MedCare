@@ -221,12 +221,24 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
             ),
             child: SizedBox(
               width: double.infinity,
-              child: Text(
-                "Doctor's Name: ${data['doctorName']}",
-                style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  color: AppColors.textWhite,
+              child: Text.rich(
+                TextSpan(
+                  text: 'Doctor\'s Name: ',
+                  style: GoogleFonts.khula(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                    color: AppColors.textWhite,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '${data['doctorName']}', // bold text
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: AppColors.textWhite,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
