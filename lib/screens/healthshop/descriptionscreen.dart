@@ -10,69 +10,58 @@ class DescriptionScreen extends StatelessWidget {
     showModalBottomSheet(
       backgroundColor: Colors.white,
       context: context,
-      shape:  RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
         int quantity = 1;
         return StatefulBuilder(
-          builder:
-              (context, setState) => Padding(
-            padding:  EdgeInsets.all(16.0.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+          builder: (context, setState) => Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  'assets/images/health_shop/Bufectstrip_img.png',
-                  height: 80.h,
-                ),
-                 Text(
-                  'Bufect Strip 4 tablets',
-                  style: TextStyle(fontSize: 18.sp),
-                ),
-                const Text('Per Strip'),
-                 SizedBox(height: 8.h),
-                const Text(
-                  'Start from: \$2.00',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remove),
-                      onPressed: () {
-                        if (quantity > 1) {
-                          setState(() => quantity--);
-                        }
-                      },
-                    ),
-                    Text(
-                      quantity.toString(),
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () => setState(() => quantity++),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 12.h),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartWithNotif(),),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50),
-                    backgroundColor: AppColors.bgPrimary,
-                  ),
-                  child: const Text(
-                    'Add to Cart',
-                    style: TextStyle(color: AppColors.textWhite),
+                Image.asset('assets/images/health_shop/productone.png', height: 100),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text('Promag 10 Tablets', style: TextStyle(fontSize: 18)),
+                      const Text('Per Strip'),
+                      const SizedBox(height: 8),
+                      const Text('Start from: \$2.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () {
+                              if (quantity > 1) {
+                                setState(() => quantity--);
+                              }
+                            },
+                          ),
+                          Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () => setState(() => quantity++),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(double.infinity, 40),
+                          backgroundColor: AppColors.bgPrimary,
+                        ),
+                        child: const Text('Add to Cart', style: TextStyle(color: AppColors.textWhite)),
+                      )
+                    ],
                   ),
                 ),
               ],

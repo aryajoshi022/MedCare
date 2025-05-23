@@ -91,6 +91,10 @@ class _SignScreenState extends State<SignScreen> {
                 decoration: InputDecoration(
                   hintText: 'Enter phone number',
                     hintStyle: TextStyle(color: AppColors.textDisabled,),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+
                   border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderSecondary)),
                 ),
               ),
@@ -102,6 +106,10 @@ class _SignScreenState extends State<SignScreen> {
                 decoration: InputDecoration(
                   hintText: 'Enter your full name',
                     hintStyle: TextStyle(color: AppColors.textDisabled),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -109,7 +117,7 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 10.h),
             Text('Gender', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             
-            SizedBox(height: 52,
+            SizedBox(height: 48,
               child: DropdownButtonFormField<String>(
                 hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
@@ -119,7 +127,12 @@ class _SignScreenState extends State<SignScreen> {
                 ],
                 dropdownColor: Colors.white,
                 onChanged: (value) {},
-                decoration: InputDecoration(border: OutlineInputBorder()),
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+
+                    border: OutlineInputBorder()),
               ),
             ),
             SizedBox(height: 10.h),
@@ -129,7 +142,10 @@ class _SignScreenState extends State<SignScreen> {
                 decoration: InputDecoration(
                   suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
                   hintText: 'Enter your date of birth',
-                    hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
+                  hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -155,7 +171,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 70.h),
             SizedBox(
               height: 91.h,
               width: 372.w,
@@ -224,6 +240,10 @@ class _SignScreenState extends State<SignScreen> {
                 decoration: InputDecoration(
                   hintText: 'Enter email',
                   hintStyle: TextStyle(color: AppColors.textDisabled),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+
                   border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderSecondary)),
                 ),
               ),
@@ -234,7 +254,12 @@ class _SignScreenState extends State<SignScreen> {
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter your full name',
+
                     hintStyle: TextStyle(color: AppColors.textDisabled),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -251,7 +276,12 @@ class _SignScreenState extends State<SignScreen> {
                 ],
                 dropdownColor: Colors.white,
                 onChanged: (value) {},
-                decoration: InputDecoration(border: OutlineInputBorder(),filled: true,fillColor: Colors.white,),
+                decoration: InputDecoration(border: OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+
+                    filled: true,fillColor: Colors.white,),
               ),
             ),
             SizedBox(height: 10.h),
@@ -262,6 +292,9 @@ class _SignScreenState extends State<SignScreen> {
                   hintText: 'Enter your date of birth',
                   hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
                   suffixIcon: Icon(Icons.calendar_today_outlined,),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                   border: OutlineInputBorder( borderSide: BorderSide(color: AppColors.borderSecondary)),
                 ),
               ),
@@ -287,7 +320,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 70.h),
             SizedBox(
               height: 91.h,
               width: 372.w,
@@ -662,8 +695,7 @@ class _SignScreenState extends State<SignScreen> {
                   children: [_signInPage(), _signUpPage()],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+              Row(mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(

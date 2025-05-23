@@ -20,8 +20,8 @@ class App extends StatelessWidget {
           themeMode: ThemeMode.light,
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
-         // home: SplashScreen(),
-          home:PhoneInputField(),
+          home: SplashScreen(),
+          //home:PhoneInputField(),
           // home: HomeScreen(),
           routes: {},
         );

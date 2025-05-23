@@ -126,6 +126,10 @@ class _SignInScreenState extends State<SignInScreen> {
               decoration: InputDecoration(
                 hintText: 'Enter phone email',
                 hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+
                 border: OutlineInputBorder(),
               ),
             ),
@@ -231,6 +235,10 @@ class _SignInScreenState extends State<SignInScreen> {
               decoration: InputDecoration(
                 hintText: 'Enter phone number',
                 hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+
                 border: OutlineInputBorder(),
               ),
             ),
