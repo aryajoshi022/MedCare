@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class _CartScreenState extends State<CartScreen> {
   final TextEditingController couponController = TextEditingController(
     text: "2024CODE",
   );
-  bool _isExpanded = false;
+  bool _isExpanded = true;
 
   final List<Map<String, String>> _cartItems = [
     {
@@ -62,14 +63,14 @@ class _CartScreenState extends State<CartScreen> {
           'Cart',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             wordSpacing: 1,
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding:  EdgeInsets.all(16.0.w),
         child: Container(
           decoration: BoxDecoration(
             color: _isExpanded ? Colors.white : null,
@@ -85,17 +86,17 @@ class _CartScreenState extends State<CartScreen> {
                       //fit: BoxFit.fill,
                     ),
 
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12.r),
             boxShadow: [],
           ),
-          padding: const EdgeInsets.all(16),
+          padding:  EdgeInsets.all(16.w),
           child: Column(
             children: [
               Divider(
-                height: 1,
+                height: 1.h,
                 color: AppColors.borderBtn,
               ),
-              SizedBox(height: 8,),
+              SizedBox(height: 8.h,),
               // Dropdown header
               GestureDetector(
                 onTap: () {
@@ -110,7 +111,7 @@ class _CartScreenState extends State<CartScreen> {
                         'assets/images/health_shop/girl_cart_img.png',
                       ), // Replace with actual image
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 10.w),
                     Text('Delivery to Amy'),
                     Spacer(),
                     Text(
@@ -124,15 +125,15 @@ class _CartScreenState extends State<CartScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 8,),
+              SizedBox(height: 8.h,),
               Divider(
-                height: 1,
+                height: 1.h,
                 color: AppColors.borderBtn,
               ),
 
               // Expanded content
               if (_isExpanded) ...[
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 ..._cartItems.map(
                   (item) => _cartItem(
                     imagePath: item['image']!,
@@ -141,12 +142,12 @@ class _CartScreenState extends State<CartScreen> {
                     price: item['price']!,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text('Have a coupon code? enter here'),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 8.h),
                 TextField(
                   controller: couponController,
                   decoration: InputDecoration(
@@ -159,7 +160,7 @@ class _CartScreenState extends State<CartScreen> {
                     border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                   ),
                 ),
-                SizedBox(height: 80),
+                SizedBox(height: 80.h),
 
                 ElevatedButton(
                   onPressed: () {
@@ -174,13 +175,13 @@ class _CartScreenState extends State<CartScreen> {
                     backgroundColor: AppColors.textBtn,
                     minimumSize: Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24),
+                      borderRadius: BorderRadius.circular(24.r),
                     ),
                   ),
                   child: Text(
                     'Continue',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: AppColors.textWhite,
                     ),
                   ),
@@ -202,24 +203,24 @@ class _CartScreenState extends State<CartScreen> {
     return Card(
       elevation: 0,
       color: AppColors.bgAlert,
-      shape: RoundedRectangleBorder(side: BorderSide(color: AppColors.borderBtn),borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(side: BorderSide(color: AppColors.borderBtn),borderRadius: BorderRadius.circular(10.r)),
 
       margin: EdgeInsets.symmetric(vertical: 8),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.all(10.w),
         child: Row(
           children: [
-            Image.asset(imagePath, width: 60),
-            SizedBox(width: 10),
+            Image.asset(imagePath, width: 60.w),
+            SizedBox(width: 10.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(title, maxLines: 2, overflow: TextOverflow.ellipsis),
-                  SizedBox(height: 5),
+                  SizedBox(height: 5.h),
                   Text(
                     description,
-                    style: TextStyle(fontSize: 13, color: Colors.black54),
+                    style: TextStyle(fontSize: 13.sp, color: Colors.black54),
                   ),
                   Text(
                     'Start form: $price',
@@ -256,17 +257,17 @@ class FindPharmacyScreen extends StatelessWidget {
             Center(
               child: Image.asset('assets/images/health_shop/pharmacy_cart.png'),
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 24.h),
             Text(
               'Finding Nearest Pharmacy...',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textNormal,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding:  EdgeInsets.all(20.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -274,13 +275,13 @@ class FindPharmacyScreen extends StatelessWidget {
                     Icons.add_circle_outline,
                     color: AppColors.textSecondary,
                   ),
-                  SizedBox(width: 14),
+                  SizedBox(width: 14.w),
                   Expanded(
                     child: Text(
                       'Pricing, product availability, and shipping methods may differ.',
                       style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -288,9 +289,9 @@ class FindPharmacyScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 15.h),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(20.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -298,13 +299,13 @@ class FindPharmacyScreen extends StatelessWidget {
                     Icons.add_circle_outline,
                     color: AppColors.textSecondary,
                   ),
-                  SizedBox(width: 14),
+                  SizedBox(width: 14.w),
                   Expanded(
                     child: Text(
                       'Select the delivery method that fits your requirements. Same-Day Delivery and Next-Day Delivery',
                       style: TextStyle(
                         color: AppColors.textSecondary,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
