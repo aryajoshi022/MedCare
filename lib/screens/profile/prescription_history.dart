@@ -71,6 +71,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
           children: [
             _buildCustomAppBar(context),
             _buildActiveRecipe(context),
+            SizedBox(height: 24.h),
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
@@ -107,16 +108,16 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
             },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
-              size: 24,
+              size: 24.sp,
             ),
           ),
           Spacer(flex: 2),
           Text('Prescription History',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 16,
+              fontSize: 16.sp,
               color: AppColors.textNormal,
-              letterSpacing: 1,
+              letterSpacing: 1.sp,
             ),
           ),
           Spacer(flex: 3),
@@ -127,12 +128,12 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
 
   Widget _buildActiveRecipe(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
+      padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6.w),
-          border: Border.all(width: 1, color: AppColors.borderBtn),
+          borderRadius: BorderRadius.circular(6.r),
+          border: Border.all(width: 1.w, color: AppColors.borderBtn),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +152,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                     Text(
                       selectedOption,
                       style: GoogleFonts.khula(
-                        fontSize: 16,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColors.btnPrimary,
                       ),
@@ -161,7 +163,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                           ? Icons.keyboard_arrow_up
                           : Icons.keyboard_arrow_down,
                       color: AppColors.btnPrimary,
-                      size: 24,
+                      size: 24.sp,
                     ),
                   ],
                 ),
@@ -184,14 +186,14 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                     child: Text(
                       option,
                       style: GoogleFonts.khula(
-                        fontSize: 16,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColors.textSecondary,
                       ),
                     ),
                   ),
-                ))
-                    .toList(),
+                ),).toList(),
               ),
           ],
         ),
@@ -203,8 +205,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.w),
-        border: Border.all(width: 1, color: AppColors.borderBtn),
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(width: 1.w, color: AppColors.borderBtn),
       ),
       margin: EdgeInsets.only(bottom: 24.h),
       child: Column(
@@ -215,8 +217,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
             decoration: BoxDecoration(
               color: AppColors.btnPrimary,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.w),
-                topRight: Radius.circular(12.w),
+                topLeft: Radius.circular(12.r),
+                topRight: Radius.circular(12.r),
               ),
             ),
             child: SizedBox(
@@ -226,7 +228,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                   text: 'Doctor\'s Name: ',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                    fontSize: 14.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textWhite,
                   ),
                   children: [
@@ -234,7 +237,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                       text: '${data['doctorName']}',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textWhite,
                       ),
                     ),
@@ -247,7 +251,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
             decoration: BoxDecoration(
               color: AppColors.bgAlert,
               borderRadius: BorderRadius.vertical(
-                bottom: Radius.circular(12.w),
+                bottom: Radius.circular(12.r),
               ),
             ),
             child: Column(
@@ -265,7 +269,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                           : Border(
                         bottom: BorderSide(
                           color: AppColors.borderBtn,
-                          width: 1,
+                          width: 1.w,
                         ),
                       ),
                     ),
@@ -276,7 +280,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                           medicine['title'],
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textNormal,
                           ),
                         ),
@@ -285,7 +290,8 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                           medicine['subtitle'],
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
+                            fontSize: 14.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
@@ -302,15 +308,16 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
             decoration: BoxDecoration(
               color: AppColors.borderBtn,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12.w),
-                bottomRight: Radius.circular(12.w),
+                bottomLeft: Radius.circular(12.r),
+                bottomRight: Radius.circular(12.r),
               ),
             ),
             child: Center(
               child: Text(
                 data['date'],
                 style: GoogleFonts.khula(
-                  fontSize: 10,
+                  fontSize: 10.sp,
+                  letterSpacing: 1.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textDisabled,
                 ),
@@ -321,4 +328,5 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
       ),
     );
   }
+
 }

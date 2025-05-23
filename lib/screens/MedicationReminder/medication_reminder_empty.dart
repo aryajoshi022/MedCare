@@ -33,8 +33,8 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
               Text('Today, 20 February 2024',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  letterSpacing: 1,
+                  fontSize: 16.sp,
+                  letterSpacing: 1.sp,
                   color: AppColors.textSecondary
                 ),
               ),
@@ -59,20 +59,17 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.bgPrimary,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.w)
+                    borderRadius: BorderRadius.circular(24.r)
                 ),
                 // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                padding: EdgeInsets.only(left: 10)
-              // side: BorderSide(
-              //   width: 1,
-              //   color: Color(0xff26408B),
+                padding: EdgeInsets.only(left: 10.w)
               // ),
             ),
             child: Text('Add Medicine',
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  // letterSpacing: 1,
+                  fontSize: 16.sp,
+                  letterSpacing: 1.sp,
                   color: AppColors.textWhite
               ),
             ),
@@ -89,24 +86,25 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
         children: [
           IconButton(
             icon: Icon(
-                Icons.chevron_left,
-                color: AppColors.btnSecondary
+              Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminder()));
             },
           ),
-          Spacer(flex: 2,),
+          Spacer(flex: 2),
           Text(
             'Medication Reminder',
             style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1,
-                color: AppColors.textNormal
+              fontWeight: FontWeight.w600,
+              fontSize: 16.sp,
+              letterSpacing: 1.sp,
+              color: AppColors.textNormal
             ),
           ),
-          Spacer(flex: 3,)
+          Spacer(flex: 3)
         ],
       ),
     );
@@ -126,15 +124,15 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
                   icon: Icon(
                     Icons.chevron_left,
                     color: AppColors.btnSecondary,
-                    size: 16,
+                    size: 16.sp,
                   ),
                   onPressed: () {},
                 ),
                 Text('February',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textSecondary
                   ),
                 ),
@@ -142,7 +140,7 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
                   icon: Icon(
                     Icons.chevron_right,
                     color: AppColors.btnSecondary,
-                    size: 16,
+                    size: 16.sp,
                   ),
                   onPressed: () {},
                 ),
@@ -172,8 +170,8 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
               margin: EdgeInsets.only(right: 12.w),
               padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6.w),
-                border: Border.all(width: 1, color: AppColors.borderBtn),
+                borderRadius: BorderRadius.circular(6.r),
+                border: Border.all(width: 1.w, color: AppColors.borderBtn),
                 color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
               ),
               child: Text(
@@ -181,7 +179,7 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.khula(
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
                 ),
               ),
@@ -204,8 +202,8 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
         Text('No medication scheduled for today',
           style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 14,
-              letterSpacing: 1,
+              fontSize: 14.sp,
+              letterSpacing: 1.sp,
               color: AppColors.textNormal
           ),
           textAlign: TextAlign.center,
@@ -214,8 +212,8 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
         Text('Click add medicine below to add a schedule',
           style: GoogleFonts.khula(
               fontWeight: FontWeight.w400,
-              fontSize: 12,
-              letterSpacing: 1,
+              fontSize: 12.sp,
+              letterSpacing: 1.sp,
               color: AppColors.textSecondary
           ),
           textAlign: TextAlign.center,

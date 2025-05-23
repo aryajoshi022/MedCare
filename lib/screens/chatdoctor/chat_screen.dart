@@ -30,16 +30,16 @@ class _ChatScreenState extends State<ChatScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
           top: 26.h,
-          bottom: MediaQuery.of(context).viewInsets.bottom + 34.h, // Adjust spacing as needed
+          bottom: MediaQuery.of(context).viewInsets.bottom.h + 34.h,
           left: 28.w,
           right: 28.w,
         ),
         child: Container(
-          height: 56,
+          height: 56.h,
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
           decoration: BoxDecoration(
             color: AppColors.bgWhite,
-            borderRadius: BorderRadius.circular(24.w),
+            borderRadius: BorderRadius.circular(24.r),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,9 +51,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     hintText: 'Type here...',
                     hintStyle: GoogleFonts.khula(
                       color: AppColors.textDisabled,
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w400,
-                      letterSpacing: 1,
+                      letterSpacing: 1.sp,
                     ),
                     border: InputBorder.none,
                     isDense: true,
@@ -65,7 +65,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 height: double.infinity.h,
                 width: 1.w,
                 color: AppColors.borderThirsty,
-                margin: EdgeInsets.symmetric(horizontal: 16),
+                margin: EdgeInsets.symmetric(horizontal: 16.w),
               ),
               Image.asset(
                 'assets/icons/Ph_Sticker.png',
@@ -99,15 +99,14 @@ class _ChatScreenState extends State<ChatScreen> {
             },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
-              size: 24,
+              size: 24.sp,
             ),
           ),
-          // SizedBox(width: 12.w),
           CircleAvatar(
-            radius: 22.w,
+            radius: 22.r,
             backgroundColor: AppColors.borderSecondary,
             child: CircleAvatar(
-              radius: 20.w,
+              radius: 20.r,
               backgroundImage: AssetImage('assets/images/Dr_Fabian_Weber.png'),
             ),
           ),
@@ -120,9 +119,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 Text('Dr. Giovanni Bianchi',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     color: AppColors.textNormal,
-                    // letterSpacing: 1,
+                    letterSpacing: 1.sp,
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -131,9 +130,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 Text('General Surgery',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: AppColors.textSecondary,
-                    // letterSpacing: 1,
+                    letterSpacing: 1.sp,
                   ),
                 ),
               ],
@@ -180,24 +179,25 @@ class _ChatScreenState extends State<ChatScreen> {
             Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 100),
+                  margin: EdgeInsets.only(left: 100.w),
                   child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12.w),
-                            topRight: Radius.circular(12.w),
-                            bottomLeft: Radius.circular(12.w),
+                            topLeft: Radius.circular(12.r),
+                            topRight: Radius.circular(12.r),
+                            bottomLeft: Radius.circular(12.r),
                           ),
                           color: AppColors.bgPrimary,
                         ),
                         child: Text('Hello Doctor! I\'d like to schedule an appointment for a medical consultation',
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w400,
-                            fontSize: 16,
-                            color: AppColors.textWhite
+                            fontSize: 16.sp,
+                            color: AppColors.textWhite,
+                            letterSpacing: 1.sp
                           ),
                         ),
                       ),
@@ -208,7 +208,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                           child: Text(
                             "09:32 PM",
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                            style: GoogleFonts.khula(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.textDisabled,
+                              letterSpacing: 1.sp
+                            ),
                           ),
                         ),
                       ),
@@ -217,24 +222,25 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 SizedBox(height: 24.h),
                 Container(
-                  margin: EdgeInsets.only(right: 100),
+                  margin: EdgeInsets.only(right: 100.w),
                   child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12.w),
-                            bottomRight: Radius.circular(12.w),
-                            bottomLeft: Radius.circular(12.w),
+                            topRight: Radius.circular(12.r),
+                            bottomRight: Radius.circular(12.r),
+                            bottomLeft: Radius.circular(12.r),
                           ),
                           color: AppColors.bgAlert,
                         ),
                         child: Text('Hello! Of course, I\'m glad to assist you. What health concerns are you experiencing?',
                           style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: AppColors.textNormal
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.sp,
+                            color: AppColors.textNormal,
+                            letterSpacing: 1.sp
                           ),
                         ),
                       ),
@@ -245,7 +251,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                           child: Text(
                             "09:32 PM",
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                            style: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                                letterSpacing: 1.sp
+                            ),
                           ),
                         ),
                       ),
@@ -254,24 +265,25 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 SizedBox(height: 24.h),
                 Container(
-                  margin: EdgeInsets.only(left: 100),
+                  margin: EdgeInsets.only(left: 100.w),
                   child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12.w),
-                            topRight: Radius.circular(12.w),
-                            bottomLeft: Radius.circular(12.w),
+                            topLeft: Radius.circular(12.r),
+                            topRight: Radius.circular(12.r),
+                            bottomLeft: Radius.circular(12.r),
                           ),
                           color: AppColors.bgPrimary,
                         ),
                         child: Text('I\'ve been experiencing constant headaches over the past few days',
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: AppColors.textWhite
+                              fontSize: 16.sp,
+                              color: AppColors.textWhite,
+                              letterSpacing: 1.sp
                           ),
                         ),
                       ),
@@ -282,7 +294,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                           child: Text(
                             "09:32 PM",
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                            style: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                                letterSpacing: 1.sp
+                            ),
                           ),
                         ),
                       ),
@@ -291,24 +308,25 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 SizedBox(height: 24.h),
                 Container(
-                  margin: EdgeInsets.only(right: 100),
+                  margin: EdgeInsets.only(right: 100.w),
                   child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(12.w),
-                            bottomRight: Radius.circular(12.w),
-                            bottomLeft: Radius.circular(12.w),
+                            topRight: Radius.circular(12.r),
+                            bottomRight: Radius.circular(12.r),
+                            bottomLeft: Radius.circular(12.r),
                           ),
                           color: AppColors.bgAlert,
                         ),
                         child: Text('I understand. Let\'s schedule your appointment. Do you have any specific time preferences?',
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: AppColors.textNormal
+                              fontSize: 16.sp,
+                              color: AppColors.textNormal,
+                              letterSpacing: 1.sp
                           ),
                         ),
                       ),
@@ -319,7 +337,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                           child: Text(
                             "09:32 PM",
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                            style: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                                letterSpacing: 1.sp
+                            ),
                           ),
                         ),
                       ),
@@ -328,24 +351,25 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 SizedBox(height: 24.h),
                 Container(
-                  margin: EdgeInsets.only(left: 100),
+                  margin: EdgeInsets.only(left: 100.w),
                   child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(12.w),
-                            topRight: Radius.circular(12.w),
-                            bottomLeft: Radius.circular(12.w),
+                            topLeft: Radius.circular(12.r),
+                            topRight: Radius.circular(12.r),
+                            bottomLeft: Radius.circular(12.r),
                           ),
                           color: AppColors.bgPrimary,
                         ),
                         child: Text('I prefer Monday mornings, if possible.',
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: AppColors.textWhite
+                              fontSize: 16.sp,
+                              color: AppColors.textWhite,
+                              letterSpacing: 1.sp
                           ),
                         ),
                       ),
@@ -356,7 +380,12 @@ class _ChatScreenState extends State<ChatScreen> {
                           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                           child: Text(
                             "09:32 PM",
-                            style: TextStyle(fontSize: 10, color: Colors.grey),
+                            style: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textDisabled,
+                                letterSpacing: 1.sp
+                            ),
                           ),
                         ),
                       ),
@@ -372,16 +401,16 @@ class _ChatScreenState extends State<ChatScreen> {
                   Container(
                     margin: EdgeInsets.only(top: 24.h),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.w),
+                      borderRadius: BorderRadius.circular(12.r),
                       color: AppColors.bgAlert,
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 6.h),
                     child: Text(
                       'Today',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textSecondary,
                       ),
                     ),
@@ -397,7 +426,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget buildVideoCallScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff06010E),
       body: Stack(
         children: [
           SizedBox.expand(
@@ -418,14 +447,14 @@ class _ChatScreenState extends State<ChatScreen> {
             top: MediaQuery.of(context).padding.top + 16.h,
             left: 16.w,
             child: IconButton(
-              icon: Icon(Icons.chevron_left, color: AppColors.btnGrey),
+              icon: Icon(Icons.chevron_left, color: AppColors.btnGrey, size: 24.sp),
               onPressed: () => Navigator.pop(context),
             ),
           ),
           Positioned(
             bottom: 40.h,
-            left: 0,
-            right: 0,
+            left: 0.w,
+            right: 0.w,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -440,9 +469,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 SizedBox(height: 8.h),
                 Align(
                   alignment: Alignment.center,
-                  child: Text(
-                    "10:30 mins",
-                    style: TextStyle(fontSize: 14, color: AppColors.textWhite),
+                  child: Text("10:30 mins",
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.textWhite,
+                      letterSpacing: 1.sp
+                    ),
                   ),
                 ),
                 SizedBox(height: 21.h),
@@ -487,17 +520,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget buildVoiceCallScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff06010E),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top + 16.h,
+              top: MediaQuery.of(context).padding.top.h + 16.h,
               left: 16.w,
             ),
             child: IconButton(
-              icon: Icon(Icons.chevron_left, color: AppColors.btnGrey),
+              icon: Icon(Icons.chevron_left, color: AppColors.btnGrey,size: 24.sp),
               onPressed: () => Navigator.pop(context),
             ),
           ),
@@ -506,13 +539,25 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Column(
               children: [
                 Text('Dr. Giovanni Bianchi',
-                    style: TextStyle(color: Colors.white, fontSize: 18)),
+                  style: GoogleFonts.khula(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textWhite,
+                    letterSpacing: 1.sp
+                  ),
+                ),
                 SizedBox(height: 24.h),
                 Text('10:30 mins',
-                    style: TextStyle(color: Colors.white54, fontSize: 14)),
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.borderThirsty,
+                    letterSpacing: 1.sp
+                  ),
+                ),
                 SizedBox(height: 34.h),
                 CircleAvatar(
-                  radius: 90.w,
+                  radius: 90.r,
                   backgroundImage: AssetImage('assets/images/Call_Doctor.png'),
                 ),
               ],

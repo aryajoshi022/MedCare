@@ -86,10 +86,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 32.h),
                     Text('Menu',
                       style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          letterSpacing: 1,
-                          color: AppColors.textSecondary
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textSecondary
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -113,10 +113,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 32.h),
                     Text('General Information',
                       style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          letterSpacing: 1,
-                          color: AppColors.textSecondary
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textSecondary
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -172,7 +172,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w).copyWith(top: 16.h),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
             onPressed: (){
@@ -180,16 +179,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
-              size: 24,
+              size: 24.sp,
             ),
           ),
           Expanded(
             child:  Text('My Profile',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 16.sp,
                 color: AppColors.textNormal,
-                letterSpacing: 1,
+                letterSpacing: 1.sp,
               ),
             ),
           ),
@@ -201,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _buildUserCard(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.w),
+        borderRadius: BorderRadius.circular(12.r),
         color: AppColors.bgAlert
       ),
       padding: EdgeInsets.all(24.w),
@@ -210,14 +209,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Stack(
             children: [
               CircleAvatar(
-                radius: 40.w,
+                radius: 40.r,
                 backgroundImage: AssetImage('assets/images/Profile_Lorenzo_Ricci.png'),
               ),
               Positioned(
-                bottom: 0,
-                right: 0,
+                bottom: 0.h,
+                right: 0.w,
                 child: CircleAvatar(
-                  radius: 12.w,
+                  radius: 12.r,
                   backgroundImage: AssetImage('assets/icons/Edit_Option.png'),
                 ),
               ),
@@ -232,8 +231,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   'Lorenzo Ricci',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textNormal,
                   ),
                   maxLines: 1,
@@ -253,8 +252,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     'lorenzoricci@example.com',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
@@ -281,8 +280,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     '+39 1234567890',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
@@ -314,7 +313,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.w),
+          borderRadius: BorderRadius.circular(12.r),
           color: AppColors.bgAlert,
         ),
         child: Row(
@@ -335,8 +334,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     title,
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      letterSpacing: 1,
+                      fontSize: 16.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textNormal,
                     ),
                     maxLines: 1,
@@ -347,8 +346,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     subtitle,
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
@@ -376,7 +375,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Container(
         padding: EdgeInsets.all(24.w),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.w),
+          borderRadius: BorderRadius.circular(12.r),
           color: AppColors.bgAlert,
         ),
         child: Row(
@@ -396,8 +395,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   name,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textNormal,
                   ),
                 ),
@@ -421,17 +420,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6.w)),
+              borderRadius: BorderRadius.circular(6.r)),
           backgroundColor: AppColors.bgAlert,
-          side: BorderSide(width: 1, color: AppColors.borderThirsty),
+          side: BorderSide(width: 1.w, color: AppColors.borderThirsty),
         ),
         onPressed: () {},
         child: Text(
           'Log Out',
           style: GoogleFonts.khula(
             fontWeight: FontWeight.w600,
-            fontSize: 16,
-            letterSpacing: 1,
+            fontSize: 16.sp,
+            letterSpacing: 1.sp,
             color: AppColors.textRed,
           ),
         ),

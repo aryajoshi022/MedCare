@@ -32,8 +32,8 @@ class _AccountSettingState extends State<AccountSetting> {
                   Text('Password',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      letterSpacing: 0,
+                      fontSize: 16.sp,
+                      letterSpacing: 0.sp,
                       color: AppColors.textBtn
                     ),
                   ),
@@ -44,17 +44,17 @@ class _AccountSettingState extends State<AccountSetting> {
                       hintText: 'Enter your password',
                       hintStyle: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textDisabled
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.w),
-                        borderSide: BorderSide(width: 1, color: AppColors.borderSecondary)
+                        borderRadius: BorderRadius.circular(6.r),
+                        borderSide: BorderSide(width: 1.w, color: AppColors.borderSecondary)
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.w),
-                        borderSide: BorderSide(width: 1, color: AppColors.borderSecondary)
+                        borderRadius: BorderRadius.circular(6.r),
+                        borderSide: BorderSide(width: 1.w, color: AppColors.borderSecondary)
                       ),
                     ),
                   ),
@@ -62,16 +62,16 @@ class _AccountSettingState extends State<AccountSetting> {
                   Text('Language',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 0,
+                        fontSize: 16.sp,
+                        letterSpacing: 0.sp,
                         color: AppColors.textBtn
                     ),
                   ),
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.w),
-                      border: Border.all(width: 1, color: AppColors.borderSecondary),
+                      borderRadius: BorderRadius.circular(6.r),
+                      border: Border.all(width: 1.w, color: AppColors.borderSecondary),
                     ),
                     padding: EdgeInsets.only(left: 14.w),
                     child: Row(
@@ -79,16 +79,16 @@ class _AccountSettingState extends State<AccountSetting> {
                       children: [
                         Text('English',
                           style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              letterSpacing: 1,
-                              color: AppColors.textNormal
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp,
+                            letterSpacing: 1.sp,
+                            color: AppColors.textNormal
                           ),
                         ),
                         IconButton(
                           onPressed: (){},
                           icon: Icon(Icons.keyboard_arrow_down,
-                            size: 16,
+                            size: 16.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
@@ -98,17 +98,17 @@ class _AccountSettingState extends State<AccountSetting> {
                   SizedBox(height: 24.h),
                   Text('Privacy Settings',
                     style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 0,
-                        color: AppColors.textBtn
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16.sp,
+                      letterSpacing: 0.sp,
+                      color: AppColors.textBtn
                     ),
                   ),
                   SizedBox(height: 12.h),
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.w),
-                      border: Border.all(width: 1, color: AppColors.borderSecondary),
+                      borderRadius: BorderRadius.circular(6.r),
+                      border: Border.all(width: 1.w, color: AppColors.borderSecondary),
                     ),
                     padding: EdgeInsets.only(left: 14.w),
                     child: Row(
@@ -116,16 +116,16 @@ class _AccountSettingState extends State<AccountSetting> {
                       children: [
                         Text('Information privacy',
                           style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              letterSpacing: 1,
-                              color: AppColors.textNormal
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14.sp,
+                            letterSpacing: 1.sp,
+                            color: AppColors.textNormal
                           ),
                         ),
                         IconButton(
                           onPressed: (){},
                           icon: Icon(Icons.chevron_right,
-                            size: 16,
+                            size: 16.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
@@ -153,7 +153,6 @@ class _AccountSettingState extends State<AccountSetting> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w).copyWith(top: 16.h),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
             onPressed: (){
@@ -161,16 +160,16 @@ class _AccountSettingState extends State<AccountSetting> {
             },
             icon: Icon(Icons.chevron_left,
               color: AppColors.btnSecondary,
-              size: 24,
+              size: 24.sp,
             ),
           ),
           Spacer(flex: 2),
           Text('Account Setting',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 16,
+              fontSize: 16.sp,
               color: AppColors.textNormal,
-              letterSpacing: 1,
+              letterSpacing: 1.sp,
             ),
           ),
           Spacer(flex: 3)

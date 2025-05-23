@@ -79,7 +79,7 @@ class _DrugDetailsState extends State<DrugDetails> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.bgPrimary,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.w)
+                    borderRadius: BorderRadius.circular(24.r)
                 ),
                 // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
                 padding: EdgeInsets.only(left: 10.w)
@@ -87,8 +87,8 @@ class _DrugDetailsState extends State<DrugDetails> {
             child: Text('Save',
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  letterSpacing: 1,
+                  fontSize: 16.sp,
+                  letterSpacing: 1.sp,
                   color: AppColors.textWhite
               ),
             ),
@@ -105,8 +105,9 @@ class _DrugDetailsState extends State<DrugDetails> {
         children: [
           IconButton(
             icon: Icon(
-                Icons.chevron_left,
-                color: AppColors.btnSecondary
+              Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminder()));
@@ -116,10 +117,10 @@ class _DrugDetailsState extends State<DrugDetails> {
           Text(
             'Details about the drug',
             style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1,
-                color: AppColors.textNormal
+              fontWeight: FontWeight.w600,
+              fontSize: 16.sp,
+              letterSpacing: 1.sp,
+              color: AppColors.textNormal
             ),
           ),
           Spacer(flex: 3)
@@ -131,8 +132,8 @@ class _DrugDetailsState extends State<DrugDetails> {
   Widget _buildDrugInfo() {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6.w),
-          border: Border.all(color: AppColors.borderBtn, width: 1),
+          borderRadius: BorderRadius.circular(6.r),
+          border: Border.all(color: AppColors.borderBtn, width: 1.w),
           color: AppColors.borderThirsty
       ),
       padding: EdgeInsets.all(24.w),
@@ -141,18 +142,18 @@ class _DrugDetailsState extends State<DrugDetails> {
         children: [
           Text('Paracetamol 500 mg',
             style: GoogleFonts.khula(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1,
-                color: AppColors.textNormal
+              fontWeight: FontWeight.w600,
+              fontSize: 16.sp,
+              letterSpacing: 1.sp,
+              color: AppColors.textNormal
             ),
           ),
           SizedBox(height: 12.h),
           Text('Take 1 tablet every 6 hours as needed to reduce fever or pain.',
             style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 14,
-                letterSpacing: 1,
+                fontSize: 14.sp,
+                letterSpacing: 1.sp,
                 color: AppColors.textSecondary
             ),
           ),
@@ -164,8 +165,8 @@ class _DrugDetailsState extends State<DrugDetails> {
   Widget _buildMedicineDetails() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.w),
-        border: Border.all(color: AppColors.borderBtn, width: 1),
+        borderRadius: BorderRadius.circular(6.r),
+        border: Border.all(color: AppColors.borderBtn, width: 1.w),
         color: AppColors.bgAlert,
       ),
       padding: EdgeInsets.all(24.w),
@@ -176,8 +177,8 @@ class _DrugDetailsState extends State<DrugDetails> {
             'Medicine Details',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 14,
-              letterSpacing: 1,
+              fontSize: 14.sp,
+              letterSpacing: 1.sp,
               color: AppColors.textNormal,
             ),
           ),
@@ -185,7 +186,7 @@ class _DrugDetailsState extends State<DrugDetails> {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(color: AppColors.borderSecondary, width: 1),
+              border: Border.all(color: AppColors.borderSecondary, width: 1.w),
               color: AppColors.bgAlert,
             ),
             padding: EdgeInsets.all(18.w),
@@ -209,8 +210,8 @@ class _DrugDetailsState extends State<DrugDetails> {
             'Notes (Optional)',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 14,
-              letterSpacing: 1,
+              fontSize: 14.sp,
+              letterSpacing: 1.sp,
               color: AppColors.textNormal,
             ),
           ),
@@ -222,17 +223,17 @@ class _DrugDetailsState extends State<DrugDetails> {
               hintText: "Add your notes",
               hintStyle: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 14,
-                letterSpacing: 1,
+                fontSize: 14.sp,
+                letterSpacing: 1.sp,
                 color: AppColors.textDisabled,
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(6.w),
-                borderSide: BorderSide(width: 1, color: AppColors.borderSecondary),
+                borderRadius: BorderRadius.circular(6.r),
+                borderSide: BorderSide(width: 1.w, color: AppColors.borderSecondary),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(6.w),
-                borderSide: BorderSide(width: 1, color: AppColors.borderSecondary),
+                borderRadius: BorderRadius.circular(6.r),
+                borderSide: BorderSide(width: 1.w, color: AppColors.borderSecondary),
               ),
             ),
           ),
@@ -249,8 +250,8 @@ class _DrugDetailsState extends State<DrugDetails> {
           label,
           style: GoogleFonts.khula(
             fontWeight: FontWeight.w600,
-            fontSize: 14,
-            letterSpacing: 1,
+            fontSize: 14.sp,
+            letterSpacing: 1.sp,
             color: AppColors.textNormal,
           ),
         ),
@@ -258,19 +259,20 @@ class _DrugDetailsState extends State<DrugDetails> {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 14.w),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(6.w),
-            border: Border.all(width: 1, color: AppColors.borderSecondary),
+            borderRadius: BorderRadius.circular(6.r),
+            border: Border.all(width: 1.w, color: AppColors.borderSecondary),
           ),
           child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              borderRadius: BorderRadius.circular(6.w),
+            child: DropdownButton(
+              borderRadius: BorderRadius.circular(6.r),
               dropdownColor: AppColors.bgAlert,
               value: selectedDropdownValues[label],
               hint: Text(
                 'Choose',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
+                  letterSpacing: 1.sp,
                   color: AppColors.textDisabled,
                 ),
               ),
@@ -283,7 +285,8 @@ class _DrugDetailsState extends State<DrugDetails> {
                   option,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
+                    fontSize: 14.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textBtn,
                   ),
                 ),
@@ -304,9 +307,9 @@ class _DrugDetailsState extends State<DrugDetails> {
     return Container(
       padding: EdgeInsets.only(left: 17.w, right: 19.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.w),
+        borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
-          width: 1,
+          width: 1.w,
           color: AppColors.borderThirsty,
         ),
       ),
@@ -324,11 +327,12 @@ class _DrugDetailsState extends State<DrugDetails> {
               SizedBox(width: 8.w),
               Text('Activate notifications',
                 style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: AppColors.textSecondary
-                ),),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textSecondary
+                ),
+              ),
             ],
           ),
           Switch(

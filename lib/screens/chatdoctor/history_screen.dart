@@ -55,7 +55,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
       ),
       body: SafeArea(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildCustomAppBar(),
             SizedBox(height: 24.h),
@@ -79,24 +78,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
         children: [
           IconButton(
             icon: Icon(
-                Icons.chevron_left,
-                color: AppColors.btnSecondary
+              Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
             },
           ),
-          Spacer(flex: 2,),
+          Spacer(flex: 2),
           Text(
             'History',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 16,
-              letterSpacing: 1,
+              fontSize: 16.sp,
+              letterSpacing: 1.sp,
               color: AppColors.textNormal
             ),
           ),
-          Spacer(flex: 3,)
+          Spacer(flex: 3)
         ],
       ),
     );
@@ -109,7 +109,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.w),
           border: Border.all(
-            width: 1,
+            width: 1.w,
             color: AppColors.borderBtn
           ),
           color: AppColors.btnColor
@@ -144,14 +144,14 @@ class _HistoryScreenState extends State<HistoryScreen> {
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
           color: isSelected ? AppColors.btnPrimary : AppColors.btnColor,
-          borderRadius: BorderRadius.circular(6.w),
+          borderRadius: BorderRadius.circular(6.r),
         ),
         child: Center(
           child: Text(
             text,
             style: GoogleFonts.khula(
-              fontSize: 16,
-              letterSpacing: 1,
+              fontSize: 16.sp,
+              letterSpacing: 1.sp,
               color: isSelected ? AppColors.textWhite: AppColors.textDisabled,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
             ),
@@ -169,8 +169,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
           "1 Minggu yang akan datang",
           style: GoogleFonts.khula(
             fontWeight: FontWeight.w600,
-            fontSize: 14,
-            letterSpacing: 1,
+            fontSize: 14.sp,
+            letterSpacing: 1.sp,
             color: AppColors.textSecondary,
           ),
         ),
@@ -189,7 +189,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
             });
           },
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         _buildUpcomingCard(
           context: context,
           doctorName: "Dr. Luca Rossi",
@@ -221,7 +221,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           image: "assets/images/Dr_Fabian_Weber.png",
           showStars: false,
         ),
-        const SizedBox(height: 16),
+        SizedBox(height: 16.h),
         _buildCompletedCard(
           doctorName: "Dr. Giovanni Bianchi",
           specialty: "General Surgery",
@@ -251,12 +251,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.w),
-                topRight: Radius.circular(12.w)),
+                topLeft: Radius.circular(12.r),
+                topRight: Radius.circular(12.r)),
             border: Border(
-              top: BorderSide(width: 1, color: AppColors.borderBtn),
-              right: BorderSide(width: 1, color: AppColors.borderBtn),
-              left: BorderSide(width: 1, color: AppColors.borderBtn),
+              top: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              right: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              left: BorderSide(width: 1.w, color: AppColors.borderBtn),
             ),
           ),
           child: Column(
@@ -272,25 +272,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         doctorName,
                         style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textNormal),
                       ),
                       Text(
                         specialty,
                         style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                            letterSpacing: 1,
+                            fontSize: 12.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textSecondary),
                       ),
                     ],
                   ),
                   CircleAvatar(
-                    radius: 22.w,
+                    radius: 22.r,
                     backgroundColor: AppColors.borderSecondary,
                     child: CircleAvatar(
-                      radius: 18.w,
+                      radius: 18.r,
                       backgroundImage: AssetImage(image),
                     ),
                   ),
@@ -307,12 +307,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
           padding: EdgeInsets.all(20.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12.w),
-                bottomRight: Radius.circular(12.w)),
+                bottomLeft: Radius.circular(12.r),
+                bottomRight: Radius.circular(12.r)),
             border: Border(
-              bottom: BorderSide(width: 1, color: AppColors.borderBtn),
-              right: BorderSide(width: 1, color: AppColors.borderBtn),
-              left: BorderSide(width: 1, color: AppColors.borderBtn),
+              bottom: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              right: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              left: BorderSide(width: 1.w, color: AppColors.borderBtn),
             ),
             color: AppColors.btnColor,
           ),
@@ -338,18 +338,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       'Notifications',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        letterSpacing: 1,
+                        fontSize: 12.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textSecondary,
                       ),
                     ),
-                    SizedBox(width: 4),
+                    SizedBox(width: 4.w),
                     Text(
                       isNotificationOn ? "On" : "Off",
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 12,
-                        letterSpacing: 1,
+                        fontSize: 12.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textBtn,
                       ),
                     ),
@@ -359,25 +359,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
               SizedBox(width: 16.w),
               Expanded(
                 child: ElevatedButton(
-                onPressed: _showRescheduleSheet,
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-                  backgroundColor: AppColors.btnPrimary,
-                  foregroundColor: AppColors.textWhite,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.w),
+                  onPressed: _showRescheduleSheet,
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
+                    backgroundColor: AppColors.btnPrimary,
+                    foregroundColor: AppColors.textWhite,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                  child: Text(
+                    'Reschedule',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
+                      color: AppColors.textWhite,
+                    ),
                   ),
                 ),
-                child: Text(
-                  'Reschedule',
-                  style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: AppColors.textWhite,
-                  ),
-                ),
-              ),
               ),
             ],
           ),
@@ -400,13 +400,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.w),
-                topRight: Radius.circular(12.w)
+                topLeft: Radius.circular(12.r),
+                topRight: Radius.circular(12.r)
             ),
             border: Border(
-              top: BorderSide(width: 1, color: AppColors.borderBtn),
-              right: BorderSide(width: 1, color: AppColors.borderBtn),
-              left: BorderSide(width: 1, color: AppColors.borderBtn),
+              top: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              right: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              left: BorderSide(width: 1.w, color: AppColors.borderBtn),
             ),
           ),
           child: Column(
@@ -421,8 +421,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         doctorName,
                         style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textNormal
                         ),
                       ),
@@ -430,18 +430,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         specialty,
                         style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                            letterSpacing: 1,
+                            fontSize: 12.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textSecondary
                         ),
                       ),
                     ],
                   ),
                   CircleAvatar(
-                    radius: 22.w,
+                    radius: 22.r,
                     backgroundColor: AppColors.borderSecondary,
                     child: CircleAvatar(
-                      radius: 18.w,
+                      radius: 18.r,
                       backgroundImage: AssetImage(image),
                     ),
                   ),
@@ -458,13 +458,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
           padding: EdgeInsets.all(20.w),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12.w),
-                bottomRight: Radius.circular(12.w)
+                bottomLeft: Radius.circular(12.r),
+                bottomRight: Radius.circular(12.r)
             ),
             border: Border(
-              bottom: BorderSide(width: 1, color: AppColors.borderBtn),
-              right: BorderSide(width: 1, color: AppColors.borderBtn),
-              left: BorderSide(width: 1, color: AppColors.borderBtn),
+              bottom: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              right: BorderSide(width: 1.w, color: AppColors.borderBtn),
+              left: BorderSide(width: 1.w, color: AppColors.borderBtn),
             ),
             color: AppColors.btnColor,
           ),
@@ -479,11 +479,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   children: [
                     Row(
                       children: [
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-                        Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
+                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                        Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14.sp),
                       ],
                     ),
                     SizedBox(height: 9.h),
@@ -493,15 +493,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           "My Review",
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              letterSpacing: 1,
+                              fontSize: 14.sp,
+                              letterSpacing: 1.sp,
                               color: AppColors.textBtn
                           ),
                         ),
                         SizedBox(width: 7.w),
                         Icon(
                           Icons.arrow_forward_ios,
-                          size: 12,
+                          size: 12.sp,
                           color: AppColors.btnPrimary,
                         ),
                       ],
@@ -514,16 +514,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-                    side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.w),
+                      borderRadius: BorderRadius.circular(24.r),
                     ),
                   ),
                   child: Text(
                     "Next Appointment",
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         color: AppColors.textBtn
                     ),
                   ),
@@ -538,17 +538,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-                    side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.w),
+                      borderRadius: BorderRadius.circular(24.r),
                     ),
                   ),
                   child: Text(
                     "Add Review",
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textBtn
                     ),
                   ),
@@ -560,17 +560,17 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-                    side: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.w),
+                      borderRadius: BorderRadius.circular(24.r),
                     ),
                   ),
                   child: Text(
                     "Next Appointment",
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textBtn
                     ),
                     maxLines: 1,
@@ -596,25 +596,25 @@ class _HistoryScreenState extends State<HistoryScreen> {
               Text('Date& Time',
                 style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    letterSpacing: 1,
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textDisabled
                 ),
               ),
-              SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Text(
                 date,
                 style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
-                    // letterSpacing: 1,
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textBtn
                 ),
               ),
             ],
           ),
         ),
-
+        SizedBox(width: 12.w),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -623,18 +623,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 "Location",
                 style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    letterSpacing: 1,
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textDisabled
                 ),
               ),
-              SizedBox(height: 4),
+              SizedBox(height: 4.h),
               Text(
                 location,
                 style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
-                    // letterSpacing: 1,
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textBtn
                 ),
               ),
@@ -651,7 +651,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(36.r)),
       ),
       builder: (ctx) => StatefulBuilder(
         builder: (context, setModalState) => DraggableScrollableSheet(
@@ -675,7 +675,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     height: 4.h,
                     decoration: BoxDecoration(
                       color: AppColors.borderSecondary,
-                      borderRadius: BorderRadius.circular(4.w),
+                      borderRadius: BorderRadius.circular(4.r),
                     ),
                   ),
                 ),
@@ -685,8 +685,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     'Reschedule Appointment',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      letterSpacing: 1,
+                      fontSize: 16.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textNormal,
                     ),
                   ),
@@ -696,8 +696,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   'Working Hours',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textSecondary,
                   ),
                 ),
@@ -719,7 +719,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6.w),
+                          borderRadius: BorderRadius.circular(6.r),
                           border: Border.all(width: 1.w, color: AppColors.borderBtn),
                           color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
                         ),
@@ -728,7 +728,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             time,
                             style: GoogleFonts.khula(
                               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
                             ),
                           ),
@@ -742,8 +742,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                   'Schedule',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    letterSpacing: 1,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textSecondary,
                   ),
                 ),
@@ -763,8 +763,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           margin: EdgeInsets.only(right: 12.w),
                           padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6.w),
-                            border: Border.all(width: 1, color: AppColors.borderBtn),
+                            borderRadius: BorderRadius.circular(6.r),
+                            border: Border.all(width: 1.w, color: AppColors.borderBtn),
                             color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
                           ),
                           child: Text(
@@ -772,7 +772,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             textAlign: TextAlign.center,
                             style: GoogleFonts.khula(
                               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                              fontSize: 14,
+                              fontSize: 14.sp,
                               color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
                             ),
                           ),
@@ -787,16 +787,16 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     Expanded(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                          side: BorderSide(color: AppColors.borderThirsty, width: 1),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
+                          side: BorderSide(color: AppColors.borderThirsty, width: 1.w),
                         ),
                         onPressed: () => Navigator.of(ctx).pop(),
                         child: Text(
                           'Cancel',
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textBtn,
                           ),
                         ),
@@ -806,7 +806,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
                           backgroundColor: AppColors.btnPrimary,
                         ),
                         onPressed: () => Navigator.of(ctx).pop(),
@@ -814,8 +814,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           'Reschedule',
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            letterSpacing: 1,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textWhite,
                           ),
                         ),
@@ -837,7 +837,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(36.r)),
       ),
       builder: (context) {
         return StatefulBuilder(
@@ -859,7 +859,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       height: 4.h,
                       decoration: BoxDecoration(
                         color: AppColors.borderSecondary,
-                        borderRadius: BorderRadius.circular(4.w),
+                        borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
                   ),
@@ -869,8 +869,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       'Review',
                       style: GoogleFonts.khula(
                           fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          letterSpacing: 1,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.sp,
                           color: AppColors.textNormal
                       ),
                     ),
@@ -880,8 +880,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     'Ratings',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textSecondary
                     ),
                   ),
@@ -892,11 +892,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     direction: Axis.horizontal,
                     itemCount: 5,
                     itemSize: 24,
-                    itemPadding: EdgeInsets.only(left: 0, right: 4.w),
+                    itemPadding: EdgeInsets.only(left: 0.w, right: 4.w),
                     itemBuilder: (context, _) => Icon(
                       Icons.star_rounded,
                       color: Color(0xffFFA740),
-                      // size: 24,
+                      size: 24.sp,
                     ),
                     onRatingUpdate: (value) {
                       setModalState(() {
@@ -909,8 +909,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     'Your review',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textSecondary
                     ),
                   ),
@@ -922,13 +922,13 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       hintText: "Write your review",
                       hintStyle: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textDisabled
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.w),
-                        borderSide: BorderSide(width: 1, color: AppColors.borderBtn),
+                        borderRadius: BorderRadius.circular(6.r),
+                        borderSide: BorderSide(width: 1.w, color: AppColors.borderBtn),
                       ),
                     ),
                   ),
@@ -938,8 +938,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       Expanded(
                         child: TextButton(
                           style: TextButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
-                            side: BorderSide(color: AppColors.borderThirsty, width: 1),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
+                            side: BorderSide(color: AppColors.borderThirsty, width: 1.w),
                             // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                           ),
                           onPressed: () => Navigator.of(context).pop(),
@@ -947,8 +947,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             'Cancel',
                             style: GoogleFonts.khula(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                letterSpacing: 1,
+                                fontSize: 16.sp,
+                                letterSpacing: 1.sp,
                                 color: AppColors.textBtn
                             ),
                           ),
@@ -958,7 +958,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       Expanded(
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.w)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
                             // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                             backgroundColor: AppColors.btnPrimary,
                           ),
@@ -967,8 +967,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                             'Reschedule',
                             style: GoogleFonts.khula(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                letterSpacing: 1,
+                                fontSize: 16.sp,
+                                letterSpacing: 1.sp,
                                 color: AppColors.textWhite
                             ),
                           ),
@@ -997,7 +997,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(36.w)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(36.r)),
       ),
       builder: (context) {
         return StatefulBuilder(
@@ -1019,7 +1019,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       height: 4.h,
                       decoration: BoxDecoration(
                         color: AppColors.borderSecondary,
-                        borderRadius: BorderRadius.circular(4.w),
+                        borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
                   ),
@@ -1029,8 +1029,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       'Notification',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w700,
-                        fontSize: 16,
-                        letterSpacing: 1,
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
                         color: AppColors.textNormal,
                       ),
                     ),
@@ -1040,9 +1040,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.w),
+                      borderRadius: BorderRadius.circular(12.r),
                       border: Border.all(
-                          width: 1, color: AppColors.borderThirsty),
+                          width: 1.w, color: AppColors.borderThirsty),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1051,8 +1051,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           "Activate notifications",
                           style: GoogleFonts.khula(
                             fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            letterSpacing: 1,
+                            fontSize: 14.sp,
+                            letterSpacing: 1.sp,
                             color: AppColors.textSecondary,
                           ),
                         ),
@@ -1075,7 +1075,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24.w)),
+                            borderRadius: BorderRadius.circular(24.r)),
                         // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                         backgroundColor: AppColors.btnPrimary,
                       ),
@@ -1087,8 +1087,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         'Submit',
                         style: GoogleFonts.khula(
                           fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          letterSpacing: 1,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.sp,
                           color: AppColors.textWhite,
                         ),
                       ),

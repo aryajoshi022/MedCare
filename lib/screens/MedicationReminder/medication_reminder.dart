@@ -47,21 +47,17 @@ class _MedicationReminderState extends State<MedicationReminder> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.bgPrimary,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.w)
+                    borderRadius: BorderRadius.circular(24.r)
                 ),
                 // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                padding: EdgeInsets.only(left: 10)
-              // side: BorderSide(
-              //   width: 1,
-              //   color: Color(0xff26408B),
-              // ),
+                padding: EdgeInsets.only(left: 10.w)
             ),
             child: Text('Add Medicine',
               style: GoogleFonts.khula(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  // letterSpacing: 1,
-                  color: AppColors.textWhite
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+                letterSpacing: 1.sp,
+                color: AppColors.textWhite
               ),
             ),
           ),
@@ -77,24 +73,25 @@ class _MedicationReminderState extends State<MedicationReminder> {
         children: [
           IconButton(
             icon: Icon(
-                Icons.chevron_left,
-                color: AppColors.btnSecondary
+              Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ServicesScreenScreen()));
             },
           ),
-          Spacer(flex: 2,),
+          Spacer(flex: 2),
           Text(
             'Medication Reminder',
             style: GoogleFonts.khula(
                 fontWeight: FontWeight.w600,
-                fontSize: 16,
-                letterSpacing: 1,
+                fontSize: 16.sp,
+                letterSpacing: 1.sp,
                 color: AppColors.textNormal
             ),
           ),
-          Spacer(flex: 3,)
+          Spacer(flex: 3)
         ],
       ),
     );
@@ -114,7 +111,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 child: Text('Reminder to Take Medicine',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 16.sp,
+                    letterSpacing: 1.sp,
                     color: AppColors.textSecondary
                   ),
                   overflow: TextOverflow.ellipsis,
@@ -127,7 +125,7 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 child: Text('Lihat Semua  >',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     color: AppColors.textBtn
                   ),
                 ),
@@ -138,15 +136,13 @@ class _MedicationReminderState extends State<MedicationReminder> {
           Container(
             padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.w),
+              borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
-                width: 1,
+                width: 1.w,
                 color: AppColors.borderThirsty,
               ),
             ),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('assets/images/MedicationReminder.png',
                   width: 132.72.w,
@@ -157,8 +153,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 Text('Manage your medication',
                   style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textNormal
                   ),
                   textAlign: TextAlign.center,
@@ -167,8 +163,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 Text('Add the medicine you are taking and create a reminder to take the medicine',
                   style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      letterSpacing: 1,
+                      fontSize: 12.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textSecondary
                   ),
                   textAlign: TextAlign.center,
@@ -190,7 +186,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
           Text('History of Taking Medication',
             style: GoogleFonts.khula(
                 fontWeight: FontWeight.w600,
-                fontSize: 16,
+                fontSize: 16.sp,
+                letterSpacing: 1.sp,
                 color: AppColors.textSecondary
             ),
             overflow: TextOverflow.ellipsis,
@@ -199,15 +196,13 @@ class _MedicationReminderState extends State<MedicationReminder> {
           Container(
             padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.w),
+              borderRadius: BorderRadius.circular(12.r),
               border: Border.all(
-                width: 1,
+                width: 1.w,
                 color: AppColors.borderThirsty,
               ),
             ),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('assets/images/MedicationReminder.png',
                   width: 132.72.w,
@@ -218,8 +213,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 Text('View all your medication history',
                   style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      letterSpacing: 1,
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textNormal
                   ),
                   textAlign: TextAlign.center,
@@ -228,8 +223,8 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 Text('Add the medicine you are taking and create a reminder to take the medicine',
                   style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      letterSpacing: 1,
+                      fontSize: 12.sp,
+                      letterSpacing: 1.sp,
                       color: AppColors.textSecondary
                   ),
                   textAlign: TextAlign.center,

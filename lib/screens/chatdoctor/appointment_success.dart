@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/chatdoctor/history_screen.dart';
-
 import '../../util/constants/colors.dart';
 
 class AppointmentSuccess extends StatefulWidget {
@@ -30,38 +28,38 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
             Text('Appointments have been made',
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  letterSpacing: 1,
-                  color: Color(0xff090909)
+                  fontSize: 14.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textNormal
               ),
             ),
             SizedBox(height: 32.h),
             Text('Prepare your attendance well, arrive 30\nminutes before the appointed time',
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 14,
-                  letterSpacing: 1,
-                  color: Color(0xff4D4D4D)
+                  fontSize: 14.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textSecondary
               ),
             ),
             SizedBox(height: 32.h),
             SizedBox(
-              width: 200,
+              width: 200.w,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: AppColors.bgAlert,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.w),
-                    side: BorderSide(width: 1, color: Color(0xffA6CFD5))
+                    borderRadius: BorderRadius.circular(24.r),
+                    side: BorderSide(width: 1.w, color: AppColors.borderSecondary)
                   )
                 ),
                   onPressed: (){},
                   child: Text('Go to details',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        letterSpacing: 1,
-                        color: Color(0xff26408B)
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textBtn
                     ),
                   ),
               ),
