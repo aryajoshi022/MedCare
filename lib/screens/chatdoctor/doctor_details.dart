@@ -30,7 +30,6 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors.bgAlert,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,9 +47,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     'Practice Location',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      letterSpacing: 1,
-                      color: Color(0xff090909)
+                      fontSize: 16.sp,
+                      letterSpacing: 1.sp,
+                      color: AppColors.textNormal
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -60,9 +59,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     'Working Hours',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                        color: Color(0xff090909)
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal
                     ),
                   ),
                   // SizedBox(height: 16.h),
@@ -72,9 +71,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     'Schedule',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                        color: Color(0xff090909)
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -84,9 +83,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     'Review',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        letterSpacing: 1,
-                        color: Color(0xff090909)
+                        fontSize: 16.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -98,18 +97,18 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.only(top: 14, bottom: 28, left: 28, right: 28),
+        padding: EdgeInsets.only(top: 14.h, bottom: 28.h, left: 28.w, right: 28.w),
         child: Row(
           children: [
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
+                backgroundColor: AppColors.bgAlert,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24.w)
+                  borderRadius: BorderRadius.circular(24.r)
                 ),
                 side: BorderSide(
-                  width: 1,
-                  color: Color(0xff26408B),
+                  width: 1.w,
+                  color: AppColors.bgPrimary,
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h)
               ),
@@ -117,41 +116,38 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ChatScreen()));
               },
               icon: Icon(Icons.chat_outlined,
-              color: Color(0xff26408B),
+              color: AppColors.btnPrimary,
               ),
               label: Text('Chat',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  // letterSpacing: 1,
-                  color: Color(0xff26408B)
+                  fontSize: 16.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textBtn
                 ),
               ),
             ),
-            SizedBox(width: 12),
+            SizedBox(width: 12.w),
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Confirmation()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff26408B),
+                  backgroundColor: AppColors.bgPrimary,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.w)
+                      borderRadius: BorderRadius.circular(24.r)
                   ),
-                  // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                  // side: BorderSide(
-                  //   width: 1,
-                  //   color: Color(0xff26408B),
-                  // ),
                 ),
                 child: Text('Make An Appointment',
                   style: GoogleFonts.khula(
                       fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                      // letterSpacing: 1,
-                      color: Colors.white
-                  ),maxLines: 1,overflow: TextOverflow.ellipsis,
+                      fontSize: 16.sp,
+                      letterSpacing: 1.sp,
+                      color: AppColors.textWhite
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
@@ -163,14 +159,14 @@ class _DoctorDetailsState extends State<DoctorDetails> {
 
   Widget _buildHeaderSection(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 16.h, left: 16.w, right: 16.w, bottom: 16.h),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top.h + 16.h, left: 16.w, right: 16.w, bottom: 16.h),
       color: Color(0xffF6F1FF),
       child: Row(
         children: [
           IconButton(
-            icon: Icon(
-              Icons.chevron_left,
-              color: AppColors.textSecondary
+            icon: Icon(Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDoctor(),));
@@ -182,21 +178,19 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 'Doctor Details',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w600,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                  color: Color(0xff090909),
+                  fontSize: 16.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textNormal,
                 ),
               ),
             ),
           ),
           IconButton(
-            icon: Icon(
-              Icons.share_outlined,
-                color: AppColors.textSecondary
+            icon: Icon(Icons.share_outlined,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
-            onPressed: () {
-              // Handle share button action
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -205,28 +199,27 @@ class _DoctorDetailsState extends State<DoctorDetails> {
   
   Widget _buildDoctorInfoSection(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 0),
       color: Color(0xffF6F1FF),
       child: Column(
         children: [
           Stack(
             children: [
               CircleAvatar(
-                radius: 50.w,
-                backgroundColor: Color(0xffA6CFD5),
+                radius: 50.r,
+                backgroundColor: AppColors.borderSecondary,
                 child: CircleAvatar(
-                  radius: 46.w,
+                  radius: 46.r,
                   backgroundImage: AssetImage('assets/images/Dr_Luca_Rossi.png'),
                 ),
               ),
               Positioned(
-                bottom: 7,
-                right: 6,
+                bottom: 7.h,
+                right: 6.w,
                 child: CircleAvatar(
-                  radius: 10.w,
-                  backgroundColor: Color(0xffA6CFD5),
+                  radius: 10.r,
+                  backgroundColor: AppColors.borderSecondary,
                   child: CircleAvatar(
-                    radius: 9.w,
+                    radius: 9.r,
                     backgroundColor: Color(0xff6E9024),
                   ),
                 ),
@@ -237,9 +230,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           Text('Dr. Luca Rossi',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w600,
-              fontSize: 20,
-              letterSpacing: 1,
-              color: Color(0xff090909)
+              fontSize: 20.sp,
+              letterSpacing: 1.sp,
+              color: AppColors.textNormal
             ),
             textAlign: TextAlign.center,
           ),
@@ -247,9 +240,9 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           Text('Cardiology Specialist • 3 Years',
             style: GoogleFonts.khula(
               fontWeight: FontWeight.w400,
-              fontSize: 12,
-              letterSpacing: 1,
-              color: Color(0xff4D4D4D)
+              fontSize: 12.sp,
+              letterSpacing: 1.sp,
+              color: AppColors.textSecondary
             ),
             textAlign: TextAlign.center,
           ),
@@ -257,18 +250,18 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14),
-              Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14),
+              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+              Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+              Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14.sp),
               SizedBox(width: 8.w),
               Text('(12 Reviews)',
                 style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  color: Color(0xff4D4D4D)
+                  fontSize: 12.sp,
+                  letterSpacing: 1.sp,
+                  color: AppColors.textSecondary
                 ),
               ),
             ],
@@ -286,10 +279,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           child: Container(
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.w),
+              borderRadius: BorderRadius.circular(6.r),
               border: Border.all(
                 width: 1.w,
-                color: Color(0xffE3E3E3)
+                color: AppColors.borderBtn
               ),
             ),
             child: Column(
@@ -298,18 +291,18 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 Text('Education',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    letterSpacing: 1,
-                    color: Color(0xff4D4D4D)
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textSecondary
                   ),
                 ),
                 SizedBox(height: 12.h),
                 Text('University of Milan',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: Color(0xff26408B)
+                    fontSize: 14.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textBtn
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -323,10 +316,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           child: Container(
             padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.w),
+              borderRadius: BorderRadius.circular(6.r),
               border: Border.all(
                   width: 1.w,
-                  color: Color(0xffE3E3E3)
+                  color: AppColors.borderBtn
               ),
             ),
             child: Column(
@@ -335,18 +328,18 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 Text('License',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    letterSpacing: 1,
-                    color: Color(0xff4D4D4D)
+                    fontSize: 12.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textSecondary
                   ),
                 ),
                 SizedBox(height: 12.h),
                 Text('1276126552881',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: Color(0xff26408B)
+                    fontSize: 14.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textBtn
                   ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -363,8 +356,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.w),
-        color: const Color(0xffF9F8FD),
+        borderRadius: BorderRadius.circular(6.r),
+        color: AppColors.btnColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -382,8 +375,8 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   'Rossi Cardiology Clinic',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: const Color(0xff26408B),
+                    fontSize: 14.sp,
+                    color: AppColors.textBtn,
                   ),
                 ),
                 AnimatedRotation(
@@ -392,7 +385,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                   child: Icon(
                     Icons.keyboard_arrow_down,
                     color: AppColors.btnSecondary,
-                    size: 24,
+                    size: 24.sp,
                   ),
                 ),
               ],
@@ -403,14 +396,14 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.location_on_outlined, size: 14, color: AppColors.textSecondary),
+                Icon(Icons.location_on_outlined, size: 14.sp, color: AppColors.textSecondary),
                 SizedBox(width: 6.w),
                 Expanded(
                   child: Text(
                     'Rossi Cardiology Clinic Via Garibaldi 15, Milan, Italy',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
+                      fontSize: 12.sp,
                       color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
@@ -422,13 +415,13 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             SizedBox(height: 12.h),
             Row(
               children: [
-                Icon(Icons.phone, size: 14, color: AppColors.textSecondary),
+                Icon(Icons.phone, size: 14.sp, color: AppColors.textSecondary),
                 SizedBox(width: 6.w),
                 Text(
                   '(+21) 6125 7162  7126',
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w600,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     color: Color(0xff7266D7),
                   ),
                 ),
@@ -458,7 +451,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.w),
+              borderRadius: BorderRadius.circular(6.r),
               border: Border.all(width: 1.w, color: AppColors.borderBtn),
               color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
             ),
@@ -467,7 +460,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 time,
                 style: GoogleFonts.khula(
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
                 ),
               ),
@@ -495,7 +488,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
               padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.w),
-                border: Border.all(width: 1, color: AppColors.borderBtn),
+                border: Border.all(width: 1.w, color: AppColors.borderBtn),
                 color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
               ),
               child: Text(
@@ -503,7 +496,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.khula(
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
                 ),
               ),
@@ -555,18 +548,11 @@ Widget _buildReviewCard({
     width: 269.w,
     padding: EdgeInsets.all(20.w),
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12.w),
+      borderRadius: BorderRadius.circular(12.r),
       border: Border.all(
           width: 1.w,
           color: AppColors.borderBtn
       ),
-      // boxShadow: [
-      //   BoxShadow(
-      //     color: Color(0xffE3E3E3),
-      //     blurRadius: 10,
-      //     spreadRadius: 0,offset: Offset(4, 4),blurStyle: BlurStyle.outer
-      //   ),
-      // ],
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -574,7 +560,7 @@ Widget _buildReviewCard({
         Row(
           children: [
             CircleAvatar(
-              radius: 28.w,
+              radius: 28.r,
               backgroundImage: AssetImage(image),
             ),
             SizedBox(width: 12.w),
@@ -586,18 +572,18 @@ Widget _buildReviewCard({
                   name,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: Color(0xff090909)
+                    fontSize: 14.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textNormal
                   ),
                 ),
                 Text(
                   daysAgo,
                   style: GoogleFonts.khula(
                     fontWeight: FontWeight.w400,
-                    fontSize: 10,
-                    letterSpacing: 1,
-                    color: Color(0xff4D4D4D)
+                    fontSize: 10.sp,
+                    letterSpacing: 1.sp,
+                    color: AppColors.textSecondary
                   ),
                 ),
                 Row(
@@ -605,7 +591,7 @@ Widget _buildReviewCard({
                     return Icon(
                       index < rating ? Icons.star_rounded : Icons.star_border_rounded,
                       color: Color(0xffFFA740),
-                      size: 14.0,
+                      size: 14.sp,
                     );
                   }),
                 ),
@@ -618,9 +604,9 @@ Widget _buildReviewCard({
           reviewText,
           style: GoogleFonts.khula(
             fontWeight: FontWeight.w400,
-            fontSize: 14,
-            letterSpacing: 1,
-            color: Color(0xff4D4D4D)
+            fontSize: 14.sp,
+            letterSpacing: 1.sp,
+            color: AppColors.textSecondary
           ),
         ),
         Align(
@@ -632,9 +618,9 @@ Widget _buildReviewCard({
             child: Text('More view',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w600,
-                fontSize: 14,
-                letterSpacing: 1,
-                color: Color(0xff26408B)
+                fontSize: 14.sp,
+                letterSpacing: 1.sp,
+                color: AppColors.textBtn
               ),
             ),
           ),

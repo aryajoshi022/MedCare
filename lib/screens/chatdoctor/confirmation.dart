@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/appointment_success.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
-
 import '../../util/constants/colors.dart';
 
 class Confirmation extends StatefulWidget {
@@ -15,58 +14,85 @@ class Confirmation extends StatefulWidget {
 
 class _ConfirmationState extends State<Confirmation> {
   bool _notificationsEnabled = true;
+  double _dragOffset = 0.0;
+  final double _maxDrag = 220.w;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bgAlert,
       bottomNavigationBar: Container(
-        height: 132.h,
+        height: 118.h,
         color: AppColors.bgAlert,
-        child: Padding(
-          padding: EdgeInsets.only(top: 14, left: 28, right: 28),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentSuccess(),));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff26408B),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(24.w)
-                          ),
-                          // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                        // side: BorderSide(
-                        //   width: 1,
-                        //   color: Color(0xff26408B),
-                        // ),
+        padding: EdgeInsets.only(top: 14.h, left: 28.w, right: 28.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 51.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: AppColors.bgPrimary,
+                    borderRadius: BorderRadius.circular(24.w),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Check In',
+                    style: GoogleFonts.khula(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16.sp,
+                      color: AppColors.textWhite,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: _dragOffset + 3.w,
+                  top: 3.h,
+                  bottom: 3.h,
+                  child: GestureDetector(
+                    onHorizontalDragUpdate: _onDragUpdate,
+                    onHorizontalDragEnd: _onDragEnd,
+                    child: Container(
+                      width: 45.w,
+                      height: 45.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColors.bgAlert,
                       ),
-                      child: Text('Check In',
-                        style: GoogleFonts.khula(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            // letterSpacing: 1,
-                            color: Colors.white
+                      alignment: Alignment.center,
+                      child: Container(
+                        width: 23.w,
+                        height: 23.h,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.bgPrimary,
+                        ),
+                        padding: EdgeInsets.all(4.w),
+                        child: Image.asset('assets/icons/Double_Arrow_Write.png',
+                          width: 8.17.w,
+                          height: 7.56.h,
+                          color: AppColors.bgAlert,
+                          fit: BoxFit.contain,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: 16.h),
-              Text('Swipe to check in',
-                style: GoogleFonts.khula(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    letterSpacing: 1,
-                    color: AppColors.textSecondary
                 ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              'Swipe to check in',
+              style: GoogleFonts.khula(
+                fontWeight: FontWeight.w400,
+                fontSize: 14.sp,
+                letterSpacing: 1,
+                color: AppColors.textSecondary,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -436,6 +462,25 @@ class _ConfirmationState extends State<Confirmation> {
         ),
       ),
     );
+  }
+
+  void _onDragUpdate(DragUpdateDetails details) {
+    setState(() {
+      _dragOffset += details.delta.dx;
+      _dragOffset = _dragOffset.clamp(0, _maxDrag);
+    });
+  }
+
+  void _onDragEnd(DragEndDetails details) {
+    if (_dragOffset > _maxDrag * 0.8) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AppointmentSuccess()),
+      );
+      setState(() => _dragOffset = 0.0);
+    } else {
+      setState(() => _dragOffset = 0.0);
+    }
   }
 
 }

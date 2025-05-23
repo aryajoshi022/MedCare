@@ -107,24 +107,23 @@ class _ChatDoctorState extends State<ChatDoctor> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w).copyWith(top: 16.h),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.end,
         children: [
           IconButton(
             onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context) => ServicesScreenScreen(),));
             },
             icon: Icon(Icons.chevron_left,
-              color: Color(0xff4D4D4D),
-              // size: 16,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
             ),
           ),
           Expanded(
             child:  Text('Chat Doctor',
               style: GoogleFonts.khula(
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
-                color: Color(0xff090909),
-                letterSpacing: 1,
+                fontSize: 16.sp,
+                color: AppColors.textNormal,
+                letterSpacing: 1.sp,
               ),
             ),
           ),
@@ -138,31 +137,31 @@ class _ChatDoctorState extends State<ChatDoctor> {
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: TextField(
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 16, top: 14, bottom: 14, right: 16),
-          prefixIconColor: Color(0xff8F8F8F),
+          // contentPadding: EdgeInsets.only(left: 16.w, top: 14.h, bottom: 14.h, right: 16.w),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
+          prefixIconColor: AppColors.borderDisabled,
           prefixIcon: Icon(Icons.search_sharp,
-            size: 20,
+            size: 20.sp,
           ),
-          // prefixIconConstraints: BoxConstraints(minHeight: 7),
           hintText: 'Find a doctor',
           hintStyle: GoogleFonts.khula(
-            letterSpacing: 1,
+            letterSpacing: 1.sp,
             fontWeight: FontWeight.w400,
-            fontSize: 14,
-            color: Color(0xff8F8F8F),
+            fontSize: 14.sp,
+            color: AppColors.textDisabled,
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(12.0.r),
             borderSide: BorderSide(
-                color: Color(0xFFC2E7D9),
-                width: 1
+                color: AppColors.borderThirsty,
+                width: 1.w,
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(12.0.r),
             borderSide: BorderSide(
-                color: Color(0xFFC2E7D9),
-                width: 1
+                color: AppColors.borderThirsty,
+                width: 1.w,
             ),
           ),
           filled: true,
@@ -177,10 +176,9 @@ class _ChatDoctorState extends State<ChatDoctor> {
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 6.w),
-        // margin: EdgeInsets.symmetric(horizontal: 28.w),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(6.0),
+          borderRadius: BorderRadius.circular(6.0.r),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -189,8 +187,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
               borderRadius: BorderRadius.circular(4.w),
               child: Image.asset(
                 doctor['image']!,
-                width: 64,
-                height: 64,
+                width: 64.w,
+                height: 64.h,
                 fit: BoxFit.cover,
               ),
             ),
@@ -203,9 +201,9 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     doctor['name']!,
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      letterSpacing: 1,
-                      color: Color(0xff090909),
+                      fontSize: 14.sp,
+                      letterSpacing: 1.sp,
+                      color: AppColors.textNormal,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -216,9 +214,9 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     '${doctor['specialty']!} • ${doctor['experience']!}',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      letterSpacing: 1,
-                      color: Color(0xff4D4D4D),
+                      fontSize: 12.sp,
+                      letterSpacing: 1.sp,
+                      color: AppColors.textSecondary,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -228,16 +226,16 @@ class _ChatDoctorState extends State<ChatDoctor> {
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2),
+                      borderRadius: BorderRadius.circular(2.r),
                       color: Color(0xffDCFFDD),
                     ),
                     child: Text(
                       doctor['availability']!,
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
-                        fontSize: 10,
-                        letterSpacing: 1,
-                        color: Color(0xff4D4D4D),
+                        fontSize: 10.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textSecondary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -247,7 +245,6 @@ class _ChatDoctorState extends State<ChatDoctor> {
               ),
             ),
             SizedBox(width: 16.w),
-            // Icon(Icons.chevron_right),
             IconButton(
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
@@ -255,11 +252,12 @@ class _ChatDoctorState extends State<ChatDoctor> {
               icon: Icon(Icons.chevron_right,
                 color: AppColors.btnSecondary,
               ),
-              constraints: BoxConstraints.loose(Size.fromWidth(2)),
+              constraints: BoxConstraints.loose(Size.fromWidth(2.w)),
             ),
           ],
         ),
       ),
     );
   }
+
 }
