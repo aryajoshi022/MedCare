@@ -61,6 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           bottom: 60.h,
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
               child: PageView.builder(
@@ -81,7 +82,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     child: Column(
                       children: [
+                        SizedBox(height: 40.h,),
                         Image.asset(contents[i].image, height: 300.h),
+                        SizedBox(height: 20.h),
+
                         Text(
                           contents[i].title,
                           style: TextStyle(
@@ -184,7 +188,7 @@ class getstartedScreen extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 28.h,
-                  width: 98.w,
+                  width: 102.w,
 
                   child: ElevatedButton(
                     child: Text(
@@ -217,6 +221,7 @@ class getstartedScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 40,),
                 Center(child: Image.asset('assets/images/medcare_img.png')),
                 Text(
                   'MEDCARE',
@@ -226,7 +231,7 @@ class getstartedScreen extends StatelessWidget {
                     color: AppColors.btnPrimary,
                   ),
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: 20.h),
                 Text(
                   'We`re here to help keep you healthy',
                   style: TextStyle(
@@ -237,7 +242,7 @@ class getstartedScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 167.h),
                 SizedBox(
-                  height: 75.h,
+                  height: 71.h,
                   width: 372.w,
 
                   child: Padding(
@@ -264,7 +269,7 @@ class getstartedScreen extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 75.h,
+                  height: 71.h,
                   width: 372.w,
 
                   child: Padding(

@@ -17,6 +17,11 @@ class _SignScreenState extends State<SignScreen> {
   int _currentIndex = 0;
   bool? value = false;
 
+  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  final List<String> codes = ['Pilih', '+62', '+91', '+44'];
+  final TextEditingController _controller = TextEditingController();
+
+
   void _switchPage(int index) {
     setState(() {
       _currentIndex = index;
@@ -84,28 +89,65 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('No Phone*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter phone number',
-                    hintStyle: TextStyle(color: AppColors.textDisabled,),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
-
-                  border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderSecondary)),
+            SizedBox(
+              height: 44,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.borderThirsty), // Black border
+                  borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 8),
+                child: Row(
+                  children: [
+                    DropdownButton<String>(
+                      value: selectedCode,
+                      dropdownColor: Colors.white,
+                      style: TextStyle(color: Colors.black),
+                      underline: SizedBox(),
+                      iconEnabledColor: Colors.black,
+                      items: codes.map((String code) {
+                        return DropdownMenuItem<String>(
+                          value: code,
+                          child: Text(
+                            code,
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedCode = newValue!;
+                        });
+                      },
+                    ),
+                    VerticalDivider(color: AppColors.textDisabled),
+                    Expanded(
+                      child: TextField(
+                        controller: _controller,
+                        style: TextStyle(color: AppColors.textDisabled),
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          hintText: 'Enter phone number',
+                          hintStyle: TextStyle(color: AppColors.textDisabled),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Full Name', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
+            SizedBox(height: 44.h,
               child: TextField(
+                textAlign: TextAlign.start,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                   hintText: 'Enter your full name',
-                    hintStyle: TextStyle(color: AppColors.textDisabled),
+                    hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -114,11 +156,12 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Gender', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             
-            SizedBox(height: 48,
+            SizedBox(height: 44,
               child: DropdownButtonFormField<String>(
+
                 hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
                   DropdownMenuItem(value: 'Male', child: Text('Male')),
@@ -126,16 +169,17 @@ class _SignScreenState extends State<SignScreen> {
                   DropdownMenuItem(value: 'Other', child: Text('Other')),
                 ],
                 dropdownColor: Colors.white,
+
                 onChanged: (value) {},
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                     ),
-
+                    contentPadding: EdgeInsets.only(left: 10),
                     border: OutlineInputBorder()),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Date of Birth', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
@@ -150,7 +194,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 26.h),
             Row(
               children: [
                 Checkbox(
@@ -170,16 +214,15 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ],
+            ),SizedBox(
+              height: 40,
             ),
-            SizedBox(height: 70.h),
             SizedBox(
-              height: 91.h,
+              height: 51.h,
               width: 372.w,
 
               child: Padding(
                 padding:  EdgeInsets.only(
-                  top: 20.h,
-                  bottom: 20.h,
                   right: 10.w,
                   left: 10.w,
                 ),
@@ -201,6 +244,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
+
           ],
         ),
       ),
@@ -233,9 +277,9 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Email', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
+            SizedBox(height: 48.h,
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Enter email',
@@ -248,14 +292,15 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Full Name', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
+            SizedBox(height: 44.h,
               child: TextField(
+                textAlign: TextAlign.start,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                   hintText: 'Enter your full name',
-
-                    hintStyle: TextStyle(color: AppColors.textDisabled),
+                  hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -264,48 +309,51 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Gender', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 52.h,
+
+            SizedBox(height: 44,
               child: DropdownButtonFormField<String>(
-                 hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
+
+                hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
-                  DropdownMenuItem(value: 'Male', child: Text('Male',)),
+                  DropdownMenuItem(value: 'Male', child: Text('Male')),
                   DropdownMenuItem(value: 'Female', child: Text('Female')),
                   DropdownMenuItem(value: 'Other', child: Text('Other')),
                 ],
                 dropdownColor: Colors.white,
+
                 onChanged: (value) {},
-                decoration: InputDecoration(border: OutlineInputBorder(),
+                decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                     ),
-
-                    filled: true,fillColor: Colors.white,),
+                    contentPadding: EdgeInsets.only(left: 10),
+                    border: OutlineInputBorder()),
               ),
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 26.h),
             Text('Date of Birth', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
                 decoration: InputDecoration(
+                  suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
                   hintText: 'Enter your date of birth',
-                  hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                  suffixIcon: Icon(Icons.calendar_today_outlined,),
+                  hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                  border: OutlineInputBorder( borderSide: BorderSide(color: AppColors.borderSecondary)),
+                  border: OutlineInputBorder(),
                 ),
               ),
             ),
-            SizedBox(height: 20.h),
-            Row(mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            SizedBox(height: 26.h),
+            Row(
               children: [
                 Checkbox(
                   tristate: true, // Example with tristate
-                  value: value,side: BorderSide(color: AppColors.borderSecondary),
+                  side: BorderSide(color: AppColors.borderSecondary),
+                  value: value,
                   onChanged: (bool? newValue) {
                     setState(() {
                       value = newValue;
@@ -315,20 +363,19 @@ class _SignScreenState extends State<SignScreen> {
                 Expanded(
                   child: Text(
                     'You agree to receive information and notifications sent by MedCare.',
-                    style: TextStyle(fontSize: 14.sp,color: AppColors.textSecondary,fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
                   ),
                 ),
               ],
+            ),SizedBox(
+              height: 40,
             ),
-            SizedBox(height: 70.h),
             SizedBox(
-              height: 91.h,
+              height: 51.h,
               width: 372.w,
 
               child: Padding(
-                padding: EdgeInsets.only(
-                  top: 20.h,
-                  bottom: 20.h,
+                padding:  EdgeInsets.only(
                   right: 10.w,
                   left: 10.w,
                 ),
@@ -337,7 +384,7 @@ class _SignScreenState extends State<SignScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => (_signupotp())),
+                      MaterialPageRoute(builder: (context) => _signupotp()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -350,6 +397,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
+
           ],
         ),
       ),
@@ -363,6 +411,7 @@ class _SignScreenState extends State<SignScreen> {
         child: Padding(
           padding:  EdgeInsets.all(28.w),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Row(
@@ -390,7 +439,7 @@ class _SignScreenState extends State<SignScreen> {
                 children: [
                   Padding(
                     padding:  EdgeInsets.all(18.0.w),
-                    child: Text(
+                    child: Text(textAlign: TextAlign.center,
                       'Enter the 4-digit verification code (OTP) sent to your phone',
                       style: TextStyle(
                         fontSize: 16.sp,
@@ -492,6 +541,7 @@ class _SignScreenState extends State<SignScreen> {
                   Padding(
                     padding:  EdgeInsets.all(18.0.w),
                     child: Text(
+                      textAlign: TextAlign.center,
                       'Enter the 4-digit verification code (OTP) sent to your email',
                       style: TextStyle(
                         fontSize: 16.sp,
@@ -609,7 +659,7 @@ class _SignScreenState extends State<SignScreen> {
                 SizedBox(height: 14.h),
                 Padding(
                   padding:  EdgeInsets.only(left: 33.w, right: 33.w),
-                  child: Text(
+                  child: Text(textAlign: TextAlign.center,
                     'Congratulations, your account has been verified',
                     style: TextStyle(
                       fontSize: 16.sp,
@@ -660,18 +710,23 @@ class _SignScreenState extends State<SignScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.bgAlert,
+        leading:Padding(
+          padding: const EdgeInsets.all(20),
+          child: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios, weight: 7),
+                ),
+        ), ),
       body: Padding(
-        padding:  EdgeInsets.only(left: 23.w,right: 23.w,top: 24.h,bottom:50.h),
+        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 24.h,bottom:50.h),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.arrow_back_ios, weight: 7),
-              ),
               Text(
                 'Complete Personal Identification',
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
@@ -695,30 +750,33 @@ class _SignScreenState extends State<SignScreen> {
                   children: [_signInPage(), _signUpPage()],
                 ),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Already have an account? ',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
-                     child: Text(
-                      'Click here to log in',
+              Center(
+                child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Already have an account? ',
                       style: TextStyle(
                         fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.btnPrimary,
-                      ),),
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
-                  ),
-                ],
+
+                      GestureDetector(
+                        onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
+
+                        child: Text(
+                        'Click here to log in',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.btnPrimary,
+                        ),),
+                      ),
+
+                  ],
+                ),
               ),
             ],
           ),

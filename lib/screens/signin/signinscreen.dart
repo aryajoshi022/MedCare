@@ -16,6 +16,10 @@ class _SignInScreenState extends State<SignInScreen> {
   int _currentIndex = 0;
   PageController _pageController = PageController();
 
+  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  final List<String> codes = ['Pilih', '+62', '+91', '+44'];
+  final TextEditingController _controller = TextEditingController();
+
   Widget _buildToggleTabs() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -58,19 +62,29 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Widget _verifylogin() {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.bgAlert,
+        leading:Padding(
+          padding: const EdgeInsets.all(20),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(Icons.arrow_back_ios, weight: 7),
+            ),
+          ),
+        ), ),
+
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.only(left: 23.w,right: 23.w,bottom: 60.h,top: 40.h),
+          padding:  EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h,top: 32.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(Icons.arrow_back_ios, weight: 7.w),
-              ),
-              SizedBox(height: 10.h,),
               Text(
                 'Enter your phone number or email',
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
@@ -116,12 +130,12 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
 
-          SizedBox(height: 10.h),
+          SizedBox(height: 26.h),
           Text(
             'Email',
             style: TextStyle(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 45.h,
+          SizedBox(height: 48.h,
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Enter phone email',
@@ -134,7 +148,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
           ),
-          SizedBox(height: 10.h),
+          SizedBox(height: 26.h),
           Text(
             'Is there an issue with your email?',
             style: TextStyle(
@@ -180,18 +194,20 @@ class _SignInScreenState extends State<SignInScreen> {
                   color: AppColors.textSecondary,
                 ),
               ),
-              TextButton(
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+
                   },
                   child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.btnPrimary,
-                    ),)
-              ),
+                      'Sign Up',
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.btnPrimary,
+                      ),),
+                )
+
 
             ],
           ),
@@ -225,25 +241,61 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
 
-          SizedBox(height: 10.h),
+          SizedBox(height: 26.h),
           Text(
             'No phone',
             style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 45.h,
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Enter phone number',
-                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                ),
-
-                border: OutlineInputBorder(),
+          SizedBox(
+            height: 44,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColors.borderThirsty), // Black border
+                borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 8),
+              child: Row(
+                children: [
+                  DropdownButton<String>(
+                    value: selectedCode,
+                    dropdownColor: Colors.white,
+                    style: TextStyle(color: Colors.black),
+                    underline: SizedBox(),
+                    iconEnabledColor: Colors.black,
+                    items: codes.map((String code) {
+                      return DropdownMenuItem<String>(
+                        value: code,
+                        child: Text(
+                          code,
+                          style: TextStyle(fontSize: 14),
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedCode = newValue!;
+                      });
+                    },
+                  ),
+                  VerticalDivider(color: AppColors.textDisabled),
+                  Expanded(
+                    child: TextField(
+                      controller: _controller,
+                      style: TextStyle(color: AppColors.textDisabled),
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        hintText: 'Enter phone number',
+                        hintStyle: TextStyle(color: AppColors.textDisabled),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          SizedBox(height: 10.h),
+
+          SizedBox(height: 26.h),
           Text(
             'Is there an issue with your phone number?',
             style: TextStyle(
@@ -288,20 +340,18 @@ class _SignInScreenState extends State<SignInScreen> {
                   color: AppColors.textSecondary,
                 ),
               ),
-              Expanded(
-                child: TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.btnPrimary,
-                      ),)
-                ),
-              ),
+               GestureDetector(
+                 onTap: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+                 },
+                 child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.btnPrimary,
+                        ),),
+               )
 
             ],
           ),
