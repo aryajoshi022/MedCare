@@ -27,42 +27,52 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
         return StatefulBuilder(
           builder: (context, setState) => Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/images/health_shop/productone.png', height: 80),
-                const Text('Promag 10 Tablets', style: TextStyle(fontSize: 18)),
-                const Text('Per Strip'),
-                const SizedBox(height: 8),
-                const Text('Start from: \$2.00', style: TextStyle(fontWeight: FontWeight.bold)),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remove),
-                      onPressed: () {
-                        if (quantity > 1) {
-                          setState(() => quantity--);
-                        }
-                      },
-                    ),
-                    Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () => setState(() => quantity++),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                ElevatedButton(
-                  onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));},
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50),
-                    backgroundColor: AppColors.bgPrimary,
+                Image.asset('assets/images/health_shop/productone.png', height: 100),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text('Promag 10 Tablets', style: TextStyle(fontSize: 18)),
+                      const Text('Per Strip'),
+                      const SizedBox(height: 8),
+                      const Text('Start from: \$2.00', style: TextStyle(fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove),
+                            onPressed: () {
+                              if (quantity > 1) {
+                                setState(() => quantity--);
+                              }
+                            },
+                          ),
+                          Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () => setState(() => quantity++),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(double.infinity, 40),
+                          backgroundColor: AppColors.bgPrimary,
+                        ),
+                        child: const Text('Add to Cart', style: TextStyle(color: AppColors.textWhite)),
+                      )
+                    ],
                   ),
-                  child: const Text('Add to Cart',style: TextStyle(color: AppColors.textWhite),),
-                )
+                ),
               ],
             ),
           ),
@@ -70,6 +80,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
       },
     );
   }
+
+
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -286,7 +298,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                       'Add',
                                       style: TextStyle(fontSize: 16),
                                     ),
-                                    onPressed: () {showBottomSheet(context);},
+                                    onPressed: () {
+                                      showBottomSheet(context);
+                                      //showSideSheet(context);
+                                      },
                                     style: ElevatedButton.styleFrom(
                                       foregroundColor: AppColors.btnPrimary,
                                       backgroundColor: Colors.white,

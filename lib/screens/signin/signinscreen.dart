@@ -60,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 23,right: 23,bottom: 60,top: 40),
+          padding:  EdgeInsets.only(left: 23.w,right: 23.w,bottom: 60.h,top: 40.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -68,12 +68,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.arrow_back_ios, weight: 7),
+                icon: Icon(Icons.arrow_back_ios, weight: 7.w),
               ),
-              SizedBox(height: 10,),
+              SizedBox(height: 10.h,),
               Text(
                 'Enter your phone number or email',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
               ),
               SizedBox(height: 30.h),
               _buildToggleTabs(),
@@ -100,15 +100,15 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding:  EdgeInsets.all(2.0.w),
                   child: SizedBox(
-                    height: 3,
-                    width: 80,
+                    height: 3.h,
+                    width: 80.w,
                     child: LinearProgressIndicator(
                       value: 200 / 400, //current / max
                       backgroundColor: AppColors.bgPrimary,
                       color: AppColors.borderThirsty,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                     ),
                   ),
                 ),
@@ -116,42 +116,46 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
 
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             'Email',
-            style: TextStyle(fontSize: 16, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 45,
+          SizedBox(height: 45.h,
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Enter phone email',
-                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+
                 border: OutlineInputBorder(),
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             'Is there an issue with your email?',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               color: AppColors.textBtn,
               fontWeight: FontWeight.w400,
             ),
           ),Spacer(),
           SizedBox(
-            height: 91,
-            width: 372,
+            height: 91.h,
+            width: 372.w,
 
             child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-                right: 10,
-                left: 10,
+              padding:  EdgeInsets.only(
+                top: 20.h,
+                bottom: 20.h,
+                right: 10.w,
+                left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: TextStyle(fontSize: 16)),
+                child: Text('Login', style: TextStyle(fontSize: 16.sp)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -159,7 +163,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   foregroundColor: Colors.white,
                   backgroundColor: AppColors.btnPrimary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(24.r),
                   ),
                 ),
               ),
@@ -171,7 +175,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Text(
                 'Don`t have a MedCare Account yet ? ',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
                 ),
@@ -183,7 +187,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.btnPrimary,
                     ),)
@@ -205,15 +209,15 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding:  EdgeInsets.all(2.0.w),
                   child: SizedBox(
-                    height: 3,
-                    width: 80,
+                    height: 3.h,
+                    width: 80.w,
                     child: LinearProgressIndicator(
                       value: 200 / 400, //current / max
                       backgroundColor: AppColors.borderThirsty,
                       color: AppColors.bgPrimary,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                     ),
                   ),
                 ),
@@ -221,41 +225,45 @@ class _SignInScreenState extends State<SignInScreen> {
             ],
           ),
 
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             'No phone',
-            style: TextStyle(fontSize: 16, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+            style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 45,
+          SizedBox(height: 45.h,
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Enter phone number',
-                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+
                 border: OutlineInputBorder(),
               ),
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 10.h),
           Text(
             'Is there an issue with your phone number?',
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 14.sp,
               color: AppColors.textBtn,
               fontWeight: FontWeight.w400,
             ),
           ),Spacer(),
           SizedBox(
-            height: 91,
-            width: 372,
+            height: 91.h,
+            width: 372.w,
             child: Padding(
-              padding: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-                right: 10,
-                left: 10,
+              padding: EdgeInsets.only(
+                top: 20.h,
+                bottom: 20.h,
+                right: 10.w,
+                left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: TextStyle(fontSize: 16)),
+                child: Text('Login', style: TextStyle(fontSize: 16.sp)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -263,7 +271,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   foregroundColor: Colors.white,
                   backgroundColor: AppColors.btnPrimary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(24.r),
                   ),
                 ),
               ),
@@ -275,7 +283,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Text(
                 'Don`t have a MedCare Account yet ? ',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
                 ),
@@ -288,7 +296,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.btnPrimary,
                       ),)
@@ -306,36 +314,36 @@ class _SignInScreenState extends State<SignInScreen> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.only(
-              top: 300,
-              bottom: 60,
-              right: 28,
-              left: 28,
+            padding:  EdgeInsets.only(
+              top: 300.h,
+              bottom: 60.h,
+              right: 28.w,
+              left: 28.w,
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'assets/icons/verification_icon.png',
-                  height: 133,
-                  width: 126,
+                  height: 133.h,
+                  width: 126.w,
                 ),
                 SizedBox(height: 60.h),
                 Text(
                   'Verification Success',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
                   ),
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: const EdgeInsets.only(left: 33, right: 33),
+                  padding: EdgeInsets.only(left: 33.w, right: 33.w),
                   child: Text(
                     'Congratulations, your account has been verified',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 16.sp,
                       color: AppColors.textSecondary,
                       wordSpacing: 1,
                       fontWeight: FontWeight.w400,
@@ -344,18 +352,18 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 Spacer(),
                 SizedBox(
-                  height: 91,
-                  width: 372,
+                  height: 91.h,
+                  width: 372.w,
 
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
-                      bottom: 20,
-                      right: 10,
-                      left: 10,
+                    padding: EdgeInsets.only(
+                      top: 20.h,
+                      bottom: 20.h,
+                      right: 10.r,
+                      left: 10.r,
                     ),
                     child: ElevatedButton(
-                      child: Text('Continue', style: TextStyle(fontSize: 16)),
+                      child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -366,7 +374,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         foregroundColor: Colors.white,
                         backgroundColor: AppColors.btnPrimary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
                     ),

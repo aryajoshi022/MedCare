@@ -54,11 +54,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       //resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: const EdgeInsets.only(
-          top: 120,
-          left: 28,
-          right: 28,
-          bottom: 60,
+        padding:  EdgeInsets.only(
+          top: 120.h,
+          left: 28.w,
+          right: 28.w,
+          bottom: 60.h,
         ),
         child: Column(
           children: [
@@ -73,27 +73,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 itemBuilder: (_, i) {
                   return Padding(
-                    padding: const EdgeInsets.only(
-                      top: 31,
-                      bottom: 31,
-                      left: 28,
-                      right: 28,
+                    padding:  EdgeInsets.only(
+                      top: 31.h,
+                      bottom: 31.h,
+                      left: 28.w,
+                      right: 28.w,
                     ),
                     child: Column(
                       children: [
-                        Image.asset(contents[i].image, height: 300),
+                        Image.asset(contents[i].image, height: 300.h),
                         Text(
                           contents[i].title,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                         Text(
                           contents[i].description,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
+                          style: TextStyle(fontSize: 16.sp, color: Colors.grey),
                         ),
                       ],
                     ),
@@ -110,7 +110,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             Container(
               height: 91.h,
-              padding: EdgeInsets.only(top: 40),
+              padding: EdgeInsets.only(top: 40.h),
               //margin: EdgeInsets.all(40),
               width: 372.w,
               child: ElevatedButton(
@@ -134,7 +134,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   foregroundColor: Colors.white,
                   backgroundColor: AppColors.btnPrimary,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(24.r),
                   ),
                 ),
               ),
@@ -147,11 +147,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Container buildDot(int index, BuildContext context) {
     return Container(
-      height: 10,
-      width: currentIndex == index ? 25 : 10,
+      height: 10.h,
+      width: currentIndex == index ? 25.w : 10.w,
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
         color: AppColors.btnPrimary,
       ),
     );
@@ -183,14 +183,14 @@ class getstartedScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 28,
-                  width: 98,
+                  height: 28.h,
+                  width: 98.w,
 
                   child: ElevatedButton(
                     child: Text(
                       'English',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         color: AppColors.textSecondary,
                       ),
                     ),
@@ -205,14 +205,14 @@ class getstartedScreen extends StatelessWidget {
                           color: AppColors.borderSecondary,
                           width: 1,
                         ),
-                        borderRadius: BorderRadius.circular(24),
+                        borderRadius: BorderRadius.circular(24.r),
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            SizedBox(height: 250),
+            SizedBox(height: 250.h),
             Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -221,34 +221,34 @@ class getstartedScreen extends StatelessWidget {
                 Text(
                   'MEDCARE',
                   style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.btnPrimary,
                   ),
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 12.h),
                 Text(
                   'We`re here to help keep you healthy',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
                   ),
                 ),
-                SizedBox(height: 167),
+                SizedBox(height: 167.h),
                 SizedBox(
-                  height: 75,
-                  width: 372,
+                  height: 75.h,
+                  width: 372.w,
 
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
+                    padding:  EdgeInsets.only(
+                      top: 20.h,
                      // bottom: 20,
-                      right: 10,
-                      left: 10,
+                      right: 10.w,
+                      left: 10.w,
                     ),
                     child: ElevatedButton(
-                      child: Text('Next', style: TextStyle(fontSize: 16)),
+                      child: Text('Next', style: TextStyle(fontSize: 16.sp)),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) =>SignInScreen() ));
                       },
@@ -256,7 +256,7 @@ class getstartedScreen extends StatelessWidget {
                         foregroundColor: Colors.white,
                         backgroundColor: AppColors.btnPrimary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
                     ),
@@ -264,21 +264,21 @@ class getstartedScreen extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 75,
-                  width: 372,
+                  height: 75.h,
+                  width: 372.w,
 
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 20,
+                    padding: EdgeInsets.only(
+                      top: 20.h,
                     //  bottom: 20,
-                      right: 10,
-                      left: 10,
+                      right: 10.w,
+                      left: 10.w,
                     ),
                     child: ElevatedButton(
                       child: Text(
                         'Register',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           color: AppColors.btnPrimary,
                         ),
                       ),
@@ -298,7 +298,7 @@ class getstartedScreen extends StatelessWidget {
                             color: AppColors.btnPrimary,
                             width: 1,
                           ),
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
                     ),

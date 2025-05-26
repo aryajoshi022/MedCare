@@ -26,7 +26,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
             children: [
               //Appbar
               Padding(
-                padding: const EdgeInsets.only(top: 24),
+                padding:  EdgeInsets.only(top: 24.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -46,10 +46,10 @@ class _CartWithNotifState extends State<CartWithNotif> {
                       child: TextFormField(
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
-                            left: 16,
-                            top: 14,
-                            bottom: 14,
-                            right: 16,
+                            left: 16.w,
+                            top: 14.h,
+                            bottom: 14.h,
+                            right: 16.w,
                           ),
                           prefixIconColor: Color(0xff8F8F8F),
                           prefixIcon: Icon(
@@ -66,7 +66,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             color: Color(0xff8F8F8F),
                           ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0),
+                            borderRadius: BorderRadius.circular(12.0.r),
                             borderSide: BorderSide(
                               color: AppColors.borderThirsty,
                               width: 1,
@@ -95,7 +95,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding:  EdgeInsets.only(left: 10.w),
                       child: SizedBox(
                         height: 50.h,
                         width: 44.w,
@@ -119,14 +119,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(10.0.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomButton2(text: 'Medicine & Treatment'),
-                          SizedBox(width: 10), // Space between buttons
+                          SizedBox(width: 10.w), // Space between buttons
                           CustomButton(text: 'Milk'),
-                          SizedBox(width: 10), // Space between buttons
+                          SizedBox(width: 10.w), // Space between buttons
                         ],
                       ),
                     ),
