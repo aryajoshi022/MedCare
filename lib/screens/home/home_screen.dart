@@ -9,8 +9,13 @@ import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
 import '../chatdoctor/chat_doctor.dart';
+import '../chatdoctor/doctor_details.dart';
 import '../healthshop/cart_screen.dart';
+import '../healthshop/healthshopscreens.dart';
+import '../hospital/detail_hospital.dart';
 import '../profile/notification_screen.dart';
+import '../profile/profile_screen.dart';
+import '../specialist/specialist_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
 
     final List<Map<String, dynamic>> categories = [
-      {'icon': 'assets/icons/categories/All.png', 'label': 'All','route': (BuildContext context) => const ChatDoctor()},
+      {'icon': 'assets/icons/categories/All.png', 'label': 'All','route': (BuildContext context) => const SpecialistScreenScreen()},
       {'icon': 'assets/icons/categories/General Practitioner.png', 'label': 'General\nPractitioner'},
       {'icon': 'assets/icons/categories/Dentistry.png', 'label': 'Dentistry'},
       {'icon': 'assets/icons/categories/Gynecology.png', 'label': 'Gynecology'},
@@ -158,7 +163,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 8.w), // Optional
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (_) => ProfileScreen()));
+                      },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -320,7 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   IconButton(
                     icon: Image.asset('assets/icons/Arrow.png', height: 24.h),
                     onPressed: () {
-                      // Cart action
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => ChatDoctor()));
                     },
                   ),
               ],
@@ -356,24 +365,28 @@ class _HomeScreenState extends State<HomeScreen> {
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DoctorDetails())); },
                         ),
                         SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DoctorDetails())); },
                         ),
                         SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell1.png',
                           specialization: 'Heart Specialist',
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DoctorDetails())); },
                         ),
                         SizedBox(width: 10.w),
                         ChatDoctorCard(
                           name: 'Dr Leonard Campbell',
                           imagePath: 'assets/images/Doctor/Dr Leonard Campbell2.png',
                           specialization: 'Heart Specialist',
+                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DoctorDetails())); },
                         ),
                         SizedBox(width: 10.w),
                       ],
@@ -409,27 +422,33 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Vaccine.png',
-                            productName: 'Vaccine'
+                            productName: 'Vaccine',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => HealthShopScreen())); }
                         ),
                         SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Braces.png',
-                            productName: 'Braces'
+                            productName: 'Braces',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => HealthShopScreen())); }
+
                         ),
                         SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Wheelchair.png',
-                            productName: 'Wheelchair'
+                            productName: 'Wheelchair',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => HealthShopScreen())); }
                         ),
                         SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Mask.png',
-                            productName: 'Mask'
+                            productName: 'Mask',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => HealthShopScreen())); }
                         ),
                         SizedBox(width: 10.w),
                         ProductCard(
                             imagePath: 'assets/images/Selling Product/Braces.png',
-                            productName: 'Braces'
+                            productName: 'Braces',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => HealthShopScreen())); }
                         ),
                         SizedBox(width: 10.w),
 
@@ -466,22 +485,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         HospitalCard(
                             HospitalLogo: 'assets/images/Hospitals/rscm.png',
-                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)'
+                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(width: 10),
                         HospitalCard(
                             HospitalLogo: 'assets/images/Hospitals/MKH.png',
-                            Hospital: 'Mitra Keluarga\nHospital\n'
+                            Hospital: 'Mitra Keluarga\nHospital\n',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(width: 10),
                         HospitalCard(
                             HospitalLogo: 'assets/images/Hospitals/MH.png',
-                            Hospital: 'Mayapada \nHospital\n'
+                            Hospital: 'Mayapada \nHospital\n',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(width: 10),
                         HospitalCard(
                             HospitalLogo: 'assets/images/Hospitals/rscm.png',
-                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)'
+                            Hospital: 'Cipto\nMangunkusumo\nHospital (RSCM)',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(width: 10),
 
@@ -524,6 +547,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Artical: 'Disease Prevention',
                             ArticalDiscrptipon: 'Understanding Vaccination,The\nImportance of Preventative',
                             Date: '14 - Jun - 2023',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(height: 14.h),
                         HealthArticle(
@@ -531,6 +555,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(height: 14.h),
                         HealthArticle(
@@ -538,6 +563,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
                         ),
                         SizedBox(height: 14.h),
                       ],

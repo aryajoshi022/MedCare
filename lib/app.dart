@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/splashscreen.dart';
 import 'package:medcare/util/theme/theme.dart';
 
@@ -20,7 +19,6 @@ class App extends StatelessWidget {
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
           home: SplashScreen(),
-          // home: HomeScreen(),
           routes: {},
         );
       },
