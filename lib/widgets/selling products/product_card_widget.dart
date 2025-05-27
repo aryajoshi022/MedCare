@@ -33,6 +33,24 @@ class ProductCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: 30.h,  // adjust height as needed
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xff000000).withOpacity(0.1),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+              ),
+            ),
             // Centered Column
             Positioned.fill(
               child: Align(
