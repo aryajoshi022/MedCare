@@ -160,7 +160,7 @@ class _CartScreenState extends State<CartScreen> {
                     border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                   ),
                 ),
-                SizedBox(height: 80.h),
+                SizedBox(height: 110.h),
 
                 ElevatedButton(
                   onPressed: () {
@@ -231,11 +231,30 @@ class _CartScreenState extends State<CartScreen> {
             ),
             Row(
               children: [
-                IconButton(icon: Icon(Icons.remove), onPressed: () {}),
-                Text('1'),
-                IconButton(icon: Icon(Icons.add), onPressed: () {}),
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.bgPrimary),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Icon(Icons.remove, size: 16, color: AppColors.bgPrimary),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text('1'),
+                ),
+                Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.bgPrimary),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Icon(Icons.add, size: 16, color: AppColors.bgPrimary),
+                ),
               ],
-            ),
+            )
           ],
         ),
       ),

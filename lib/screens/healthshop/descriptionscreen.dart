@@ -11,6 +11,7 @@ class DescriptionScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       context: context,
       shape: const RoundedRectangleBorder(
+        side: BorderSide(color: AppColors.borderDisabled),
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {

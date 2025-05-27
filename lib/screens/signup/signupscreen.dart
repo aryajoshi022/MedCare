@@ -94,11 +94,12 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(
               height: 44,
               child: Container(
-                decoration: BoxDecoration(
+                decoration:
+                BoxDecoration(
                   border: Border.all(color: AppColors.borderThirsty), // Black border
                   borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 8),
+                padding: EdgeInsets.symmetric(horizontal: 5),
                 child: Row(
                   children: [
                     DropdownButton<String>(
@@ -106,6 +107,7 @@ class _SignScreenState extends State<SignScreen> {
                       dropdownColor: Colors.white,
                       style: TextStyle(color: Colors.black),
                       underline: SizedBox(),
+
                       iconEnabledColor: Colors.black,
                       items: codes.map((String code) {
                         return DropdownMenuItem<String>(
@@ -129,6 +131,7 @@ class _SignScreenState extends State<SignScreen> {
                         style: TextStyle(color: AppColors.textDisabled),
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.zero,
                           hintText: 'Enter phone number',
                           hintStyle: TextStyle(color: AppColors.textDisabled),
                           border: InputBorder.none,
