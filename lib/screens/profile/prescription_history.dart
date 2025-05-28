@@ -70,6 +70,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
         child: Column(
           children: [
             _buildCustomAppBar(context),
+            SizedBox(height: 5.h),
             _buildActiveRecipe(context),
             SizedBox(height: 24.h),
             Expanded(
@@ -213,7 +214,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.symmetric(vertical: 25.h, horizontal: 24.w),
+            padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 24.w),
             decoration: BoxDecoration(
               color: AppColors.btnPrimary,
               borderRadius: BorderRadius.only(
@@ -262,7 +263,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
                   final isLast = index == (data['medicines'] as List).length - 1;
 
                   return Container(
-                    padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
+                    padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 24.w),
                     decoration: BoxDecoration(
                       border: isLast
                           ? null
@@ -304,7 +305,7 @@ class _PrescriptionHistoryState extends State<PrescriptionHistory> {
           ),
           Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 7.h),
+            padding: EdgeInsets.symmetric(vertical: 5.h),
             decoration: BoxDecoration(
               color: AppColors.borderBtn,
               borderRadius: BorderRadius.only(

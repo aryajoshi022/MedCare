@@ -24,7 +24,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
               height: 155.57.h,
               alignment: Alignment.center,
             ),
-            SizedBox(height: 57.72.h),
+            SizedBox(height: 50.h),
             Text('Appointments have been made',
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w600,
@@ -33,8 +33,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   color: AppColors.textNormal
               ),
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 25.h),
             Text('Prepare your attendance well, arrive 30\nminutes before the appointed time',
+              textAlign: TextAlign.center,
               style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
@@ -42,7 +43,7 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                   color: AppColors.textSecondary
               ),
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 25.h),
             SizedBox(
               width: 200.w,
               child: ElevatedButton(
