@@ -23,17 +23,17 @@ class CategoryItem extends StatelessWidget {
         children: [
           // Icon container
           Container(
-            // height: 81.h,
-            // width: 81.w,
+            height: 81.h,
+            width: 81.w,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(6.r),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1), // shadow color with opacity
-                  spreadRadius: 2,   // how wide the shadow spreads
+                  color: Color(0xff000000).withOpacity(0.1), // shadow color with opacity
+                  spreadRadius: 0,   // how wide the shadow spreads
                   blurRadius: 10,     // how soft the shadow is
-                  offset: Offset(0, 5), // x,y offset of shadow
+                  offset: Offset(2, 2), // x,y offset of shadow
                 ),
               ],
             ),

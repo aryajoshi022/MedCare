@@ -18,7 +18,7 @@ class ListArticleScreen extends StatefulWidget {
 class _ListArticleScreen extends State<ListArticleScreen> {
 
   int _selectedIndex = 3;
-  bool isSelected = true;
+  bool isSelected = false;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -180,7 +180,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
                           },
                           icon: Icon(Icons.chevron_left,
                             color: AppColors.btnSecondary,
-                            size: 24.sp,
+                            size: 25.sp,
                           ),
                         ),
                       ),
@@ -397,6 +397,24 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             width: 340.w,
             fit: BoxFit.cover,
           ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 30.h,  // adjust height as needed
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black.withOpacity(0.7),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+              ),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(top: 95.h, left: 16.w),
             child: Column(
@@ -463,6 +481,24 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             width: 160.w,
             fit: BoxFit.cover,
           ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: 100.h, // adjust height as needed
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.black.withOpacity(0.7),
+                    Colors.transparent,
+                  ],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                ),
+              ),
+            ),
+          ),
           Positioned.fill(
             child: Align(
               alignment: Alignment.center,
@@ -493,7 +529,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: days.map((day) {
-          bool isSelected = day.startsWith('All Article'); // Highlight Wednesday as in the example
+          bool isSelected = day.startsWith('All Article');
           return Container(
             margin: EdgeInsets.only(right: 8.w),
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
