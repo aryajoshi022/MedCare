@@ -76,14 +76,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             children: [
               _buildCustomAppBar(context),
-              // SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 28.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildUserCard(context),
-                    SizedBox(height: 32.h),
+                    SizedBox(height: 25.h),
                     Text('Menu',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
@@ -94,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 15.h),
                     Column(
                       children: menuList.map((menu) {
                         return _buildMenuCard(
@@ -110,7 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 32.h),
+                    SizedBox(height: 25.h),
                     Text('General Information',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
@@ -121,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 15.h),
                     Column(
                       children: generalInfo.map((info) {
                         bool isDarkMode = info['isSwitch'] == true;
@@ -148,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 32.h),
+                    SizedBox(height: 20.h),
                     _buildLogOut(context),
                   ],
                 ),
@@ -311,7 +310,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           color: AppColors.bgAlert,
@@ -341,7 +340,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: 4.h),
+                  SizedBox(height: 2.h),
                   Text(
                     subtitle,
                     style: GoogleFonts.khula(
@@ -373,7 +372,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 15.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           color: AppColors.bgAlert,
@@ -419,6 +418,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       width: double.infinity,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(6.r)),
           backgroundColor: AppColors.bgAlert,

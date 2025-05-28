@@ -168,6 +168,14 @@ class _DrugDetailsState extends State<DrugDetails> {
         borderRadius: BorderRadius.circular(6.r),
         border: Border.all(color: AppColors.borderBtn, width: 1.w),
         color: AppColors.bgAlert,
+        boxShadow: [
+          BoxShadow(
+              color: Color(0xff000000).withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 0,
+              offset: Offset(4, 4)
+          ),
+        ],
       ),
       padding: EdgeInsets.all(24.w),
       child: Column(

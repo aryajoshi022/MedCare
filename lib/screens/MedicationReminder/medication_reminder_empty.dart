@@ -27,7 +27,6 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
           child: Column(
             children: [
               _buildCustomAppBar(),
-              // SizedBox(height: 24.h),
               _buildWeekList(),
               SizedBox(height: 40.h),
               Text('Today, 20 February 2024',
@@ -38,7 +37,7 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
                   color: AppColors.textSecondary
                 ),
               ),
-              SizedBox(height: 140.h),
+              SizedBox(height: 95.h),
               _buildNoSchedule(),
             ],
           ),
@@ -208,7 +207,7 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
           ),
           textAlign: TextAlign.center,
         ),
-        SizedBox(height: 16.h),
+        SizedBox(height: 12.h),
         Text('Click add medicine below to add a schedule',
           style: GoogleFonts.khula(
               fontWeight: FontWeight.w400,

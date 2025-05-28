@@ -37,7 +37,7 @@ class _AccountSettingState extends State<AccountSetting> {
                       color: AppColors.textBtn
                     ),
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 5.h),
                   TextField(
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
@@ -58,7 +58,7 @@ class _AccountSettingState extends State<AccountSetting> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 20.h),
                   Text('Language',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
@@ -67,7 +67,7 @@ class _AccountSettingState extends State<AccountSetting> {
                         color: AppColors.textBtn
                     ),
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 5.h),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.r),
@@ -95,7 +95,7 @@ class _AccountSettingState extends State<AccountSetting> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 20.h),
                   Text('Privacy Settings',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w600,
@@ -104,7 +104,7 @@ class _AccountSettingState extends State<AccountSetting> {
                       color: AppColors.textBtn
                     ),
                   ),
-                  SizedBox(height: 12.h),
+                  SizedBox(height: 5.h),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.r),

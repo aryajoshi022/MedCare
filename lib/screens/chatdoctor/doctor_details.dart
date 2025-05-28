@@ -52,62 +52,74 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                 ),
                 color: AppColors.bgAlert
               ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 28.w, right: 28.w, top: 28.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildEducationLicence(context),
-                    SizedBox(height: 29.h),
-                    Text(
-                      'Practice Location',
-                      style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        letterSpacing: 1.sp,
-                        color: AppColors.textNormal
-                      ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 28.w, right: 28.w, top: 28.h),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildEducationLicence(context),
+                        SizedBox(height: 29.h),
+                        Text(
+                          'Practice Location',
+                          style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                            letterSpacing: 1.sp,
+                            color: AppColors.textNormal
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        _buildPracticeLocationDropdown(context),
+                        SizedBox(height: 29.h),
+                        Text(
+                          'Working Hours',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              letterSpacing: 1.sp,
+                              color: AppColors.textNormal
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        _buildWorkingHoursGrid(context),
+                        SizedBox(height: 29.h),
+                      ],
                     ),
-                    SizedBox(height: 16.h),
-                    _buildPracticeLocationDropdown(context),
-                    SizedBox(height: 29.h),
-                    Text(
-                      'Working Hours',
-                      style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          letterSpacing: 1.sp,
-                          color: AppColors.textNormal
-                      ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 28.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Schedule',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              letterSpacing: 1.sp,
+                              color: AppColors.textNormal
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        _buildScheduleDays(context),
+                        SizedBox(height: 29.h),
+                        Text(
+                          'Review',
+                          style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              letterSpacing: 1.sp,
+                              color: AppColors.textNormal
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        _buildReviewSection(context),
+                      ],
                     ),
-                    SizedBox(height: 16.h),
-                    _buildWorkingHoursGrid(context),
-                    SizedBox(height: 29.h),
-                    Text(
-                      'Schedule',
-                      style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          letterSpacing: 1.sp,
-                          color: AppColors.textNormal
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-                    _buildScheduleDays(context),
-                    SizedBox(height: 29.h),
-                    Text(
-                      'Review',
-                      style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          letterSpacing: 1.sp,
-                          color: AppColors.textNormal
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-                    _buildReviewSection(context),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -118,6 +130,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
         child: Padding(
           padding: EdgeInsets.only(top: 14.h, bottom: 28.h, left: 28.w, right: 28.w),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
@@ -159,6 +172,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(24.r)
                     ),
+                    padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h)
                   ),
                   child: Text('Make An Appointment',
                     style: GoogleFonts.khula(
@@ -184,6 +198,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top.h + 16.h, left: 16.w, right: 16.w, bottom: 16.h),
       color: Color(0xffF6F1FF),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
             icon: Icon(Icons.chevron_left,
@@ -208,9 +223,10 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             ),
           ),
           IconButton(
-            icon: Icon(Icons.share_outlined,
-              color: AppColors.btnSecondary,
-              size: 24.sp,
+            icon: Image.asset('assets/icons/Share.png',
+              height: 24.h,
+              width: 24.w,
+              color: AppColors.textSecondary,
             ),
             onPressed: () {},
           ),
@@ -420,7 +436,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.location_on_outlined, size: 14.sp, color: AppColors.textSecondary),
+                Image.asset('assets/icons/Map_Pin.png',
+                  width: 14.w,
+                  height: 14.h,
+                  color: AppColors.textSecondary,
+                ),
                 SizedBox(width: 6.w),
                 Expanded(
                   child: Text(
@@ -439,7 +459,11 @@ class _DoctorDetailsState extends State<DoctorDetails> {
             SizedBox(height: 12.h),
             Row(
               children: [
-                Icon(Icons.phone, size: 14.sp, color: AppColors.textSecondary),
+                Image.asset('assets/icons/Call.png',
+                  width: 14.w,
+                  height: 14.h,
+                  color: AppColors.textSecondary,
+                ),
                 SizedBox(width: 6.w),
                 Text(
                   '(+21) 6125 7162  7126',

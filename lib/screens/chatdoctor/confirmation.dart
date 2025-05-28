@@ -31,6 +31,7 @@ class _ConfirmationState extends State<Confirmation> {
             Stack(
               children: [
                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
                   height: 51.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -82,7 +83,7 @@ class _ConfirmationState extends State<Confirmation> {
                 ),
               ],
             ),
-            SizedBox(height: 16.h),
+            SizedBox(height: 10.h),
             Text(
               'Swipe to check in',
               style: GoogleFonts.khula(
@@ -102,11 +103,10 @@ class _ConfirmationState extends State<Confirmation> {
             _buildCustomAppBar(context),
             // SizedBox(height: 24.h),
             _buildDoctorInfoCard(context),
-            SizedBox(height: 28.h),
+            SizedBox(height: 24.h),
             _buildDetailAppointmentCard(context),
-            SizedBox(height: 20.h),
+            SizedBox(height: 24.h),
             _buildActivateNotificationsSection(context),
-            SizedBox(height: 32.h),
           ],
         ),
       ),
@@ -147,22 +147,23 @@ class _ConfirmationState extends State<Confirmation> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
+        width: 372.w,
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
         decoration: BoxDecoration(
+          color: AppColors.bgAlert,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            width: 1.w,
-            color: AppColors.borderBtn,
+            width: 1,
+            color: AppColors.borderBtn
           ),
-          // boxShadow: [
-          //   BoxShadow(
-          //     blurRadius: 10,
-          //     spreadRadius: 0,
-          //     blurStyle: BlurStyle.outer,
-          //     offset: Offset.fromDirection(double.infinity),
-          //     color: Color(0xff0000000D)
-          //   ),
-          // ],
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xff000000).withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 0,
+              offset: Offset(4, 4)
+            ),
+          ],
         ),
         child: Column(
           children: [
@@ -177,48 +178,51 @@ class _ConfirmationState extends State<Confirmation> {
                   ),
                 ),
                 SizedBox(width: 16.w),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Dr. Luca Rossi',
-                      style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20.sp,
-                          letterSpacing: 1.sp,
-                          color: AppColors.textNormal
-                      ),
-                    ),
-                    SizedBox(height: 14.h),
-                    Text('Cardiology Specialist • 3 Years',
-                      style: GoogleFonts.khula(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.sp,
-                          letterSpacing: 1.sp,
-                          color: AppColors.textSecondary
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 14.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
-                        Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
-                        Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14.sp),
-                        SizedBox(width: 8.w),
-                        Text('(12 Reviews)',
-                          style: GoogleFonts.khula(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12.sp,
-                              letterSpacing: 1.sp,
-                              color: AppColors.textSecondary
-                          ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Dr. Luca Rossi',
+                        style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20.sp,
+                            letterSpacing: 1.sp,
+                            color: AppColors.textNormal
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      SizedBox(height: 7.h),
+                      Text('Cardiology Specialist • 3 Years',
+                        style: GoogleFonts.khula(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.sp,
+                            letterSpacing: 1.sp,
+                            color: AppColors.textSecondary
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 7.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                          Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                          Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                          Icon(Icons.star_rounded, color: Color(0xffFFA740), size: 14.sp),
+                          Icon(Icons.star_border_rounded, color: Color(0xffFFA740), size: 14.sp),
+                          SizedBox(width: 8.w),
+                          Text('(12 Reviews)',
+                            style: GoogleFonts.khula(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12.sp,
+                                letterSpacing: 1.sp,
+                                color: AppColors.textSecondary
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -227,7 +231,7 @@ class _ConfirmationState extends State<Confirmation> {
               children: [
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 14.w),
+                    padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.r),
                       border: Border.all(
@@ -236,6 +240,7 @@ class _ConfirmationState extends State<Confirmation> {
                       ),
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('Education',
@@ -246,7 +251,7 @@ class _ConfirmationState extends State<Confirmation> {
                               color: AppColors.textSecondary
                           ),
                         ),
-                        SizedBox(height: 12.h),
+                        SizedBox(height: 5.h),
                         Text('University of Milan',
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
@@ -264,7 +269,7 @@ class _ConfirmationState extends State<Confirmation> {
                 SizedBox(width: 14.w),
                 Expanded(
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 14.w),
+                    padding: EdgeInsets.all(10.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.r),
                       border: Border.all(
@@ -273,6 +278,7 @@ class _ConfirmationState extends State<Confirmation> {
                       ),
                     ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text('License',
@@ -283,7 +289,7 @@ class _ConfirmationState extends State<Confirmation> {
                               color: AppColors.textSecondary
                           ),
                         ),
-                        SizedBox(height: 12.h),
+                        SizedBox(height: 5.h),
                         Text('1276126552881',
                           style: GoogleFonts.khula(
                               fontWeight: FontWeight.w600,
@@ -310,13 +316,23 @@ class _ConfirmationState extends State<Confirmation> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
+        width: 372.w,
         padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
         decoration: BoxDecoration(
+          color: AppColors.bgAlert,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
-            width: 1.w,
-            color: AppColors.borderBtn,
+              width: 1,
+              color: AppColors.borderBtn
           ),
+          boxShadow: [
+            BoxShadow(
+                color: Color(0xff000000).withOpacity(0.1),
+                blurRadius: 10,
+                spreadRadius: 0,
+                offset: Offset(4, 4)
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -330,12 +346,12 @@ class _ConfirmationState extends State<Confirmation> {
                   color: AppColors.textBtn
                 ),
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 10.h),
             Divider(
               thickness: 1.0.w,
               color: AppColors.borderBtn
             ),
-            SizedBox(height: 24.h),
+            SizedBox(height: 10.h),
             Text(
               'Date & Time',
                 style: GoogleFonts.khula(
@@ -345,7 +361,7 @@ class _ConfirmationState extends State<Confirmation> {
                     color: AppColors.textSecondary
                 ),
             ),
-            SizedBox(height: 14.h),
+            SizedBox(height: 7.h),
             Text(
               'Wednesday, 22 Feb 1.00PM',
                 style: GoogleFonts.khula(
@@ -355,7 +371,7 @@ class _ConfirmationState extends State<Confirmation> {
                     color: AppColors.textNormal
                 ),
             ),
-            SizedBox(height: 32.h),
+            SizedBox(height: 25.h),
             Text(
               'Location',
               style: GoogleFonts.khula(
@@ -406,12 +422,11 @@ class _ConfirmationState extends State<Confirmation> {
       padding: EdgeInsets.symmetric(horizontal: 28.w),
       child: Container(
         padding: EdgeInsets.only(left: 17.w, right: 19.w),
-        // padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
             width: 1.w,
-            color: AppColors.borderBtn,
+            color: AppColors.borderThirsty,
           ),
         ),
         child: Row(
@@ -439,12 +454,11 @@ class _ConfirmationState extends State<Confirmation> {
             Switch(
               value: _notificationsEnabled,
               activeColor: AppColors.bgAlert,
-              activeTrackColor: AppColors.bgPrimary,// Replace with actual state
+              activeTrackColor: AppColors.bgPrimary,
               onChanged: (value) {
                 setState(() {
                   _notificationsEnabled = value;
                 });
-                // Handle switch state change
               },
             ),
           ],
