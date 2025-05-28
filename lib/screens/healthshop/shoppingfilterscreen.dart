@@ -27,81 +27,98 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
         return StatefulBuilder(
           builder: (context, setState) => Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset('assets/images/health_shop/productone.png', height: 100),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text('Promag 10 Tablets', style: TextStyle(fontSize: 18)),
-                      const Text('Per Strip'),
-                      const SizedBox(height: 8),
-                      const Text('Start from: \$2.00', style: TextStyle(fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColors.bgPrimary,
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                if (quantity > 1) {
-                                  setState(() => quantity--);
-                                }
-                              },
-
-                              child: Icon(Icons.remove,color: AppColors.bgPrimary,),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8.0,
-                            ),
-                            child: Text(
-                              quantity.toString(),
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ),
-                          Container(
-                            width: 28,
-                            height: 28,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColors.bgPrimary,
-                              ),
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            child: GestureDetector(
-                              onTap: () => setState(() => quantity++),
-
-                              child: Icon(Icons.add,color:AppColors.bgPrimary),
-                            ),
-                          ),
-                        ],
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 1,
+                        offset: Offset(0, 2),
                       ),
-                      const SizedBox(height: 12),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(double.infinity, 40),
-                          backgroundColor: AppColors.bgPrimary,
-                        ),
-                        child: const Text('Add to Cart', style: TextStyle(color: AppColors.textWhite)),
-                      )
                     ],
                   ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset('assets/images/health_shop/productone.png', height: 100),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('Promag 10 Tablets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                            const Text('Per Strip', style: TextStyle(color: Colors.black54)),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                const Text('Start form :', style: TextStyle(fontWeight: FontWeight.w400, color: AppColors.borderDisabled)),
+                                const Text('\$2.00', style: TextStyle(fontWeight: FontWeight.w700, color: AppColors.bgPrimary)),
+
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    if (quantity > 1) {
+                                      setState(() => quantity--);
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 28,
+                                    height: 28,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: AppColors.bgPrimary),
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    child: Icon(Icons.remove, size: 16, color: AppColors.bgPrimary),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                  child: Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                                ),
+                                GestureDetector(
+                                  onTap: () => setState(() => quantity++),
+                                  child: Container(
+                                    width: 28,
+                                    height: 28,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: AppColors.bgPrimary),
+                                      borderRadius: BorderRadius.circular(6),
+                                    ),
+                                    child: Icon(Icons.add, size: 16, color: AppColors.bgPrimary),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: AppColors.bgPrimary,
+                  ),
+                  child: const Text('Add to Cart', style: TextStyle(fontSize: 16, color: AppColors.textWhite)),
                 ),
               ],
             ),
@@ -110,6 +127,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
       },
     );
   }
+
 
 
 
