@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/widgets/bottom%20bar/custom_bottom_bar.dart';
@@ -56,81 +57,89 @@ class _NotificationScreenState extends State<NotificationScreen> {
         centerTitle: true,
         backgroundColor: AppColors.bgAlert,
         leading: IconButton(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+          padding: EdgeInsets.only(left: 28.w),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
           },
-          icon: Icon(Icons.arrow_back_ios,
-            color: AppColors.textNormal
+          icon: Icon(Icons.chevron_left,
+            color: AppColors.btnSecondary,
+            size: 24.sp,
           ),
         ),
         title: Text(
           'Notifications',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.textNormal,
           ),
         ),
       ),
-      body: SafeArea(
-        child:
-            notifications.isEmpty
-                ? Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        'assets/images/profile/empty_notification.png',
-                        width: 200,
-                        height: 200,
-                      ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        'There is nothing here',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        child: SafeArea(
+          child:
+              notifications.isEmpty
+                  ? Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          'assets/images/profile/empty_notification.png',
+                          width: 200.w,
+                          height: 200.h
                         ),
-                      ),
-                      SizedBox(height: 16),
-                      SizedBox(width: 250,
-                        height: 50,
-                        child: Text(
-                          'We’ll use this space to alert you on orders and promos',
+                         SizedBox(height: 20.h),
+                         Text(
+                          'There is nothing here',
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.textSecondary,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
                           ),
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 16.h),
+                        SizedBox(width: 250.w,
+                          height: 50.h,
+                          child: Text(
+                            'We’ll use this space to alert you on orders and promos',
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                  : ListView.builder(
+                    padding: EdgeInsets.all(16.w),
+                    itemCount: notifications.length,
+                    itemBuilder: (context, index) {
+                      final item = notifications[index];
+                      return Dismissible(
+                        key: Key(item.title),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) {
+                          setState(() {
+                            notifications.removeAt(index);
+                          });
+                        },
+                        background: Container(
+                          alignment: Alignment.centerRight,
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          color: Colors.black,
+                          child: const Icon(Icons.delete, color: Colors.white),
+                        ),
+                        child: NotificationCard(item: item),
+                      );
+                    },
                   ),
-                )
-                : ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: notifications.length,
-                  itemBuilder: (context, index) {
-                    final item = notifications[index];
-                    return Dismissible(
-                      key: Key(item.title),
-                      direction: DismissDirection.endToStart,
-                      onDismissed: (direction) {
-                        setState(() {
-                          notifications.removeAt(index);
-                        });
-                      },
-                      background: Container(
-                        alignment: Alignment.centerRight,
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        color: Colors.black,
-                        child: const Icon(Icons.delete, color: Colors.white),
-                      ),
-                      child: NotificationCard(item: item),
-                    );
-                  },
-                ),
+        ),
       ),
       bottomNavigationBar: CustomBottomAppBar(
         selectedIndex: _selectedIndex,
@@ -155,8 +164,8 @@ class NotificationCard extends StatelessWidget {
     return Card(
       color: Colors.grey[900],
       elevation: 0.0,
-      margin: const EdgeInsets.only(bottom: 26),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: EdgeInsets.only(bottom: 16.h),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: item.iconBgColor,
@@ -164,9 +173,9 @@ class NotificationCard extends StatelessWidget {
         ),
         title: Text(
           item.title,
-          style: const TextStyle(
+          style: TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 16,
+            fontSize: 16.sp,
             color: Colors.white,
           ),
         ),

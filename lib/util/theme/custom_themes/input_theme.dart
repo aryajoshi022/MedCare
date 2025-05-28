@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants/colors.dart';
 
@@ -9,17 +10,17 @@ class InputTheme {
 
   static InputDecorationTheme darkInputTheme = InputDecorationTheme(
     constraints: BoxConstraints(
-      minHeight: 56,
-      maxWidth: 600,
+      minHeight: 56.h,
+      maxWidth: 600.w,
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(12.r),
       borderSide: BorderSide(
         color: AppColors.borderError,
       ),
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(12.r),
       borderSide: BorderSide.none,
     ),
     filled: true,
@@ -27,8 +28,8 @@ class InputTheme {
     prefixIconColor: Colors.white,
     hintStyle: TextStyle(
       color: AppColors.textSecondary,
-      fontSize: 15,
-      letterSpacing: -0.4,
+      fontSize: 15.sp,
+      letterSpacing: -0.4.w,
     ),
   );
 }

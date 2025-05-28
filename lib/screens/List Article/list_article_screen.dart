@@ -19,6 +19,7 @@ class _ListArticleScreen extends State<ListArticleScreen> {
 
   int _selectedIndex = 3;
   bool isSelected = false;
+  String selectedDay = 'All Article';
 
   void _onItemTapped(int index) {
     setState(() {
@@ -527,25 +528,30 @@ class _ListArticleScreen extends State<ListArticleScreen> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: days.map((day) {
-          bool isSelected = day.startsWith('All Article');
-          return Container(
-            margin: EdgeInsets.only(right: 8.w),
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
-            decoration: BoxDecoration(
+          bool isSelected = day == selectedDay;
+          return GestureDetector(
+            onTap: () {
+              setState(() {
+                selectedDay = day;
+              });
+            },
+            child: Container(
+              margin: EdgeInsets.only(right: 8.w),
+              padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 24.w),
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.w),
                 border: Border.all(width: 1, color: Color(0xffC2E7D9)),
-                color: isSelected? AppColors.btnPrimary : AppColors.bgAlert
-              // border: isSelected ? Border.all(color: Color(0xffE3E3E3)) : null,
-            ),
-            child: Text(
-              day,
-              textAlign: TextAlign.center,
-              style: GoogleFonts.khula(
+                color: isSelected ? AppColors.btnPrimary : AppColors.bgAlert,
+              ),
+              child: Text(
+                day,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.khula(
                   fontWeight: FontWeight.w400,
                   fontSize: 14.sp,
-                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary
+                  color: isSelected ? AppColors.textWhite : AppColors.textSecondary,
+                ),
               ),
             ),
           );

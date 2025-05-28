@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../constants/colors.dart';
 
@@ -6,13 +7,13 @@ class AppTextTheme {
   AppTextTheme._();
 
   static TextTheme lightTextTheme = TextTheme(
-      titleLarge: const TextStyle(
-          fontSize: 20,
+      titleLarge: TextStyle(
+          fontSize: 20.sp,
           fontFamily: 'Khula',
           color: AppColors.textWhite,
       ),
-    titleMedium: const TextStyle(
-      fontSize: 16,
+    titleMedium: TextStyle(
+      fontSize: 16.sp,
       color:AppColors.textSecondary,
       fontFamily: 'Khula'
     ),
@@ -23,20 +24,20 @@ class AppTextTheme {
     displayMedium: TextStyle(
       color: AppColors.textPrimary,
       fontFamily: 'Khula',
-      letterSpacing: -0.4,
+      letterSpacing: -0.4.w,
     ),
     labelMedium: TextStyle(
       color: AppColors.textSecondary,
       fontFamily: 'Khula',
-      letterSpacing: -0.4,
+      letterSpacing: -0.4.w,
     ),
-    titleLarge: const TextStyle(
-      fontSize: 22,
+    titleLarge: TextStyle(
+      fontSize: 22.sp,
       fontFamily: 'Khula',
       color: AppColors.textPrimary
     ),
-    titleMedium: const TextStyle(
-        fontSize: 15,
+    titleMedium: TextStyle(
+        fontSize: 15.sp,
         color:AppColors.textSecondary,
         fontFamily: 'Khula'
     ),
