@@ -44,18 +44,48 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       const SizedBox(height: 8),
                       Row(
                         children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              if (quantity > 1) {
-                                setState(() => quantity--);
-                              }
-                            },
+                          Container(
+                            width: 28,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColors.bgPrimary,
+                              ),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                if (quantity > 1) {
+                                  setState(() => quantity--);
+                                }
+                              },
+
+                              child: Icon(Icons.remove,color: AppColors.bgPrimary,),
+                            ),
                           ),
-                          Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () => setState(() => quantity++),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                            ),
+                            child: Text(
+                              quantity.toString(),
+                              style: const TextStyle(fontSize: 16),
+                            ),
+                          ),
+                          Container(
+                            width: 28,
+                            height: 28,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: AppColors.bgPrimary,
+                              ),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: GestureDetector(
+                              onTap: () => setState(() => quantity++),
+
+                              child: Icon(Icons.add,color:AppColors.bgPrimary),
+                            ),
                           ),
                         ],
                       ),

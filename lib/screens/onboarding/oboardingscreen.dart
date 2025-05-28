@@ -186,30 +186,33 @@ class getstartedScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 28.h,
-                  width: 102.w,
+                Padding(
+                  padding: const EdgeInsets.all(11.0),
+                  child: SizedBox(
+                    height: 28.h,
+                    width: 102.w,
 
-                  child: ElevatedButton(
-                    child: Text(
-                      'English',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      elevation: 0.0,
-                      shadowColor: Colors.transparent,
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        side: BorderSide(
-                          color: AppColors.borderSecondary,
-                          width: 1,
+                    child: ElevatedButton(
+                      child: Text(
+                        'English',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: AppColors.textSecondary,
                         ),
-                        borderRadius: BorderRadius.circular(24.r),
+                      ),
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        elevation: 0.0,
+                        shadowColor: Colors.transparent,
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: AppColors.borderSecondary,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.circular(24.r),
+                        ),
                       ),
                     ),
                   ),

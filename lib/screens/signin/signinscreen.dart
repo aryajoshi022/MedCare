@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
       onTap: () => _switchPage(index),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.symmetric(horizontal: 30),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
           //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
@@ -74,7 +74,7 @@ class _SignInScreenState extends State<SignInScreen> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(Icons.arrow_back_ios, weight: 7),
+              icon: Icon(Icons.chevron_left, weight: 7),
             ),
           ),
         ), ),
@@ -243,7 +243,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
           SizedBox(height: 26.h),
           Text(
-            'No phone',
+            'Phone Number',
             style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
           SizedBox(

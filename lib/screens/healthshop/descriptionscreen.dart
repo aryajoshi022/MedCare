@@ -47,24 +47,52 @@ class DescriptionScreen extends StatelessWidget {
                           const SizedBox(height: 8),
                           Row(
                             children: [
-                              IconButton(
-                                icon: const Icon(Icons.remove),
-                                onPressed: () {
-                                  if (quantity > 1) {
-                                    setState(() => quantity--);
-                                  }
-                                },
+                              Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: AppColors.bgPrimary,
+                                  ),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (quantity > 1) {
+                                      setState(() => quantity--);
+                                    }
+                                  },
+
+                                  child: Icon(Icons.remove,color: AppColors.bgPrimary,),
+                                ),
                               ),
-                              Text(
-                                quantity.toString(),
-                                style: const TextStyle(fontSize: 16),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0,
+                                ),
+                                child: Text(
+                                  quantity.toString(),
+                                  style: const TextStyle(fontSize: 16),
+                                ),
                               ),
-                              IconButton(
-                                icon: const Icon(Icons.add),
-                                onPressed: () => setState(() => quantity++),
+                              Container(
+                                width: 28,
+                                height: 28,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: AppColors.bgPrimary,
+                                  ),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                child: GestureDetector(
+                                  onTap: () => setState(() => quantity++),
+
+                                  child: Icon(Icons.add,color:AppColors.bgPrimary),
+                                ),
                               ),
                             ],
                           ),
+
                           const SizedBox(height: 12),
                           ElevatedButton(
                             onPressed: () {
@@ -767,33 +795,34 @@ class ReviewsTab extends StatelessWidget {
                               ],
                             ),
                             SizedBox(height: 16.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'My consultation with Dr. Luca Rossi\n was excellent. He`s knowledgeable,\n attentive, and provid...',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textSecondary,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text:
+                                        'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      letterSpacing: 1,
+                                      color: AppColors.textSecondary,
+                                    ),
                                   ),
-                                ),
-                                TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'More view',
+                                  TextSpan(
+                                    text: 'More View',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
+                      SizedBox(width: 16.w),
                       Container(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -844,10 +873,11 @@ class ReviewsTab extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'My consultation with Dr. Luca Rossi was excellent. He`s knowledgeable, attentive, and provid...',
+                                        'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
                                     style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
+                                      letterSpacing: 1,
                                       color: AppColors.textSecondary,
                                     ),
                                   ),
@@ -860,26 +890,6 @@ class ReviewsTab extends StatelessWidget {
                                     ),
                                   ),
                                 ],
-                              ),
-                            ),
-                            Text(
-                              textAlign: TextAlign.start,
-
-                              'My consultation with Dr. Luca Rossi was excellent. He`s knowledgeable, attentive, and provid...',
-
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textSecondary,
-                              ),
-                            ),
-                            Text(
-                              textAlign: TextAlign.end,
-                              'More view',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.textBtn,
                               ),
                             ),
                           ],

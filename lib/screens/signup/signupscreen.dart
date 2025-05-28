@@ -46,7 +46,7 @@ class _SignScreenState extends State<SignScreen> {
       onTap: () => _switchPage(index),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: EdgeInsets.symmetric(horizontal: 30),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
           //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
@@ -54,6 +54,7 @@ class _SignScreenState extends State<SignScreen> {
         ),
         child: Text(
           title,
+
           style: TextStyle(
             color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             fontWeight: FontWeight.bold,
@@ -90,7 +91,7 @@ class _SignScreenState extends State<SignScreen> {
               ],
             ),
             SizedBox(height: 26.h),
-            Text('No Phone*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Phone Number*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
               height: 44,
               child: Container(
@@ -198,7 +199,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Row(
+            Row(mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Checkbox(
                   tristate: true, // Example with tristate
@@ -721,7 +722,8 @@ class _SignScreenState extends State<SignScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios, weight: 7),
+          icon: Icon(Icons.chevron_left,
+               weight: 7),
                 ),
         ), ),
       body: Padding(
