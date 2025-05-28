@@ -60,7 +60,7 @@ class _HospitalScreen extends State<HospitalScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 60.h, left: 28.w, right: 28.w,bottom: 60.h),
+          padding: EdgeInsets.only(top: 60.h, left: 28.w, right: 28.w),
           child: Column(
             children: [
 
@@ -137,6 +137,7 @@ class _HospitalScreen extends State<HospitalScreen> {
 
               //Search Provinces
               _buildPracticeLocationDropdown(context),
+              SizedBox(height: 24.h),
 
               //List of Hospitals
               _buildHospitalList(),
@@ -150,6 +151,7 @@ class _HospitalScreen extends State<HospitalScreen> {
   Widget _buildPracticeLocationDropdown(BuildContext context) {
     return Container(
       // height: 48.h,
+      padding: EdgeInsets.zero,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.w),
         border: Border.all(color: Color(0xffE3E3E3), width: 1),
@@ -188,6 +190,7 @@ class _HospitalScreen extends State<HospitalScreen> {
 
   Widget _buildHospitalList() {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(), // because inside SingleChildScrollView
       shrinkWrap: true,
@@ -341,6 +344,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 16.h),
             ],
           ),
         );

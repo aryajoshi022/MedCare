@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      top:59.h,
+                      top:56.h,
                     left: 264.w,
                   ),
                   child: Container(
@@ -153,13 +153,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.only(top: 140.h, left: 26.w),
                   child: SizedBox(
                     height: 32.h,
-                    // width: 164.w,
+                    width: 164.w,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff26408B),
                         foregroundColor: Color(0xffFFFFFF),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0),
+                          borderRadius: BorderRadius.circular(4),
                         ),
                         padding: EdgeInsets.symmetric(horizontal: 8.w), // Optional
                       ),
