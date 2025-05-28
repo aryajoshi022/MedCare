@@ -26,10 +26,12 @@ class _CartWithNotifState extends State<CartWithNotif> {
             children: [
               //Appbar
               Padding(
-                padding:  EdgeInsets.only(top: 24.h),
+                padding: const EdgeInsets.only(top: 24,right: 20,bottom: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    SizedBox(width: 8,),
+
                     IconButton(
                       onPressed: () {
                         Navigator.pop(context);
@@ -42,14 +44,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                     ),
                     SizedBox(
                       height: 48.h,
-                      width: 318.w,
+                      width: 288.w,
                       child: TextFormField(
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
-                            left: 16.w,
-                            top: 14.h,
-                            bottom: 14.h,
-                            right: 16.w,
+                            left: 16,
+                            top: 14,
+                            bottom: 14,
+                            right: 16,
                           ),
                           prefixIconColor: Color(0xff8F8F8F),
                           prefixIcon: Icon(
@@ -65,8 +67,16 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             fontSize: 14,
                             color: Color(0xff8F8F8F),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+
+                            borderSide: BorderSide(
+                              color: AppColors.borderThirsty,
+                              width: 1,
+                            ),
+                          ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0.r),
+                            borderRadius: BorderRadius.circular(12.0),
                             borderSide: BorderSide(
                               color: AppColors.borderThirsty,
                               width: 1,
@@ -80,7 +90,10 @@ class _CartWithNotifState extends State<CartWithNotif> {
                     Spacer(),
                     IconButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen(),));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CartScreen()),
+                        );
                       },
                       icon: Image.asset(
                         'assets/images/health_shop/notify_cart.png',
@@ -95,14 +108,15 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 child: Row(
                   children: [
                     Padding(
-                      padding:  EdgeInsets.only(left: 10.w),
+                      padding: const EdgeInsets.only(left: 20),
                       child: SizedBox(
-                        height: 50.h,
+                        height: 40.h,
                         width: 44.w,
                         child: FloatingActionButton(
                           onPressed: () {},
                           elevation: 0,
                           //highlightElevation: 0,
+
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               6,
@@ -110,7 +124,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             side: BorderSide(
                               color: AppColors.borderBtn,
                               width: 1,
-                            ), // Border color
+
+                            )
+                            , // Border color
                           ),
                           child: Image.asset('assets/icons/shop_filter.png'),
                           backgroundColor: AppColors.bgAlert,
@@ -119,35 +135,37 @@ class _CartWithNotifState extends State<CartWithNotif> {
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(10.0.w),
+                      padding: EdgeInsets.all(10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomButton2(text: 'Medicine & Treatment'),
-                          SizedBox(width: 10.w), // Space between buttons
+                          SizedBox(width: 10), // Space between buttons
                           CustomButton(text: 'Milk'),
-                          SizedBox(width: 10.w), // Space between buttons
+                          SizedBox(width: 10), // Space between buttons
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: 50,
-                      width: 199,
+                      height: 40,
+                      width: 170,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: ElevatedButton(
+
                           style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.black,
-                              backgroundColor: Colors.white, // Text color
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                  6,
-                                ), // Rounded corners
-                                side: BorderSide(
-                                  color: AppColors.borderBtn,
-                                  width: 1,
-                                ), // Border color
-                              ),elevation: 0.0
+                            foregroundColor: Colors.black,
+                            backgroundColor: Colors.white, // Text color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                6,
+                              ), // Rounded corners
+                              side: BorderSide(
+                                color: AppColors.borderBtn,
+                                width: 1,
+                              ), // Border color
+                            ),
+                            elevation: 0.0,
                           ),
                           onPressed: () {
                             // Action to perform on button press
@@ -155,11 +173,11 @@ class _CartWithNotifState extends State<CartWithNotif> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               vertical: 12.0,
-                              horizontal: 20.0,
                             ),
                             child: Text(
                               'Sexual Health',
-                              style: TextStyle(fontSize: 14),
+
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                             ),
                           ),
                         ),
@@ -170,7 +188,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
               ),
 
               //Scroller
-              SizedBox(height: 20.h),
+              SizedBox(height: 16.h),
 
               //Out Brands
               Container(
@@ -179,7 +197,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 //decoration: BoxDecoration(),
                 color: AppColors.borderThirsty,
                 child: Padding(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.only(bottom: 24,top: 24,left: 24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -196,14 +214,18 @@ class _CartWithNotifState extends State<CartWithNotif> {
                               ),
                             ),
 
-                            Text(
-                              'see all',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.bgPrimary,
+                            Padding(
+                              padding: const EdgeInsets.only(right: 24),
+                              child: Text(
+                                'see all',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.bgPrimary,
+                                ),
                               ),
                             ),
+
                           ],
                         ),
                       ),
@@ -215,6 +237,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
+                      SizedBox(height: 16),
+
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -282,7 +306,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
 
               //Hot Sales
               Padding(
-                padding: const EdgeInsets.all(24),
+                padding: const EdgeInsets.only(top: 24,bottom: 16,right: 28,left: 28),
                 child: SizedBox(
                   width: 372,
                   child: Row(
@@ -313,237 +337,265 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productone.png',
-                            ),
-                            Text(
-                              'Promag 10 Tablets',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.all(11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productone.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 34),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'Promag 10 Tablets',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 34),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productsec.png',
-                            ),
-                            Text(
-                              'STRIP NEURODEX 10 TABLET',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productsec.png',
-                            ),
-                            Text(
-                              'STRIP NEURODEX 10 TABLET',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),
 
               //Recently viewed
               Padding(
-                padding: const EdgeInsets.all(14),
+                padding: const EdgeInsets.only(top: 8,bottom: 16,right: 28,left: 28),
                 child: SizedBox(
                   width: 372,
                   child: Row(
@@ -574,236 +626,264 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productone.png',
-                            ),
-                            Text(
-                              'Promag 10 Tablets',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.all(11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productone.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 34),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'Promag 10 Tablets',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 34),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productsec.png',
-                            ),
-                            Text(
-                              'STRIP NEURODEX 10 TABLET',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(24),
+                      padding: const EdgeInsets.only(right: 12,bottom: 24),
                       child: Container(
-                        width: 178.w,
-                        height: 272.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              'assets/images/health_shop/productsec.png',
-                            ),
-                            Text(
-                              'STRIP NEURODEX 10 TABLET',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123,
+                                width: 155,
                               ),
-                            ),
-                            Text(
-                              'Per Strip',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Text(
-                              'Start from',
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: AppColors.textDisabled,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '\$2,00',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.textBtn,
-                                  ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                                SizedBox(
-                                  width: 90,
-                                  height: 32,
-                                  child: ElevatedButton(
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(fontSize: 16),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
                                     ),
-                                    onPressed: () {},
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: AppColors.btnPrimary,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(24),
-                                        side: BorderSide(
-                                          color: AppColors.btnPrimary,
-                                          width: 1,
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90,
+                                    height: 32,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
+
                   ],
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.all(14),
+                padding: const EdgeInsets.only(top: 8,right: 28,left: 28),
                 child: SizedBox(
                   width: 372,
                   child: Row(
@@ -824,7 +904,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.only(left: 20,bottom: 50),
                     child: Container(
                       height: 178.h,
                       width: 405.w,
@@ -868,8 +948,11 @@ class _CartWithNotifState extends State<CartWithNotif> {
               ),
             ],
           ),
+
+
         ),
       ),
+
     );
 
   }
@@ -883,34 +966,32 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 50,
-        width: 162,
+        height: 40,
+        width: 90,
 
         child: ElevatedButton(
-
           style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white, // Text color
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6), // Rounded corners
-                side: BorderSide(
-                  color: AppColors.borderBtn,
-                  width: 1,
-                ), // Border color
-              ),elevation: 0.0
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white, // Text color
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6), // Rounded corners
+              side: BorderSide(
+                color: AppColors.borderBtn,
+                width: 1,
+              ), // Border color
+            ),
+            elevation: 0.0,
           ),
-          onPressed: () {
-          },
+          onPressed: () {},
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-            child: Text(text, style: TextStyle(fontSize: 16)),
+            padding: EdgeInsets.symmetric(vertical: 12.0,),
+            child: Text(text, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
       ),
     );
   }
 }
-
 class CustomButton2 extends StatelessWidget {
   final String text;
 
@@ -920,22 +1001,21 @@ class CustomButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 50,
-        width: 162,
+        height: 40,
+        width: 210,
 
         child: ElevatedButton(
-
           style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.black,
-              backgroundColor: Colors.white, // Text color
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6), // Rounded corners
-                side: BorderSide(
-                  color: AppColors.borderBtn,
-                  width: 1,
-
-                ), // Border color
-              ),elevation: 0.0
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white, // Text color
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6), // Rounded corners
+              side: BorderSide(
+                color: AppColors.borderBtn,
+                width: 1,
+              ), // Border color
+            ),
+            elevation: 0.0,
           ),
           onPressed: () {
             Navigator.push(
@@ -944,11 +1024,12 @@ class CustomButton2 extends StatelessWidget {
             );
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-            child: Text(text, style: TextStyle(fontSize: 16)),
+            padding: EdgeInsets.symmetric(vertical: 12.0, ),
+            child: Text(text, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
           ),
         ),
       ),
     );
   }
 }
+
