@@ -344,25 +344,50 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 },
                 child: Row(
                   children: [
-                    Text(
-                      'Notifications',
-                      style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12.sp,
-                        letterSpacing: 1.sp,
-                        color: AppColors.textSecondary,
+                    Text.rich(
+                      TextSpan(
+                        text: 'Notifications ',
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.sp,
+                          letterSpacing: 1.sp,
+                          color: AppColors.textSecondary,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: isNotificationOn ? "On" : "Off",
+                            style: GoogleFonts.khula(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12.sp,
+                              letterSpacing: 1.sp,
+                              color: AppColors.textBtn,
+                              decoration: TextDecoration.underline,
+                              decorationColor: AppColors.bgPrimary,
+                              decorationThickness: 1.5,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(width: 4.w),
-                    Text(
-                      isNotificationOn ? "On" : "Off",
-                      style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 12.sp,
-                        letterSpacing: 1.sp,
-                        color: AppColors.textBtn,
-                      ),
-                    ),
+                    // Text(
+                    //   'Notifications',
+                    //   style: GoogleFonts.khula(
+                    //     fontWeight: FontWeight.w400,
+                    //     fontSize: 12.sp,
+                    //     letterSpacing: 1.sp,
+                    //     color: AppColors.textSecondary,
+                    //   ),
+                    // ),
+                    // SizedBox(width: 4.w),
+                    // Text(
+                    //   isNotificationOn ? "On" : "Off",
+                    //   style: GoogleFonts.khula(
+                    //     fontWeight: FontWeight.w600,
+                    //     fontSize: 12.sp,
+                    //     letterSpacing: 1.sp,
+                    //     color: AppColors.textBtn,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
