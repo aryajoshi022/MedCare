@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/chatdoctor/history_screen.dart';
 import '../../util/constants/colors.dart';
 
 class AppointmentSuccess extends StatefulWidget {
@@ -54,7 +55,9 @@ class _AppointmentSuccessState extends State<AppointmentSuccess> {
                     side: BorderSide(width: 1.w, color: AppColors.borderSecondary)
                   )
                 ),
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
+                  },
                   child: Text('Go to details',
                     style: GoogleFonts.khula(
                         fontWeight: FontWeight.w600,
