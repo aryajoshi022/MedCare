@@ -18,6 +18,7 @@ class App extends StatelessWidget {
           theme: AppTheme.lighttheme,
           debugShowCheckedModeBanner: false,
           home: SplashScreen(),
+
           routes: {},
         );
       },
