@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/MedicationReminder/medication_reminder.dart';
+import 'package:medcare/screens/profile/profile_screen.dart';
 import '../../util/constants/colors.dart';
 
 class DrugDetails extends StatefulWidget {
@@ -75,7 +76,9 @@ class _DrugDetailsState extends State<DrugDetails> {
         ),
         child: Expanded(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.bgPrimary,
                 shape: RoundedRectangleBorder(

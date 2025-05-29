@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/appointment_success.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 import '../../util/constants/colors.dart';
+import '../hospital/hospital_maps.dart';
 
 class Confirmation extends StatefulWidget {
   const Confirmation({super.key});
@@ -402,7 +403,9 @@ class _ConfirmationState extends State<Confirmation> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalMaps()));
+                  },
                   child: Text('See Maps >',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
