@@ -8,6 +8,7 @@ import '../../widgets/categories/categories_widget.dart';
 import '../../widgets/health articles/health_article.dart';
 import '../../widgets/nearby hospitals/hospital_card_widget.dart';
 import '../../widgets/selling products/product_card_widget.dart';
+import '../List Article/article_details_screen.dart';
 import '../chatdoctor/chat_doctor.dart';
 import '../chatdoctor/doctor_details.dart';
 import '../healthshop/cart_screen.dart';
@@ -547,7 +548,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             Artical: 'Disease Prevention',
                             ArticalDiscrptipon: 'Understanding Vaccination,The\nImportance of Preventative',
                             Date: '14 - Jun - 2023',
-                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
                         SizedBox(height: 14.h),
                         HealthArticle(
@@ -555,7 +556,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
-                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
                         SizedBox(height: 14.h),
                         HealthArticle(
@@ -563,7 +564,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Artical: 'Healthy Lifestyle',
                           ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
-                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => DetailHospital())); }
+                            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
                         SizedBox(height: 14.h),
                       ],

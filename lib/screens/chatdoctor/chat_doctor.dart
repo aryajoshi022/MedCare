@@ -82,12 +82,10 @@ class _ChatDoctorState extends State<ChatDoctor> {
       ),
       body: SafeArea(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildCustomAppBar(context),
-            // SizedBox(height: 24.h),
             _buildSearchField(context),
-            SizedBox(height: 24.h),
+            SizedBox(height: 10.h),
             Expanded(
               child: ListView.builder(
                 itemCount: doctorList.length,
@@ -140,7 +138,8 @@ class _ChatDoctorState extends State<ChatDoctor> {
           // contentPadding: EdgeInsets.only(left: 16.w, top: 14.h, bottom: 14.h, right: 16.w),
           contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
           prefixIconColor: AppColors.borderDisabled,
-          prefixIcon: Icon(Icons.search_sharp,
+          prefixIcon: Icon(
+            Icons.search_sharp,
             size: 20.sp,
           ),
           hintText: 'Find a doctor',
@@ -247,10 +246,11 @@ class _ChatDoctorState extends State<ChatDoctor> {
             SizedBox(width: 16.w),
             IconButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails(),));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails()));
               },
               icon: Icon(Icons.chevron_right,
                 color: AppColors.btnSecondary,
+                size: 24.sp,
               ),
               constraints: BoxConstraints.loose(Size.fromWidth(2.w)),
             ),

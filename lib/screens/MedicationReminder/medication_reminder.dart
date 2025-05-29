@@ -24,7 +24,6 @@ class _MedicationReminderState extends State<MedicationReminder> {
           child: Column(
             children: [
               _buildCustomAppBar(),
-              // SizedBox(height: 31.h),
               _buildReminderOfMedicine(),
               SizedBox(height: 24.h),
               _buildHistoryOfMedicine(),
@@ -49,8 +48,7 @@ class _MedicationReminderState extends State<MedicationReminder> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.r)
                 ),
-                // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h)
-                padding: EdgeInsets.only(left: 10.w)
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h)
             ),
             child: Text('Add Medicine',
               style: GoogleFonts.khula(
@@ -132,7 +130,7 @@ class _MedicationReminderState extends State<MedicationReminder> {
               )
             ],
           ),
-          SizedBox(height: 24.h),
+          SizedBox(height: 8.h),
           Container(
             padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
             decoration: BoxDecoration(

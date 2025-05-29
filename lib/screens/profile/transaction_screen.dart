@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/widgets/bottom%20bar/custom_bottom_bar.dart';
@@ -25,34 +26,41 @@ class _TransactionScreenState extends State<TransactionScreen> {
         centerTitle: true,
         backgroundColor: AppColors.bgAlert,
         leading: IconButton(
+          padding: EdgeInsets.only(left: 28.w),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfileScreen()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: AppColors.textNormal),
+          icon: Icon(Icons.chevron_left,
+            color: AppColors.btnSecondary,
+            size: 24.sp,
+          ),
         ),
         title: Text(
           'Transaction',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.textNormal,
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: appointments.length,
-        itemBuilder: (context, index) {
-          final item = appointments[index];
-          return AppointmentCard(
-            date: item["date"]!,
-            month: item["month"]!,
-            price: item["price"]!,
-            status: item["status"]!,
-          );
-        },
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal:25.w ),
+        child: ListView.builder(
+          itemCount: appointments.length,
+          itemBuilder: (context, index) {
+            final item = appointments[index];
+            return AppointmentCard(
+              date: item["date"]!,
+              month: item["month"]!,
+              price: item["price"]!,
+              status: item["status"]!,
+            );
+          },
+        ),
       ),
       bottomNavigationBar: CustomBottomAppBar(
         selectedIndex: _selectedIndex,
@@ -81,20 +89,20 @@ class AppointmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-      padding: EdgeInsets.all(12),
+      margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
+      padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
         color: Color(0xFF1A1A1A),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
         children: [
           Container(
-            width: 50,
-            height: 60,
+            width: 50.w,
+            height: 60.h,
             decoration: BoxDecoration(
               color: Color(0xFFEEEEEE),
-              borderRadius: BorderRadius.circular(1),
+              borderRadius: BorderRadius.circular(1.r),
             ),
             alignment: Alignment.center,
             child: Column(
@@ -102,13 +110,13 @@ class AppointmentCard extends StatelessWidget {
               children: [
                 Text(
                   date,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                 ),
-                Text(month, style: TextStyle(fontSize: 12)),
+                Text(month, style: TextStyle(fontSize: 12.sp)),
               ],
             ),
           ),
-          SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,16 +125,16 @@ class AppointmentCard extends StatelessWidget {
                   "GP Consultation with Dr. Emily Smith",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: 6),
+                SizedBox(height: 6.h),
                 Text(
                   price,
                   style: TextStyle(
                     color: AppColors.textBtn,
-                    fontSize: 13,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -134,17 +142,17 @@ class AppointmentCard extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
             decoration: BoxDecoration(
               color: AppColors.borderThirsty,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.circular(4.r),
             ),
             child: Text(
               status,
               style: TextStyle(
                 color: AppColors.bgPrimary,
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
+                fontSize: 12.sp,
               ),
             ),
           ),
