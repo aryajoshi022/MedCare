@@ -135,7 +135,7 @@ class _SignInScreenState extends State<SignInScreen> {
             'Email',
             style: TextStyle(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 48.h,
+          SizedBox(height: 44.h,
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Enter phone email',
@@ -247,7 +247,7 @@ class _SignInScreenState extends State<SignInScreen> {
             style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
           SizedBox(
-            height: 44,
+            height: 40,
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.borderThirsty), // Black border
@@ -389,8 +389,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: EdgeInsets.only(left: 33.w, right: 33.w),
-                  child: Text(
+                  padding:  EdgeInsets.only(left: 33.w, right: 33.w),
+                  child: Text(textAlign: TextAlign.center,
                     'Congratulations, your account has been verified',
                     style: TextStyle(
                       fontSize: 16.sp,
@@ -406,11 +406,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: 372.w,
 
                   child: Padding(
-                    padding: EdgeInsets.only(
+                    padding:  EdgeInsets.only(
                       top: 20.h,
                       bottom: 20.h,
-                      right: 10.r,
-                      left: 10.r,
+                      right: 10.w,
+                      left: 10.w,
                     ),
                     child: ElevatedButton(
                       child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
@@ -437,6 +437,7 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

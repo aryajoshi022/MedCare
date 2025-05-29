@@ -66,6 +66,7 @@ class _SignScreenState extends State<SignScreen> {
 
   Widget _signInPage() {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,10 +94,11 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 26.h),
             Text('Phone Number*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
-              height: 44,
+              height: 40,
               child: Container(
                 decoration:
                 BoxDecoration(
+
                   border: Border.all(color: AppColors.borderThirsty), // Black border
                   borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
                 ),
@@ -283,16 +285,18 @@ class _SignScreenState extends State<SignScreen> {
             ),
             SizedBox(height: 26.h),
             Text('Email', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 48.h,
+            SizedBox(height: 44.h,
               child: TextField(
+                textAlign: TextAlign.start,
                 decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                   hintText: 'Enter email',
-                  hintStyle: TextStyle(color: AppColors.textDisabled),
+                  hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
 
-                  border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderSecondary)),
+                  border: OutlineInputBorder(),
                 ),
               ),
             ),
