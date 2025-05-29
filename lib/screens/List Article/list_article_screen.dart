@@ -399,10 +399,10 @@ class _ListArticleScreen extends State<ListArticleScreen> {
             fit: BoxFit.cover,
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: 30.h,  // adjust height as needed
+            // bottom: 0,
+            // left: 0,
+            // right: 0,
+            // height: 200.h,  // adjust height as needed
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
