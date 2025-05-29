@@ -1,3 +1,4 @@
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -131,43 +132,43 @@ class _MedicationReminderState extends State<MedicationReminder> {
             ],
           ),
           SizedBox(height: 8.h),
-          Container(
-            padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(
-                width: 1.w,
-                color: AppColors.borderThirsty,
+          DottedBorder(
+            borderType: BorderType.RRect,
+            radius: Radius.circular(12.r),
+            dashPattern: [13, 12],
+            color: AppColors.borderThirsty,
+            strokeWidth: 1.w,
+            child: Container(
+              padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/MedicationReminder.png',
+                    width: 132.72.w,
+                    height: 100.h,
+                    fit: BoxFit.contain,
+                  ),
+                  SizedBox(height: 16.h),
+                  Text('Manage your medication',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12.h),
+                  Text('Add the medicine you are taking and create a reminder to take the medicine',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textSecondary
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-            ),
-            child: Column(
-              children: [
-                Image.asset('assets/images/MedicationReminder.png',
-                  width: 132.72.w,
-                  height: 100.h,
-                  fit: BoxFit.contain,
-                ),
-                SizedBox(height: 16.h),
-                Text('Manage your medication',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textNormal
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 12.h),
-                Text('Add the medicine you are taking and create a reminder to take the medicine',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textSecondary
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
             ),
           ),
         ],
@@ -191,43 +192,43 @@ class _MedicationReminderState extends State<MedicationReminder> {
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(height: 24.h),
-          Container(
-            padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r),
-              border: Border.all(
-                width: 1.w,
-                color: AppColors.borderThirsty,
+          DottedBorder(
+            borderType: BorderType.RRect,
+            radius: Radius.circular(12.r),
+            dashPattern: [13, 12],
+            color: AppColors.borderThirsty,
+            strokeWidth: 1.w,
+            child: Container(
+              padding: EdgeInsets.only(left: 50.w, top: 39.h, right: 49.w, bottom: 38.h),
+              child: Column(
+                children: [
+                  Image.asset('assets/images/MedicationReminder.png',
+                    width: 132.72.w,
+                    height: 100.h,
+                    fit: BoxFit.contain,
+                  ),
+                  SizedBox(height: 16.h),
+                  Text('View all your medication history',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 12.h),
+                  Text('Add the medicine you are taking and create a reminder to take the medicine',
+                    style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textSecondary
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-            ),
-            child: Column(
-              children: [
-                Image.asset('assets/images/MedicationReminder.png',
-                  width: 132.72.w,
-                  height: 100.h,
-                  fit: BoxFit.contain,
-                ),
-                SizedBox(height: 16.h),
-                Text('View all your medication history',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textNormal
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 12.h),
-                Text('Add the medicine you are taking and create a reminder to take the medicine',
-                  style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textSecondary
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
             ),
           ),
         ],
