@@ -1,9 +1,11 @@
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/chatdoctor/appointment_success.dart';
 import 'package:medcare/screens/chatdoctor/doctor_details.dart';
 import '../../util/constants/colors.dart';
+import '../hospital/hospital_maps.dart';
 
 class Confirmation extends StatefulWidget {
   const Confirmation({super.key});
@@ -346,12 +348,14 @@ class _ConfirmationState extends State<Confirmation> {
                   color: AppColors.textBtn
                 ),
             ),
-            SizedBox(height: 10.h),
-            Divider(
-              thickness: 1.0.w,
-              color: AppColors.borderBtn
+            SizedBox(height: 15.h),
+            DottedLine(
+              dashLength: 6,
+              dashGapLength: 4,
+              lineThickness: 1,
+              dashColor: AppColors.borderBtn,
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 19.h),
             Text(
               'Date & Time',
                 style: GoogleFonts.khula(
@@ -399,7 +403,9 @@ class _ConfirmationState extends State<Confirmation> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalMaps()));
+                  },
                   child: Text('See Maps >',
                     style: GoogleFonts.khula(
                       fontWeight: FontWeight.w400,
