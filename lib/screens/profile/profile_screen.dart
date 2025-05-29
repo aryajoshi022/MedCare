@@ -8,6 +8,7 @@ import 'package:medcare/screens/profile/prescription_history.dart';
 import 'package:medcare/screens/profile/transaction_screen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
+import '../signin/signinscreen.dart';
 import 'account_setting.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -424,7 +425,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           backgroundColor: AppColors.bgAlert,
           side: BorderSide(width: 1.w, color: AppColors.borderThirsty),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen()));
+        },
         child: Text(
           'Log Out',
           style: GoogleFonts.khula(
