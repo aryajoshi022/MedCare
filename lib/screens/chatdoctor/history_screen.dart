@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medcare/screens/chatdoctor/chat_doctor.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/bottom bar/custom_bottom_bar.dart';
@@ -530,7 +531,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
               SizedBox(width: 16.w),
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDoctor()));
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
                     side: BorderSide(color: AppColors.borderSecondary, width: 1.w),
@@ -576,7 +579,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
               SizedBox(width: 16.w),
               Expanded(
                 child: OutlinedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatDoctor()));
+                  },
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 13.h),
                     side: BorderSide(color: AppColors.borderSecondary, width: 1.w),

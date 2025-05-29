@@ -207,8 +207,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  // SizedBox(height: 10.h),
-                  SizedBox(height: 4.h),
+                  // SizedBox(height: 4.h),
                   Text(
                     '${doctor['specialty']!} • ${doctor['experience']!}',
                     style: GoogleFonts.khula(
@@ -220,8 +219,7 @@ class _ChatDoctorState extends State<ChatDoctor> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  // SizedBox(height: 10.h),
-                  SizedBox(height: 6.h),
+                  // SizedBox(height: 6.h),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
                     decoration: BoxDecoration(
