@@ -187,10 +187,10 @@ class getstartedScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(11.0),
+                  padding: EdgeInsets.symmetric(horizontal: 33.w, vertical: 20.h),
                   child: SizedBox(
-                    height: 28.h,
-                    width: 102.w,
+                    height: 33.h,
+                    width: 93.w,
 
                     child: ElevatedButton(
                       child: Text(
@@ -202,6 +202,7 @@ class getstartedScreen extends StatelessWidget {
                       ),
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
                         elevation: 0.0,
                         shadowColor: Colors.transparent,
                         foregroundColor: Colors.white,
@@ -224,8 +225,9 @@ class getstartedScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 40,),
-                Center(child: Image.asset('assets/images/medcare_img.png')),
+                // SizedBox(height: 40,),
+                Center(child: Image.asset('assets/images/medcare_img.png',height: 91.58.h, width: 80.w)),
+                SizedBox(height: 12.h),
                 Text(
                   'MEDCARE',
                   style: TextStyle(
