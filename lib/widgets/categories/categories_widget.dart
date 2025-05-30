@@ -30,7 +30,7 @@ class CategoryItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.r),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xff000000).withOpacity(0.1), // shadow color with opacity
+                  color: Color(0xff000000).withOpacity(0.05), // shadow color with opacity
                   spreadRadius: 0,   // how wide the shadow spreads
                   blurRadius: 10,     // how soft the shadow is
                   offset: Offset(2, 2), // x,y offset of shadow

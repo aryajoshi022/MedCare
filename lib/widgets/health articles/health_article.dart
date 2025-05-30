@@ -24,6 +24,7 @@ class  HealthArticle extends StatelessWidget {
       onTap: onTap,
       child: Container(
           // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+        width: 372.w,
           child: Row(
             children: [
               // Background image covering card size
@@ -39,7 +40,7 @@ class  HealthArticle extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 10.w,top: 10.h,bottom: 10.h),
                 child: Container(
-                  // width: 268.w,
+                  width: 268.w,
                   // height: 88.h,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,  // from top
@@ -63,6 +64,8 @@ class  HealthArticle extends StatelessWidget {
                           letterSpacing: 1,
                           color: Color(0xff090909),
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 3.h),
                       Text(
