@@ -35,25 +35,26 @@ class _SignScreenState extends State<SignScreen> {
   Widget _buildToggleTabs() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_tabButton("No Phone", 0), _tabButton("Email", 1)],
+      children: [_tabButton("Phone Number", 0), _tabButton("Email", 1)],
     );
   }
 
   Widget _tabButton(String title, int index) {
     bool isActive = _currentIndex == index;
+
     return GestureDetector(
       onTap: () => _switchPage(index),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 30),
+        margin: EdgeInsets.symmetric(horizontal: 18),
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         decoration: BoxDecoration(
           //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
           //borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
+          textAlign: TextAlign.center,
           title,
-
           style: TextStyle(
             color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             fontWeight: FontWeight.bold,
@@ -128,15 +129,17 @@ class _SignScreenState extends State<SignScreen> {
                     ),
                     VerticalDivider(color: AppColors.textDisabled),
                     Expanded(
-                      child: TextField(
-                        controller: _controller,
-                        style: TextStyle(color: AppColors.textDisabled),
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.zero,
-                          hintText: 'Enter phone number',
-                          hintStyle: TextStyle(color: AppColors.textDisabled),
-                          border: InputBorder.none,
+                      child: SizedBox(height: 44.h,
+                        child: TextField(
+                          controller: _controller,
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
+                            hintText: 'Enter your full name',
+                            hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+
+                            border: InputBorder.none,
+                          ),
                         ),
                       ),
                     ),
@@ -189,7 +192,7 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 45.h,
               child: TextField(
                 decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,) ,
                   hintText: 'Enter your date of birth',
                   hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
@@ -344,7 +347,7 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 45.h,
               child: TextField(
                 decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,) ,
                   hintText: 'Enter your date of birth',
                   hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
@@ -354,23 +357,29 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 26.h),
             Row(
               children: [
-                Checkbox(
-                  tristate: true, // Example with tristate
-                  side: BorderSide(color: AppColors.borderSecondary),
-                  value: value,
-                  onChanged: (bool? newValue) {
-                    setState(() {
-                      value = newValue;
-                    });
-                  },
+                SizedBox(height: 24,
+                  width: 24,
+                  child: Checkbox(
+                    tristate: true, // Example with tristate
+                    side: BorderSide(color: AppColors.borderSecondary),
+                    value: value,
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        value = newValue;
+                      });
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: Text(
-                    'You agree to receive information and notifications sent by MedCare.',
-                    style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Text(
+                      textAlign: TextAlign.start,
+                      'You agree to receive information and notifications sent by MedCare.',
+                      style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    ),
                   ),
                 ),
               ],
@@ -720,7 +729,7 @@ class _SignScreenState extends State<SignScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
         leading:Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           child: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -749,13 +758,16 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
               SizedBox(height: 30.h),
+
               _buildToggleTabs(),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged:
-                      (index) => setState(() => _currentIndex = index),
-                  children: [_signInPage(), _signUpPage()],
+                child: Center(
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged:
+                        (index) => setState(() => _currentIndex = index),
+                    children: [_signInPage(), _signUpPage()],
+                  ),
                 ),
               ),
               Center(

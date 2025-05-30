@@ -82,9 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     child: Column(
                       children: [
-                        SizedBox(height: 40.h,),
+                        SizedBox(height: 30.h,),
                         Image.asset(contents[i].image, height: 300.h),
-                        SizedBox(height: 20.h),
+                        SizedBox(height: 50.h),
 
                         Text(
                           contents[i].title,
