@@ -52,8 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: AppColors.bgAlert,
         automaticallyImplyLeading: false,
+        titleSpacing: 28,
         title: Row(
           children: [
             Text.rich(
@@ -251,6 +253,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 child: GridView.builder(
                   physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   itemCount: categories.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -535,7 +538,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 14.h),
                 Padding(
-                  padding: EdgeInsets.only(left: 28.w),
+                  padding: EdgeInsets.symmetric(horizontal: 28.w),
                   child: Container(
                     alignment: Alignment.center,
                     child: ListView(
@@ -546,7 +549,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         HealthArticle(
                             imge: 'assets/images/Health Artical/Disease Prevention.png',
                             Artical: 'Disease Prevention',
-                            ArticalDiscrptipon: 'Understanding Vaccination,The\nImportance of Preventative',
+                            ArticalDiscrptipon: 'Understanding Vaccination,The Importance of Preventative Medicine',
                             Date: '14 - Jun - 2023',
                             onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
@@ -554,7 +557,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
-                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                             onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
@@ -562,7 +565,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         HealthArticle(
                           imge: 'assets/images/Health Artical/Healthy Lifestyle.png',
                           Artical: 'Healthy Lifestyle',
-                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy\nHabits: Tips for Living Better',
+                          ArticalDiscrptipon: 'Turning Bad Habits into Healthy Habits: Tips for Living Better',
                           Date: '14 - Jun - 2023',
                             onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => ArticleDetailsScreen())); }
                         ),
