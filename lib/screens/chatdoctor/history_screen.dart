@@ -369,25 +369,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         ],
                       ),
                     ),
-                    // Text(
-                    //   'Notifications',
-                    //   style: GoogleFonts.khula(
-                    //     fontWeight: FontWeight.w400,
-                    //     fontSize: 12.sp,
-                    //     letterSpacing: 1.sp,
-                    //     color: AppColors.textSecondary,
-                    //   ),
-                    // ),
-                    // SizedBox(width: 4.w),
-                    // Text(
-                    //   isNotificationOn ? "On" : "Off",
-                    //   style: GoogleFonts.khula(
-                    //     fontWeight: FontWeight.w600,
-                    //     fontSize: 12.sp,
-                    //     letterSpacing: 1.sp,
-                    //     color: AppColors.textBtn,
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
