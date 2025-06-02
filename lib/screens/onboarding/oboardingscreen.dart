@@ -154,16 +154,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
-      height: 10,
-      width: 10,
+      height: 8,
+      width: 8,
       margin: EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: isActive ? AppColors.btnPrimary : AppColors.borderDisabled,
+        color: isActive ? AppColors.btnPrimary : AppColors.borderThirsty,
         borderRadius: BorderRadius.circular(20),
       ),
     );
   }
-
 
 }
 
@@ -200,15 +199,18 @@ class getstartedScreen extends StatelessWidget {
                     child: ElevatedButton(
                       child: Text(
                         'English',
+
                         style: TextStyle(
                           fontSize: 14.sp,
-                          color: AppColors.textSecondary,
+                          color: AppColors.textDisabled,
                         ),
                       ),
                       onPressed: () {},
+
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        padding: EdgeInsets.symmetric(horizontal: 2.w),
                         elevation: 0.0,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         shadowColor: Colors.transparent,
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.white,

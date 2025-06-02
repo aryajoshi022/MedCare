@@ -93,10 +93,10 @@ class _SignScreenState extends State<SignScreen> {
                     DropdownButton<String>(
                       value: selectedCode,
                       dropdownColor: Colors.white,
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: AppColors.btnSecondary),
                       underline: SizedBox(),
-
-                      iconEnabledColor: Colors.black,
+                      icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,),
+                      iconEnabledColor: AppColors.btnSecondary,
                       items: codes.map((String code) {
                         return DropdownMenuItem<String>(
                           value: code,
@@ -120,7 +120,7 @@ class _SignScreenState extends State<SignScreen> {
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
-                            hintText: 'Enter your full name',
+                            hintText: 'Enter phone number',
                             hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
 
                             border: InputBorder.none,
@@ -154,6 +154,7 @@ class _SignScreenState extends State<SignScreen> {
             
             SizedBox(height: 44,
               child: DropdownButtonFormField<String>(
+                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, ),
 
                 hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
@@ -187,27 +188,36 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 26.h),
-            Row(mainAxisAlignment: MainAxisAlignment.start,
+            Row(
               children: [
-                Checkbox(
-                  tristate: true, // Example with tristate
-                  side: BorderSide(color: AppColors.borderSecondary),
-                  value: value,
-                  onChanged: (bool? newValue) {
-                    setState(() {
-                      value = newValue;
-                    });
-                  },
+                SizedBox(height: 24,
+                  width: 24,
+                  child: Checkbox(
+
+                    tristate: true, // Example with tristate
+                    side: BorderSide(color: AppColors.borderSecondary),
+                    value: value,
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        value = newValue;
+                      });
+                    },
+                  ),
                 ),
                 Expanded(
-                  child: Text(
-                    'You agree to receive information and notifications sent by MedCare.',
-                    style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18,left: 16),
+                    child: Text(
+                      textAlign: TextAlign.start,
+                      'You agree to receive information and notifications sent by MedCare.',
+                      style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    ),
                   ),
                 ),
               ],
-            ),SizedBox(
+            ),
+
+            SizedBox(
               height: 40,
             ),
             SizedBox(
@@ -289,6 +299,7 @@ class _SignScreenState extends State<SignScreen> {
 
             SizedBox(height: 44,
               child: DropdownButtonFormField<String>(
+                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, ),
 
                 hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
@@ -327,6 +338,7 @@ class _SignScreenState extends State<SignScreen> {
                 SizedBox(height: 24,
                   width: 24,
                   child: Checkbox(
+
                     tristate: true, // Example with tristate
                     side: BorderSide(color: AppColors.borderSecondary),
                     value: value,
@@ -339,7 +351,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 18,left: 16),
                     child: Text(
                       textAlign: TextAlign.start,
                       'You agree to receive information and notifications sent by MedCare.',
@@ -348,7 +360,8 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ],
-            ),SizedBox(
+            ),
+            SizedBox(
               height: 40,
             ),
             SizedBox(
@@ -390,7 +403,7 @@ class _SignScreenState extends State<SignScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.all(28.w),
+          padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -401,12 +414,14 @@ class _SignScreenState extends State<SignScreen> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back_ios, weight: 7.w),
+                    icon: Icon(Icons.chevron_left,
+                        weight: 7,
+                    color: AppColors.btnArrow,),
                   ),
                   Text(
                     'Register',
                     style: TextStyle(
-                      color: AppColors.textSecondary,
+                      color: AppColors.textNormal,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
                     ),
@@ -492,7 +507,7 @@ class _SignScreenState extends State<SignScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.all(28.w),
+          padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -502,7 +517,9 @@ class _SignScreenState extends State<SignScreen> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.arrow_back_ios, weight: 7),
+                    icon: Icon(Icons.chevron_left,
+                      weight: 7,
+                      color: AppColors.btnArrow,),
                   ),
                   Text(
                     'Register',
@@ -625,8 +642,8 @@ class _SignScreenState extends State<SignScreen> {
               children: [
                 Image.asset(
                   'assets/icons/verification_icon.png',
-                  height: 133.h,
-                  width: 126.w,
+                  height: 160.h,
+                  width: 160.w,
                 ),
                 SizedBox(height: 60.h),
                 Text(
@@ -704,7 +721,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
         ), ),
       body: Padding(
-        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 24.h,bottom:50.h),
+        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:50.h),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

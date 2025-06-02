@@ -123,6 +123,7 @@ class _SignInScreenState extends State<SignInScreen> {
             'Email',
             style: TextStyle(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: 12,),
           SizedBox(height: 44.h,
             child: TextField(
               decoration: InputDecoration(
@@ -214,6 +215,8 @@ class _SignInScreenState extends State<SignInScreen> {
             'Phone Number',
             style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: 12,),
+
           SizedBox(
             height: 40,
             child: Container(
@@ -343,8 +346,8 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 Image.asset(
                   'assets/icons/verification_icon.png',
-                  height: 133.h,
-                  width: 126.w,
+                  height: 160.h,
+                  width: 160.w,
                 ),
                 SizedBox(height: 60.h),
                 Text(
