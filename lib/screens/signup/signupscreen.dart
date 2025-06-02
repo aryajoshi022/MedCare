@@ -38,26 +38,31 @@ class _SignScreenState extends State<SignScreen> {
       children: [_tabButton("Phone Number", 0), _tabButton("Email", 1)],
     );
   }
-
   Widget _tabButton(String title, int index) {
     bool isActive = _currentIndex == index;
 
-    return GestureDetector(
-      onTap: () => _switchPage(index),
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 18),
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-        decoration: BoxDecoration(
-          //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
-          //borderRadius: BorderRadius.circular(30),
-        ),
-        child: Text(
-          textAlign: TextAlign.center,
-          title,
-          style: TextStyle(
-            color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
-            fontWeight: FontWeight.bold,
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => _switchPage(index),
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 200),
+          padding: EdgeInsets.symmetric(vertical: 10),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: isActive ? AppColors.btnPrimary : Colors.transparent,
+                width: 2,
+              ),
+            ),
+          ),
+          child: Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
@@ -71,26 +76,6 @@ class _SignScreenState extends State<SignScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding:  EdgeInsets.all(2.0.w),
-                    child: SizedBox(
-                      height: 3.h,
-                      width: 80.w,
-                      child: LinearProgressIndicator(
-                        value: 200 / 400, //current / max
-                        backgroundColor: AppColors.borderThirsty,
-                        color: AppColors.bgPrimary,
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 26.h),
             Text('Phone Number*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
@@ -265,26 +250,6 @@ class _SignScreenState extends State<SignScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding:  EdgeInsets.all(2.0.w),
-                    child: SizedBox(
-                      height: 3.h,
-                      width: 80.w,
-                      child: LinearProgressIndicator(
-                        value: 200 / 400, //current / max
-                        backgroundColor: AppColors.bgPrimary,
-                        color: AppColors.borderThirsty,
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(height: 26.h),
             Text('Email', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,

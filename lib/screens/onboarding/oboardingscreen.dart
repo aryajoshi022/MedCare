@@ -149,17 +149,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Container buildDot(int index, BuildContext context) {
-    return Container(
-      height: 10.h,
-      width: currentIndex == index ? 25.w : 10.w,
-      margin: EdgeInsets.only(right: 5),
+  AnimatedContainer buildDot(int index, BuildContext context) {
+    bool isActive = currentIndex == index;
+
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height: 10,
+      width: 10,
+      margin: EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: AppColors.btnPrimary,
+        color: isActive ? AppColors.btnPrimary : AppColors.borderDisabled,
+        borderRadius: BorderRadius.circular(20),
       ),
     );
   }
+
+
 }
 
 //Onboarding screen
