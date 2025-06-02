@@ -179,80 +179,82 @@ class _ChatDoctorState extends State<ChatDoctor> {
           color: Colors.white,
           borderRadius: BorderRadius.circular(6.0.r),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(4.w),
-              child: Image.asset(
-                doctor['image']!,
-                width: 64.w,
-                height: 64.h,
-                fit: BoxFit.cover,
+        child: SizedBox(
+          width: 336.w,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4.w),
+                child: Image.asset(
+                  doctor['image']!,
+                  height: 73.h,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            SizedBox(width: 16.w),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    doctor['name']!,
-                    style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textNormal,
+              SizedBox(width: 16.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      doctor['name']!,
+                      style: GoogleFonts.khula(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                        letterSpacing: 1.sp,
+                        color: AppColors.textNormal,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  // SizedBox(height: 4.h),
-                  Text(
-                    '${doctor['specialty']!} • ${doctor['experience']!}',
-                    style: GoogleFonts.khula(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12.sp,
-                      letterSpacing: 1.sp,
-                      color: AppColors.textSecondary,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  // SizedBox(height: 6.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2.r),
-                      color: Color(0xffDCFFDD),
-                    ),
-                    child: Text(
-                      doctor['availability']!,
+                    SizedBox(height: 4.h),
+                    Text(
+                      '${doctor['specialty']!} • ${doctor['experience']!}',
                       style: GoogleFonts.khula(
                         fontWeight: FontWeight.w400,
-                        fontSize: 10.sp,
+                        fontSize: 12.sp,
                         letterSpacing: 1.sp,
                         color: AppColors.textSecondary,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                ],
+                    SizedBox(height: 6.h),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 12.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2.r),
+                        color: Color(0xffDCFFDD),
+                      ),
+                      child: Text(
+                        doctor['availability']!,
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10.sp,
+                          letterSpacing: 1.sp,
+                          color: AppColors.textSecondary,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(width: 16.w),
-            IconButton(
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails()));
-              },
-              icon: Icon(Icons.chevron_right,
-                color: AppColors.btnSecondary,
-                size: 24.sp,
+              SizedBox(width: 16.w),
+              IconButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorDetails()));
+                },
+                icon: Icon(Icons.chevron_right,
+                  color: AppColors.btnSecondary,
+                  size: 24.sp,
+                ),
+                constraints: BoxConstraints.loose(Size.fromWidth(2.w)),
               ),
-              constraints: BoxConstraints.loose(Size.fromWidth(2.w)),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

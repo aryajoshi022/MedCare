@@ -18,6 +18,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         backgroundColor: AppColors.bgAlert,
         elevation: 0,
         automaticallyImplyLeading: false,

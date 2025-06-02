@@ -23,15 +23,11 @@ class ProductCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Stack(
           children: [
-            SizedBox(
+            Image.asset(
+              imagePath,
               height: 81.h,
               width: 81.w,
-              child: Image.asset(
-                imagePath,
-                height: 81.h,
-                width: 81.w,
-                fit: BoxFit.cover,
-              ),
+              fit: BoxFit.cover,
             ),
             Positioned(
               bottom: 0,
