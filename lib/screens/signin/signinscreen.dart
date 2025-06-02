@@ -220,19 +220,22 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(
             height: 40,
             child: Container(
-              decoration: BoxDecoration(
+              decoration:
+              BoxDecoration(
+
                 border: Border.all(color: AppColors.borderThirsty), // Black border
                 borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
               ),
-              padding: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 5),
               child: Row(
                 children: [
                   DropdownButton<String>(
                     value: selectedCode,
                     dropdownColor: Colors.white,
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: AppColors.btnSecondary),
                     underline: SizedBox(),
-                    iconEnabledColor: Colors.black,
+                    icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,),
+                    iconEnabledColor: AppColors.btnSecondary,
                     items: codes.map((String code) {
                       return DropdownMenuItem<String>(
                         value: code,
@@ -250,14 +253,17 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   VerticalDivider(color: AppColors.textDisabled),
                   Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      style: TextStyle(color: AppColors.textDisabled),
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        hintText: 'Enter phone number',
-                        hintStyle: TextStyle(color: AppColors.textDisabled),
-                        border: InputBorder.none,
+                    child: SizedBox(height: 44.h,
+                      child: TextField(
+                        controller: _controller,
+                        textAlign: TextAlign.start,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
+                          hintText: 'Enter phone number',
+                          hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+
+                          border: InputBorder.none,
+                        ),
                       ),
                     ),
                   ),
