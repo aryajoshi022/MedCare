@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
@@ -23,7 +24,8 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget _buildToggleTabs() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_tabButton("No Phone", 0), _tabButton("Email", 1)],
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [_tabButton("Phone No", 0), _tabButton("Email", 1)],
     );
   }
   Widget _tabButton(String title, int index) {
@@ -32,15 +34,15 @@ class _SignInScreenState extends State<SignInScreen> {
       onTap: () => _switchPage(index),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 30),
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+        margin: EdgeInsets.symmetric(horizontal: 25),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 27),
         decoration: BoxDecoration(
           //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
           //borderRadius: BorderRadius.circular(30),
         ),
         child: Text(
           title,
-          style: TextStyle(
+          style: GoogleFonts.khula(
             color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             //color: isActive ? Colors.white : Colors.black,
             fontWeight: FontWeight.bold,
@@ -65,7 +67,7 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
         leading:Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(18.w),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -81,15 +83,15 @@ class _SignInScreenState extends State<SignInScreen> {
 
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h,top: 32.h),
+          padding:  EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h,top: 20.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Enter your phone number or email',
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
+                style: GoogleFonts.khula(fontSize: 20.sp, fontWeight: FontWeight.w700, color: AppColors.textNormal),
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 20.h),
               _buildToggleTabs(),
               Expanded(
                 child: PageView(
@@ -133,13 +135,14 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(height: 26.h),
           Text(
             'Email',
-            style: TextStyle(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: 5.h),
           SizedBox(height: 44.h,
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Enter phone email',
-                hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                 ),
@@ -148,10 +151,10 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             ),
           ),
-          SizedBox(height: 26.h),
+          SizedBox(height: 20.h),
           Text(
             'Is there an issue with your email?',
-            style: TextStyle(
+            style: GoogleFonts.khula(
               fontSize: 14.sp,
               color: AppColors.textBtn,
               fontWeight: FontWeight.w400,
@@ -169,7 +172,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: TextStyle(fontSize: 16.sp)),
+                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -188,7 +191,7 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Text(
                 'Don`t have a MedCare Account yet ? ',
-                style: TextStyle(
+                style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
@@ -201,7 +204,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                   child: Text(
                       'Sign Up',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w600,
                         color: AppColors.btnPrimary,
@@ -243,11 +246,12 @@ class _SignInScreenState extends State<SignInScreen> {
 
           SizedBox(height: 26.h),
           Text(
-            'Phone Number',
-            style: TextStyle(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+            'Phone No',
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
+          SizedBox(height: 5.h),
           SizedBox(
-            height: 40,
+            height: 35,
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.borderThirsty), // Black border
@@ -267,7 +271,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         value: code,
                         child: Text(
                           code,
-                          style: TextStyle(fontSize: 14),
+                          style: GoogleFonts.khula(fontSize: 14, color: AppColors.textSecondary),
                         ),
                       );
                     }).toList(),
@@ -277,15 +281,22 @@ class _SignInScreenState extends State<SignInScreen> {
                       });
                     },
                   ),
-                  VerticalDivider(color: AppColors.textDisabled),
+                  SizedBox(width: 10.w),
+                  Container(
+                    height: 20.h,
+                    width: 1.w,
+                    color: AppColors.textDisabled,
+                  ),
+                  SizedBox(width: 16.w),
+                  // VerticalDivider(color: AppColors.textDisabled),
                   Expanded(
                     child: TextField(
                       controller: _controller,
-                      style: TextStyle(color: AppColors.textDisabled),
+                      style: GoogleFonts.khula(color: AppColors.textDisabled),
                       keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
+                      decoration: InputDecoration(contentPadding: EdgeInsets.only(bottom: 20.h),
                         hintText: 'Enter phone number',
-                        hintStyle: TextStyle(color: AppColors.textDisabled),
+                        hintStyle: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textDisabled),
                         border: InputBorder.none,
                       ),
                     ),
@@ -295,10 +306,10 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           ),
 
-          SizedBox(height: 26.h),
+          SizedBox(height: 20.h),
           Text(
             'Is there an issue with your phone number?',
-            style: TextStyle(
+            style: GoogleFonts.khula(
               fontSize: 14.sp,
               color: AppColors.textBtn,
               fontWeight: FontWeight.w400,
@@ -315,7 +326,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: TextStyle(fontSize: 16.sp)),
+                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -334,7 +345,7 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Text(
                 'Don`t have a MedCare Account yet ? ',
-                style: TextStyle(
+                style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
@@ -346,7 +357,7 @@ class _SignInScreenState extends State<SignInScreen> {
                  },
                  child: Text(
                         'Sign Up',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                           color: AppColors.btnPrimary,
@@ -381,7 +392,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 SizedBox(height: 60.h),
                 Text(
                   'Verification Success',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
@@ -392,7 +403,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   padding:  EdgeInsets.only(left: 33.w, right: 33.w),
                   child: Text(textAlign: TextAlign.center,
                     'Congratulations, your account has been verified',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       fontSize: 16.sp,
                       color: AppColors.textSecondary,
                       wordSpacing: 1,
@@ -413,7 +424,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       left: 10.w,
                     ),
                     child: ElevatedButton(
-                      child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
+                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
                       onPressed: () {
                         Navigator.push(
                           context,

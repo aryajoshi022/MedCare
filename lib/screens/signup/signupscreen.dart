@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
@@ -35,7 +36,7 @@ class _SignScreenState extends State<SignScreen> {
   Widget _buildToggleTabs() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_tabButton("No Phone", 0), _tabButton("Email", 1)],
+      children: [_tabButton("Phone No", 0), _tabButton("Email", 1)],
     );
   }
 
@@ -45,8 +46,8 @@ class _SignScreenState extends State<SignScreen> {
       onTap: () => _switchPage(index),
       child: AnimatedContainer(
         duration: Duration(milliseconds: 200),
-        margin: EdgeInsets.symmetric(horizontal: 30),
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+        margin: EdgeInsets.symmetric(horizontal: 25),
+        padding: EdgeInsets.symmetric(vertical: 5, horizontal: 25),
         decoration: BoxDecoration(
           //color: isActive ? AppColors.btnPrimary : Colors.grey.shade300,
           //borderRadius: BorderRadius.circular(30),
@@ -54,7 +55,7 @@ class _SignScreenState extends State<SignScreen> {
         child: Text(
           title,
 
-          style: TextStyle(
+          style: GoogleFonts.khula(
             color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
             fontWeight: FontWeight.bold,
           ),
@@ -91,9 +92,10 @@ class _SignScreenState extends State<SignScreen> {
               ],
             ),
             SizedBox(height: 26.h),
-            Text('Phone Number*', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Phone No*', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 5.h),
             SizedBox(
-              height: 40,
+              height: 35,
               child: Container(
                 decoration:
                 BoxDecoration(
@@ -109,14 +111,13 @@ class _SignScreenState extends State<SignScreen> {
                       dropdownColor: Colors.white,
                       style: TextStyle(color: Colors.black),
                       underline: SizedBox(),
-
                       iconEnabledColor: Colors.black,
                       items: codes.map((String code) {
                         return DropdownMenuItem<String>(
                           value: code,
                           child: Text(
                             code,
-                            style: TextStyle(fontSize: 14),
+                            style: GoogleFonts.khula(fontSize: 14, color: AppColors.textSecondary),
                           ),
                         );
                       }).toList(),
@@ -126,16 +127,22 @@ class _SignScreenState extends State<SignScreen> {
                         });
                       },
                     ),
-                    VerticalDivider(color: AppColors.textDisabled),
+                    SizedBox(width: 10.w),
+                    Container(
+                      height: 20.h,
+                      width: 1.w,
+                      color: AppColors.textDisabled,
+                    ),
+                    SizedBox(width: 16.w),
+                    // VerticalDivider(color: AppColors.textDisabled),
                     Expanded(
                       child: TextField(
                         controller: _controller,
-                        style: TextStyle(color: AppColors.textDisabled),
+                        style: GoogleFonts.khula(color: AppColors.textDisabled),
                         keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.zero,
+                        decoration: InputDecoration(contentPadding: EdgeInsets.only(bottom: 20.h),
                           hintText: 'Enter phone number',
-                          hintStyle: TextStyle(color: AppColors.textDisabled),
+                          hintStyle: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textDisabled),
                           border: InputBorder.none,
                         ),
                       ),
@@ -145,14 +152,15 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Full Name', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 44.h,
+            Text('Full Name', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 5.h),
+            SizedBox(height: 35.h,
               child: TextField(
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 30,right: 15,left: 10),
                   hintText: 'Enter your full name',
-                    hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                    hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -162,12 +170,12 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Gender', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            
-            SizedBox(height: 44,
+            Text('Gender', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 5.h),
+            SizedBox(height: 35,
               child: DropdownButtonFormField<String>(
 
-                hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
+                hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
                   DropdownMenuItem(value: 'Male', child: Text('Male')),
                   DropdownMenuItem(value: 'Female', child: Text('Female')),
@@ -185,13 +193,15 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Date of Birth', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
+            Text('Date of Birth', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 5.h),
+            SizedBox(height: 35.h,
               child: TextField(
                 decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
+                  contentPadding: EdgeInsets.only(top: 13.h,left: 10.w,bottom: 20.h),
+                  suffixIcon: Icon(Icons.calendar_today_outlined,size:16.sp, color: AppColors.textSecondary,),
                   hintText: 'Enter your date of birth',
-                  hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -200,7 +210,8 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Row(mainAxisAlignment: MainAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Checkbox(
                   tristate: true, // Example with tristate
@@ -215,13 +226,12 @@ class _SignScreenState extends State<SignScreen> {
                 Expanded(
                   child: Text(
                     'You agree to receive information and notifications sent by MedCare.',
-                    style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
                   ),
                 ),
               ],
-            ),SizedBox(
-              height: 40,
             ),
+            SizedBox(height: 40),
             SizedBox(
               height: 51.h,
               width: 372.w,
@@ -232,7 +242,7 @@ class _SignScreenState extends State<SignScreen> {
                   left: 10.w,
                 ),
                 child: ElevatedButton(
-                  child: Text('Register', style: TextStyle(fontSize: 16.sp)),
+                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp)),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -283,14 +293,14 @@ class _SignScreenState extends State<SignScreen> {
               ],
             ),
             SizedBox(height: 26.h),
-            Text('Email', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 44.h,
+            Text('Email', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 35.h,
               child: TextField(
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                   hintText: 'Enter email',
-                  hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -300,14 +310,14 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Full Name', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 44.h,
+            Text('Full Name', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 35.h,
               child: TextField(
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                   hintText: 'Enter your full name',
-                  hintStyle: TextStyle(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -317,12 +327,12 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Gender', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Gender', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
 
-            SizedBox(height: 44,
+            SizedBox(height: 35,
               child: DropdownButtonFormField<String>(
 
-                hint: Text('Choose your gender',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
+                hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
                   DropdownMenuItem(value: 'Male', child: Text('Male')),
                   DropdownMenuItem(value: 'Female', child: Text('Female')),
@@ -340,13 +350,13 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Date of Birth', style: TextStyle(fontSize: 16.sp,color: AppColors.btnPrimary)),
-            SizedBox(height: 45.h,
+            Text('Date of Birth', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 35.h,
               child: TextField(
                 decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.calendar_today_outlined,color: AppColors.textSecondary,),
+                  suffixIcon: Icon(Icons.calendar_today_outlined,size:16.sp, color: AppColors.textSecondary,),
                   hintText: 'Enter your date of birth',
-                  hintStyle: TextStyle(color: AppColors.textSecondary,fontSize: 14,fontWeight: FontWeight.w400),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
@@ -370,7 +380,7 @@ class _SignScreenState extends State<SignScreen> {
                 Expanded(
                   child: Text(
                     'You agree to receive information and notifications sent by MedCare.',
-                    style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
                   ),
                 ),
               ],
@@ -387,7 +397,7 @@ class _SignScreenState extends State<SignScreen> {
                   left: 10.w,
                 ),
                 child: ElevatedButton(
-                  child: Text('Register', style: TextStyle(fontSize: 16.sp)),
+                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp)),
                   onPressed: () {
                     Navigator.push(
                       context,
