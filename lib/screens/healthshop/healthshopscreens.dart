@@ -145,8 +145,8 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 40.h,
-                      width: 170.w,
+                      height: 40,
+                      width: 170,
                       child: Padding(
                         padding:  EdgeInsets.only(right: 12.w),
                         child: ElevatedButton(
@@ -341,14 +341,14 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.all(11),
+                          padding: EdgeInsets.all(11),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productone.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Promag 10 Tablets',
@@ -365,7 +365,91 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 34),
+                              SizedBox(height: 34.h),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.w,),
+                                  SizedBox(
+                                    width: 90.w,
+                                    height: 32.h,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 11.w,left: 11.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123.h,
+                                width: 155.w,
+                              ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -419,20 +503,20 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 12,bottom: 24),
+                      padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productsec.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
@@ -449,7 +533,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -470,94 +554,10 @@ class HealthShopScreen extends StatelessWidget {
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5,),
+                                  SizedBox(width: 5.w,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
-                                    child: ElevatedButton(
-
-                                      child: Text(
-                                        'Add',
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: AppColors.btnPrimary,
-                                        elevation: 0.0,
-                                        backgroundColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24),
-                                          side: BorderSide(
-                                            color: AppColors.btnPrimary,
-                                            width: 1,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 12,bottom: 24),
-                      child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
-                        width: 185.w,
-                        height: 298.h,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/health_shop/productsec.png',
-                                height: 123,
-                                width: 155,
-                              ),
-                              Text(
-                                'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Text(
-                                'Per Strip',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.textDisabled,
-                                ),
-                              ),
-                              SizedBox(height: 25),
-                              Text(
-                                'Start from',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.textDisabled,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '\$2,00',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.textBtn,
-                                    ),
-                                  ),
-                                  SizedBox(width: 5,),
-                                  SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -963,8 +963,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 40.h,
-        width: 90.w,
+        height: 40,
+        width: 90,
 
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -999,8 +999,8 @@ class CustomButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 40.h,
-        width: 210.w,
+        height: 40,
+        width: 210,
 
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
