@@ -417,7 +417,7 @@ class _SignScreenState extends State<SignScreen> {
                       Navigator.pop(context);
                     },
                     icon: Icon(Icons.chevron_left,
-                        weight: 7,
+                        size: 24.sp,
                     color: AppColors.btnArrow),
                   ),
                   Text(
@@ -520,7 +520,7 @@ class _SignScreenState extends State<SignScreen> {
                       Navigator.pop(context);
                     },
                     icon: Icon(Icons.chevron_left,
-                      weight: 7,
+                      size: 24.sp,
                       color: AppColors.btnArrow,),
                   ),
                   Text(
