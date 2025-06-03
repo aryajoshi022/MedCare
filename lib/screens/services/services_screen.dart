@@ -42,81 +42,91 @@ class _ServicesScreenScreen extends State<ServicesScreenScreen> {
 
     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.bgAlert,
-        automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => HomeScreen()));
-              },
-              icon: Icon(Icons.chevron_left,
-                color: AppColors.btnSecondary,
-                size: 24.sp,
-              ),
-            ),
-            Spacer(flex: 2),
-              Text(
-                 'Services ',
-                style: GoogleFonts.khula(
-                  color: Color(0xff090909),
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+              (route) => false,  // this removes all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.bgAlert,
+          automaticallyImplyLeading: false,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => HomeScreen()));
+                },
+                icon: Icon(Icons.chevron_left,
+                  color: AppColors.btnSecondary,
+                  size: 24.sp,
                 ),
               ),
-            Spacer(flex: 3),
-            // Spacer(), // Automatically pushes the icons to the right
-          ],
-        ),
-      ),
-      bottomNavigationBar: CustomBottomAppBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-
-            //GridView
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 30.w,horizontal: 28.h),
-              child: Container(
-                child: GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: categories.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    mainAxisSpacing: 6,
-                    crossAxisSpacing: 6,
+              Spacer(flex: 2),
+                Text(
+                   'Services ',
+                  style: GoogleFonts.khula(
+                    color: Color(0xff090909),
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
                   ),
-                  itemBuilder: (context, index) {
-                    return CategoryItem(
-                      iconPath: categories[index]['icon']!,
-                      label: categories[index]['label']!,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: categories[index]['route']!, // Call the function to create the screen
-                          ),
-                        );
-                      },
-                    );
-                  },
+                ),
+              Spacer(flex: 3),
+              // Spacer(), // Automatically pushes the icons to the right
+            ],
+          ),
+        ),
+        bottomNavigationBar: CustomBottomAppBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+      
+              //GridView
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 30.w,horizontal: 28.h),
+                child: Container(
+                  child: GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: categories.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 6,
+                      crossAxisSpacing: 6,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CategoryItem(
+                        iconPath: categories[index]['icon']!,
+                        label: categories[index]['label']!,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: categories[index]['route']!, // Call the function to create the screen
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-
-          ],
+      
+            ],
+          ),
         ),
       ),
     );
