@@ -96,14 +96,14 @@ class _SignScreenState extends State<SignScreen> {
                       dropdownColor: Colors.white,
                       style: TextStyle(color: AppColors.btnSecondary),
                       underline: SizedBox(),
-                      icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,),
+                      icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
                       iconEnabledColor: AppColors.btnSecondary,
                       items: codes.map((String code) {
                         return DropdownMenuItem<String>(
                           value: code,
                           child: Text(
                             code,
-                            style: GoogleFonts.khula(fontSize: 14),
+                            style: GoogleFonts.khula(fontSize: 14.sp),
                           ),
                         );
                       }).toList(),
@@ -122,7 +122,7 @@ class _SignScreenState extends State<SignScreen> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
                             hintText: 'Enter phone number',
-                            hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14,fontWeight: FontWeight.w400),
+                            hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
 
                             border: InputBorder.none,
                           ),
