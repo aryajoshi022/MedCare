@@ -78,7 +78,7 @@ class _SignScreenState extends State<SignScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 26.h),
-            Text('Phone No*', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Phone No*', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
               height: 40,
               child: Container(
@@ -134,7 +134,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Full Name', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
                 textAlign: TextAlign.start,
@@ -151,7 +151,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Gender', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
 
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
@@ -175,7 +175,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Date of Birth', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
                 decoration: InputDecoration(
@@ -263,7 +263,7 @@ class _SignScreenState extends State<SignScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 26.h),
-            Text('Email', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Email', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
                 textAlign: TextAlign.start,
@@ -280,7 +280,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Full Name', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
                 textAlign: TextAlign.start,
@@ -297,7 +297,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Gender', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
 
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
@@ -321,7 +321,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
             ),
             SizedBox(height: 26.h),
-            Text('Date of Birth', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
                 decoration: InputDecoration(
