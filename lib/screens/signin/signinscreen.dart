@@ -227,7 +227,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 border: Border.all(color: AppColors.borderThirsty), // Black border
                 borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
               ),
-              padding: EdgeInsets.symmetric(horizontal: 5.w),
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
               child: Row(
                 children: [
                   DropdownButton<String>(
@@ -259,7 +259,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         controller: _controller,
                         textAlign: TextAlign.start,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 0.h,bottom: 10.h,right: 15.w,left: 10.w),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
                           hintText: 'Enter phone number',
                           hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                           border: InputBorder.none,
