@@ -245,7 +245,7 @@ class getstartedScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
                 Text(
-                  'We`re here to help keep you healthy',
+                  'We\'re here to help keep you healthy',
                   style: GoogleFonts.khula(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
