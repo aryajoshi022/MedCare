@@ -36,7 +36,7 @@ class _SignScreenState extends State<SignScreen> {
   Widget _buildToggleTabs() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [_tabButton("Phone Number", 0), _tabButton("Email", 1)],
+      children: [_tabButton("Phone No", 0), _tabButton("Email", 1)],
     );
   }
   Widget _tabButton(String title, int index) {
@@ -78,7 +78,7 @@ class _SignScreenState extends State<SignScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 26.h),
-            Text('Phone Number*', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
+            Text('Phone No*', style: GoogleFonts.khula(fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
               height: 40,
               child: Container(
