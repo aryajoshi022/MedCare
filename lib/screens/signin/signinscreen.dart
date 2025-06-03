@@ -40,7 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: isActive ? AppColors.btnPrimary : Colors.transparent,
+                color: isActive ? AppColors.btnPrimary : AppColors.borderThirsty,
                 width: 2,
               ),
             ),

@@ -58,8 +58,9 @@ class _SpecialistScreenScreen extends State<SpecialistScreenScreen> {
           children: [
             IconButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => ServicesScreenScreen()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => ServicesScreenScreen()));
               },
               icon: Icon(Icons.chevron_left,
                 color: AppColors.btnSecondary,
