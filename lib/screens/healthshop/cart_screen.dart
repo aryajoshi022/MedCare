@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medcare/util/constants/colors.dart';
 
+import '../home/home_screen.dart';
+
 void main() {
   runApp(CartApp());
 }
@@ -47,150 +49,158 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bgAlert,
-      appBar: AppBar(
-        centerTitle: true,
-        scrolledUnderElevation: 0.0,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+              (route) => false,  // this removes all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
         backgroundColor: AppColors.bgAlert,
-        leading: IconButton(
-          icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          'Cart',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16.sp,
-            wordSpacing: 1,
-            fontWeight: FontWeight.w600,
+        appBar: AppBar(
+          centerTitle: true,
+          scrolledUnderElevation: 0.0,
+          backgroundColor: AppColors.bgAlert,
+          leading: IconButton(
+            icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+            onPressed: () {},
+          ),
+          title: Text(
+            'Cart',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 16.sp,
+              wordSpacing: 1,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding:  EdgeInsets.all(16.0.w),
-        child: Container(
-          decoration: BoxDecoration(
-            color: _isExpanded ? Colors.white : null,
-            image:
-                _isExpanded
-                    ? null
-                    : DecorationImage(
-                      alignment: Alignment.center,
-                      image: AssetImage(
-                        "assets/images/health_shop/empty_cart_full.png",
+        body: Padding(
+          padding:  EdgeInsets.all(16.0.w),
+          child: Container(
+            decoration: BoxDecoration(
+              color: _isExpanded ? Colors.white : null,
+              image:
+                  _isExpanded
+                      ? null
+                      : DecorationImage(
+                        alignment: Alignment.center,
+                        image: AssetImage(
+                          "assets/images/health_shop/empty_cart_full.png",
+                        ),
+
+                        //fit: BoxFit.fill,
                       ),
 
-                      //fit: BoxFit.fill,
+              borderRadius: BorderRadius.circular(12.r),
+              boxShadow: [],
+            ),
+            padding:  EdgeInsets.all(16.w),
+            child: Column(
+              children: [
+                Divider(
+                  height: 1.h,
+                  color: AppColors.borderBtn,
+                ),
+                SizedBox(height: 8.h,),
+                // Dropdown header
+                Padding(
+                  padding:  EdgeInsets.only(top: 4.h,bottom: 4.h),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isExpanded = !_isExpanded;
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage(
+                            'assets/images/health_shop/girl_cart_img.png',
+                          ), // Replace with actual image
+                        ),
+                        SizedBox(width: 10.w),
+                        Text('Delivery to Amy'),
+                        Spacer(),
+                        Text(
+                          'Milan, Italy',
+                          style: TextStyle(color: AppColors.textBtn),
+                        ),
+                        Icon(
+                          _isExpanded ? Icons.expand_more : Icons.chevron_right,
+                          color: AppColors.textBtn,
+                        ),
+                      ],
                     ),
+                  ),
+                ),
+                SizedBox(height: 8.h,),
+                Divider(
+                  height: 1.h,
+                  color: AppColors.borderBtn,
+                ),
 
-            borderRadius: BorderRadius.circular(12.r),
-            boxShadow: [],
-          ),
-          padding:  EdgeInsets.all(16.w),
-          child: Column(
-            children: [
-              Divider(
-                height: 1.h,
-                color: AppColors.borderBtn,
-              ),
-              SizedBox(height: 8.h,),
-              // Dropdown header
-              Padding(
-                padding:  EdgeInsets.only(top: 4.h,bottom: 4.h),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _isExpanded = !_isExpanded;
-                    });
-                  },
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(
-                          'assets/images/health_shop/girl_cart_img.png',
-                        ), // Replace with actual image
-                      ),
-                      SizedBox(width: 10.w),
-                      Text('Delivery to Amy'),
-                      Spacer(),
-                      Text(
-                        'Milan, Italy',
-                        style: TextStyle(color: AppColors.textBtn),
-                      ),
-                      Icon(
-                        _isExpanded ? Icons.expand_more : Icons.chevron_right,
+                // Expanded content
+                if (_isExpanded) ...[
+                  SizedBox(height: 20.h),
+                  ..._cartItems.map(
+                    (item) => _cartItem(
+                      imagePath: item['image']!,
+                      title: item['title']!,
+                      description: item['description']!,
+                      price: item['price']!,
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Have a coupon code? enter here'),
+                  ),
+                  SizedBox(height: 8.h),
+                  TextField(
+                    controller: couponController,
+                    decoration: InputDecoration(
+                      suffixIcon: Icon(
+                        Icons.check_circle,
                         color: AppColors.textBtn,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 8.h,),
-              Divider(
-                height: 1.h,
-                color: AppColors.borderBtn,
-              ),
-
-              // Expanded content
-              if (_isExpanded) ...[
-                SizedBox(height: 20.h),
-                ..._cartItems.map(
-                  (item) => _cartItem(
-                    imagePath: item['image']!,
-                    title: item['title']!,
-                    description: item['description']!,
-                    price: item['price']!,
-                  ),
-                ),
-                SizedBox(height: 20.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Have a coupon code? enter here'),
-                ),
-                SizedBox(height: 8.h),
-                TextField(
-                  controller: couponController,
-                  decoration: InputDecoration(
-                    suffixIcon: Icon(
-                      Icons.check_circle,
-                      color: AppColors.textBtn,
+                      suffixText: 'Available',
+                      suffixStyle: TextStyle(color: AppColors.textBtn),
+                      border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                     ),
-                    suffixText: 'Available',
-                    suffixStyle: TextStyle(color: AppColors.textBtn),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                   ),
-                ),
-                SizedBox(height: 110.h),
+                  SizedBox(height: 110.h),
 
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => FindPharmacyScreen(),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FindPharmacyScreen(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.textBtn,
+                      minimumSize: Size(double.infinity, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24.r),
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.textBtn,
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                    child: Text(
+                      'Continue',
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        color: AppColors.textWhite,
+                      ),
                     ),
                   ),
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      color: AppColors.textWhite,
-                    ),
-                  ),
-                ),
+                ],
               ],
-            ],
+            ),
           ),
         ),
       ),

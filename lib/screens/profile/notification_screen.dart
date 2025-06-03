@@ -4,6 +4,8 @@ import 'package:medcare/screens/profile/profile_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/widgets/bottom%20bar/custom_bottom_bar.dart';
 
+import '../home/home_screen.dart';
+
 class NotificationItem {
   final IconData icon;
   final Color iconBgColor;
@@ -51,105 +53,115 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.bgAlert,
-        leading: IconButton(
-          padding: EdgeInsets.only(left: 28.w),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ProfileScreen()),
-            );
-          },
-          icon: Icon(Icons.chevron_left,
-            color: AppColors.btnSecondary,
-            size: 24.sp,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+              (route) => false,  // this removes all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: AppColors.bgAlert,
+          leading: IconButton(
+            padding: EdgeInsets.only(left: 28.w),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+            icon: Icon(Icons.chevron_left,
+              color: AppColors.btnSecondary,
+              size: 24.sp,
+            ),
+          ),
+          title: Text(
+            'Notifications',
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textNormal,
+            ),
           ),
         ),
-        title: Text(
-          'Notifications',
-          style: TextStyle(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textNormal,
-          ),
-        ),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: SafeArea(
-          child:
-              notifications.isEmpty
-                  ? Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Image.asset(
-                          'assets/images/profile/empty_notification.png',
-                          width: 200.w,
-                          height: 200.h
-                        ),
-                         SizedBox(height: 20.h),
-                         Text(
-                          'There is nothing here',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: SafeArea(
+            child:
+                notifications.isEmpty
+                    ? Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/images/profile/empty_notification.png',
+                            width: 200.w,
+                            height: 200.h
                           ),
-                        ),
-                        SizedBox(height: 16.h),
-                        SizedBox(width: 250.w,
-                          height: 50.h,
-                          child: Text(
-                            'We’ll use this space to alert you on orders and promos',
+                           SizedBox(height: 20.h),
+                           Text(
+                            'There is nothing here',
                             style: TextStyle(
                               fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 16.h),
+                          SizedBox(width: 250.w,
+                            height: 50.h,
+                            child: Text(
+                              'We’ll use this space to alert you on orders and promos',
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    : ListView.builder(
+                      padding: EdgeInsets.all(16.w),
+                      itemCount: notifications.length,
+                      itemBuilder: (context, index) {
+                        final item = notifications[index];
+                        return Dismissible(
+                          key: Key(item.title),
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (direction) {
+                            setState(() {
+                              notifications.removeAt(index);
+                            });
+                          },
+                          background: Container(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
+                            color: Colors.black,
+                            child: const Icon(Icons.delete, color: Colors.white),
+                          ),
+                          child: NotificationCard(item: item),
+                        );
+                      },
                     ),
-                  )
-                  : ListView.builder(
-                    padding: EdgeInsets.all(16.w),
-                    itemCount: notifications.length,
-                    itemBuilder: (context, index) {
-                      final item = notifications[index];
-                      return Dismissible(
-                        key: Key(item.title),
-                        direction: DismissDirection.endToStart,
-                        onDismissed: (direction) {
-                          setState(() {
-                            notifications.removeAt(index);
-                          });
-                        },
-                        background: Container(
-                          alignment: Alignment.centerRight,
-                          padding: EdgeInsets.symmetric(horizontal: 20.w),
-                          color: Colors.black,
-                          child: const Icon(Icons.delete, color: Colors.white),
-                        ),
-                        child: NotificationCard(item: item),
-                      );
-                    },
-                  ),
+          ),
         ),
-      ),
-      bottomNavigationBar: CustomBottomAppBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+        bottomNavigationBar: CustomBottomAppBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
 
+      ),
     );
   }
 }
