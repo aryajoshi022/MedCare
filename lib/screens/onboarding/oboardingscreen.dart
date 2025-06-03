@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
@@ -83,12 +84,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Column(
                       children: [
                         SizedBox(height: 30.h,),
-                        Image.asset(contents[i].image, height: 300.h),
+                        Image.asset(contents[i].image, height: 277.91.h, width: 306.59.w),
                         SizedBox(height: 50.h),
-
                         Text(
                           contents[i].title,
-                          style: TextStyle(
+                          style: GoogleFonts.khula(
                             fontSize: 18.sp,
                             fontWeight: FontWeight.w600,
                           ),
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Text(
                           contents[i].description,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16.sp, color: Colors.grey),
+                          style: GoogleFonts.khula(fontSize: 16.sp, color: Colors.grey),
                         ),
                       ],
                     ),
@@ -118,9 +118,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               //margin: EdgeInsets.all(40),
               width: 372.w,
               child: ElevatedButton(
-                child: Text(
-                  currentIndex == contents.length - 1 ? "Start" : "Next",
-                ),
                 onPressed: () {
                   if (currentIndex == contents.length - 1) {
                     Navigator.pushReplacement(
@@ -140,6 +137,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(24.r),
                   ),
+                ),
+                child: Text(
+                  currentIndex == contents.length - 1 ? "Start" : "Next",
                 ),
               ),
             ),
@@ -197,14 +197,6 @@ class getstartedScreen extends StatelessWidget {
                     width: 93.w,
 
                     child: ElevatedButton(
-                      child: Text(
-                        'English',
-
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          color: AppColors.textDisabled,
-                        ),
-                      ),
                       onPressed: () {},
 
                       style: ElevatedButton.styleFrom(
@@ -222,6 +214,14 @@ class getstartedScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
+                      child: Text(
+                        'English',
+
+                        style: GoogleFonts.khula(
+                          fontSize: 14.sp,
+                          color: AppColors.textDisabled,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -237,7 +237,7 @@ class getstartedScreen extends StatelessWidget {
                 SizedBox(height: 12.h),
                 Text(
                   'MEDCARE',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.btnPrimary,
@@ -246,7 +246,7 @@ class getstartedScreen extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Text(
                   'We`re here to help keep you healthy',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
@@ -265,7 +265,6 @@ class getstartedScreen extends StatelessWidget {
                       left: 10.w,
                     ),
                     child: ElevatedButton(
-                      child: Text('Next', style: TextStyle(fontSize: 16.sp)),
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) =>SignInScreen() ));
                       },
@@ -276,6 +275,7 @@ class getstartedScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
+                      child: Text('Next', style: GoogleFonts.khula(fontSize: 16.sp)),
                     ),
                   ),
                 ),
@@ -292,13 +292,6 @@ class getstartedScreen extends StatelessWidget {
                       left: 10.w,
                     ),
                     child: ElevatedButton(
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          color: AppColors.btnPrimary,
-                        ),
-                      ),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -316,6 +309,13 @@ class getstartedScreen extends StatelessWidget {
                             width: 1,
                           ),
                           borderRadius: BorderRadius.circular(24.r),
+                        ),
+                      ),
+                      child: Text(
+                        'Register',
+                        style: GoogleFonts.khula(
+                          fontSize: 16.sp,
+                          color: AppColors.btnPrimary,
                         ),
                       ),
                     ),
