@@ -217,7 +217,6 @@ class _SignInScreenState extends State<SignInScreen> {
             style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
           SizedBox(height: 12.h),
-
           SizedBox(
             height: 40.h,
             child: Container(
