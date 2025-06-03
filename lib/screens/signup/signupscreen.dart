@@ -47,12 +47,12 @@ class _SignScreenState extends State<SignScreen> {
         onTap: () => _switchPage(index),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10.h),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: isActive ? AppColors.btnPrimary : Colors.transparent,
+                color: isActive ? AppColors.btnPrimary : AppColors.borderThirsty,
                 width: 2,
               ),
             ),
