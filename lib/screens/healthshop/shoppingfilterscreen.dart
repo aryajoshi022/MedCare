@@ -139,11 +139,11 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
           children: [
             // AppBar
             Padding(
-              padding: const EdgeInsets.only(top: 24,right: 20,bottom: 20),
+              padding:  EdgeInsets.only(top: 24.h,right: 20.w,bottom: 20.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(width: 8,),
+                  SizedBox(width: 8.w,),
 
                   IconButton(
                     onPressed: () {
@@ -250,7 +250,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                   ),
 
                   Container(
-                    padding: EdgeInsets.only(left: 12,right: 12),
+                    padding: EdgeInsets.only(left: 12.w,right: 12.w),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -316,14 +316,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.all(11),
+                          padding:  EdgeInsets.all(11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productone.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Promag 10 Tablets',
@@ -340,7 +340,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 34),
+                              SizedBox(height: 34.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -363,8 +363,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -403,14 +403,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productsec.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
@@ -427,7 +427,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -450,8 +450,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -487,14 +487,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding: EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/Mylantastrip_img.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Mylanta Strip',
@@ -511,7 +511,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 44),
+                              SizedBox(height: 44.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -532,10 +532,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5,),
+                                  SizedBox(width: 5.w,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -576,14 +576,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.all(11),
+                          padding: EdgeInsets.all(11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/Bufectstrip_img.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Bufect Strip',
@@ -600,7 +600,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 34),
+                              SizedBox(height: 34.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -623,8 +623,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -662,14 +662,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding: EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/BODREX_img.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'BODREX MEDICINE 10S PER STRIP',
@@ -686,7 +686,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -707,10 +707,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5,),
+                                  SizedBox(width: 5.w,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -746,14 +746,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding: EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/Paratusin_img.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Paratusin 10 Tablets',
@@ -770,7 +770,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -793,8 +793,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(

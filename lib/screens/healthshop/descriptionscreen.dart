@@ -923,26 +923,20 @@ class ReviewsTab extends StatelessWidget {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(right: 12, bottom: 24),
+                        padding: EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              width: 1,
-                              color: AppColors.borderBtn.withOpacity(0.5),
-                            ),
-                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.all(11),
+                            padding: EdgeInsets.all(11),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productone.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
@@ -959,7 +953,7 @@ class ReviewsTab extends StatelessWidget {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 34),
+                                SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -969,8 +963,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
@@ -981,11 +974,12 @@ class ReviewsTab extends StatelessWidget {
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(width: 5.w,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
+
                                         child: Text(
                                           'Add',
                                           style: TextStyle(fontSize: 16),
@@ -996,9 +990,7 @@ class ReviewsTab extends StatelessWidget {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              24,
-                                            ),
+                                            borderRadius: BorderRadius.circular(24),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -1015,26 +1007,20 @@ class ReviewsTab extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12, bottom: 24),
+                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              width: 1,
-                              color: AppColors.borderBtn.withOpacity(0.5),
-                            ),
-                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11, left: 11),
+                            padding: EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -1051,7 +1037,7 @@ class ReviewsTab extends StatelessWidget {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -1061,8 +1047,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
@@ -1073,11 +1058,12 @@ class ReviewsTab extends StatelessWidget {
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(width: 5,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
+
                                         child: Text(
                                           'Add',
                                           style: TextStyle(fontSize: 16),
@@ -1088,9 +1074,7 @@ class ReviewsTab extends StatelessWidget {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              24,
-                                            ),
+                                            borderRadius: BorderRadius.circular(24),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -1107,26 +1091,20 @@ class ReviewsTab extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12, bottom: 24),
+                        padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              width: 1,
-                              color: AppColors.borderBtn.withOpacity(0.5),
-                            ),
-                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11, left: 11),
+                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -1143,7 +1121,7 @@ class ReviewsTab extends StatelessWidget {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -1153,8 +1131,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
@@ -1165,11 +1142,12 @@ class ReviewsTab extends StatelessWidget {
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(width: 5.w,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
+
                                         child: Text(
                                           'Add',
                                           style: TextStyle(fontSize: 16),
@@ -1180,9 +1158,7 @@ class ReviewsTab extends StatelessWidget {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              24,
-                                            ),
+                                            borderRadius: BorderRadius.circular(24),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -1198,6 +1174,7 @@ class ReviewsTab extends StatelessWidget {
                           ),
                         ),
                       ),
+
                     ],
                   ),
                 ),

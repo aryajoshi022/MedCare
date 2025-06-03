@@ -155,7 +155,6 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             CustomButton2(text: 'Medicine & Treatment'),
                             SizedBox(width: 10), // Space between buttons
                             CustomButton(text: 'Milk'),
-                            SizedBox(width: 10), // Space between buttons
                           ],
                         ),
                       ),
@@ -189,7 +188,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                               ),
                               child: Text(
                                 'Sexual Health',
-
+                                textAlign: TextAlign.center,
                                 style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                               ),
                             ),
@@ -210,12 +209,12 @@ class _CartWithNotifState extends State<CartWithNotif> {
                   //decoration: BoxDecoration(),
                   color: AppColors.borderThirsty,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 24,top: 24,left: 24),
+                    padding: EdgeInsets.only(bottom: 24.w,top: 24.h,left: 24.w),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: 372,
+                          width: 372.w,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -228,7 +227,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.only(right: 24),
+                                padding: EdgeInsets.only(right: 24.w),
                                 child: Text(
                                   'see all',
                                   style: TextStyle(
@@ -242,7 +241,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             ],
                           ),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 16.h),
                         Text(
                           'Special offers from various renowned brands',
                           style: TextStyle(
@@ -250,7 +249,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 16.h),
 
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
@@ -273,7 +272,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                   fit: BoxFit.fill,
                                 ),
                               ),
-                              SizedBox(width: 12),
+                              SizedBox(width: 12.w),
                               Container(
                                 height: 140.h,
                                 width: 140.w,
@@ -319,9 +318,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
 
                 //Hot Sales
                 Padding(
-                  padding: const EdgeInsets.only(top: 24,bottom: 16,right: 28,left: 28),
+                  padding: EdgeInsets.only(top: 24.h,bottom: 16.h,right: 28.w,left: 28.w),
                   child: SizedBox(
-                    width: 372,
+                    width: 372.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -350,20 +349,20 @@ class _CartWithNotifState extends State<CartWithNotif> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
+                        padding: EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.all(11),
+                            padding: EdgeInsets.all(11),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productone.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
@@ -380,7 +379,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 34),
+                                SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -401,10 +400,10 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5.w,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -434,20 +433,20 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12,bottom: 24),
+                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11,left: 11),
+                            padding: EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -464,7 +463,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -487,8 +486,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     ),
                                     SizedBox(width: 5,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -518,20 +517,20 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12,bottom: 24),
+                        padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11,left: 11),
+                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -548,7 +547,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -569,10 +568,10 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5.w,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -608,9 +607,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
 
                 //Recently viewed
                 Padding(
-                  padding: const EdgeInsets.only(top: 8,bottom: 16,right: 28,left: 28),
+                  padding:  EdgeInsets.only(top: 8.h,bottom: 16.h,right: 28.w,left: 28.w),
                   child: SizedBox(
-                    width: 372,
+                    width: 372.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -639,7 +638,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
+                        padding:  EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
@@ -651,8 +650,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productone.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
@@ -669,7 +668,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 34),
+                                SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -692,8 +691,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     ),
                                     SizedBox(width: 5,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -723,20 +722,20 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12,bottom: 24),
+                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11,left: 11),
+                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -753,7 +752,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -776,8 +775,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     ),
                                     SizedBox(width: 5,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -807,20 +806,20 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 12,bottom: 24),
+                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                         child: Container(
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 11,left: 11),
+                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
                                   'assets/images/health_shop/productsec.png',
-                                  height: 123,
-                                  width: 155,
+                                  height: 123.h,
+                                  width: 155.w,
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
@@ -837,7 +836,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25),
+                                SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
                                   style: TextStyle(
@@ -860,8 +859,8 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                     ),
                                     SizedBox(width: 5,),
                                     SizedBox(
-                                      width: 90,
-                                      height: 32,
+                                      width: 90.w,
+                                      height: 32.h,
                                       child: ElevatedButton(
 
                                         child: Text(
@@ -917,7 +916,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20,bottom: 50,top: 16),
+                      padding: EdgeInsets.only(left: 20.w,bottom: 50.h,top: 16.h),
                       child: Container(
                         height: 178.h,
                         width: 405.w,
@@ -929,30 +928,30 @@ class _CartWithNotifState extends State<CartWithNotif> {
                               'assets/images/Selling Product/Vaccine.png',
                               productName: 'Vaccine',
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             HealthProductCard(
                               imagePath:
                               'assets/images/Selling Product/Braces.png',
                               productName: 'Braces',
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             HealthProductCard(
                               imagePath:
                               'assets/images/Selling Product/Wheelchair.png',
                               productName: 'Wheelchair',
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             HealthProductCard(
                               imagePath: 'assets/images/Selling Product/Mask.png',
                               productName: 'Mask',
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                             HealthProductCard(
                               imagePath:
                               'assets/images/Selling Product/Braces.png',
                               productName: 'Braces',
                             ),
-                            SizedBox(width: 10),
+                            SizedBox(width: 10.w),
                           ],
                         ),
                       ),
@@ -999,7 +998,7 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0,),
-            child: Text(text, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
+            child: Text(text, textAlign: TextAlign.center, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
       ),
@@ -1039,7 +1038,7 @@ class CustomButton2 extends StatelessWidget {
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0, ),
-            child: Text(text, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
+            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
           ),
         ),
       ),

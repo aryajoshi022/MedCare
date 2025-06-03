@@ -140,7 +140,6 @@ class HealthShopScreen extends StatelessWidget {
                           CustomButton2(text: 'Medicine & Treatment'),
                           SizedBox(width: 10.w), // Space between buttons
                           CustomButton(text: 'Milk'),
-                          SizedBox(width: 10.w), // Space between buttons
                         ],
                       ),
                     ),
@@ -174,7 +173,7 @@ class HealthShopScreen extends StatelessWidget {
                             ),
                             child: Text(
                               'Sexual Health',
-
+                              textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                             ),
                           ),
@@ -982,7 +981,7 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0,),
-            child: Text(text, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
+            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
       ),
@@ -1023,7 +1022,7 @@ class CustomButton2 extends StatelessWidget {
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0, ),
-            child: Text(text, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
+            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
           ),
         ),
       ),

@@ -245,8 +245,8 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               children: [
                 Container(
-                  width: 28,
-                  height: 28,
+                  width: 28.w,
+                  height: 28.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.bgPrimary),
                     borderRadius: BorderRadius.circular(6),
@@ -258,8 +258,8 @@ class _CartScreenState extends State<CartScreen> {
                   child: Text('1'),
                 ),
                 Container(
-                  width: 28,
-                  height: 28,
+                  width: 28.w,
+                  height: 28.h,
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.bgPrimary),
                     borderRadius: BorderRadius.circular(6),
