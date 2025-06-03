@@ -14,7 +14,7 @@ class SignScreen extends StatefulWidget {
 class _SignScreenState extends State<SignScreen> {
   PageController _pageController = PageController();
   int _currentIndex = 0;
-  bool? value = false;
+  bool value = false;
 
   String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
@@ -200,7 +200,7 @@ class _SignScreenState extends State<SignScreen> {
                     value: value,
                     onChanged: (bool? newValue) {
                       setState(() {
-                        value = newValue;
+                        value = newValue ?? false;
                       });
                     },
                   ),
@@ -346,7 +346,7 @@ class _SignScreenState extends State<SignScreen> {
                     value: value,
                     onChanged: (bool? newValue) {
                       setState(() {
-                        value = newValue;
+                        value = newValue ?? false;
                       });
                     },
                   ),

@@ -49,7 +49,7 @@ class _SignInScreenState extends State<SignInScreen> {
             title,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: isActive ? AppColors.btnPrimary : AppColors.borderSecondary,
+              color: isActive ? AppColors.btnPrimary : AppColors.borderThirsty,
               fontWeight: FontWeight.bold,
             ),
           ),
