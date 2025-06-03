@@ -250,7 +250,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                   ),
 
                   Container(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.only(left: 12,right: 12),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -265,7 +265,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                     height: 40,
                     width: 170,
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(right: 12),
                       child: ElevatedButton(
 
                         style: ElevatedButton.styleFrom(
@@ -310,7 +310,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 12,bottom: 24),
+                      padding:  EdgeInsets.only(left: 20.w,right: 16.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -397,7 +397,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 12,bottom: 24),
+                      padding:  EdgeInsets.only(left: 20.w,right: 16.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -481,7 +481,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 12,bottom: 24),
+                      padding:  EdgeInsets.only(left: 20.w,right: 16.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -570,7 +570,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 15,bottom: 24),
+                      padding: EdgeInsets.only(right: 20.w,bottom: 24.w),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -655,7 +655,8 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 15,bottom: 24),
+                      padding: EdgeInsets.only(right: 20.w,bottom: 24.w),
+
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -739,7 +740,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 15,bottom: 24),
+                      padding: EdgeInsets.only(right: 20.w,bottom: 24.w),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,

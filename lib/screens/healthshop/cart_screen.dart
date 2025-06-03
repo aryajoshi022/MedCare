@@ -98,31 +98,34 @@ class _CartScreenState extends State<CartScreen> {
               ),
               SizedBox(height: 8.h,),
               // Dropdown header
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _isExpanded = !_isExpanded;
-                  });
-                },
-                child: Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage(
-                        'assets/images/health_shop/girl_cart_img.png',
-                      ), // Replace with actual image
-                    ),
-                    SizedBox(width: 10.w),
-                    Text('Delivery to Amy'),
-                    Spacer(),
-                    Text(
-                      'Milan, Italy',
-                      style: TextStyle(color: AppColors.textBtn),
-                    ),
-                    Icon(
-                      _isExpanded ? Icons.expand_more : Icons.chevron_right,
-                      color: AppColors.textBtn,
-                    ),
-                  ],
+              Padding(
+                padding:  EdgeInsets.only(top: 4.h,bottom: 4.h),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isExpanded = !_isExpanded;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: AssetImage(
+                          'assets/images/health_shop/girl_cart_img.png',
+                        ), // Replace with actual image
+                      ),
+                      SizedBox(width: 10.w),
+                      Text('Delivery to Amy'),
+                      Spacer(),
+                      Text(
+                        'Milan, Italy',
+                        style: TextStyle(color: AppColors.textBtn),
+                      ),
+                      Icon(
+                        _isExpanded ? Icons.expand_more : Icons.chevron_right,
+                        color: AppColors.textBtn,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 8.h,),
