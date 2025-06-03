@@ -441,7 +441,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   Text(
                     'Register',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       color: AppColors.textSecondary,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
@@ -458,7 +458,7 @@ class _SignScreenState extends State<SignScreen> {
                     padding:  EdgeInsets.all(18.0.w),
                     child: Text(textAlign: TextAlign.center,
                       'Enter the 4-digit verification code (OTP) sent to your phone',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -466,7 +466,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   Text(
                     '(+66) 6152 625 612',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textBtn,
@@ -495,7 +495,7 @@ class _SignScreenState extends State<SignScreen> {
                         left: 10.w,
                       ),
                       child: ElevatedButton(
-                        child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
+                        child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -514,7 +514,7 @@ class _SignScreenState extends State<SignScreen> {
                       ),
                     ),
                   ),
-                  Text('Resend in 60 seconds',style: TextStyle(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
+                  Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
                 ],
               ),
             ],
@@ -542,7 +542,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   Text(
                     'Register',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       color: AppColors.textSecondary,
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w700,
@@ -560,7 +560,7 @@ class _SignScreenState extends State<SignScreen> {
                     child: Text(
                       textAlign: TextAlign.center,
                       'Enter the 4-digit verification code (OTP) sent to your email',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -568,7 +568,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   Text(
                     'info@gmail.com',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.textBtn,
@@ -597,7 +597,7 @@ class _SignScreenState extends State<SignScreen> {
                         left: 10.w,
                       ),
                       child: ElevatedButton(
-                        child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
+                        child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -616,7 +616,7 @@ class _SignScreenState extends State<SignScreen> {
                       ),
                     ),
                   ),
-                  Text('Resend in 60 seconds',style: TextStyle(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16),),
+                  Text('Resend in 60 seconds',style: GoogleFonts.khula(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16),),
                 ],
               ),
             ],
@@ -638,7 +638,7 @@ class _SignScreenState extends State<SignScreen> {
       alignment: Alignment.center,
       child: Text(
         '7', // Placeholder for input
-        style: TextStyle(fontSize: 24.sp),
+        style: GoogleFonts.khula(fontSize: 24.sp),
       ),
     );
   }
@@ -667,7 +667,7 @@ class _SignScreenState extends State<SignScreen> {
                 SizedBox(height: 60.h),
                 Text(
                   'Verification Success',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textPrimary,
@@ -678,7 +678,7 @@ class _SignScreenState extends State<SignScreen> {
                   padding:  EdgeInsets.only(left: 33.w, right: 33.w),
                   child: Text(textAlign: TextAlign.center,
                     'Congratulations, your account has been verified',
-                    style: TextStyle(
+                    style: GoogleFonts.khula(
                       fontSize: 16.sp,
                       color: AppColors.textSecondary,
                       wordSpacing: 1,
@@ -699,7 +699,7 @@ class _SignScreenState extends State<SignScreen> {
                       left: 10.w,
                     ),
                     child: ElevatedButton(
-                      child: Text('Continue', style: TextStyle(fontSize: 16.sp)),
+                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -747,18 +747,18 @@ class _SignScreenState extends State<SignScreen> {
             children: [
               Text(
                 'Complete Personal Identification',
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),
+                style: GoogleFonts.khula(fontSize: 20.sp, fontWeight: FontWeight.w700),
               ),
-              SizedBox(height: 12.w),
+              SizedBox(height: 20.w),
               Text(
                 'You can connect with all healthcare facilities you`ve previously visited.',
-                style: TextStyle(
+                style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
                 ),
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 20.h),
               _buildToggleTabs(),
               Expanded(
                 child: PageView(
@@ -774,7 +774,7 @@ class _SignScreenState extends State<SignScreen> {
                   children: [
                     Text(
                       'Already have an account? ',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
                         color: AppColors.textSecondary,
@@ -786,7 +786,7 @@ class _SignScreenState extends State<SignScreen> {
 
                         child: Text(
                         'Click here to log in',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w600,
                           color: AppColors.btnPrimary,
