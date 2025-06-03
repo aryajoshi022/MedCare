@@ -140,6 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 child: Text(
                   currentIndex == contents.length - 1 ? "Start" : "Next",
+                  style: GoogleFonts.khula(fontWeight: FontWeight.w700, fontSize: 16.sp, color: AppColors.textWhite),
                 ),
               ),
             ),
@@ -156,10 +157,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       duration: Duration(milliseconds: 300),
       height: 8,
       width: 8,
-      margin: EdgeInsets.only(right: 6),
+      margin: EdgeInsets.only(right: 6.w),
       decoration: BoxDecoration(
         color: isActive ? AppColors.btnPrimary : AppColors.borderThirsty,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
       ),
     );
   }
@@ -209,14 +210,13 @@ class getstartedScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: AppColors.borderSecondary,
-                            width: 1,
+                            width: 1.w,
                           ),
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
                       child: Text(
                         'English',
-
                         style: GoogleFonts.khula(
                           fontSize: 14.sp,
                           color: AppColors.textDisabled,
@@ -275,7 +275,7 @@ class getstartedScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
-                      child: Text('Next', style: GoogleFonts.khula(fontSize: 16.sp)),
+                      child: Text('Next', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     ),
                   ),
                 ),
@@ -306,7 +306,7 @@ class getstartedScreen extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: AppColors.btnPrimary,
-                            width: 1,
+                            width: 1.w,
                           ),
                           borderRadius: BorderRadius.circular(24.r),
                         ),
@@ -315,6 +315,7 @@ class getstartedScreen extends StatelessWidget {
                         'Register',
                         style: GoogleFonts.khula(
                           fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
                           color: AppColors.btnPrimary,
                         ),
                       ),

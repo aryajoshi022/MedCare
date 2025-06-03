@@ -36,13 +36,13 @@ class _SignInScreenState extends State<SignInScreen> {
         onTap: () => _switchPage(index),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10.h),
           alignment: Alignment.center,
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
                 color: isActive ? AppColors.btnPrimary : Colors.transparent,
-                width: 2,
+                width: 2.w,
               ),
             ),
           ),
@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
         leading:Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(20.w),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -124,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
             'Email',
             style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 12,),
+          SizedBox(height: 12.h),
           SizedBox(height: 44.h,
             child: TextField(
               decoration: InputDecoration(
@@ -159,7 +159,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -170,6 +169,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     borderRadius: BorderRadius.circular(24.r),
                   ),
                 ),
+                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
               ),
             ),
           ),
@@ -216,18 +216,18 @@ class _SignInScreenState extends State<SignInScreen> {
             'Phone No',
             style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: 12,),
+          SizedBox(height: 12.h),
 
           SizedBox(
-            height: 40,
+            height: 40.h,
             child: Container(
               decoration:
               BoxDecoration(
 
                 border: Border.all(color: AppColors.borderThirsty), // Black border
-                borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
+                borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
               ),
-              padding: EdgeInsets.symmetric(horizontal: 5),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Row(
                 children: [
                   DropdownButton<String>(
@@ -259,10 +259,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         controller: _controller,
                         textAlign: TextAlign.start,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
+                          contentPadding: EdgeInsets.only(top: 0.h,bottom: 10.h,right: 15.w,left: 10.w),
                           hintText: 'Enter phone number',
                           hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-
                           border: InputBorder.none,
                         ),
                       ),
@@ -293,7 +292,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 left: 10.w,
               ),
               child: ElevatedButton(
-                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp)),
+                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
                 },
@@ -382,7 +381,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 SizedBox(
                   height: 91.h,
                   width: 372.w,
-
                   child: Padding(
                     padding:  EdgeInsets.only(
                       top: 20.h,
