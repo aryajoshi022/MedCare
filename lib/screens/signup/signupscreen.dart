@@ -80,15 +80,15 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 26.h),
             Text('Phone No*', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
-              height: 40,
+              height: 40.h,
               child: Container(
                 decoration:
                 BoxDecoration(
 
                   border: Border.all(color: AppColors.borderThirsty), // Black border
-                  borderRadius: BorderRadius.circular(4),  // Optional: Rounded corners
+                  borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
                 child: Row(
                   children: [
                     DropdownButton<String>(
@@ -103,7 +103,7 @@ class _SignScreenState extends State<SignScreen> {
                           value: code,
                           child: Text(
                             code,
-                            style: GoogleFonts.khula(fontSize: 14.sp),
+                            style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
                           ),
                         );
                       }).toList(),
@@ -120,10 +120,9 @@ class _SignScreenState extends State<SignScreen> {
                           controller: _controller,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(top: 0,bottom: 10,right: 15,left: 10),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
                             hintText: 'Enter phone number',
                             hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-
                             border: InputBorder.none,
                           ),
                         ),
