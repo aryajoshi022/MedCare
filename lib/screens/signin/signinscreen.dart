@@ -133,6 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                 ),
+
                 border: OutlineInputBorder(),
               ),
             ),
@@ -226,15 +227,15 @@ class _SignInScreenState extends State<SignInScreen> {
                 border: Border.all(color: AppColors.borderThirsty), // Black border
                 borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
               ),
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+              padding: EdgeInsets.symmetric(horizontal: 5.w),
               child: Row(
                 children: [
                   DropdownButton<String>(
                     value: selectedCode,
                     dropdownColor: Colors.white,
-                    style: TextStyle(color: AppColors.textSecondary, fontWeight: FontWeight.w400, fontSize: 14.sp),
+                    style: TextStyle(color: AppColors.btnSecondary),
                     underline: SizedBox(),
-                    icon: Icon(Icons.keyboard_arrow_down,color: Color(0xff334155),size: 16.sp),
+                    icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
                     iconEnabledColor: AppColors.btnSecondary,
                     items: codes.map((String code) {
                       return DropdownMenuItem<String>(
@@ -253,12 +254,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   VerticalDivider(color: AppColors.textDisabled),
                   Expanded(
-                    child: SizedBox(height: 40.h,
+                    child: SizedBox(height: 44.h,
                       child: TextField(
                         controller: _controller,
                         textAlign: TextAlign.start,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 11.h),
+                          contentPadding: EdgeInsets.only(top: 0.h,bottom: 10.h,right: 15.w,left: 10.w),
                           hintText: 'Enter phone number',
                           hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                           border: InputBorder.none,
@@ -401,7 +402,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
-                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
                     ),
                   ),
                 ),
