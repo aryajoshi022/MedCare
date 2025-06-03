@@ -177,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Don`t have a MedCare Account yet ? ',
+                'Don\'t have a MedCare Account yet ? ',
                 style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
@@ -310,7 +310,7 @@ class _SignInScreenState extends State<SignInScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Don`t have a MedCare Account yet ? ',
+                'Don\'t have a MedCare Account yet ? ',
                 style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,

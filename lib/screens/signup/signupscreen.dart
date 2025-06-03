@@ -734,7 +734,7 @@ class _SignScreenState extends State<SignScreen> {
               ),
               SizedBox(height: 12.w),
               Text(
-                'You can connect with all healthcare facilities you`ve previously visited.',
+                'You can connect with all healthcare facilities you\'ve previously visited.',
                 style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
