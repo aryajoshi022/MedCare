@@ -70,100 +70,110 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bgAlert,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              _buildCustomAppBar(context),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 28.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _buildUserCard(context),
-                    SizedBox(height: 25.h),
-                    Text('Menu',
-                      style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        letterSpacing: 1.sp,
-                        color: AppColors.textSecondary
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+              (route) => false,  // this removes all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.bgAlert,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildCustomAppBar(context),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 28.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildUserCard(context),
+                      SizedBox(height: 25.h),
+                      Text('Menu',
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.sp,
+                          color: AppColors.textSecondary
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(height: 15.h),
-                    Column(
-                      children: menuList.map((menu) {
-                        return _buildMenuCard(
-                          image: menu['image'],
-                          title: menu['title'],
-                          subtitle: menu['subtitle'],
-                          onTap: menu['route'] != null
-                              ? () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => menu['route'](context)),
-                          )
-                              : null,
-                        );
-                      }).toList(),
-                    ),
-                    SizedBox(height: 25.h),
-                    Text('General Information',
-                      style: GoogleFonts.khula(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.sp,
-                        letterSpacing: 1.sp,
-                        color: AppColors.textSecondary
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(height: 15.h),
-                    Column(
-                      children: generalInfo.map((info) {
-                        bool isDarkMode = info['isSwitch'] == true;
-                        final routeBuilder = info['route'] as Widget Function(BuildContext)?;
-
-                        return _buildGeneralInfoCard(
-                          image: info['image'],
-                          name: info['name'],
-                          isSwitch: isDarkMode,
-                          switchValue: _notificationsEnabled,
-                          onSwitchChanged: (value) {
-                            setState(() {
-                              _notificationsEnabled = value;
-                            });
-                          },
-                          onTap: isDarkMode || routeBuilder == null
-                              ? null
-                              : () {
-                            Navigator.push(
+                      SizedBox(height: 15.h),
+                      Column(
+                        children: menuList.map((menu) {
+                          return _buildMenuCard(
+                            image: menu['image'],
+                            title: menu['title'],
+                            subtitle: menu['subtitle'],
+                            onTap: menu['route'] != null
+                                ? () => Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => routeBuilder(context)),
-                            );
-                          },
-                        );
-                      }).toList(),
-                    ),
-                    SizedBox(height: 20.h),
-                    _buildLogOut(context),
-                  ],
+                              MaterialPageRoute(builder: (context) => menu['route'](context)),
+                            )
+                                : null,
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(height: 25.h),
+                      Text('General Information',
+                        style: GoogleFonts.khula(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16.sp,
+                          letterSpacing: 1.sp,
+                          color: AppColors.textSecondary
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: 15.h),
+                      Column(
+                        children: generalInfo.map((info) {
+                          bool isDarkMode = info['isSwitch'] == true;
+                          final routeBuilder = info['route'] as Widget Function(BuildContext)?;
+      
+                          return _buildGeneralInfoCard(
+                            image: info['image'],
+                            name: info['name'],
+                            isSwitch: isDarkMode,
+                            switchValue: _notificationsEnabled,
+                            onSwitchChanged: (value) {
+                              setState(() {
+                                _notificationsEnabled = value;
+                              });
+                            },
+                            onTap: isDarkMode || routeBuilder == null
+                                ? null
+                                : () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => routeBuilder(context)),
+                              );
+                            },
+                          );
+                        }).toList(),
+                      ),
+                      SizedBox(height: 20.h),
+                      _buildLogOut(context),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-      bottomNavigationBar: CustomBottomAppBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        bottomNavigationBar: CustomBottomAppBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

@@ -44,29 +44,39 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.bgAlert,
-      bottomNavigationBar: CustomBottomAppBar(
-        selectedIndex: _selectedIndex,
-        onItemTapped: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildCustomAppBar(),
-            SizedBox(height: 5.h),
-            _buildTabButtons(),
-            SizedBox(height: 28.h),
-            Expanded(
-              child: _isUpcomingSelected
-                  ? _buildUpcomingAppointmentsList()
-                  : _buildCompletedAppointmentsList(),
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => HomeScreen()),
+              (route) => false,  // this removes all previous routes
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.bgAlert,
+        bottomNavigationBar: CustomBottomAppBar(
+          selectedIndex: _selectedIndex,
+          onItemTapped: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              _buildCustomAppBar(),
+              SizedBox(height: 5.h),
+              _buildTabButtons(),
+              SizedBox(height: 28.h),
+              Expanded(
+                child: _isUpcomingSelected
+                    ? _buildUpcomingAppointmentsList()
+                    : _buildCompletedAppointmentsList(),
+              ),
+            ],
+          ),
         ),
       ),
     );

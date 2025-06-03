@@ -26,7 +26,7 @@ class HospitalCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(6.0.r),
             border: Border.all(
                 color: Color(0xFFC2E7D9),
-                width: 1
+                width: 0.1
             ),
           ),
           child: Stack(
