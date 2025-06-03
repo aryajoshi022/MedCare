@@ -23,11 +23,11 @@ class HealthShopScreen extends StatelessWidget {
             children: [
               //Appbar
               Padding(
-                padding: const EdgeInsets.only(top: 24,right: 20,bottom: 20),
+                padding: EdgeInsets.only(top: 24.h,right: 20.w,bottom: 20.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(width: 8,),
+                    SizedBox(width: 8.w,),
 
                     IconButton(
                       onPressed: () {
@@ -45,10 +45,10 @@ class HealthShopScreen extends StatelessWidget {
                       child: TextFormField(
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(
-                            left: 16,
-                            top: 14,
-                            bottom: 14,
-                            right: 16,
+                            left: 16.w,
+                            top: 14.h,
+                            bottom: 14.h,
+                            right: 16.w,
                           ),
                           prefixIconColor: Color(0xff8F8F8F),
                           prefixIcon: Icon(
@@ -106,7 +106,7 @@ class HealthShopScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 20),
+                      padding:  EdgeInsets.only(left: 20.w),
                       child: SizedBox(
                         height: 40.h,
                         width: 44.w,
@@ -133,22 +133,22 @@ class HealthShopScreen extends StatelessWidget {
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.only(left: 12.w,right: 12.w),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomButton2(text: 'Medicine & Treatment'),
-                          SizedBox(width: 10), // Space between buttons
+                          SizedBox(width: 10.w), // Space between buttons
                           CustomButton(text: 'Milk'),
-                          SizedBox(width: 10), // Space between buttons
+                          SizedBox(width: 10.w), // Space between buttons
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: 40,
-                      width: 170,
+                      height: 40.h,
+                      width: 170.w,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding:  EdgeInsets.only(right: 12.w),
                         child: ElevatedButton(
 
                           style: ElevatedButton.styleFrom(
@@ -195,12 +195,12 @@ class HealthShopScreen extends StatelessWidget {
                 //decoration: BoxDecoration(),
                 color: AppColors.borderThirsty,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 24,top: 24,left: 24),
+                  padding: EdgeInsets.only(bottom: 24.w,top: 24.h,left: 24.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: 372,
+                        width: 372.w,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -213,7 +213,7 @@ class HealthShopScreen extends StatelessWidget {
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.only(right: 24),
+                              padding: EdgeInsets.only(right: 24.w),
                               child: Text(
                                 'see all',
                                 style: TextStyle(
@@ -227,7 +227,7 @@ class HealthShopScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(height: 16.h),
                       Text(
                         'Special offers from various renowned brands',
                         style: TextStyle(
@@ -235,7 +235,7 @@ class HealthShopScreen extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      SizedBox(height: 16),
+                      SizedBox(height: 16.h),
 
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -258,7 +258,7 @@ class HealthShopScreen extends StatelessWidget {
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            SizedBox(width: 12),
+                            SizedBox(width: 12.w),
                             Container(
                               height: 140.h,
                               width: 140.w,
@@ -304,9 +304,9 @@ class HealthShopScreen extends StatelessWidget {
 
               //Hot Sales
               Padding(
-                padding: const EdgeInsets.only(top: 24,bottom: 16,right: 28,left: 28),
+                padding: EdgeInsets.only(top: 24.h,bottom: 16.h,right: 28.w,left: 28.w),
                 child: SizedBox(
-                  width: 372,
+                  width: 372.w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -335,7 +335,7 @@ class HealthShopScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
+                      padding: EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -388,8 +388,8 @@ class HealthShopScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -593,9 +593,9 @@ class HealthShopScreen extends StatelessWidget {
 
               //Recently viewed
               Padding(
-                padding: const EdgeInsets.only(top: 8,bottom: 16,right: 28,left: 28),
+                padding:  EdgeInsets.only(top: 8.h,bottom: 16.h,right: 28.w,left: 28.w),
                 child: SizedBox(
-                  width: 372,
+                  width: 372.w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -624,7 +624,7 @@ class HealthShopScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 24,right: 12,bottom: 24),
+                      padding:  EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
@@ -636,8 +636,8 @@ class HealthShopScreen extends StatelessWidget {
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productone.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'Promag 10 Tablets',
@@ -654,7 +654,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 34),
+                              SizedBox(height: 34.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -677,8 +677,8 @@ class HealthShopScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -708,20 +708,20 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 12,bottom: 24),
+                      padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productsec.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
@@ -738,7 +738,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -761,8 +761,8 @@ class HealthShopScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -792,20 +792,20 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 12,bottom: 24),
+                      padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 11,left: 11),
+                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
                                 'assets/images/health_shop/productsec.png',
-                                height: 123,
-                                width: 155,
+                                height: 123.h,
+                                width: 155.w,
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
@@ -822,7 +822,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25),
+                              SizedBox(height: 25.h),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -845,8 +845,8 @@ class HealthShopScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 5,),
                                   SizedBox(
-                                    width: 90,
-                                    height: 32,
+                                    width: 90.w,
+                                    height: 32.h,
                                     child: ElevatedButton(
 
                                       child: Text(
@@ -881,9 +881,9 @@ class HealthShopScreen extends StatelessWidget {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 8,right: 28,left: 28),
+                padding:  EdgeInsets.only(top: 8.h,right: 28.w,left: 28.w),
                 child: SizedBox(
-                  width: 372,
+                  width: 372.w,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -902,7 +902,7 @@ class HealthShopScreen extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20,bottom: 50),
+                    padding: EdgeInsets.only(left: 20.w,bottom: 50.h,top: 16.h),
                     child: Container(
                       height: 178.h,
                       width: 405.w,
@@ -914,30 +914,30 @@ class HealthShopScreen extends StatelessWidget {
                                 'assets/images/Selling Product/Vaccine.png',
                             productName: 'Vaccine',
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           HealthProductCard(
                             imagePath:
                                 'assets/images/Selling Product/Braces.png',
                             productName: 'Braces',
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           HealthProductCard(
                             imagePath:
                                 'assets/images/Selling Product/Wheelchair.png',
                             productName: 'Wheelchair',
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           HealthProductCard(
                             imagePath: 'assets/images/Selling Product/Mask.png',
                             productName: 'Mask',
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                           HealthProductCard(
                             imagePath:
                                 'assets/images/Selling Product/Braces.png',
                             productName: 'Braces',
                           ),
-                          SizedBox(width: 10),
+                          SizedBox(width: 10.w),
                         ],
                       ),
                     ),
@@ -963,8 +963,8 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 40,
-        width: 90,
+        height: 40.h,
+        width: 90.w,
 
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -999,8 +999,8 @@ class CustomButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 40,
-        width: 210,
+        height: 40.h,
+        width: 210.w,
 
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(

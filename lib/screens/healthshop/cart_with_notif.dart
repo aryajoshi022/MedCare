@@ -99,9 +99,11 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         'assets/images/health_shop/notify_cart.png',
                       ),
                     ),
+
                   ],
                 ),
               ),
+
               //Filter Scroller
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
@@ -135,7 +137,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                     ),
 
                     Container(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.only(left: 12,right: 12),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -150,7 +152,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
                       height: 40,
                       width: 170,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 12),
                         child: ElevatedButton(
 
                           style: ElevatedButton.styleFrom(
@@ -904,7 +906,7 @@ class _CartWithNotifState extends State<CartWithNotif> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20,bottom: 50),
+                    padding: const EdgeInsets.only(left: 20,bottom: 50,top: 16),
                     child: Container(
                       height: 178.h,
                       width: 405.w,
