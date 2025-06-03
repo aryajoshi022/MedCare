@@ -402,7 +402,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),
-                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
+                      child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     ),
                   ),
                 ),
