@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/util/constants/colors.dart';
 
 import '../home/home_screen.dart';
@@ -71,7 +72,7 @@ class _CartScreenState extends State<CartScreen> {
           title: Text(
             'Cart',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: GoogleFonts.khula(
               fontSize: 16.sp,
               wordSpacing: 1,
               fontWeight: FontWeight.w600,
@@ -127,7 +128,7 @@ class _CartScreenState extends State<CartScreen> {
                         Spacer(),
                         Text(
                           'Milan, Italy',
-                          style: TextStyle(color: AppColors.textBtn),
+                          style: GoogleFonts.khula(color: AppColors.textBtn),
                         ),
                         Icon(
                           _isExpanded ? Icons.expand_more : Icons.chevron_right,
@@ -168,7 +169,7 @@ class _CartScreenState extends State<CartScreen> {
                         color: AppColors.textBtn,
                       ),
                       suffixText: 'Available',
-                      suffixStyle: TextStyle(color: AppColors.textBtn),
+                      suffixStyle: GoogleFonts.khula(color: AppColors.textBtn),
                       border: OutlineInputBorder(borderSide: BorderSide(color: AppColors.borderThirsty)),
                     ),
                   ),
@@ -192,7 +193,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                     child: Text(
                       'Continue',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         fontSize: 16.sp,
                         color: AppColors.textWhite,
                       ),
@@ -233,11 +234,11 @@ class _CartScreenState extends State<CartScreen> {
                   SizedBox(height: 5.h),
                   Text(
                     description,
-                    style: TextStyle(fontSize: 13.sp, color: Colors.black54),
+                    style: GoogleFonts.khula(fontSize: 13.sp, color: Colors.black54),
                   ),
                   Text(
                     'Start form: $price',
-                    style: TextStyle(color: AppColors.textBtn),
+                    style: GoogleFonts.khula(color: AppColors.textBtn),
                   ),
                 ],
               ),
@@ -292,7 +293,7 @@ class FindPharmacyScreen extends StatelessWidget {
             SizedBox(height: 24.h),
             Text(
               'Finding Nearest Pharmacy...',
-              style: TextStyle(
+              style: GoogleFonts.khula(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.textNormal,
@@ -311,7 +312,7 @@ class FindPharmacyScreen extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Pricing, product availability, and shipping methods may differ.',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         color: AppColors.textSecondary,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
@@ -335,7 +336,7 @@ class FindPharmacyScreen extends StatelessWidget {
                   Expanded(
                     child: Text(
                       'Select the delivery method that fits your requirements. Same-Day Delivery and Next-Day Delivery',
-                      style: TextStyle(
+                      style: GoogleFonts.khula(
                         color: AppColors.textSecondary,
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
