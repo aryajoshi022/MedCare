@@ -601,7 +601,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: Color(0xff000000).withOpacity(0.1),
+              color: Color(0xff000000).withOpacity(0.05),
               blurRadius: 10,
               spreadRadius: 0,
               offset: Offset(4, 4)

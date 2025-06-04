@@ -160,7 +160,7 @@ class _ConfirmationState extends State<Confirmation> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Color(0xff000000).withOpacity(0.1),
+              color: Color(0xff000000).withOpacity(0.05),
               blurRadius: 10,
               spreadRadius: 0,
               offset: Offset(4, 4)
@@ -329,7 +329,7 @@ class _ConfirmationState extends State<Confirmation> {
           ),
           boxShadow: [
             BoxShadow(
-                color: Color(0xff000000).withOpacity(0.1),
+                color: Color(0xff000000).withOpacity(0.05),
                 blurRadius: 10,
                 spreadRadius: 0,
                 offset: Offset(4, 4)
