@@ -199,7 +199,7 @@ class _HospitalScreen extends State<HospitalScreen> {
         final hospital = hospitals[index];
         return Container(
           margin: EdgeInsets.only(bottom: 24.h),
-          padding: EdgeInsets.all(12.w),
+          padding: EdgeInsets.all(16.w),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12.r),
@@ -247,6 +247,8 @@ class _HospitalScreen extends State<HospitalScreen> {
                               // height: 1.h,
                               color: Color(0xff4D4D4D),
                             ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           SizedBox(height: 6.h),
                           Row(
@@ -275,9 +277,9 @@ class _HospitalScreen extends State<HospitalScreen> {
                 ],
 
               ),
-              SizedBox(height: 16.h),
+              SizedBox(height: 9.h),
               Divider(color: AppColors.borderBtn),
-              SizedBox(height: 16.h),
+              SizedBox(height: 9.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -344,7 +346,7 @@ class _HospitalScreen extends State<HospitalScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.h),
+              // SizedBox(height: 16.h),
             ],
           ),
         );
