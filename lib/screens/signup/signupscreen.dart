@@ -80,7 +80,7 @@ class _SignScreenState extends State<SignScreen> {
             SizedBox(height: 26.h),
             Text('Phone No*', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(
-              height: 40.h,
+              height: 44.h,
               child: Container(
                 decoration:
                 BoxDecoration(

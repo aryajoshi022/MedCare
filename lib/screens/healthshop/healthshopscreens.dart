@@ -344,6 +344,7 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -446,6 +447,8 @@ class HealthShopScreen extends StatelessWidget {
                       padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
+
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -466,7 +469,7 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top:5.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -546,9 +549,11 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
+                      padding: EdgeInsets.only(right: 12.w, bottom: 24.h,),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
+
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -569,7 +574,7 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -697,6 +702,8 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
+
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -800,6 +807,8 @@ class HealthShopScreen extends StatelessWidget {
                       padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
+
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -820,7 +829,7 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -903,6 +912,8 @@ class HealthShopScreen extends StatelessWidget {
                       padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                       child: Container(
                         decoration: BoxDecoration(
+                          color: AppColors.bgAlert,
+
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(
                             width: 1,
@@ -923,7 +934,7 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
