@@ -137,7 +137,7 @@ class HealthShopScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CustomButton2(text: 'Medicine & Treatment'),
+                          CustomButton2(text: 'Medicine & Treatment',),
                           SizedBox(width: 10.w), // Space between buttons
                           CustomButton(text: 'Milk'),
                         ],
@@ -174,7 +174,7 @@ class HealthShopScreen extends StatelessWidget {
                             child: Text(
                               'Sexual Health',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
+                              style: GoogleFonts.khula(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                             ),
                           ),
                         ),
@@ -205,7 +205,7 @@ class HealthShopScreen extends StatelessWidget {
                           children: [
                             Text(
                               'Official store',
-                              style: TextStyle(
+                              style: GoogleFonts.khula(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -214,8 +214,8 @@ class HealthShopScreen extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(right: 24.w),
                               child: Text(
-                                'see all',
-                                style: TextStyle(
+                                'See all',
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.bgPrimary,
@@ -229,7 +229,7 @@ class HealthShopScreen extends StatelessWidget {
                       SizedBox(height: 16.h),
                       Text(
                         'Special offers from various renowned brands',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
@@ -311,15 +311,15 @@ class HealthShopScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Hot Sales',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
 
                       Text(
-                        'see all',
-                        style: TextStyle(
+                        'See all',
+                        style: GoogleFonts.khula(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.bgPrimary,
@@ -351,14 +351,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Promag 10 Tablets',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -367,7 +367,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 34.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -379,7 +379,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -393,7 +393,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -435,14 +435,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -451,7 +451,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -463,7 +463,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -477,7 +477,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -519,14 +519,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -535,7 +535,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -547,7 +547,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -561,7 +561,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -600,15 +600,15 @@ class HealthShopScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Recently Viewed',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
 
                       Text(
-                        'see all',
-                        style: TextStyle(
+                        'See all',
+                        style: GoogleFonts.khula(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.bgPrimary,
@@ -640,14 +640,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'Promag 10 Tablets',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -656,7 +656,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 34.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -668,7 +668,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -682,7 +682,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -724,14 +724,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -740,7 +740,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -752,7 +752,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -766,7 +766,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -808,14 +808,14 @@ class HealthShopScreen extends StatelessWidget {
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -824,7 +824,7 @@ class HealthShopScreen extends StatelessWidget {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -836,7 +836,7 @@ class HealthShopScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -850,7 +850,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -888,7 +888,7 @@ class HealthShopScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Layanan Kesehatan',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -981,7 +981,7 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0,),
-            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
+            child: Text(text,textAlign: TextAlign.center, style: GoogleFonts.khula(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
       ),
@@ -1022,7 +1022,7 @@ class CustomButton2 extends StatelessWidget {
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0, ),
-            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
+            child: Text(text,textAlign: TextAlign.center, style: GoogleFonts.khula(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
           ),
         ),
       ),

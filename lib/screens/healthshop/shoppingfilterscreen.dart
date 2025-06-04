@@ -53,13 +53,13 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Text('Promag 10 Tablets', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
-                            const Text('Per Strip', style: TextStyle(color: Colors.black54)),
-                            const SizedBox(height: 8),
+                            Text('Promag 10 Tablets', style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w600)),
+                            Text('Per Strip', style: GoogleFonts.khula(color: Colors.black54)),
+                            SizedBox(height: 8),
                             Row(
                               children: [
-                                const Text('Start form :', style: TextStyle(fontWeight: FontWeight.w400, color: AppColors.borderDisabled)),
-                                const Text('\$2.00', style: TextStyle(fontWeight: FontWeight.w700, color: AppColors.bgPrimary)),
+                                Text('Start form :', style: GoogleFonts.khula(fontWeight: FontWeight.w400, color: AppColors.borderDisabled)),
+                                Text('\$2.00', style: GoogleFonts.khula(fontWeight: FontWeight.w700, color: AppColors.bgPrimary)),
 
                               ],
                             ),
@@ -84,7 +84,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                  child: Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                                  child: Text(quantity.toString(), style: GoogleFonts.khula(fontSize: 16)),
                                 ),
                                 GestureDetector(
                                   onTap: () => setState(() => quantity++),
@@ -118,7 +118,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                     minimumSize: const Size(double.infinity, 50),
                     backgroundColor: AppColors.bgPrimary,
                   ),
-                  child: const Text('Add to Cart', style: TextStyle(fontSize: 16, color: AppColors.textWhite)),
+                  child: Text('Add to Cart', style: GoogleFonts.khula(fontSize: 16, color: AppColors.textWhite)),
                 ),
               ],
             ),
@@ -292,7 +292,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                           child: Text(
                             'Sexual Health',
 
-                            style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
+                            style: GoogleFonts.khula(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                           ),
                         ),
                       ),
@@ -327,14 +327,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'Promag 10 Tablets',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -343,7 +343,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 34.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -355,7 +355,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -369,7 +369,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {
                                         showBottomSheet(context);
@@ -414,14 +414,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -430,7 +430,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -442,7 +442,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -456,7 +456,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -498,14 +498,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'Mylanta Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -514,7 +514,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 44.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -526,7 +526,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -540,7 +540,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -587,14 +587,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'Bufect Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -603,7 +603,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 34.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -615,7 +615,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -629,7 +629,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionScreen(),));},
 
@@ -673,14 +673,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'BODREX MEDICINE 10S PER STRIP',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -689,7 +689,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -701,7 +701,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -715,7 +715,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -757,14 +757,14 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               ),
                               Text(
                                 'Paratusin 10 Tablets',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -773,7 +773,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                               SizedBox(height: 25.h),
                               Text(
                                 'Start from',
-                                style: TextStyle(
+                                style: GoogleFonts.khula(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
@@ -785,7 +785,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                 children: [
                                   Text(
                                     '\$2,00',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
@@ -799,7 +799,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16),
+                                        style: GoogleFonts.khula(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -869,7 +869,7 @@ class CustomButton extends StatelessWidget {
           onPressed: () {},
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0,),
-            child: Text(text, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
+            child: Text(text, style: GoogleFonts.khula(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
       ),
@@ -910,7 +910,7 @@ class CustomButton2 extends StatelessWidget {
           },
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 12.0, ),
-            child: Text(text, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600,color: AppColors.bgPrimary)),
+            child: Text(text, style: GoogleFonts.khula(fontSize: 14, fontWeight: FontWeight.w600,color: AppColors.bgPrimary)),
           ),
         ),
       ),
