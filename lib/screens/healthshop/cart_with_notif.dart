@@ -349,9 +349,30 @@ class _CartWithNotifState extends State<CartWithNotif> {
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(
+                          left: 24.w,
+                          right: 12.w,
+                          bottom: 24.h,
+                        ),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
@@ -366,14 +387,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -382,33 +403,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5.w,),
+                                    SizedBox(width: 5.w),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -416,7 +437,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -433,13 +456,32 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 11.w,left: 11.w),
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top:5.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -450,14 +492,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -466,33 +508,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -500,7 +542,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -517,13 +561,32 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h,),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -534,14 +597,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -550,33 +613,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5.w,),
+                                    SizedBox(width: 5.w),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -584,7 +647,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -600,7 +665,6 @@ class _CartWithNotifState extends State<CartWithNotif> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -638,9 +702,32 @@ class _CartWithNotifState extends State<CartWithNotif> {
                   child: Row(
                     children: [
                       Padding(
-                        padding:  EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(
+                          left: 24.w,
+                          right: 12.w,
+                          bottom: 24.h,
+                        ),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
@@ -655,14 +742,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -671,33 +758,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -705,7 +792,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -722,13 +811,32 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -739,14 +847,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -755,33 +863,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -789,7 +897,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -806,13 +916,32 @@ class _CartWithNotifState extends State<CartWithNotif> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -823,14 +952,14 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -839,33 +968,33 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                 SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5,),
+                                    SizedBox(width: 5),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -873,7 +1002,9 @@ class _CartWithNotifState extends State<CartWithNotif> {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -889,7 +1020,6 @@ class _CartWithNotifState extends State<CartWithNotif> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),

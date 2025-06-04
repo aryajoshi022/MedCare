@@ -1,14 +1,161 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/healthshop/cart_screen.dart';
-import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/screens/healthshop/cart_with_notif.dart';
+import 'package:medcare/util/constants/colors.dart';
 
-class DescriptionScreen extends StatelessWidget {
+
+class DescriptionScreen extends StatefulWidget {
   @override
-  //ShowBottomSheet
+  State<DescriptionScreen> createState() => _DescriptionScreenState();
+}
 
+class _DescriptionScreenState extends State<DescriptionScreen> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  final ScrollController _scrollController = ScrollController();
+
+  final GlobalKey _descKey = GlobalKey();
+  final GlobalKey _detailsKey = GlobalKey();
+  final GlobalKey _reviewsKey = GlobalKey();
+
+  bool _isTabClicked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+    _scrollController.addListener(_handleScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
+  void _handleScroll() {
+    if (_isTabClicked) return;
+
+    RenderBox? descBox = _descKey.currentContext?.findRenderObject() as RenderBox?;
+    RenderBox? detailsBox = _detailsKey.currentContext?.findRenderObject() as RenderBox?;
+    RenderBox? reviewsBox = _reviewsKey.currentContext?.findRenderObject() as RenderBox?;
+
+    if (descBox == null || detailsBox == null || reviewsBox == null) return;
+
+    final descOffset = descBox.localToGlobal(Offset.zero).dy;
+    final detailsOffset = detailsBox.localToGlobal(Offset.zero).dy;
+    final reviewsOffset = reviewsBox.localToGlobal(Offset.zero).dy;
+
+    // Viewport threshold (top of screen + toolbar height)
+    const double toolbarOffset = 100.0;
+
+    // Calculate the closest section to top
+    final distances = {
+      0: (descOffset - toolbarOffset).abs(),
+      1: (detailsOffset - toolbarOffset).abs(),
+      2: (reviewsOffset - toolbarOffset).abs(),
+    };
+
+    final closestTab = distances.entries.reduce((a, b) => a.value < b.value ? a : b).key;
+
+    if (_tabController.index != closestTab) {
+      _tabController.animateTo(closestTab);
+    }
+  }
+
+
+  void _scrollTo(GlobalKey key) {
+    final context = key.currentContext;
+    if (context != null) {
+      _isTabClicked = true;
+      Scrollable.ensureVisible(
+        context,
+        duration: Duration(milliseconds: 400),
+        curve: Curves.easeInOut,
+      ).then((_) => _isTabClicked = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: AppColors.bgAlert,
+        scrolledUnderElevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
+        ),
+        title: Text(
+          'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
+          style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w700),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 24.w),
+            child: Image.asset(
+              'assets/icons/share_icon.png',
+              color: AppColors.textSecondary,
+            ),
+          ),
+        ],
+        bottom: TabBar(
+          controller: _tabController,
+          onTap: (index) {
+            if (index == 1) _scrollTo(_descKey);
+            else if (index == 2) _scrollTo(_detailsKey);
+            else if (index == 3) _scrollTo(_reviewsKey);
+          },
+          tabs: const [
+            Tab(text: 'Description'),
+            Tab(text: 'Details'),
+            Tab(text: 'Reviews'),
+          ],
+        ),
+      ),
+      body: SingleChildScrollView(
+        controller: _scrollController,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(key: _descKey, child: DescriptionTab()),
+            Container(key: _detailsKey, child: DetailsTab()),
+            Container(key: _reviewsKey, child: ReviewsTab()),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          top: 20.h,
+          bottom: 20.h,
+          right: 10.w,
+          left: 10.w,
+        ),
+        child: Container(
+          decoration: BoxDecoration(color: Colors.transparent),
+
+          width: 380.w,
+          height: 51.h,
+          child: ElevatedButton(
+            child: Text('Add to cart', style: GoogleFonts.khula(fontSize: 16.sp)),
+            onPressed: () {
+              showBottomSheet(context);
+            },
+            style: ElevatedButton.styleFrom(
+              foregroundColor: AppColors.textWhite,
+              backgroundColor: AppColors.btnPrimary,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.r),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
   void showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       backgroundColor: Colors.white,
@@ -49,7 +196,7 @@ class DescriptionScreen extends StatelessWidget {
                           children: [
                             Flexible(
                               child: Text('Bufect Strip of 4 Tablets -Heat and Pain Relief Medicine'
-                              , style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w600)),
+                                  , style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w600)),
                             ),
                             Text('Per Strip', style: GoogleFonts.khula(color: Colors.black54)),
                             const SizedBox(height: 8),
@@ -130,92 +277,14 @@ class DescriptionScreen extends StatelessWidget {
     );
   }
 
-
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          scrolledUnderElevation: 0.0,
-          backgroundColor: AppColors.bgAlert,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
-          ),
-          title: Text(
-            'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
-            style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w700),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.only(right: 24.w),
-              child: Image.asset(
-                'assets/icons/share_icon.png',
-                color: AppColors.textSecondary,
-              ),
-            ),
-          ],
-          bottom: TabBar(
-            tabs: [
-              Tab(text: 'Description'),
-              Tab(text: 'Details'),
-              Tab(text: 'Reviews'),
-            ],
-          ),
-        ),
-        body: TabBarView(
-          children: [
-            // Description Tab
-            DescriptionTab(),
-            //Details Tab
-            DetailsTab(),
-
-            //Reviews Tab
-            ReviewsTab(),
-          ],
-        ),
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.only(
-            top: 20.h,
-            bottom: 20.h,
-            right: 10.w,
-            left: 10.w,
-          ),
-          child: Container(
-            decoration: BoxDecoration(color: Colors.transparent),
-
-            width: 380.w,
-            height: 51.h,
-            child: ElevatedButton(
-              child: Text('Add to cart', style: GoogleFonts.khula(fontSize: 16.sp)),
-              onPressed: () {
-                showBottomSheet(context);
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: AppColors.textWhite,
-                backgroundColor: AppColors.btnPrimary,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24.r),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
-//Description Tab
 class DescriptionTab extends StatelessWidget {
-  const DescriptionTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Container(
+      child: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -235,7 +304,7 @@ class DescriptionTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Bufect Strip of 4 Tablets -Heat and Pain Relief Medicine',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textNormal,
@@ -243,7 +312,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   'Per Stripe',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
@@ -251,7 +320,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   'Start from',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textDisabled,
@@ -259,7 +328,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   '\$2,00',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textBtn,
@@ -270,7 +339,7 @@ class DescriptionTab extends StatelessWidget {
                 //Product description
                 Text(
                   'Product Description',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -280,7 +349,7 @@ class DescriptionTab extends StatelessWidget {
 
                 Text(
                   'Bufect is a reliable and effective medication presented in a convenient strip containing four tablets. Each tablet is meticulously formulated to provide targeted relief from various ailments. With its user-friendly packaging and easy-to-carry design, Bufect ensures quick access to relief whenever and wherever needed. Trust Bufect for fast-acting and dependable relief from discomfort.',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
@@ -291,7 +360,7 @@ class DescriptionTab extends StatelessWidget {
                 //Benefits
                 Text(
                   'Benefits',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -303,14 +372,14 @@ class DescriptionTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5.w),
                     Expanded(
                       child: Text(
                         'Provides fast and effective relief from pain and discomfort',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -324,14 +393,14 @@ class DescriptionTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5.w),
                     Expanded(
                       child: Text(
                         'Suitable for a wide range of ailments, including headaches, muscle aches, fever, and menstrual cramps',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -345,14 +414,14 @@ class DescriptionTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Each tablet is individually sealed for freshness and potency.',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -366,7 +435,7 @@ class DescriptionTab extends StatelessWidget {
 
                 Text(
                   'Composition',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -394,7 +463,7 @@ class DescriptionTab extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: GoogleFonts.khula(
+            style: TextStyle(
               color: AppColors.textNormal,
               fontSize: 16,
               height: 1.5,
@@ -407,12 +476,12 @@ class DescriptionTab extends StatelessWidget {
   }
 }
 
-//Details Tab
 class DetailsTab extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Container(
+     child:SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -421,25 +490,13 @@ class DetailsTab extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Composition',
-                  style: GoogleFonts.khula(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textNormal,
-                  ),
-                ),
-                SizedBox(height: 5),
 
-                _buildBulletPoint('Acetaminophen (500 mg)'),
-                _buildBulletPoint('Ibuprofen (200 mg)'),
-                _buildBulletPoint('Caffeine (50 mg)'),
 
-                SizedBox(height: 44.h),
+                SizedBox(height: 20.h),
 
                 Text(
                   'Dosage',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -452,14 +509,14 @@ class DetailsTab extends StatelessWidget {
                     SizedBox(height: 5, width: 5),
 
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5.w),
                     Expanded(
                       child: Text(
                         'Adults: Take 1 tablet every 4 to 6 hours as needed. Do not exceed 4 tablets in 24 hours.',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16.sp,
                           height: 1.5,
@@ -473,14 +530,14 @@ class DetailsTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Children (ages 6-12): Take half a tablet every 4 to 6 hours as needed. Do not exceed 2 tablets in 24 hours',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -494,14 +551,14 @@ class DetailsTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: const EdgeInsets.only(top: 8),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Children under 6 years: Consult a healthcare professional before us',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           height: 1.5,
                           fontSize: 16,
@@ -514,7 +571,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 44.h),
                 Text(
                   'Storage Instructions',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -523,7 +580,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 16.h),
                 Text(
                   'For optimal potency and safety, it is recommended to store this medication in a cool, dry place, away from direct sunlight. Exposure to excessive heat or moisture may compromise the quality of the product.',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -534,7 +591,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Storage Instructions',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -544,7 +601,7 @@ class DetailsTab extends StatelessWidget {
 
                 Text(
                   'For optimal potency and safety, it is recommended to store this medication in a cool, dry place, away from direct sunlight. Exposure to excessive heat or moisture may compromise the quality of the product. Additionally, it is important to keep this medication out of reach of children and pets to prevent accidental ingestion and ensure their safety',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -554,7 +611,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Special Precautions',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -565,14 +622,14 @@ class DetailsTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Do not exceed the recommended dosage.',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -586,14 +643,14 @@ class DetailsTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 10.h),
+                      padding: EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Consult a healthcare professional before use if pregnant, breastfeeding, or taking other medications',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -607,14 +664,14 @@ class DetailsTab extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 10),
+                      padding:EdgeInsets.only(top: 8.h),
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     SizedBox(width: 5),
                     Expanded(
                       child: Text(
                         'Discontinue use and seek medical advice if adverse reactions occur.',
-                        style: GoogleFonts.khula(
+                        style: TextStyle(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -641,7 +698,7 @@ class DetailsTab extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: GoogleFonts.khula(
+            style: TextStyle(
               color: AppColors.textNormal,
               fontSize: 16,
               height: 1.5,
@@ -654,15 +711,12 @@ class DetailsTab extends StatelessWidget {
   }
 }
 
-//Reviews Tab
-
 class ReviewsTab extends StatelessWidget {
-  const ReviewsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return Container(
+      child: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -670,83 +724,11 @@ class ReviewsTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Special Precautions',
-                  style: GoogleFonts.khula(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.textNormal,
-                  ),
-                ),
-                SizedBox(height: 5),
 
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Image.asset('assets/icons/dot_img.png'),
-                    ),
-                    SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        'Do not exceed the recommended dosage.',
-                        style: GoogleFonts.khula(
-                          color: AppColors.textNormal,
-                          fontSize: 16,
-                          height: 1.5,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Image.asset('assets/icons/dot_img.png'),
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        'Consult a healthcare professional before use if pregnant, breastfeeding, or taking other medications',
-                        style: GoogleFonts.khula(
-                          color: AppColors.textNormal,
-                          fontSize: 16,
-                          height: 1.5,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Image.asset('assets/icons/dot_img.png'),
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        'Discontinue use and seek medical advice if adverse reactions occur.',
-                        style: GoogleFonts.khula(
-                          color: AppColors.textNormal,
-                          fontSize: 16,
-                          height: 1.5,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 44),
-                Text(
+                 SizedBox(height: 20.h),
+                const Text(
                   'Review',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -780,7 +762,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Emily johnson',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14.sp,
                                         wordSpacing: 1.5,
@@ -789,7 +771,7 @@ class ReviewsTab extends StatelessWidget {
                                     SizedBox(height: 13.h),
                                     Text(
                                       '1 day ago',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w400,
                                         color: AppColors.textSecondary,
@@ -808,8 +790,8 @@ class ReviewsTab extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
-                                    style: GoogleFonts.khula(
+                                    'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 1,
@@ -818,7 +800,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'More View',
-                                    style: GoogleFonts.khula(
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBtn,
@@ -854,7 +836,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Daniel Anderson',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
                                         wordSpacing: 1.5,
@@ -863,7 +845,7 @@ class ReviewsTab extends StatelessWidget {
                                     SizedBox(height: 13.h),
                                     Text(
                                       '1 day ago',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w400,
                                         color: AppColors.textSecondary,
@@ -881,8 +863,8 @@ class ReviewsTab extends StatelessWidget {
                                 children: [
                                   TextSpan(
                                     text:
-                                        'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
-                                    style: GoogleFonts.khula(
+                                    'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 1,
@@ -891,7 +873,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'More View',
-                                    style: GoogleFonts.khula(
+                                    style: TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBtn,
@@ -911,7 +893,7 @@ class ReviewsTab extends StatelessWidget {
                 //Related Products
                 Text(
                   'Related products',
-                  style: GoogleFonts.khula(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -924,9 +906,30 @@ class ReviewsTab extends StatelessWidget {
                   child: Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(
+
+                          right: 12.w,
+                          bottom: 24.h,
+                        ),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+                          ),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
@@ -941,14 +944,14 @@ class ReviewsTab extends StatelessWidget {
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -957,33 +960,33 @@ class ReviewsTab extends StatelessWidget {
                                 SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5.w,),
+                                    SizedBox(width: 5.w),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -991,7 +994,9 @@ class ReviewsTab extends StatelessWidget {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -1008,97 +1013,32 @@ class ReviewsTab extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
-                          width: 185.w,
-                          height: 298.h,
-                          child: Padding(
-                            padding: EdgeInsets.only(right: 11.w,left: 11.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  'assets/images/health_shop/productsec.png',
-                                  height: 123.h,
-                                  width: 155.w,
-                                ),
-                                Text(
-                                  'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Text(
-                                  'Per Strip',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textDisabled,
-                                  ),
-                                ),
-                                SizedBox(height: 25.h),
-                                Text(
-                                  'Start from',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textDisabled,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      '\$2,00',
-                                      style: GoogleFonts.khula(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                        color: AppColors.textBtn,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5,),
-                                    SizedBox(
-                                      width: 90.w,
-                                      height: 32.h,
-                                      child: ElevatedButton(
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
 
-                                        child: Text(
-                                          'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
-                                        ),
-                                        onPressed: () {},
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: AppColors.btnPrimary,
-                                          elevation: 0.0,
-                                          backgroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
-                                            side: BorderSide(
-                                              color: AppColors.btnPrimary,
-                                              width: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
                             ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
                           ),
-                        ),
-                      ),
-                      Padding(
-                        padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
-                        child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                           width: 185.w,
                           height: 298.h,
                           child: Padding(
-                            padding:  EdgeInsets.only(right: 11.w,left: 11.w),
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top:5.h),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -1109,14 +1049,14 @@ class ReviewsTab extends StatelessWidget {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: GoogleFonts.khula(
+                                  style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -1132,26 +1072,26 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: GoogleFonts.khula(
+                                      style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
                                       ),
                                     ),
-                                    SizedBox(width: 5.w,),
+                                    SizedBox(width: 5),
                                     SizedBox(
                                       width: 90.w,
                                       height: 32.h,
                                       child: ElevatedButton(
-
                                         child: Text(
                                           'Add',
-                                          style: GoogleFonts.khula(fontSize: 16),
+                                          style: TextStyle(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -1159,7 +1099,9 @@ class ReviewsTab extends StatelessWidget {
                                           elevation: 0.0,
                                           backgroundColor: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(24),
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
                                             side: BorderSide(
                                               color: AppColors.btnPrimary,
                                               width: 1,
@@ -1175,7 +1117,111 @@ class ReviewsTab extends StatelessWidget {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 12.w, bottom: 24.h,),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.bgAlert,
 
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              width: 1,
+                              color: AppColors.borderBtn.withOpacity(0.5),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(
+                                  0x0D000000,
+                                ),
+                                offset: Offset(2, 2),
+                                blurRadius: 10,
+                                spreadRadius: 0,
+                              ),
+                            ],
+
+                          ),
+                          width: 185.w,
+                          height: 298.h,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  'assets/images/health_shop/productsec.png',
+                                  height: 123.h,
+                                  width: 155.w,
+                                ),
+                                Text(
+                                  'STRIP NEURODEX 10 TABLET',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                Text(
+                                  'Per Strip',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textDisabled,
+                                  ),
+                                ),
+                                SizedBox(height: 25.h),
+                                Text(
+                                  'Start from',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: AppColors.textDisabled,
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      '\$2,00',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w700,
+                                        color: AppColors.textBtn,
+                                      ),
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    SizedBox(
+                                      width: 90.w,
+                                      height: 32.h,
+                                      child: ElevatedButton(
+                                        child: Text(
+                                          'Add',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          foregroundColor: AppColors.btnPrimary,
+                                          elevation: 0.0,
+                                          backgroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              24,
+                                            ),
+                                            side: BorderSide(
+                                              color: AppColors.btnPrimary,
+                                              width: 1,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/screens/healthshop/descriptionscreen.dart';
+import 'package:medcare/screens/healthshop/descriptionsreen.dart';
 import '../../util/constants/colors.dart';
 import '../../widgets/health shop/scroller.dart';
 import 'cart_screen.dart';
@@ -729,92 +729,97 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                           height: 298.h,
                           child: Padding(
                             padding: EdgeInsets.all(11.w),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  'assets/images/health_shop/Bufectstrip_img.png',
-                                  height: 123.h,
-                                  width: 155.w,
-                                ),
-                                Text(
-                                  'Bufect Strip',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder:
+                                        (context) =>
+                                        DescriptionScreen(),
                                   ),
-                                ),
-                                Text(
-                                  'Per Strip',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textDisabled,
-                                  ),
-                                ),
-                                SizedBox(height: 34.h),
-                                Text(
-                                  'Start from',
-                                  style: GoogleFonts.khula(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: AppColors.textDisabled,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      '\$2,00',
-                                      style: GoogleFonts.khula(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w700,
-                                        color: AppColors.textBtn,
-                                      ),
-                                    ),
-                                    SizedBox(width: 5),
-                                    SizedBox(
-                                      width: 90.w,
-                                      height: 32.h,
-                                      child: ElevatedButton(
-                                        child: Text(
-                                          'Add',
-                                          style: GoogleFonts.khula(
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder:
-                                                  (context) =>
-                                                      DescriptionScreen(),
-                                            ),
-                                          );
-                                        },
+                                );
 
-                                        style: ElevatedButton.styleFrom(
-                                          foregroundColor: AppColors.btnPrimary,
-                                          elevation: 0.0,
-                                          backgroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              24,
+                              },
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Image.asset(
+                                    'assets/images/health_shop/Bufectstrip_img.png',
+                                    height: 123.h,
+                                    width: 155.w,
+                                  ),
+                                  Text(
+                                    'Bufect Strip',
+                                    style: GoogleFonts.khula(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Per Strip',
+                                    style: GoogleFonts.khula(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.textDisabled,
+                                    ),
+                                  ),
+                                  SizedBox(height: 34.h),
+                                  Text(
+                                    'Start from',
+                                    style: GoogleFonts.khula(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.textDisabled,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        '\$2,00',
+                                        style: GoogleFonts.khula(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                          color: AppColors.textBtn,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      SizedBox(
+                                        width: 90.w,
+                                        height: 32.h,
+                                        child: ElevatedButton(
+                                          child: Text(
+                                            'Add',
+                                            style: GoogleFonts.khula(
+                                              fontSize: 16,
                                             ),
-                                            side: BorderSide(
-                                              color: AppColors.btnPrimary,
-                                              width: 1,
+                                          ),
+                                          onPressed: () {
+                                          },
+
+                                          style: ElevatedButton.styleFrom(
+                                            foregroundColor: AppColors.btnPrimary,
+                                            elevation: 0.0,
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(
+                                                24,
+                                              ),
+                                              side: BorderSide(
+                                                color: AppColors.btnPrimary,
+                                                width: 1,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
