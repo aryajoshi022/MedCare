@@ -53,30 +53,30 @@ class HealthShopScreen extends StatelessWidget {
                           prefixIconColor: Color(0xff8F8F8F),
                           prefixIcon: Icon(
                             Icons.search_sharp,
-                            size: 20.sp,
+                            size: 20,
                             color: AppColors.textPrimary,
                           ),
                           // prefixIconConstraints: BoxConstraints(minHeight: 7),
                           hintText: 'Search product or store',
                           hintStyle: GoogleFonts.khula(
-                            letterSpacing: 1.w,
+                            letterSpacing: 1,
                             fontWeight: FontWeight.w400,
-                            fontSize: 14.sp,
+                            fontSize: 14,
                             color: Color(0xff8F8F8F),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0.r),
+                            borderRadius: BorderRadius.circular(12.0),
 
                             borderSide: BorderSide(
                               color: AppColors.borderThirsty,
-                              width: 1.w,
+                              width: 1,
                             ),
                           ),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12.0.r),
+                            borderRadius: BorderRadius.circular(12.0),
                             borderSide: BorderSide(
                               color: AppColors.borderThirsty,
-                              width: 1.w,
+                              width: 1,
                             ),
                           ),
                           filled: true,
@@ -117,11 +117,11 @@ class HealthShopScreen extends StatelessWidget {
 
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                              6.r,
+                              6,
                             ), // Rounded corners
                             side: BorderSide(
                               color: AppColors.borderBtn,
-                              width: 1.w,
+                              width: 1,
 
                             )
                             , // Border color
@@ -144,8 +144,8 @@ class HealthShopScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 40.h,
-                      width: 170.w,
+                      height: 40,
+                      width: 170,
                       child: Padding(
                         padding:  EdgeInsets.only(right: 12.w),
                         child: ElevatedButton(
@@ -155,11 +155,11 @@ class HealthShopScreen extends StatelessWidget {
                             backgroundColor: Colors.white, // Text color
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                6.r,
+                                6,
                               ), // Rounded corners
                               side: BorderSide(
                                 color: AppColors.borderBtn,
-                                width: 1.w,
+                                width: 1,
                               ), // Border color
                             ),
                             elevation: 0.0,
@@ -169,12 +169,12 @@ class HealthShopScreen extends StatelessWidget {
                           },
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                              vertical: 12.0.h,
+                              vertical: 12.0,
                             ),
                             child: Text(
                               'Sexual Health',
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
+                              style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: AppColors.borderDisabled),
                             ),
                           ),
                         ),
@@ -206,7 +206,7 @@ class HealthShopScreen extends StatelessWidget {
                             Text(
                               'Official store',
                               style: TextStyle(
-                                fontSize: 16.sp,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -216,7 +216,7 @@ class HealthShopScreen extends StatelessWidget {
                               child: Text(
                                 'see all',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.bgPrimary,
                                 ),
@@ -230,7 +230,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'Special offers from various renowned brands',
                         style: TextStyle(
-                          fontSize: 14.sp,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -247,10 +247,10 @@ class HealthShopScreen extends StatelessWidget {
                                 border: Border.fromBorderSide(
                                   BorderSide(
                                     color: AppColors.textDisabled,
-                                    width: 20.w,
+                                    width: 20,
                                   ),
                                 ),
-                                borderRadius: BorderRadius.circular(12.r),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                               child: Image.asset(
                                 'assets/images/health_shop/brand.png',
@@ -265,17 +265,17 @@ class HealthShopScreen extends StatelessWidget {
                                 border: Border.fromBorderSide(
                                   BorderSide(
                                     color: AppColors.textDisabled,
-                                    width: 20.w,
+                                    width: 20,
                                   ),
                                 ),
-                                borderRadius: BorderRadius.circular(12.r),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                               child: Image.asset(
                                 'assets/images/health_shop/brandsec.png',
                                 fit: BoxFit.fill,
                               ),
                             ),
-                            SizedBox(width: 12.w),
+                            SizedBox(width: 12),
                             Container(
                               height: 140.h,
                               width: 140.w,
@@ -283,10 +283,10 @@ class HealthShopScreen extends StatelessWidget {
                                 border: Border.fromBorderSide(
                                   BorderSide(
                                     color: AppColors.textDisabled,
-                                    width: 20.w,
+                                    width: 20,
                                   ),
                                 ),
-                                borderRadius: BorderRadius.circular(12.r),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                               child: Image.asset(
                                 'assets/images/health_shop/brandthird.png',
@@ -312,7 +312,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'Hot Sales',
                         style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -320,7 +320,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'see all',
                         style: TextStyle(
-                          fontSize: 14.sp,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.bgPrimary,
                         ),
@@ -340,7 +340,7 @@ class HealthShopScreen extends StatelessWidget {
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
-                          padding: EdgeInsets.all(11.w),
+                          padding: EdgeInsets.all(11),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -352,14 +352,14 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Promag 10 Tablets',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -368,7 +368,7 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Start from',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -380,7 +380,7 @@ class HealthShopScreen extends StatelessWidget {
                                   Text(
                                     '\$2,00',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
                                     ),
@@ -393,7 +393,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -401,10 +401,10 @@ class HealthShopScreen extends StatelessWidget {
                                         elevation: 0.0,
                                         backgroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24.r),
+                                          borderRadius: BorderRadius.circular(24),
                                           side: BorderSide(
                                             color: AppColors.btnPrimary,
-                                            width: 1.w,
+                                            width: 1,
                                           ),
                                         ),
                                       ),
@@ -436,14 +436,14 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -452,7 +452,7 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Start from',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -464,12 +464,12 @@ class HealthShopScreen extends StatelessWidget {
                                   Text(
                                     '\$2,00',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5.w),
+                                  SizedBox(width: 5,),
                                   SizedBox(
                                     width: 90.w,
                                     height: 32.h,
@@ -477,7 +477,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -485,10 +485,10 @@ class HealthShopScreen extends StatelessWidget {
                                         elevation: 0.0,
                                         backgroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24.r),
+                                          borderRadius: BorderRadius.circular(24),
                                           side: BorderSide(
                                             color: AppColors.btnPrimary,
-                                            width: 1.w,
+                                            width: 1,
                                           ),
                                         ),
                                       ),
@@ -504,7 +504,7 @@ class HealthShopScreen extends StatelessWidget {
                     Padding(
                       padding:  EdgeInsets.only(right: 12.w,bottom: 24.h),
                       child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r),border: Border.all(width: 1.w,color: AppColors.borderBtn.withOpacity(0.5))),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
@@ -520,14 +520,14 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -536,7 +536,7 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Start from',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -548,7 +548,7 @@ class HealthShopScreen extends StatelessWidget {
                                   Text(
                                     '\$2,00',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
                                     ),
@@ -561,7 +561,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -569,10 +569,10 @@ class HealthShopScreen extends StatelessWidget {
                                         elevation: 0.0,
                                         backgroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24.r),
+                                          borderRadius: BorderRadius.circular(24),
                                           side: BorderSide(
                                             color: AppColors.btnPrimary,
-                                            width: 1.w,
+                                            width: 1,
                                           ),
                                         ),
                                       ),
@@ -601,7 +601,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'Recently Viewed',
                         style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -609,7 +609,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'see all',
                         style: TextStyle(
-                          fontSize: 14.sp,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: AppColors.bgPrimary,
                         ),
@@ -625,7 +625,7 @@ class HealthShopScreen extends StatelessWidget {
                     Padding(
                       padding:  EdgeInsets.only(left: 24.w,right: 12.w,bottom: 24.h),
                       child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r),border: Border.all(width: 1.w,color: AppColors.borderBtn.withOpacity(0.5))),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
                         width: 185.w,
                         height: 298.h,
                         child: Padding(
@@ -641,14 +641,14 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Promag 10 Tablets',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -657,7 +657,7 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Start from',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -669,12 +669,12 @@ class HealthShopScreen extends StatelessWidget {
                                   Text(
                                     '\$2,00',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5.w),
+                                  SizedBox(width: 5,),
                                   SizedBox(
                                     width: 90.w,
                                     height: 32.h,
@@ -682,91 +682,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16.w),
-                                      ),
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        foregroundColor: AppColors.btnPrimary,
-                                        elevation: 0.0,
-                                        backgroundColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24.r),
-                                          side: BorderSide(
-                                            color: AppColors.btnPrimary,
-                                            width: 1.w,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
-                      child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
-                        width: 185.w,
-                        height: 298.h,
-                        child: Padding(
-                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                'assets/images/health_shop/productsec.png',
-                                height: 123.h,
-                                width: 155.w,
-                              ),
-                              Text(
-                                'STRIP NEURODEX 10 TABLET',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Text(
-                                'Per Strip',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.textDisabled,
-                                ),
-                              ),
-                              SizedBox(height: 25.h),
-                              Text(
-                                'Start from',
-                                style: TextStyle(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColors.textDisabled,
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    '\$2,00',
-                                    style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColors.textBtn,
-                                    ),
-                                  ),
-                                  SizedBox(width: 5.w),
-                                  SizedBox(
-                                    width: 90.w,
-                                    height: 32.h,
-                                    child: ElevatedButton(
-
-                                      child: Text(
-                                        'Add',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -809,14 +725,14 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'STRIP NEURODEX 10 TABLET',
                                 style: TextStyle(
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
                                 'Per Strip',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -825,7 +741,7 @@ class HealthShopScreen extends StatelessWidget {
                               Text(
                                 'Start from',
                                 style: TextStyle(
-                                  fontSize: 12.sp,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
@@ -837,12 +753,12 @@ class HealthShopScreen extends StatelessWidget {
                                   Text(
                                     '\$2,00',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w700,
                                       color: AppColors.textBtn,
                                     ),
                                   ),
-                                  SizedBox(width: 5.w),
+                                  SizedBox(width: 5,),
                                   SizedBox(
                                     width: 90.w,
                                     height: 32.h,
@@ -850,7 +766,7 @@ class HealthShopScreen extends StatelessWidget {
 
                                       child: Text(
                                         'Add',
-                                        style: TextStyle(fontSize: 16.sp),
+                                        style: TextStyle(fontSize: 16),
                                       ),
                                       onPressed: () {},
                                       style: ElevatedButton.styleFrom(
@@ -858,10 +774,94 @@ class HealthShopScreen extends StatelessWidget {
                                         elevation: 0.0,
                                         backgroundColor: Colors.white,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(24.r),
+                                          borderRadius: BorderRadius.circular(24),
                                           side: BorderSide(
                                             color: AppColors.btnPrimary,
-                                            width: 1.w,
+                                            width: 1,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 12.w,bottom: 24.h),
+                      child: Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),border: Border.all(width: 1,color: AppColors.borderBtn.withOpacity(0.5))),
+                        width: 185.w,
+                        height: 298.h,
+                        child: Padding(
+                          padding:  EdgeInsets.only(right: 11.w,left: 11.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/health_shop/productsec.png',
+                                height: 123.h,
+                                width: 155.w,
+                              ),
+                              Text(
+                                'STRIP NEURODEX 10 TABLET',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Text(
+                                'Per Strip',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              SizedBox(height: 25.h),
+                              Text(
+                                'Start from',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textDisabled,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '\$2,00',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.textBtn,
+                                    ),
+                                  ),
+                                  SizedBox(width: 5,),
+                                  SizedBox(
+                                    width: 90.w,
+                                    height: 32.h,
+                                    child: ElevatedButton(
+
+                                      child: Text(
+                                        'Add',
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor: AppColors.btnPrimary,
+                                        elevation: 0.0,
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(24),
+                                          side: BorderSide(
+                                            color: AppColors.btnPrimary,
+                                            width: 1,
                                           ),
                                         ),
                                       ),
@@ -889,7 +889,7 @@ class HealthShopScreen extends StatelessWidget {
                       Text(
                         'Layanan Kesehatan',
                         style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -970,17 +970,17 @@ class CustomButton extends StatelessWidget {
             foregroundColor: Colors.black,
             backgroundColor: Colors.white, // Text color
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6.r), // Rounded corners
+              borderRadius: BorderRadius.circular(6), // Rounded corners
               side: BorderSide(
                 color: AppColors.borderBtn,
-                width: 1.w,
+                width: 1,
               ), // Border color
             ),
             elevation: 0.0,
           ),
           onPressed: () {},
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0.h),
+            padding: EdgeInsets.symmetric(vertical: 12.0,),
             child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14,color: AppColors.borderDisabled,fontWeight: FontWeight.w400)),
           ),
         ),
@@ -998,8 +998,8 @@ class CustomButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 40.h,
-        width: 210.w,
+        height: 40,
+        width: 210,
 
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -1009,7 +1009,7 @@ class CustomButton2 extends StatelessWidget {
               borderRadius: BorderRadius.circular(6), // Rounded corners
               side: BorderSide(
                 color: AppColors.borderBtn,
-                width: 1.w,
+                width: 1,
               ), // Border color
             ),
             elevation: 0.0,
@@ -1021,8 +1021,8 @@ class CustomButton2 extends StatelessWidget {
             );
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 12.0.h ),
-            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
+            padding: EdgeInsets.symmetric(vertical: 12.0, ),
+            child: Text(text,textAlign: TextAlign.center, style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: AppColors.borderDisabled)),
           ),
         ),
       ),
