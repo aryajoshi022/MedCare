@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/colors.dart';
 import 'custom_themes/appbar_theme.dart';
@@ -17,7 +19,7 @@ class AppTheme {
     buttonTheme: AppButtonTheme.lightButtonTheme,
     inputDecorationTheme: InputTheme.lightInputTheme,
     scaffoldBackgroundColor: AppColors.bgAlert,
-    fontFamily: 'Khula',
+    fontFamily: GoogleFonts.khula().fontFamily,
 
 
 
