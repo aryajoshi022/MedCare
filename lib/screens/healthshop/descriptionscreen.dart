@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/healthshop/cart_screen.dart';
 import 'package:medcare/util/constants/colors.dart';
 import 'package:medcare/screens/healthshop/cart_with_notif.dart';
@@ -47,15 +48,15 @@ class DescriptionScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Flexible(
-                              child: const Text('Bufect Strip of 4 Tablets -Heat and Pain Relief Medicine'
-                              , style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+                              child: Text('Bufect Strip of 4 Tablets -Heat and Pain Relief Medicine'
+                              , style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w600)),
                             ),
-                            const Text('Per Strip', style: TextStyle(color: Colors.black54)),
+                            Text('Per Strip', style: GoogleFonts.khula(color: Colors.black54)),
                             const SizedBox(height: 8),
                             Row(
                               children: [
-                                const Text('Start form :', style: TextStyle(fontWeight: FontWeight.w400, color: AppColors.borderDisabled)),
-                                const Text('\$2.00', style: TextStyle(fontWeight: FontWeight.w700, color: AppColors.bgPrimary)),
+                                Text('Start form :', style: GoogleFonts.khula(fontWeight: FontWeight.w400, color: AppColors.borderDisabled)),
+                                Text('\$2.00', style: GoogleFonts.khula(fontWeight: FontWeight.w700, color: AppColors.bgPrimary)),
 
                               ],
                             ),
@@ -80,7 +81,7 @@ class DescriptionScreen extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                                  child: Text(quantity.toString(), style: const TextStyle(fontSize: 16)),
+                                  child: Text(quantity.toString(), style: GoogleFonts.khula(fontSize: 16)),
                                 ),
                                 GestureDetector(
                                   onTap: () => setState(() => quantity++),
@@ -119,7 +120,7 @@ class DescriptionScreen extends StatelessWidget {
                     minimumSize: const Size(double.infinity, 50),
                     backgroundColor: AppColors.bgPrimary,
                   ),
-                  child: const Text('Add to Cart', style: TextStyle(fontSize: 16, color: AppColors.textWhite)),
+                  child: Text('Add to Cart', style: GoogleFonts.khula(fontSize: 16, color: AppColors.textWhite)),
                 ),
               ],
             ),
@@ -145,7 +146,7 @@ class DescriptionScreen extends StatelessWidget {
           ),
           title: Text(
             'Bufect Strip of 4 Tablets -Heat \nand Pain Relief Medicine',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+            style: GoogleFonts.khula(fontSize: 16, fontWeight: FontWeight.w700),
           ),
           actions: [
             Padding(
@@ -188,7 +189,7 @@ class DescriptionScreen extends StatelessWidget {
             width: 380.w,
             height: 51.h,
             child: ElevatedButton(
-              child: Text('Add to cart', style: TextStyle(fontSize: 16.sp)),
+              child: Text('Add to cart', style: GoogleFonts.khula(fontSize: 16.sp)),
               onPressed: () {
                 showBottomSheet(context);
               },
@@ -234,7 +235,7 @@ class DescriptionTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Bufect Strip of 4 Tablets -Heat and Pain Relief Medicine',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textNormal,
@@ -242,7 +243,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   'Per Stripe',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
@@ -250,7 +251,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   'Start from',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textDisabled,
@@ -258,7 +259,7 @@ class DescriptionTab extends StatelessWidget {
                 ),
                 Text(
                   '\$2,00',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     color: AppColors.textBtn,
@@ -269,7 +270,7 @@ class DescriptionTab extends StatelessWidget {
                 //Product description
                 Text(
                   'Product Description',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -279,7 +280,7 @@ class DescriptionTab extends StatelessWidget {
 
                 Text(
                   'Bufect is a reliable and effective medication presented in a convenient strip containing four tablets. Each tablet is meticulously formulated to provide targeted relief from various ailments. With its user-friendly packaging and easy-to-carry design, Bufect ensures quick access to relief whenever and wherever needed. Trust Bufect for fast-acting and dependable relief from discomfort.',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     color: AppColors.textSecondary,
@@ -290,7 +291,7 @@ class DescriptionTab extends StatelessWidget {
                 //Benefits
                 Text(
                   'Benefits',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -309,7 +310,7 @@ class DescriptionTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Provides fast and effective relief from pain and discomfort',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -330,7 +331,7 @@ class DescriptionTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Suitable for a wide range of ailments, including headaches, muscle aches, fever, and menstrual cramps',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -351,7 +352,7 @@ class DescriptionTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Each tablet is individually sealed for freshness and potency.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -365,7 +366,7 @@ class DescriptionTab extends StatelessWidget {
 
                 Text(
                   'Composition',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -393,7 +394,7 @@ class DescriptionTab extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: TextStyle(
+            style: GoogleFonts.khula(
               color: AppColors.textNormal,
               fontSize: 16,
               height: 1.5,
@@ -422,7 +423,7 @@ class DetailsTab extends StatelessWidget {
               children: [
                 Text(
                   'Composition',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -438,7 +439,7 @@ class DetailsTab extends StatelessWidget {
 
                 Text(
                   'Dosage',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -458,7 +459,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Adults: Take 1 tablet every 4 to 6 hours as needed. Do not exceed 4 tablets in 24 hours.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16.sp,
                           height: 1.5,
@@ -479,7 +480,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Children (ages 6-12): Take half a tablet every 4 to 6 hours as needed. Do not exceed 2 tablets in 24 hours',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -500,7 +501,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Children under 6 years: Consult a healthcare professional before us',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           height: 1.5,
                           fontSize: 16,
@@ -513,7 +514,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 44.h),
                 Text(
                   'Storage Instructions',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -522,7 +523,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 16.h),
                 Text(
                   'For optimal potency and safety, it is recommended to store this medication in a cool, dry place, away from direct sunlight. Exposure to excessive heat or moisture may compromise the quality of the product.',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -533,7 +534,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Storage Instructions',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -543,7 +544,7 @@ class DetailsTab extends StatelessWidget {
 
                 Text(
                   'For optimal potency and safety, it is recommended to store this medication in a cool, dry place, away from direct sunlight. Exposure to excessive heat or moisture may compromise the quality of the product. Additionally, it is important to keep this medication out of reach of children and pets to prevent accidental ingestion and ensure their safety',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     height: 1.5,
                     fontWeight: FontWeight.w400,
@@ -553,7 +554,7 @@ class DetailsTab extends StatelessWidget {
                 SizedBox(height: 32.h),
                 Text(
                   'Special Precautions',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -571,7 +572,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Do not exceed the recommended dosage.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -592,7 +593,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Consult a healthcare professional before use if pregnant, breastfeeding, or taking other medications',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -613,7 +614,7 @@ class DetailsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Discontinue use and seek medical advice if adverse reactions occur.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -640,7 +641,7 @@ class DetailsTab extends StatelessWidget {
         Expanded(
           child: Text(
             text,
-            style: TextStyle(
+            style: GoogleFonts.khula(
               color: AppColors.textNormal,
               fontSize: 16,
               height: 1.5,
@@ -669,9 +670,9 @@ class ReviewsTab extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Special Precautions',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -690,7 +691,7 @@ class ReviewsTab extends StatelessWidget {
                     Expanded(
                       child: Text(
                         'Do not exceed the recommended dosage.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -708,10 +709,10 @@ class ReviewsTab extends StatelessWidget {
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     const SizedBox(width: 5),
-                    const Expanded(
+                    Expanded(
                       child: Text(
                         'Consult a healthcare professional before use if pregnant, breastfeeding, or taking other medications',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -729,10 +730,10 @@ class ReviewsTab extends StatelessWidget {
                       child: Image.asset('assets/icons/dot_img.png'),
                     ),
                     const SizedBox(width: 5),
-                    const Expanded(
+                    Expanded(
                       child: Text(
                         'Discontinue use and seek medical advice if adverse reactions occur.',
-                        style: TextStyle(
+                        style: GoogleFonts.khula(
                           color: AppColors.textNormal,
                           fontSize: 16,
                           height: 1.5,
@@ -743,9 +744,9 @@ class ReviewsTab extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 44),
-                const Text(
+                Text(
                   'Review',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -779,7 +780,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Emily johnson',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14.sp,
                                         wordSpacing: 1.5,
@@ -788,7 +789,7 @@ class ReviewsTab extends StatelessWidget {
                                     SizedBox(height: 13.h),
                                     Text(
                                       '1 day ago',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w400,
                                         color: AppColors.textSecondary,
@@ -808,7 +809,7 @@ class ReviewsTab extends StatelessWidget {
                                   TextSpan(
                                     text:
                                         'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 1,
@@ -817,7 +818,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'More View',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBtn,
@@ -853,7 +854,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Daniel Anderson',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 14,
                                         wordSpacing: 1.5,
@@ -862,7 +863,7 @@ class ReviewsTab extends StatelessWidget {
                                     SizedBox(height: 13.h),
                                     Text(
                                       '1 day ago',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w400,
                                         color: AppColors.textSecondary,
@@ -881,7 +882,7 @@ class ReviewsTab extends StatelessWidget {
                                   TextSpan(
                                     text:
                                         'My consultation with Dr. Luca Rossi \nwas excellent. He`s knowledgeable, \nattentive, and provid...',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
                                       letterSpacing: 1,
@@ -890,7 +891,7 @@ class ReviewsTab extends StatelessWidget {
                                   ),
                                   TextSpan(
                                     text: 'More View',
-                                    style: TextStyle(
+                                    style: GoogleFonts.khula(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.textBtn,
@@ -910,7 +911,7 @@ class ReviewsTab extends StatelessWidget {
                 //Related Products
                 Text(
                   'Related products',
-                  style: TextStyle(
+                  style: GoogleFonts.khula(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: AppColors.textNormal,
@@ -940,14 +941,14 @@ class ReviewsTab extends StatelessWidget {
                                 ),
                                 Text(
                                   'Promag 10 Tablets',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -956,7 +957,7 @@ class ReviewsTab extends StatelessWidget {
                                 SizedBox(height: 34.h),
                                 Text(
                                   'Start from',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -968,7 +969,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
@@ -982,7 +983,7 @@ class ReviewsTab extends StatelessWidget {
 
                                         child: Text(
                                           'Add',
-                                          style: TextStyle(fontSize: 16),
+                                          style: GoogleFonts.khula(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -1024,14 +1025,14 @@ class ReviewsTab extends StatelessWidget {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -1040,7 +1041,7 @@ class ReviewsTab extends StatelessWidget {
                                 SizedBox(height: 25.h),
                                 Text(
                                   'Start from',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -1052,7 +1053,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
@@ -1066,7 +1067,7 @@ class ReviewsTab extends StatelessWidget {
 
                                         child: Text(
                                           'Add',
-                                          style: TextStyle(fontSize: 16),
+                                          style: GoogleFonts.khula(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
@@ -1108,14 +1109,14 @@ class ReviewsTab extends StatelessWidget {
                                 ),
                                 Text(
                                   'STRIP NEURODEX 10 TABLET',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
                                   'Per Strip',
-                                  style: TextStyle(
+                                  style: GoogleFonts.khula(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w400,
                                     color: AppColors.textDisabled,
@@ -1136,7 +1137,7 @@ class ReviewsTab extends StatelessWidget {
                                   children: [
                                     Text(
                                       '\$2,00',
-                                      style: TextStyle(
+                                      style: GoogleFonts.khula(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w700,
                                         color: AppColors.textBtn,
@@ -1150,7 +1151,7 @@ class ReviewsTab extends StatelessWidget {
 
                                         child: Text(
                                           'Add',
-                                          style: TextStyle(fontSize: 16),
+                                          style: GoogleFonts.khula(fontSize: 16),
                                         ),
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
