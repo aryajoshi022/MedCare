@@ -732,7 +732,7 @@ class _SignScreenState extends State<SignScreen> {
       ),
       bottomNavigationBar: Container(
         color: AppColors.bgAlert,
-        padding: EdgeInsets.only(top: 14.h, bottom: MediaQuery.of(context).padding.bottom +70.h),
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom +70.h),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
