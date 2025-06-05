@@ -154,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 118.h + MediaQuery.of(context).padding.bottom,
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -292,7 +292,7 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 118.h + MediaQuery.of(context).padding.bottom,
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
         child: Column(
           mainAxisSize: MainAxisSize.min,
