@@ -67,7 +67,9 @@ class _CartScreenState extends State<CartScreen> {
           backgroundColor: AppColors.bgAlert,
           leading: IconButton(
             icon: Icon(Icons.chevron_left, color: AppColors.textSecondary),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           title: Text(
             'Cart',

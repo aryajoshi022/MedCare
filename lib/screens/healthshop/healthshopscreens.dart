@@ -361,10 +361,10 @@ class HealthShopScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: EdgeInsets.all(11),
+                          padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -387,8 +387,7 @@ class HealthShopScreen extends StatelessWidget {
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textDisabled,
                                 ),
-                              ),
-                              SizedBox(height: 34.h),
+                              ),Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -466,10 +465,10 @@ class HealthShopScreen extends StatelessWidget {
                           ],
 
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top:5.h),
+                          padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -493,7 +492,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25.h),
+                              Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -571,10 +570,10 @@ class HealthShopScreen extends StatelessWidget {
                           ],
 
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
+                          padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -598,7 +597,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25.h),
+                              Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -721,10 +720,10 @@ class HealthShopScreen extends StatelessWidget {
                           ],
 
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: const EdgeInsets.all(11),
+                          padding:  EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -748,7 +747,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 34.h),
+                              Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -826,10 +825,10 @@ class HealthShopScreen extends StatelessWidget {
                           ],
 
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
+                          padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -853,7 +852,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25.h),
+                              Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
@@ -931,10 +930,10 @@ class HealthShopScreen extends StatelessWidget {
                           ],
 
                         ),
-                        width: 185.w,
-                        height: 298.h,
+                        width: 178.w,
+                        height: 265.h,
                         child: Padding(
-                          padding: EdgeInsets.only(right: 11.w, left: 11.w,top: 5.h),
+                          padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -958,7 +957,7 @@ class HealthShopScreen extends StatelessWidget {
                                   color: AppColors.textDisabled,
                                 ),
                               ),
-                              SizedBox(height: 25.h),
+                              Spacer(),
                               Text(
                                 'Start from',
                                 style: TextStyle(
