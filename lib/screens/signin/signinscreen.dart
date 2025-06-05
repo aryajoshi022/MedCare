@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
         leading:Padding(
-          padding: EdgeInsets.all(20.w),
+          padding: EdgeInsets.all(10.w),
           child: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -91,7 +91,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h,top: 32.h),
+          padding:  EdgeInsets.only(left: 28.w,right: 28.w,bottom: 75.h,top: 22.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -154,7 +154,7 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 118.h + MediaQuery.of(context).padding.bottom,
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -292,7 +292,7 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
       bottomNavigationBar: Container(
-        height: 118.h + MediaQuery.of(context).padding.bottom,
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
         child: Column(
           mainAxisSize: MainAxisSize.min,

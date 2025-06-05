@@ -233,36 +233,6 @@ class _SignScreenState extends State<SignScreen> {
               ],
             ),
 
-            SizedBox(
-              height: 40.h,
-            ),
-            SizedBox(
-              height: 51.h,
-              width: 372.w,
-
-              child: Padding(
-                padding:  EdgeInsets.only(
-                  right: 10.w,
-                  left: 10.w,
-                ),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => _signInotp()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: AppColors.btnPrimary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.r),
-                    ),
-                  ),
-                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700,color: AppColors.textWhite)),
-                ),
-              ),
-            ),
 
           ],
         ),
@@ -394,36 +364,6 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-            SizedBox(
-              height: 51.h,
-              width: 372.w,
-
-              child: Padding(
-                padding:  EdgeInsets.only(
-                  right: 10.w,
-                  left: 10.w,
-                ),
-                child: ElevatedButton(
-                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => _signupotp()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: AppColors.btnPrimary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.r),
-                    ),
-                  ),
-                ),
-              ),
             ),
 
           ],
@@ -745,7 +685,7 @@ class _SignScreenState extends State<SignScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.bgAlert,
         leading:Padding(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.w),
           child: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -786,36 +726,73 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ),
-              Center(
-                child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'Already have an account? ',
-                      style: GoogleFonts.khula(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-
-                      GestureDetector(
-                        onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
-
-                        child: Text(
-                        'Click here to log in',
-                        style: GoogleFonts.khula(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.btnPrimary,
-                        ),),
-                      ),
-
-                  ],
-                ),
-              ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: AppColors.bgAlert,
+        padding: EdgeInsets.only(top: 14.h, bottom: MediaQuery.of(context).padding.bottom +70.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 51.h,
+              width: 372.w,
+
+              child: Padding(
+                padding:  EdgeInsets.only(
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => _signupotp()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16.h),
+            Center(
+              child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Already have an account? ',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
+
+                    child: Text(
+                      'Click here to log in',
+                      style: GoogleFonts.khula(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.btnPrimary,
+                      ),),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
