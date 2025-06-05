@@ -71,7 +71,7 @@ class _DrugDetailsState extends State<DrugDetails> {
         padding: EdgeInsets.only(
             left: 28.w,
             right: 28.w,
-            bottom: 40.w,
+            bottom: 40.w + MediaQuery.of(context).padding.bottom,
             top: 24.h
         ),
         child: Expanded(

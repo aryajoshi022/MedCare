@@ -50,7 +50,7 @@ class _HospitalMaps extends State<HospitalMaps> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(top: 60.h),
+        padding: EdgeInsets.only(top: 60.h,bottom: MediaQuery.of(context).padding.bottom),
         child: Container(
           child: Stack(
             children: [
@@ -142,6 +142,7 @@ class _HospitalMaps extends State<HospitalMaps> {
 
   Widget _buildHospitalList() {
     return ListView.builder(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
       scrollDirection: Axis.vertical,
       physics: NeverScrollableScrollPhysics(), // because inside SingleChildScrollView
       shrinkWrap: true,

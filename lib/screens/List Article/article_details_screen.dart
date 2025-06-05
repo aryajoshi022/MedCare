@@ -41,7 +41,7 @@ class _ArticleDetailsScreen extends State<ArticleDetailsScreen> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h),
+          padding: EdgeInsets.only(left: 28.w,right: 28.w,bottom: 60.h + MediaQuery.of(context).padding.bottom),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

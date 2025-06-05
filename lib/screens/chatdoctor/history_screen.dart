@@ -693,7 +693,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       builder: (ctx) => StatefulBuilder(
         builder: (context, setModalState) => Padding(
           padding: EdgeInsets.only(
-            bottom: MediaQuery.of(ctx).viewInsets.bottom,
+            bottom: MediaQuery.of(ctx).viewInsets.bottom + MediaQuery.of(context).padding.bottom,
           ),
           child: SingleChildScrollView(
             padding: EdgeInsets.only(
@@ -888,7 +888,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           builder: (context, setModalState){
             return Padding(
               padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom + 36.h,
+                bottom: MediaQuery.of(context).viewInsets.bottom + 36.h + MediaQuery.of(context).padding.bottom,
                 top: 16.h,
                 left: 24.w,
                 right: 24.w,
@@ -1052,7 +1052,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           builder: (context, setModalState) {
             return Padding(
               padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom + 36.h,
+                bottom: MediaQuery.of(context).viewInsets.bottom + 36.h + MediaQuery.of(context).padding.bottom,
                 top: 16.h,
                 left: 24.w,
                 right: 24.w,
