@@ -364,9 +364,9 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
-                          left: 20.w,
+                          left: 28.w,
                           right: 16.w,
-                          bottom: 24.h,
+                          bottom: 16.h,
                         ),
                         child: Container(
                           decoration: BoxDecoration(
@@ -389,10 +389,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.all(11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -416,7 +416,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 34.h),
+                                Spacer(),
                                 Text(
                                   'Start from',
                                   style: GoogleFonts.khula(
@@ -477,9 +477,9 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          left: 20.w,
+                          left: 28.w,
                           right: 16.w,
-                          bottom: 24.h,
+                          bottom: 16.h,
                         ),
                         child: Container(
 
@@ -503,10 +503,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -530,7 +530,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25.h),
+                                Spacer(),
                                 Text(
                                   'Start from',
                                   style: GoogleFonts.khula(
@@ -589,9 +589,9 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          left: 20.w,
+                          left: 28.w,
                           right: 16.w,
-                          bottom: 24.h,
+                          bottom: 16.h,
                         ),
                         child: Container(
                           decoration: BoxDecoration(
@@ -615,10 +615,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                           ),
 
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -642,7 +642,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 44.h),
+                                Spacer(),
                                 Text(
                                   'Start from',
                                   style: GoogleFonts.khula(
@@ -704,7 +704,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                   Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(right: 20.w, bottom: 24.w),
+                        padding: EdgeInsets.only(right: 28.w, bottom: 16.w),
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.bgAlert,
@@ -725,10 +725,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.all(11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
@@ -764,7 +764,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                       color: AppColors.textDisabled,
                                     ),
                                   ),
-                                  SizedBox(height: 34.h),
+                                  Spacer(),
                                   Text(
                                     'Start from',
                                     style: GoogleFonts.khula(
@@ -825,7 +825,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 20.w, bottom: 24.w),
+                        padding: EdgeInsets.only(right: 28.w, bottom: 16.w),
 
                         child: Container(
                           decoration: BoxDecoration(
@@ -848,10 +848,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -875,7 +875,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25.h),
+                                Spacer(),
                                 Text(
                                   'Start from',
                                   style: GoogleFonts.khula(
@@ -933,7 +933,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(right: 20.w, bottom: 24.w),
+                        padding: EdgeInsets.only(right: 28.w, bottom: 16.w),
                         child: Container(
 
                           decoration: BoxDecoration(
@@ -955,10 +955,10 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 185.w,
-                          height: 298.h,
+                          width: 178.w,
+                          height: 265.h,
                           child: Padding(
-                            padding: EdgeInsets.only(right: 11.w, left: 11.w),
+                            padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -982,7 +982,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                                     color: AppColors.textDisabled,
                                   ),
                                 ),
-                                SizedBox(height: 25.h),
+                                Spacer(),
                                 Text(
                                   'Start from',
                                   style: GoogleFonts.khula(
