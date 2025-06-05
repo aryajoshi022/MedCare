@@ -84,12 +84,12 @@ class _SignScreenState extends State<SignScreen> {
               child: Container(
                 decoration:
                 BoxDecoration(
-
                   border: Border.all(color: AppColors.borderThirsty), // Black border
                   borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DropdownButton<String>(
                       value: selectedCode,
@@ -120,10 +120,9 @@ class _SignScreenState extends State<SignScreen> {
                           controller: _controller,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
-                            hintText: 'Enter phone number',
-                            hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                            border: InputBorder.none,
+                              hintText: 'Enter phone number',maintainHintHeight: true,
+                              hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                              border: InputBorder.none,isDense: true
                           ),
                         ),
                       ),
@@ -144,8 +143,12 @@ class _SignScreenState extends State<SignScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                 ),
               ),
             ),
@@ -169,8 +172,14 @@ class _SignScreenState extends State<SignScreen> {
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
                     contentPadding: EdgeInsets.only(left: 10.w),
-                    border: OutlineInputBorder()),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                ),
               ),
             ),
             SizedBox(height: 26.h),
@@ -185,7 +194,12 @@ class _SignScreenState extends State<SignScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                 ),
               ),
             ),
@@ -194,7 +208,8 @@ class _SignScreenState extends State<SignScreen> {
                 SizedBox(height: 24,
                   width: 24,
                   child: Checkbox(
-
+                    activeColor: AppColors.bgPrimary,
+                    checkColor: AppColors.bgAlert,
                     tristate: true, // Example with tristate
                     side: BorderSide(color: AppColors.borderSecondary),
                     value: value,
@@ -273,8 +288,12 @@ class _SignScreenState extends State<SignScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                 ),
               ),
             ),
@@ -290,8 +309,12 @@ class _SignScreenState extends State<SignScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                 ),
               ),
             ),
@@ -315,6 +338,9 @@ class _SignScreenState extends State<SignScreen> {
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
                     contentPadding: EdgeInsets.only(left: 10.w),
                     border: OutlineInputBorder()),
               ),
@@ -331,7 +357,12 @@ class _SignScreenState extends State<SignScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
                 ),
               ),
             ),
@@ -340,6 +371,8 @@ class _SignScreenState extends State<SignScreen> {
                 SizedBox(height: 24.h,
                   width: 24.w,
                   child: Checkbox(
+                    checkColor: AppColors.bgAlert,
+                    activeColor: AppColors.bgPrimary,
                     tristate: true, // Example with tristate
                     side: BorderSide(color: AppColors.borderSecondary),
                     value: value,
