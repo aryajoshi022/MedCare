@@ -725,7 +725,7 @@ class ReviewsTab extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                 SizedBox(height: 20.h),
+                 SizedBox(height: 8.h),
                 const Text(
                   'Review',
                   style: TextStyle(
