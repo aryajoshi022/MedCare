@@ -133,8 +133,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                 ),
-
-                border: OutlineInputBorder(),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
               ),
             ),
           ),
@@ -146,7 +150,8 @@ class _SignInScreenState extends State<SignInScreen> {
               color: AppColors.textBtn,
               fontWeight: FontWeight.w400,
             ),
-          ),Spacer(),
+          ),
+          Spacer(),
           SizedBox(
             height: 91.h,
             width: 372.w,
@@ -222,12 +227,12 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Container(
               decoration:
               BoxDecoration(
-
                 border: Border.all(color: AppColors.borderThirsty), // Black border
                 borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
               ),
               padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DropdownButton<String>(
                     value: selectedCode,
@@ -258,10 +263,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         controller: _controller,
                         textAlign: TextAlign.start,
                         decoration: InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
-                          hintText: 'Enter phone number',
+                          // contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 11.h),
+                          hintText: 'Enter phone number',maintainHintHeight: true,
                           hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                          border: InputBorder.none,
+                          border: InputBorder.none,isDense: true
                         ),
                       ),
                     ),
