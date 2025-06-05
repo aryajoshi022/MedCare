@@ -30,7 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
           top: 26.h,
-          bottom: MediaQuery.of(context).viewInsets.bottom.h + 34.h,
+          bottom: MediaQuery.of(context).viewInsets.bottom.h + 34.h + MediaQuery.of(context).padding.bottom,
           left: 28.w,
           right: 28.w,
         ),

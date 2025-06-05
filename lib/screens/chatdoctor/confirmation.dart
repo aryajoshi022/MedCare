@@ -24,9 +24,9 @@ class _ConfirmationState extends State<Confirmation> {
     return Scaffold(
       backgroundColor: AppColors.bgAlert,
       bottomNavigationBar: Container(
-        height: 118.h,
+        height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
-        padding: EdgeInsets.only(top: 14.h, left: 28.w, right: 28.w),
+        padding: EdgeInsets.only(top: 14.h, left: 28.w, right: 28.w, bottom: MediaQuery.of(context).padding.bottom),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

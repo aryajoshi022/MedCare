@@ -47,7 +47,7 @@ class _MedicationReminderEmptyState extends State<MedicationReminderEmpty> {
         padding: EdgeInsets.only(
             left: 28.w,
             right: 28.w,
-            bottom: 40.w,
+            bottom: 40.w + MediaQuery.of(context).padding.bottom,
             top: 14.h
         ),
         child: Expanded(
