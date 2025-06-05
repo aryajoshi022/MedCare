@@ -128,7 +128,7 @@ class _DoctorDetailsState extends State<DoctorDetails> {
       bottomNavigationBar: Container(
         color: AppColors.bgAlert,
         child: Padding(
-          padding: EdgeInsets.only(top: 14.h, bottom: 28.h, left: 28.w, right: 28.w),
+          padding: EdgeInsets.only(top: 14.h, bottom: 28.h+MediaQuery.of(context).padding.bottom, left: 28.w, right: 28.w),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

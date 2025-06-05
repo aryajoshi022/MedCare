@@ -73,9 +73,9 @@ class _DetailHospital extends State<DetailHospital> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: Container(
-        height: 93.h,
+        height: 93.h + MediaQuery.of(context).padding.bottom,
         child: Padding(
-          padding: EdgeInsets.only(left: 17.w,top: 14.h,bottom: 28.h,right: 17.w),
+          padding: EdgeInsets.only(left: 17.w,top: 14.h,bottom: 28.h + MediaQuery.of(context).padding.bottom,right: 17.w),
           child: Row(
             children: [
               Container(
