@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 
- void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  debugPrint("✅ Firebase Initialized Successfully");
+
   runApp(const App());
-   setOptimalDisplayMode();
+  setOptimalDisplayMode();
 }
 
 Future<void> setOptimalDisplayMode() async {
