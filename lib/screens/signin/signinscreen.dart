@@ -217,79 +217,89 @@ class _SignInScreenState extends State<SignInScreen> {
   }
   Widget _nophonelogin() {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-
-          SizedBox(height: 26.h),
-          Text(
-            'Phone No',
-            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
-          ),
-          SizedBox(height: 12.h),
-          SizedBox(
-            height: 44.h,
-            child: Container(
-              decoration:
-              BoxDecoration(
-                border: Border.all(color: AppColors.borderThirsty), // Black border
-                borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
-              ),
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-              child: Row(
+      resizeToAvoidBottomInset: true,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DropdownButton<String>(
-                    value: selectedCode,
-                    dropdownColor: Colors.white,
-                    style: TextStyle(color: AppColors.btnSecondary),
-                    underline: SizedBox(),
-                    icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
-                    iconEnabledColor: AppColors.btnSecondary,
-                    items: codes.map((String code) {
-                      return DropdownMenuItem<String>(
-                        value: code,
-                        child: Text(
-                          code,
-                          style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
-                        ),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        selectedCode = newValue!;
-                      });
-                    },
+                  SizedBox(height: 26.h),
+                  Text(
+                    'Phone No',
+                    style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
                   ),
-                  VerticalDivider(color: AppColors.textDisabled),
-                  Expanded(
-                    child: SizedBox(height: 44.h,
-                      child: TextField(
-                        controller: _controller,
-                        textAlign: TextAlign.start,
-                        decoration: InputDecoration(
-                          hintText: 'Enter phone number',maintainHintHeight: true,
-                          hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                          border: InputBorder.none,isDense: true
-                        ),
+                  SizedBox(height: 12.h),
+                  SizedBox(
+                    height: 44.h,
+                    child: Container(
+                      decoration:
+                      BoxDecoration(
+                        border: Border.all(color: AppColors.borderThirsty), // Black border
+                        borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DropdownButton<String>(
+                            value: selectedCode,
+                            dropdownColor: Colors.white,
+                            style: TextStyle(color: AppColors.btnSecondary),
+                            underline: SizedBox(),
+                            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
+                            iconEnabledColor: AppColors.btnSecondary,
+                            items: codes.map((String code) {
+                              return DropdownMenuItem<String>(
+                                value: code,
+                                child: Text(
+                                  code,
+                                  style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedCode = newValue!;
+                              });
+                            },
+                          ),
+                          VerticalDivider(color: AppColors.textDisabled),
+                          Expanded(
+                            child: SizedBox(height: 44.h,
+                              child: TextField(
+                                controller: _controller,
+                                textAlign: TextAlign.start,
+                                decoration: InputDecoration(
+                                  hintText: 'Enter phone number',maintainHintHeight: true,
+                                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                                  border: InputBorder.none,isDense: true
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+
+                  SizedBox(height: 26.h),
+                  Text(
+                    'Is there an issue with your phone number?',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      color: AppColors.textBtn,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  // Spacer(),
                 ],
               ),
             ),
-          ),
-
-          SizedBox(height: 26.h),
-          Text(
-            'Is there an issue with your phone number?',
-            style: GoogleFonts.khula(
-              fontSize: 14.sp,
-              color: AppColors.textBtn,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         // height: 118.h + MediaQuery.of(context).padding.bottom,

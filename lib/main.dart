@@ -8,7 +8,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   debugPrint("✅ Firebase Initialized Successfully");
-
   runApp(const App());
   setOptimalDisplayMode();
 }
