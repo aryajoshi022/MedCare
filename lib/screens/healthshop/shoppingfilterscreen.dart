@@ -389,7 +389,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
@@ -503,7 +503,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
@@ -615,7 +615,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
 
                           ),
 
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
@@ -725,7 +725,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
@@ -848,7 +848,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
@@ -955,7 +955,7 @@ class _ShoppingFilterScreenState extends State<ShoppingFilterScreen> {
                             ],
 
                           ),
-                          width: 180.w,
+                          width: 178.w,
                           height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
