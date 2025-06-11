@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
+
 import '../../util/constants/colors.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -115,49 +116,44 @@ class _SignInScreenState extends State<SignInScreen> {
   }
   Widget _emaillogin() {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 26.h),
-            Text(
-              'Email',
-              style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
-            ),
-            SizedBox(height: 12.h),
-            SizedBox(height: 44.h,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter phone email',
-                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 26.h),
+          Text(
+            'Email',
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 12.h),
+          SizedBox(height: 44.h,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter phone email',
+                hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                 ),
               ),
             ),
-            SizedBox(height: 26.h),
-            Text(
-              'Is there an issue with your email?',
-              style: GoogleFonts.khula(
-                fontSize: 14.sp,
-                color: AppColors.textBtn,
-                fontWeight: FontWeight.w400,
-              ),
+          ),
+          SizedBox(height: 26.h),
+          Text(
+            'Is there an issue with your email?',
+            style: GoogleFonts.khula(
+              fontSize: 14.sp,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      bottomNavigationBar:
-      Container(
+      bottomNavigationBar: Container(
         // height: 118.h + MediaQuery.of(context).padding.bottom,
         color: AppColors.bgAlert,
         child: Column(
@@ -447,6 +443,7 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

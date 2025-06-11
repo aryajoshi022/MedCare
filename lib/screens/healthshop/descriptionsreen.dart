@@ -768,7 +768,7 @@ class ReviewsTab extends StatelessWidget {
                                         wordSpacing: 1.5,
                                       ),
                                     ),
-                                    SizedBox(height: 13.h),
+                                    SizedBox(height: 8.h),
                                     Text(
                                       '1 day ago',
                                       style: TextStyle(
@@ -777,7 +777,7 @@ class ReviewsTab extends StatelessWidget {
                                         color: AppColors.textSecondary,
                                       ),
                                     ),
-                                    SizedBox(height: 13),
+                                    SizedBox(height: 8),
 
                                     Image.asset('assets/icons/star_icon.png'),
                                   ],
@@ -842,7 +842,7 @@ class ReviewsTab extends StatelessWidget {
                                         wordSpacing: 1.5,
                                       ),
                                     ),
-                                    SizedBox(height: 13.h),
+                                    SizedBox(height: 8.h),
                                     Text(
                                       '1 day ago',
                                       style: TextStyle(
@@ -851,7 +851,7 @@ class ReviewsTab extends StatelessWidget {
                                         color: AppColors.textSecondary,
                                       ),
                                     ),
-                                    SizedBox(height: 13),
+                                    SizedBox(height: 8),
 
                                     Image.asset('assets/icons/star_icon.png'),
                                   ],
@@ -930,8 +930,8 @@ class ReviewsTab extends StatelessWidget {
                               ),
                             ],
                           ),
-                          width: 178.w,
-                          height: 265.h,
+                          width: 180.w,
+                          height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
@@ -1035,8 +1035,8 @@ class ReviewsTab extends StatelessWidget {
                             ],
 
                           ),
-                          width: 178.w,
-                          height: 265.h,
+                          width: 180.w,
+                          height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(
@@ -1140,8 +1140,8 @@ class ReviewsTab extends StatelessWidget {
                             ],
 
                           ),
-                          width: 178.w,
-                          height: 265.h,
+                          width: 180.w,
+                          height: 270.h,
                           child: Padding(
                             padding: EdgeInsets.only(top: 5.h,bottom: 12.h,left: 12.w,right: 11.w),
                             child: Column(

@@ -422,7 +422,7 @@ class _SignScreenState extends State<SignScreen> {
                 style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.textNormal,
+                  color: AppColors.textSecondary,
                 ),
                 decoration: InputDecoration(
                   suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
