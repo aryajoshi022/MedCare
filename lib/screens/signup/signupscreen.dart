@@ -20,7 +20,7 @@ class _SignScreenState extends State<SignScreen> {
   String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
-
+  final _dobController = TextEditingController();
 
   void _switchPage(int index) {
     setState(() {
@@ -186,8 +186,15 @@ class _SignScreenState extends State<SignScreen> {
             Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
+                controller: _dobController,
+                readOnly: true,
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 decoration: InputDecoration(
-                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,width: 16.w,height: 16.h,) ,
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
                   hintText: 'Enter your date of birth',
                   contentPadding: EdgeInsets.only(left: 10.w),
                   hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
@@ -201,6 +208,38 @@ class _SignScreenState extends State<SignScreen> {
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
+                onTap: () async {
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2000),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                    builder: (context, child) {
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          textTheme: TextTheme(
+                            bodyMedium: GoogleFonts.khula(),
+                          ),
+                          colorScheme: ColorScheme.light(
+                            primary: AppColors.bgPrimary,
+                            onPrimary: AppColors.bgAlert,
+                            onSurface: AppColors.textNormal,
+                          ),
+                          textButtonTheme: TextButtonThemeData(
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.textNormal,
+                              textStyle: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (date != null) {
+                    _dobController.text = "${date.toLocal()}".split(' ')[0];
+                  }
+                },
               ),
             ),
             Row(
@@ -232,7 +271,6 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-
 
           ],
         ),
@@ -319,6 +357,13 @@ class _SignScreenState extends State<SignScreen> {
             Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
+                controller: _dobController,
+                readOnly: true,
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 decoration: InputDecoration(
                   suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
                   hintText: 'Enter your date of birth',
@@ -334,6 +379,38 @@ class _SignScreenState extends State<SignScreen> {
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
+                onTap: () async {
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2000),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                    builder: (context, child) {
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          textTheme: TextTheme(
+                            bodyMedium: GoogleFonts.khula(),
+                          ),
+                          colorScheme: ColorScheme.light(
+                            primary: AppColors.bgPrimary,
+                            onPrimary: AppColors.bgAlert,
+                            onSurface: AppColors.textNormal,
+                          ),
+                          textButtonTheme: TextButtonThemeData(
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.textNormal,
+                              textStyle: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (date != null) {
+                    _dobController.text = "${date.toLocal()}".split(' ')[0];
+                  }
+                },
               ),
             ),
             Row(
