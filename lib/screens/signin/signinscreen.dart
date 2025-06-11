@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
@@ -21,10 +20,6 @@ class _SignInScreenState extends State<SignInScreen> {
   String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
-
-
-  final _formKey = GlobalKey<FormState>();
-  final _formKey2 = GlobalKey<FormState>();
 
   Widget _buildToggleTabs() {
     return Row(
@@ -119,334 +114,246 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
-
-
   Widget _emaillogin() {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Form(
-        key: _formKey2,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 26.h),
-              Text(
-                'Email',
-                style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
-              ),
-              SizedBox(height: 12.h),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  // Basic email format validation using regex
-                  final emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Enter a valid email address';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (val) {
-                            field.didChange(val);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-                            hintText: 'Enter email',
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textDisabled,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text(
-                'Is there an issue with your email?',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  color: AppColors.textBtn,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),bottomNavigationBar:Container(
-      // height: 118.h + MediaQuery.of(context).padding.bottom,
-      color: AppColors.bgAlert,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 91.h,
-            width: 372.w,
-            child: Padding(
-              padding: EdgeInsets.only(
-                top: 20.h,
-                bottom: 20.h,
-                right: 10.w,
-                left: 10.w,
-              ),
-              child: ElevatedButton(
-                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                onPressed: () {
-                  if (_formKey2.currentState!.validate()) {
-                    // If the email is valid, navigate to signup OTP screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => _verificationcompleted()),
-                    );
-                  } else {
-                    // If form is invalid, stay on page and show validation error
-                    print('Form is invalid');
-                  }                  },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: AppColors.btnPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.r),
-                  ),
+          SizedBox(height: 26.h),
+          Text(
+            'Email',
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 12.h),
+          SizedBox(height: 44.h,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter phone email',
+                hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                 ),
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don\'t have a MedCare Account yet ? ',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textSecondary,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
-                },
-                child: Text(
-                  'Sign Up',
-                  style: GoogleFonts.khula(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.btnPrimary,
-                  ),),
-              )
-
-            ],
+          SizedBox(height: 26.h),
+          Text(
+            'Is there an issue with your email?',
+            style: GoogleFonts.khula(
+              fontSize: 14.sp,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ],
       ),
-    ),
+      bottomNavigationBar: Container(
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
+        color: AppColors.bgAlert,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 91.h,
+              width: 372.w,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 20.h,
+                  bottom: 20.h,
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have a MedCare Account yet ? ',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.btnPrimary,
+                    ),),
+                )
 
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
   Widget _nophonelogin() {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-          
-              SizedBox(height: 26.h),
-              Text(
-                'Phone No',
-                style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+
+          SizedBox(height: 26.h),
+          Text(
+            'Phone No',
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 12.h),
+          SizedBox(
+            height: 44.h,
+            child: Container(
+              decoration:
+              BoxDecoration(
+                border: Border.all(color: AppColors.borderThirsty), // Black border
+                borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
               ),
-              SizedBox(height: 12.h),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) return 'Please enter phone number';
-                  if (!RegExp(r'^\d+$').hasMatch(value)) return 'Only digits allowed';
-                  if (value.length < 9) return 'Minimum 9 digits required';
-                  return null;
-                },
-                builder: (field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 44.h,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: field.hasError ? Colors.red : AppColors.borderThirsty),
-                          borderRadius: BorderRadius.circular(4.r),
+              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DropdownButton<String>(
+                    value: selectedCode,
+                    dropdownColor: Colors.white,
+                    style: TextStyle(color: AppColors.btnSecondary),
+                    underline: SizedBox(),
+                    icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
+                    iconEnabledColor: AppColors.btnSecondary,
+                    items: codes.map((String code) {
+                      return DropdownMenuItem<String>(
+                        value: code,
+                        child: Text(
+                          code,
+                          style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
                         ),
-                        padding: EdgeInsets.symmetric(horizontal: 14.w),
-                        child: Row(
-                          children: [
-                            DropdownButton<String>(
-                              value: selectedCode,
-                              underline: SizedBox(),
-                              icon: Icon(Icons.keyboard_arrow_down, size: 16.sp, color: AppColors.btnSecondary),
-                              style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
-                              items: codes.map((code) => DropdownMenuItem(value: code, child: Text(code))).toList(),
-                              onChanged: (val) => setState(() => selectedCode = val!),
-                            ),
-                            VerticalDivider(color: AppColors.textDisabled),
-                            Expanded(
-                              child: TextField(
-                                controller: _controller,
-                                keyboardType: TextInputType.number,
-                                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                                onChanged: field.didChange,
-                                decoration: InputDecoration(
-                                  hintText: 'Enter phone number',
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  hintStyle: GoogleFonts.khula(
-                                    color: AppColors.textDisabled,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
+                      );
+                    }).toList(),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedCode = newValue!;
+                      });
+                    },
+                  ),
+                  VerticalDivider(color: AppColors.textDisabled),
+                  Expanded(
+                    child: SizedBox(height: 44.h,
+                      child: TextField(
+                        controller: _controller,
+                        textAlign: TextAlign.start,
+                        decoration: InputDecoration(
+                          hintText: 'Enter phone number',maintainHintHeight: true,
+                          hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                          border: InputBorder.none,isDense: true
                         ),
                       ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-          
-              SizedBox(height: 26.h),
-              Text(
-                'Is there an issue with your phone number?',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  color: AppColors.textBtn,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),bottomNavigationBar: Container(
-      // height: 118.h + MediaQuery.of(context).padding.bottom,
-      color: AppColors.bgAlert,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            height: 91.h,
-            width: 372.w,
-
-            child: Padding(
-              padding:  EdgeInsets.only(
-                top: 20.h,
-                bottom: 20.h,
-                right: 10.w,
-                left: 10.w,
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // If the email is valid, navigate to signup OTP screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => _verificationcompleted()),
-                    );
-                  } else {
-                    // If form is invalid, stay on page and show validation error
-                    print('Form is invalid');
-                  }                  },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: AppColors.btnPrimary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24.r),
+                    ),
                   ),
-                ),
-                child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                ],
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don\'t have a MedCare Account yet ? ',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textSecondary,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
 
-                },
-                child: Text(
-                  'Sign Up',
-                  style: GoogleFonts.khula(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.btnPrimary,
-                  ),),
-              )
-
-
-            ],
+          SizedBox(height: 26.h),
+          Text(
+            'Is there an issue with your phone number?',
+            style: GoogleFonts.khula(
+              fontSize: 14.sp,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ],
       ),
-    ),
+      bottomNavigationBar: Container(
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
+        color: AppColors.bgAlert,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 91.h,
+              width: 372.w,
 
+              child: Padding(
+                padding:  EdgeInsets.only(
+                  top: 20.h,
+                  bottom: 20.h,
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have a MedCare Account yet ? ',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.btnPrimary,
+                    ),),
+                )
+
+
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
   Widget _verificationcompleted() {
@@ -533,5 +440,3 @@ class _SignInScreenState extends State<SignInScreen> {
     return _verifylogin();
   }
 }
-
-
