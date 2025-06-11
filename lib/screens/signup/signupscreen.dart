@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,6 +22,169 @@ class _SignScreenState extends State<SignScreen> {
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
 
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController dobController = TextEditingController();
+
+  String? selectedGender;
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    nameController.dispose();
+    dobController.dispose();
+    super.dispose();
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.bgAlert,
+        leading:Padding(
+          padding: EdgeInsets.all(10.w),
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.chevron_left,
+                weight: 7),
+          ),
+        ), ),
+      body: Padding(
+        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:75.h),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Complete Personal Identification',
+                style: GoogleFonts.khula(fontSize: 20.sp, fontWeight: FontWeight.w700),
+              ),
+              SizedBox(height: 12.w),
+              Text(
+                'You can connect with all healthcare facilities you\'ve previously visited.',
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+              SizedBox(height: 30.h),
+
+              _buildToggleTabs(),
+              Expanded(
+                child: Center(
+                  child: PageView(
+                    controller: _pageController,
+                    onPageChanged:
+                        (index) => setState(() => _currentIndex = index),
+                    children: [_signInPage(), _signUpPage()],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: AppColors.bgAlert,
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom +70.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 51.h,
+              width: 372.w,
+
+              child: Padding(
+                padding:  EdgeInsets.only(
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                  onPressed: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => _signupotp()),
+                    // );
+                    saveUserToFirebase();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16.h),
+            Center(
+              child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Already have an account? ',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
+
+                    child: Text(
+                      'Click here to log in',
+                      style: GoogleFonts.khula(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.btnPrimary,
+                      ),),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void saveUserToFirebase() async {
+    if (phoneController.text.isEmpty ||
+        nameController.text.isEmpty ||
+        dobController.text.isEmpty ||
+        selectedGender == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill all fields')),
+      );
+      return;
+    }
+
+    await FirebaseFirestore.instance.collection('users').add({
+      'phone': phoneController.text,
+      'name': nameController.text,
+      'dob': dobController.text,
+      'gender': selectedGender,
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('User Registered Successfully')),
+    );
+
+    // Optionally clear fields after success
+    phoneController.clear();
+    nameController.clear();
+    dobController.clear();
+    setState(() {
+      selectedGender = null;
+    });
+  }
 
   void _switchPage(int index) {
     setState(() {
@@ -39,6 +203,7 @@ class _SignScreenState extends State<SignScreen> {
       children: [_tabButton("Phone No", 0), _tabButton("Email", 1)],
     );
   }
+
   Widget _tabButton(String title, int index) {
     bool isActive = _currentIndex == index;
 
@@ -117,7 +282,7 @@ class _SignScreenState extends State<SignScreen> {
                     Expanded(
                       child: SizedBox(height: 44.h,
                         child: TextField(
-                          controller: _controller,
+                          controller: phoneController,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
                               hintText: 'Enter phone number',maintainHintHeight: true,
@@ -135,6 +300,7 @@ class _SignScreenState extends State<SignScreen> {
             Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
+                controller: nameController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
@@ -157,6 +323,7 @@ class _SignScreenState extends State<SignScreen> {
 
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
+                value: selectedGender,
                 icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
                 padding: EdgeInsets.only(right: 14.w),
                 hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
@@ -167,7 +334,11 @@ class _SignScreenState extends State<SignScreen> {
                 ],
                 dropdownColor: Colors.white,
 
-                onChanged: (value) {},
+                onChanged: (value) {
+                  setState(() {
+                    selectedGender = value;
+                  });
+                },
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
@@ -186,6 +357,7 @@ class _SignScreenState extends State<SignScreen> {
             Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
+                controller: dobController,
                 decoration: InputDecoration(
                   suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,width: 16.w,height: 16.h,) ,
                   hintText: 'Enter your date of birth',
@@ -598,8 +770,6 @@ class _SignScreenState extends State<SignScreen> {
     );
   }
 
-
-
   Widget _verificationcompleted() {
     return Scaffold(
       body: SafeArea(
@@ -679,122 +849,5 @@ class _SignScreenState extends State<SignScreen> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.bgAlert,
-        leading:Padding(
-          padding: EdgeInsets.all(10.w),
-          child: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.chevron_left,
-               weight: 7),
-                ),
-        ), ),
-      body: Padding(
-        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:75.h),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Complete Personal Identification',
-                style: GoogleFonts.khula(fontSize: 20.sp, fontWeight: FontWeight.w700),
-              ),
-              SizedBox(height: 12.w),
-              Text(
-                'You can connect with all healthcare facilities you\'ve previously visited.',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.textSecondary,
-                ),
-              ),
-              SizedBox(height: 30.h),
-
-              _buildToggleTabs(),
-              Expanded(
-                child: Center(
-                  child: PageView(
-                    controller: _pageController,
-                    onPageChanged:
-                        (index) => setState(() => _currentIndex = index),
-                    children: [_signInPage(), _signUpPage()],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: Container(
-        color: AppColors.bgAlert,
-        padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom +70.h),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: 51.h,
-              width: 372.w,
-
-              child: Padding(
-                padding:  EdgeInsets.only(
-                  right: 10.w,
-                  left: 10.w,
-                ),
-                child: ElevatedButton(
-                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => _signupotp()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: AppColors.btnPrimary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.r),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(height: 16.h),
-            Center(
-              child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    'Already have an account? ',
-                    style: GoogleFonts.khula(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-
-                  GestureDetector(
-                    onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
-
-                    child: Text(
-                      'Click here to log in',
-                      style: GoogleFonts.khula(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.btnPrimary,
-                      ),),
-                  ),
-
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
+
