@@ -5,6 +5,8 @@ import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
 
+import '../../FirebaseServices/firebase_services.dart';
+
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
 
@@ -20,7 +22,10 @@ class _SignScreenState extends State<SignScreen> {
   String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  String? _selectedGender;
 
   void _switchPage(int index) {
     setState(() {
@@ -135,6 +140,11 @@ class _SignScreenState extends State<SignScreen> {
             Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
@@ -157,13 +167,33 @@ class _SignScreenState extends State<SignScreen> {
 
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
                 padding: EdgeInsets.only(right: 14.w),
                 hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
-                  DropdownMenuItem(value: 'Male', child: Text('Male')),
-                  DropdownMenuItem(value: 'Female', child: Text('Female')),
-                  DropdownMenuItem(value: 'Other', child: Text('Other')),
+                  DropdownMenuItem(value: 'Male', child: Text('Male',
+                    style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),)),
+                  DropdownMenuItem(value: 'Female', child: Text('Female',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),)),
+                  DropdownMenuItem(value: 'Other', child: Text('Other',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),)),
                 ],
                 dropdownColor: Colors.white,
 
@@ -186,8 +216,15 @@ class _SignScreenState extends State<SignScreen> {
             Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
+                controller: _dobController,
+                readOnly: true,
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 decoration: InputDecoration(
-                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,width: 16.w,height: 16.h,) ,
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
                   hintText: 'Enter your date of birth',
                   contentPadding: EdgeInsets.only(left: 10.w),
                   hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
@@ -201,6 +238,38 @@ class _SignScreenState extends State<SignScreen> {
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
+                onTap: () async {
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2000),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                    builder: (context, child) {
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          textTheme: TextTheme(
+                            bodyMedium: GoogleFonts.khula(),
+                          ),
+                          colorScheme: ColorScheme.light(
+                            primary: AppColors.bgPrimary,
+                            onPrimary: AppColors.bgAlert,
+                            onSurface: AppColors.textNormal,
+                          ),
+                          textButtonTheme: TextButtonThemeData(
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.textNormal,
+                              textStyle: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (date != null) {
+                    _dobController.text = "${date.toLocal()}".split(' ')[0];
+                  }
+                },
               ),
             ),
             Row(
@@ -233,7 +302,6 @@ class _SignScreenState extends State<SignScreen> {
               ],
             ),
 
-
           ],
         ),
       ),
@@ -250,6 +318,12 @@ class _SignScreenState extends State<SignScreen> {
             Text('Email', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+                controller: _emailController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
@@ -271,6 +345,12 @@ class _SignScreenState extends State<SignScreen> {
             Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: TextField(
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
+                controller: _nameController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
@@ -290,7 +370,6 @@ class _SignScreenState extends State<SignScreen> {
             ),
             SizedBox(height: 26.h),
             Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
                 icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
@@ -302,8 +381,7 @@ class _SignScreenState extends State<SignScreen> {
                   DropdownMenuItem(value: 'Other', child: Text('Other')),
                 ],
                 dropdownColor: Colors.white,
-
-                onChanged: (value) {},
+                onChanged: (value) => setState(() => _selectedGender = value),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
@@ -319,6 +397,13 @@ class _SignScreenState extends State<SignScreen> {
             Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 45.h,
               child: TextField(
+                controller: _dobController,
+                readOnly: true,
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 decoration: InputDecoration(
                   suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
                   hintText: 'Enter your date of birth',
@@ -334,6 +419,38 @@ class _SignScreenState extends State<SignScreen> {
                     borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
+                onTap: () async {
+                  final date = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2000),
+                    firstDate: DateTime(1900),
+                    lastDate: DateTime.now(),
+                    builder: (context, child) {
+                      return Theme(
+                        data: Theme.of(context).copyWith(
+                          textTheme: TextTheme(
+                            bodyMedium: GoogleFonts.khula(),
+                          ),
+                          colorScheme: ColorScheme.light(
+                            primary: AppColors.bgPrimary,
+                            onPrimary: AppColors.bgAlert,
+                            onSurface: AppColors.textNormal,
+                          ),
+                          textButtonTheme: TextButtonThemeData(
+                            style: TextButton.styleFrom(
+                              foregroundColor: AppColors.textNormal,
+                              textStyle: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                        child: child!,
+                      );
+                    },
+                  );
+                  if (date != null) {
+                    _dobController.text = "${date.toLocal()}".split(' ')[0];
+                  }
+                },
               ),
             ),
             Row(
@@ -348,14 +465,14 @@ class _SignScreenState extends State<SignScreen> {
                     value: value,
                     onChanged: (bool? newValue) {
                       setState(() {
-                        value = newValue??false;
+                        value = newValue ?? false;
                       });
                     },
                   ),
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 18,left: 16),
+                    padding: EdgeInsets.only(top: 18.h,left: 16.w),
                     child: Text(
                       textAlign: TextAlign.start,
                       'You agree to receive information and notifications sent by MedCare.',
@@ -365,7 +482,44 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
-
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_emailController.text.isEmpty ||
+                      _nameController.text.isEmpty ||
+                      _selectedGender == null ||
+                      _dobController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Please fill all fields',
+                          style: GoogleFonts.khula(),
+                        ),
+                      ),
+                    );
+                  } else {
+                    FirebaseServices.registerUserWithEmail(
+                      email: _emailController.text.trim(),
+                      name: _nameController.text.trim(),
+                      gender: _selectedGender!,
+                      dob: _dobController.text.trim(),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Center(
+                          child: Text(
+                            'Registered successfully!',
+                            style: GoogleFonts.khula(),
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
+                child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+              ),
+            ),
+            SizedBox(height: 32.h),
           ],
         ),
       ),
