@@ -598,8 +598,6 @@ class _SignScreenState extends State<SignScreen> {
     );
   }
 
-
-
   Widget _verificationcompleted() {
     return Scaffold(
       body: SafeArea(
