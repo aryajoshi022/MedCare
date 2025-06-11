@@ -114,109 +114,101 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
-
-
-
   Widget _emaillogin() {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 26.h),
-            Text(
-              'Email',
-              style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 26.h),
+          Text(
+            'Email',
+            style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: 12.h),
+          SizedBox(height: 44.h,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Enter phone email',
+                hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                ),
+              ),
             ),
-            SizedBox(height: 12.h),
-            SizedBox(height: 44.h,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter phone email',
-                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+          ),
+          SizedBox(height: 26.h),
+          Text(
+            'Is there an issue with your email?',
+            style: GoogleFonts.khula(
+              fontSize: 14.sp,
+              color: AppColors.textBtn,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: Container(
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
+        color: AppColors.bgAlert,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 91.h,
+              width: 372.w,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  top: 20.h,
+                  bottom: 20.h,
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 26.h),
-            Text(
-              'Is there an issue with your email?',
-              style: GoogleFonts.khula(
-                fontSize: 14.sp,
-                color: AppColors.textBtn,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-
-            SizedBox(height: 360.h,),
-            Container(
-              // height: 118.h + MediaQuery.of(context).padding.bottom,
-              color: AppColors.bgAlert,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 91.h,
-                    width: 372.w,
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 20.h,
-                        bottom: 20.h,
-                        right: 10.w,
-                        left: 10.w,
-                      ),
-                      child: ElevatedButton(
-                        child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: AppColors.btnPrimary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24.r),
-                          ),
-                        ),
-                      ),
-                    ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have a MedCare Account yet ? ',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have a MedCare Account yet ? ',
-                        style: GoogleFonts.khula(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style: GoogleFonts.khula(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.btnPrimary,
-                          ),),
-                      )
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.btnPrimary,
+                    ),),
+                )
 
-                    ],
-                  ),
-                ],
-              ),
+              ],
             ),
           ],
         ),
@@ -225,142 +217,149 @@ class _SignInScreenState extends State<SignInScreen> {
   }
   Widget _nophonelogin() {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      resizeToAvoidBottomInset: true,
+      body: SafeArea(
+        child: Stack(
           children: [
-
-            SizedBox(height: 26.h),
-            Text(
-              'Phone No',
-              style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
-            ),
-            SizedBox(height: 12.h),
-            SizedBox(
-              height: 44.h,
-              child: Container(
-                decoration:
-                BoxDecoration(
-                  border: Border.all(color: AppColors.borderThirsty), // Black border
-                  borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    DropdownButton<String>(
-                      value: selectedCode,
-                      dropdownColor: Colors.white,
-                      style: TextStyle(color: AppColors.btnSecondary),
-                      underline: SizedBox(),
-                      icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
-                      iconEnabledColor: AppColors.btnSecondary,
-                      items: codes.map((String code) {
-                        return DropdownMenuItem<String>(
-                          value: code,
-                          child: Text(
-                            code,
-                            style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedCode = newValue!;
-                        });
-                      },
-                    ),
-                    VerticalDivider(color: AppColors.textDisabled),
-                    Expanded(
-                      child: SizedBox(height: 44.h,
-                        child: TextField(
-                          controller: _controller,
-                          textAlign: TextAlign.start,
-                          decoration: InputDecoration(
-                            hintText: 'Enter phone number',maintainHintHeight: true,
-                            hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
-                            border: InputBorder.none,isDense: true
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            SizedBox(height: 26.h),
-            Text(
-              'Is there an issue with your phone number?',
-              style: GoogleFonts.khula(
-                fontSize: 14.sp,
-                color: AppColors.textBtn,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            SizedBox(height: 360.h,),
-            Container(
-              // height: 118.h + MediaQuery.of(context).padding.bottom,
-              color: AppColors.bgAlert,
+            SingleChildScrollView(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 26.h),
+                  Text(
+                    'Phone No',
+                    style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textBtn,fontWeight: FontWeight.w600),
+                  ),
+                  SizedBox(height: 12.h),
                   SizedBox(
-                    height: 91.h,
-                    width: 372.w,
-
-                    child: Padding(
-                      padding:  EdgeInsets.only(
-                        top: 20.h,
-                        bottom: 20.h,
-                        right: 10.w,
-                        left: 10.w,
+                    height: 44.h,
+                    child: Container(
+                      decoration:
+                      BoxDecoration(
+                        border: Border.all(color: AppColors.borderThirsty), // Black border
+                        borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
                       ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: AppColors.btnPrimary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24.r),
+                      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          DropdownButton<String>(
+                            value: selectedCode,
+                            dropdownColor: Colors.white,
+                            style: TextStyle(color: AppColors.btnSecondary),
+                            underline: SizedBox(),
+                            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
+                            iconEnabledColor: AppColors.btnSecondary,
+                            items: codes.map((String code) {
+                              return DropdownMenuItem<String>(
+                                value: code,
+                                child: Text(
+                                  code,
+                                  style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedCode = newValue!;
+                              });
+                            },
                           ),
-                        ),
-                        child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                          VerticalDivider(color: AppColors.textDisabled),
+                          Expanded(
+                            child: SizedBox(height: 44.h,
+                              child: TextField(
+                                controller: _controller,
+                                textAlign: TextAlign.start,
+                                decoration: InputDecoration(
+                                  hintText: 'Enter phone number',maintainHintHeight: true,
+                                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                                  border: InputBorder.none,isDense: true
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don\'t have a MedCare Account yet ? ',
-                        style: GoogleFonts.khula(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
 
-                        },
-                        child: Text(
-                          'Sign Up',
-                          style: GoogleFonts.khula(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.btnPrimary,
-                          ),),
-                      )
-
-
-                    ],
+                  SizedBox(height: 26.h),
+                  Text(
+                    'Is there an issue with your phone number?',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      color: AppColors.textBtn,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
+                  // Spacer(),
                 ],
               ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        // height: 118.h + MediaQuery.of(context).padding.bottom,
+        color: AppColors.bgAlert,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 91.h,
+              width: 372.w,
+
+              child: Padding(
+                padding:  EdgeInsets.only(
+                  top: 20.h,
+                  bottom: 20.h,
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
+                  ),
+                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Don\'t have a MedCare Account yet ? ',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+
+                  },
+                  child: Text(
+                    'Sign Up',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.btnPrimary,
+                    ),),
+                )
+
+
+              ],
             ),
           ],
         ),

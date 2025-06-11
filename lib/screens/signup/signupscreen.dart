@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
@@ -21,9 +20,6 @@ class _SignScreenState extends State<SignScreen> {
   String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
-
-  final _formKey = GlobalKey<FormState>();
-  final _formKey2 = GlobalKey<FormState>();
 
 
   void _switchPage(int index) {
@@ -53,7 +49,6 @@ class _SignScreenState extends State<SignScreen> {
           duration: Duration(milliseconds: 200),
           padding: EdgeInsets.symmetric(vertical: 10.h),
           alignment: Alignment.center,
-
           decoration: BoxDecoration(
             border: Border(
               bottom: BorderSide(
@@ -79,684 +74,299 @@ class _SignScreenState extends State<SignScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(scrollDirection: Axis.vertical,
-        child: Form(
-          key: _formKey2,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 26.h),
-              Text('Phone No*', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) return 'Please enter phone number';
-                  if (!RegExp(r'^\d+$').hasMatch(value)) return 'Only digits allowed';
-                  if (value.length < 9) return 'Minimum 9 digits required';
-                  return null;
-                },
-                builder: (field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 44.h,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: field.hasError ? Colors.red : AppColors.borderThirsty),
-                          borderRadius: BorderRadius.circular(4.r),
-                        ),
-                        padding: EdgeInsets.symmetric(horizontal: 14.w),
-                        child: Row(
-                          children: [
-                            DropdownButton<String>(
-                              value: selectedCode,
-                              underline: SizedBox(),
-                              icon: Icon(Icons.keyboard_arrow_down, size: 16.sp, color: AppColors.btnSecondary),
-                              style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
-                              items: codes.map((code) => DropdownMenuItem(value: code, child: Text(code))).toList(),
-                              onChanged: (val) => setState(() => selectedCode = val!),
-                            ),
-                            VerticalDivider(color: AppColors.textDisabled),
-                            Expanded(
-                              child: TextField(
-                                controller: _controller,
-                                keyboardType: TextInputType.number,
-                                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                                onChanged: field.didChange,
-                                decoration: InputDecoration(
-                                  hintText: 'Enter phone number',
-                                  border: InputBorder.none,
-                                  isDense: true,
-                                  hintStyle: GoogleFonts.khula(
-                                    color: AppColors.textDisabled,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 26.h),
+            Text('Phone No*', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(
+              height: 44.h,
+              child: Container(
+                decoration:
+                BoxDecoration(
+                  border: Border.all(color: AppColors.borderThirsty), // Black border
+                  borderRadius: BorderRadius.circular(4.r),  // Optional: Rounded corners
+                ),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DropdownButton<String>(
+                      value: selectedCode,
+                      dropdownColor: Colors.white,
+                      style: TextStyle(color: AppColors.btnSecondary),
+                      underline: SizedBox(),
+                      icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary,size: 16.sp),
+                      iconEnabledColor: AppColors.btnSecondary,
+                      items: codes.map((String code) {
+                        return DropdownMenuItem<String>(
+                          value: code,
                           child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12.sp),
+                            code,
+                            style: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textSecondary),
                           ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your full name';
-                  }
-                  return null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: TextFormField(
-                          textAlign: TextAlign.start,
-                          onChanged: (val) {
-                            field.didChange(val);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(top: 0, bottom: 0, right: 15, left: 10),
-                            hintText: 'Enter your full name',
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textDisabled,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: DropdownButtonFormField<String>(
-                          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
-                          padding: EdgeInsets.only(right: 14.w),
-                          dropdownColor: Colors.white,
-                          hint: Text(
-                            'Choose your gender',
-                            style: GoogleFonts.khula(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                          items: const [
-                            DropdownMenuItem(value: 'Male', child: Text('Male')),
-                            DropdownMenuItem(value: 'Female', child: Text('Female')),
-                            DropdownMenuItem(value: 'Other', child: Text('Other')),
-                          ],
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your date of birth';
-                  }
-                  // You can add more validation like date format here if needed
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 45.h,
-                        child: TextField(
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            suffixIcon: Image.asset(
-                              'assets/icons/calender_icon.png',
-                              color: AppColors.textSecondary,
-                              height: 16.h,
-                              width: 16.w,
-                            ),
-                            hintText: 'Enter your date of birth',
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textSecondary,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText ?? '',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              Row(
-                children: [
-                  SizedBox(height: 24,
-                    width: 24,
-                    child: Checkbox(
-                      activeColor: AppColors.bgPrimary,
-                      checkColor: AppColors.bgAlert,
-                      tristate: true, // Example with tristate
-                      side: BorderSide(color: AppColors.borderSecondary),
-                      value: value,
-                      onChanged: (bool? newValue) {
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
                         setState(() {
-                          value = newValue??false;
+                          selectedCode = newValue!;
                         });
                       },
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: 18.h,left: 16.w),
-                      child: Text(
-                        textAlign: TextAlign.start,
-                        'You agree to receive information and notifications sent by MedCare.',
-                        style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    VerticalDivider(color: AppColors.textDisabled),
+                    Expanded(
+                      child: SizedBox(height: 44.h,
+                        child: TextField(
+                          controller: _controller,
+                          textAlign: TextAlign.start,
+                          decoration: InputDecoration(
+                              hintText: 'Enter phone number',maintainHintHeight: true,
+                              hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                              border: InputBorder.none,isDense: true
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(height: 40.h,),
-              SizedBox(
-                height: 51.h,
-                width: 372.w,
-
-                child: Padding(
-                  padding:  EdgeInsets.only(
-                    right: 10.w,
-                    left: 10.w,
+            ),
+            SizedBox(height: 26.h),
+            Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 44.h,
+              child: TextField(
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
+                  hintText: 'Enter your full name',
+                    hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                  child: ElevatedButton(
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: () {
-                      if (_formKey2.currentState!.validate()) {
-                        // If the email is valid, navigate to signup OTP screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => _signInotp()),
-                        );
-                      } else {
-                        // If form is invalid, stay on page and show validation error
-                        print('Form is invalid');
-                      }
-                    },
-
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: AppColors.btnPrimary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24.r),
-                      ),
-                    ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
               ),
+            ),
+            SizedBox(height: 26.h),
+            Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+
+            SizedBox(height: 44.h,
+              child: DropdownButtonFormField<String>(
+                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
+                padding: EdgeInsets.only(right: 14.w),
+                hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
+                items: [
+                  DropdownMenuItem(value: 'Male', child: Text('Male')),
+                  DropdownMenuItem(value: 'Female', child: Text('Female')),
+                  DropdownMenuItem(value: 'Other', child: Text('Other')),
+                ],
+                dropdownColor: Colors.white,
+
+                onChanged: (value) {},
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                ),
+              ),
+            ),
+            SizedBox(height: 26.h),
+            Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 45.h,
+              child: TextField(
+                decoration: InputDecoration(
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,width: 16.w,height: 16.h,) ,
+                  hintText: 'Enter your date of birth',
+                  contentPadding: EdgeInsets.only(left: 10.w),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                SizedBox(height: 24,
+                  width: 24,
+                  child: Checkbox(
+                    activeColor: AppColors.bgPrimary,
+                    checkColor: AppColors.bgAlert,
+                    tristate: true, // Example with tristate
+                    side: BorderSide(color: AppColors.borderSecondary),
+                    value: value,
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        value = newValue??false;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 18.h,left: 16.w),
+                    child: Text(
+                      textAlign: TextAlign.start,
+                      'You agree to receive information and notifications sent by MedCare.',
+                      style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    ),
+                  ),
+                ),
+              ],
+            ),
 
 
-            ],
-          ),
+          ],
         ),
       ),
     );
   }
 
-
   Widget _signUpPage() {
-    return Scaffold(  resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
+    return Scaffold(
       body: SingleChildScrollView(scrollDirection: Axis.vertical,
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 26.h),
-              Text('Email', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter email';
-                  }
-                  // Basic email format validation using regex
-                  final emailRegex = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
-                  if (!emailRegex.hasMatch(value)) {
-                    return 'Enter a valid email address';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (val) {
-                            field.didChange(val);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
-                            hintText: 'Enter email',
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textDisabled,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12.sp),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your full name';
-                  }
-                  return null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: TextFormField(
-                          textAlign: TextAlign.start,
-                          onChanged: (val) {
-                            field.didChange(val);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(top: 0, bottom: 0, right: 15, left: 10),
-                            hintText: 'Enter your full name',
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textDisabled,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: DropdownButtonFormField<String>(
-                          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
-                          padding: EdgeInsets.only(right: 14.w),
-                          dropdownColor: Colors.white,
-                          hint: Text(
-                            'Choose your gender',
-                            style: GoogleFonts.khula(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                          items: const [
-                            DropdownMenuItem(value: 'Male', child: Text('Male')),
-                            DropdownMenuItem(value: 'Female', child: Text('Female')),
-                            DropdownMenuItem(value: 'Other', child: Text('Other')),
-                          ],
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              SizedBox(height: 26.h),
-              Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your date of birth';
-                  }
-                  // You can add more validation like date format here if needed
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 45.h,
-                        child: TextField(
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            suffixIcon: Image.asset(
-                              'assets/icons/calender_icon.png',
-                              color: AppColors.textSecondary,
-                              height: 16.h,
-                              width: 16.w,
-                            ),
-                            hintText: 'Enter your date of birth',
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textSecondary,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText ?? '',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                        ),
-                    ],
-                  );
-                },
-              ),
-              Row(
-                children: [
-                  SizedBox(height: 24.h,
-                    width: 24.w,
-                    child: Checkbox(
-                      checkColor: AppColors.bgAlert,
-                      activeColor: AppColors.bgPrimary,
-                      tristate: true, // Example with tristate
-                      side: BorderSide(color: AppColors.borderSecondary),
-                      value: value,
-                      onChanged: (bool? newValue) {
-                        setState(() {
-                          value = newValue??false;
-                        });
-                      },
-                    ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 26.h),
+            Text('Email', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 44.h,
+              child: TextField(
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
+                  hintText: 'Enter email',
+                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 18,left: 16),
-                      child: Text(
-                        textAlign: TextAlign.start,
-                        'You agree to receive information and notifications sent by MedCare.',
-                        style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
-                      ),
-                    ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
-                ],
-              ),
-              SizedBox(height: 40.h,),
-
-              SizedBox(
-                height: 51.h,
-                width: 372.w,
-
-                child: Padding(
-                  padding:  EdgeInsets.only(
-                    right: 10.w,
-                    left: 10.w,
-                  ),
-                  child: ElevatedButton(
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // If the email is valid, navigate to signup OTP screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => _signupotp()),
-                        );
-                      } else {
-                        // If form is invalid, stay on page and show validation error
-                        print('Form is invalid');
-                      }
-                    },
-
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: AppColors.btnPrimary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24.r),
-                      ),
-                    ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
                   ),
                 ),
               ),
+            ),
+            SizedBox(height: 26.h),
+            Text('Full Name', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 44.h,
+              child: TextField(
+                textAlign: TextAlign.start,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
+                  hintText: 'Enter your full name',
+                  hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp, fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 26.h),
+            Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
 
+            SizedBox(height: 44.h,
+              child: DropdownButtonFormField<String>(
+                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
+                padding: EdgeInsets.only(right: 14.w),
+                hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
+                items: [
+                  DropdownMenuItem(value: 'Male', child: Text('Male')),
+                  DropdownMenuItem(value: 'Female', child: Text('Female')),
+                  DropdownMenuItem(value: 'Other', child: Text('Other')),
+                ],
+                dropdownColor: Colors.white,
 
-            ],
-          ),
+                onChanged: (value) {},
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                    ),
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    border: OutlineInputBorder()),
+              ),
+            ),
+            SizedBox(height: 26.h),
+            Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
+            SizedBox(height: 45.h,
+              child: TextField(
+                decoration: InputDecoration(
+                  suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
+                  hintText: 'Enter your date of birth',
+                  contentPadding: EdgeInsets.only(left: 10.w),
+                  hintStyle: GoogleFonts.khula(color: AppColors.textSecondary,fontSize: 14.sp,fontWeight: FontWeight.w400),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              children: [
+                SizedBox(height: 24.h,
+                  width: 24.w,
+                  child: Checkbox(
+                    checkColor: AppColors.bgAlert,
+                    activeColor: AppColors.bgPrimary,
+                    tristate: true, // Example with tristate
+                    side: BorderSide(color: AppColors.borderSecondary),
+                    value: value,
+                    onChanged: (bool? newValue) {
+                      setState(() {
+                        value = newValue??false;
+                      });
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 18,left: 16),
+                    child: Text(
+                      textAlign: TextAlign.start,
+                      'You agree to receive information and notifications sent by MedCare.',
+                      style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+          ],
         ),
       ),
     );
@@ -765,264 +375,229 @@ class _SignScreenState extends State<SignScreen> {
   //Otp Verification Screens
   Widget _signInotp() {
     return Scaffold(
-      resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
-
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SafeArea(
-            child: Padding(
-              padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
+      body: SafeArea(
+        child: Padding(
+          padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(Icons.chevron_left,
-                            size: 24.sp,
-                        color: AppColors.btnArrow),
-                      ),
-                      Text(
-                        'Register',
-                        style: GoogleFonts.khula(
-                          color: AppColors.textNormal,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.chevron_left,
+                        size: 24.sp,
+                    color: AppColors.btnArrow),
                   ),
-                  SizedBox(height: 145.h),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:  EdgeInsets.all(18.w),
-                        child: Text(textAlign: TextAlign.center,
-                          'Enter the 4-digit verification code (OTP) sent to your phone',
-                          style: GoogleFonts.khula(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        '(+66) 6152 625 612',
-                        style: GoogleFonts.khula(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textBtn,
-                        ),
-                      ),
-                      SizedBox(height: 40.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-                        ],
-                      ),
-                      SizedBox(height: 40.h),
-                      SizedBox(
-                        height: 91.h,
-                        width: 372.w,
-
-                        child: Padding(
-                          padding:  EdgeInsets.only(
-                            top: 20.h,
-                            bottom: 20.h,
-                            right: 10.w,
-                            left: 10.w,
-                          ),
-                          child: ElevatedButton(
-                            child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => _verificationcompleted(),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: AppColors.btnPrimary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
-                    ],
+                  Text(
+                    'Register',
+                    style: GoogleFonts.khula(
+                      color: AppColors.textNormal,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ],
               ),
-            ),
-            );
-          }
-        ),
-        ),
-      );
+              SizedBox(height: 145.h),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.all(18.w),
+                    child: Text(textAlign: TextAlign.center,
+                      'Enter the 4-digit verification code (OTP) sent to your phone',
+                      style: GoogleFonts.khula(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    '(+66) 6152 625 612',
+                    style: GoogleFonts.khula(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textBtn,
+                    ),
+                  ),
+                  SizedBox(height: 40.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                    ],
+                  ),
+                  SizedBox(height: 40.h),
+                  SizedBox(
+                    height: 91.h,
+                    width: 372.w,
 
+                    child: Padding(
+                      padding:  EdgeInsets.only(
+                        top: 20.h,
+                        bottom: 20.h,
+                        right: 10.w,
+                        left: 10.w,
+                      ),
+                      child: ElevatedButton(
+                        child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => _verificationcompleted(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: AppColors.btnPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _signupotp() {
     return Scaffold(
-      resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
-
-      body: SingleChildScrollView(scrollDirection: Axis.vertical,
-        child: LayoutBuilder(
-          builder:(context, constraints) {
-            return SafeArea(
-            child: Padding(
-              padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      body: SafeArea(
+        child: Padding(
+          padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Icon(Icons.chevron_left,
-                          size: 24.sp,
-                          color: AppColors.btnArrow,),
-                      ),
-                      Text(
-                        'Register',
-                        style: GoogleFonts.khula(
-                          color: AppColors.textSecondary,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.chevron_left,
+                      size: 24.sp,
+                      color: AppColors.btnArrow,),
                   ),
-                  SizedBox(height: 145.h),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding:  EdgeInsets.all(18.w),
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Enter the 4-digit verification code (OTP) sent to your email',
-                          style: GoogleFonts.khula(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'info@gmail.com',
-                        style: GoogleFonts.khula(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textBtn,
-                        ),
-                      ),
-                      SizedBox(height: 40.h),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-                          _buildPinBox(context: context),
-
-                        ],
-                      ),
-                      SizedBox(height: 40.h),
-                      SizedBox(
-                        height: 91.h,
-                        width: 372.w,
-
-                        child: Padding(
-                          padding:  EdgeInsets.only(
-                            top: 20.h,
-                            bottom: 20.h,
-                            right: 10.w,
-                            left: 10.w,
-                          ),
-                          child: ElevatedButton(
-                            child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => _verificationcompleted(),
-                                ),
-                              );
-                            },
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: AppColors.btnPrimary,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(24.r),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text('Resend in 60 seconds',style: GoogleFonts.khula(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16.sp),),
-                    ],
+                  Text(
+                    'Register',
+                    style: GoogleFonts.khula(
+                      color: AppColors.textSecondary,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ],
               ),
-            ),
-           );
-          }
+              SizedBox(height: 145.h),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding:  EdgeInsets.all(18.w),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'Enter the 4-digit verification code (OTP) sent to your email',
+                      style: GoogleFonts.khula(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'info@gmail.com',
+                    style: GoogleFonts.khula(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textBtn,
+                    ),
+                  ),
+                  SizedBox(height: 40.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                      _buildPinBox(),
+                    ],
+                  ),
+                  SizedBox(height: 40.h),
+                  SizedBox(
+                    height: 91.h,
+                    width: 372.w,
+
+                    child: Padding(
+                      padding:  EdgeInsets.only(
+                        top: 20.h,
+                        bottom: 20.h,
+                        right: 10.w,
+                        left: 10.w,
+                      ),
+                      child: ElevatedButton(
+                        child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => _verificationcompleted(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: AppColors.btnPrimary,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24.r),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text('Resend in 60 seconds',style: GoogleFonts.khula(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16.sp),),
+                ],
+              ),
+            ],
           ),
-      ),
-      );
-  }
-
-  //For Otp verification Box
-
-  Widget _buildPinBox({required BuildContext context}) {
-    return Container(
-
-      width: 50,
-      height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.borderSecondary),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      alignment: Alignment.center,
-      child: TextFormField(
-
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        maxLength: 1,
-        style: GoogleFonts.khula(fontSize: 24),
-        decoration: const InputDecoration(
-          counterText: '',
-
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
         ),
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            FocusScope.of(context).nextFocus(); // Auto move to next
-          }
-        },
       ),
     );
   }
+
+  //For Otp verification Box
+  Widget _buildPinBox() {
+    return Container(
+      width: 50.w,
+      height: 50.h,
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.bgPrimary),
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        '7', // Placeholder for input
+        style: GoogleFonts.khula(fontSize: 24.sp),
+      ),
+    );
+  }
+
 
 
   Widget _verificationcompleted() {
@@ -1120,7 +695,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
         ), ),
       body: Padding(
-        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:60.h),
+        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:75.h),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1151,40 +726,73 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        color: AppColors.bgAlert,
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom +70.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: 51.h,
+              width: 372.w,
 
-              Padding(
-                padding:  EdgeInsets.only(top: 16.h),
-                child: Center(
-                  child: Row(mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        'Already have an account? ',
-                        style: GoogleFonts.khula(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-
-                      GestureDetector(
-                        onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
-
-                        child: Text(
-                          'Click here to log in',
-                          style: GoogleFonts.khula(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.btnPrimary,
-                          ),),
-                      ),
-
-                    ],
+              child: Padding(
+                padding:  EdgeInsets.only(
+                  right: 10.w,
+                  left: 10.w,
+                ),
+                child: ElevatedButton(
+                  child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => _signupotp()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: AppColors.btnPrimary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24.r),
+                    ),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: 16.h),
+            Center(
+              child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Already have an account? ',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+
+                  GestureDetector(
+                    onTap:() {Navigator.push(context, MaterialPageRoute(builder: (context) => SignInScreen(),));},
+
+                    child: Text(
+                      'Click here to log in',
+                      style: GoogleFonts.khula(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.btnPrimary,
+                      ),),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
