@@ -372,13 +372,33 @@ class _SignScreenState extends State<SignScreen> {
             Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
+                style: GoogleFonts.khula(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.textSecondary,
+                ),
                 icon: Icon(Icons.keyboard_arrow_down,color: AppColors.btnSecondary, size: 16.sp),
                 padding: EdgeInsets.only(right: 14.w),
                 hint: Text('Choose your gender',style: GoogleFonts.khula(fontSize: 14.sp,fontWeight: FontWeight.w400,color: AppColors.textSecondary),),
                 items: [
-                  DropdownMenuItem(value: 'Male', child: Text('Male')),
-                  DropdownMenuItem(value: 'Female', child: Text('Female')),
-                  DropdownMenuItem(value: 'Other', child: Text('Other')),
+                  DropdownMenuItem(value: 'Male', child: Text('Male',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),)),
+                  DropdownMenuItem(value: 'Female', child: Text('Female',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),)),
+                  DropdownMenuItem(value: 'Other', child: Text('Other',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),)),
                 ],
                 dropdownColor: Colors.white,
                 onChanged: (value) => setState(() => _selectedGender = value),
@@ -402,7 +422,7 @@ class _SignScreenState extends State<SignScreen> {
                 style: GoogleFonts.khula(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
-                  color: AppColors.textSecondary,
+                  color: AppColors.textNormal,
                 ),
                 decoration: InputDecoration(
                   suffixIcon: Image.asset('assets/icons/calender_icon.png',color: AppColors.textSecondary,height: 16.h, width: 16.w,) ,
@@ -491,9 +511,11 @@ class _SignScreenState extends State<SignScreen> {
                       _dobController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text(
-                          'Please fill all fields',
-                          style: GoogleFonts.khula(),
+                        content: Center(
+                          child: Text(
+                            'Please fill all fields',
+                            style: GoogleFonts.khula(),
+                          ),
                         ),
                       ),
                     );
@@ -516,7 +538,7 @@ class _SignScreenState extends State<SignScreen> {
                     );
                   }
                 },
-                child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp)),
               ),
             ),
             SizedBox(height: 32.h),
