@@ -43,6 +43,7 @@ dependencies:
   dots_indicator: ^2.0.0
   firebase_core: ^3.13.1
   firebase_auth: ^5.5.4
+  firebase_database: ^11.3.6
 #        adaptive_background_image: 'assets/ic_background.png'
 #        adaptive_foreground_image: 'assets/ic_foreground.png'
 #        adaptive_round_image: 'assets/ic_logo_round.png'
