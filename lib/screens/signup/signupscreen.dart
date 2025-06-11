@@ -1025,11 +1025,6 @@ class _SignScreenState extends State<SignScreen> {
   }
 
 
-
-
-
-
-
   Widget _verificationcompleted() {
     return Scaffold(
       body: SafeArea(
@@ -1125,7 +1120,7 @@ class _SignScreenState extends State<SignScreen> {
                 ),
         ), ),
       body: Padding(
-        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:75.h),
+        padding:  EdgeInsets.only(left: 28.w,right: 28.w,top: 22.h,bottom:60.h),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
