@@ -395,8 +395,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
-                          },
+                            if (_formKey2.currentState!.validate()) {
+                              // If the email is valid, navigate to signup OTP screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => _verificationcompleted()),
+                              );
+                            } else {
+                              // If form is invalid, stay on page and show validation error
+                              print('Form is invalid');
+                            }                          },
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: AppColors.btnPrimary,
