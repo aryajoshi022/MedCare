@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,6 +25,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
+
+  final TextEditingController _emailController = TextEditingController();
+
 
   Widget _buildToggleTabs() {
     return Row(
@@ -133,10 +137,13 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 26.h),
               Text(
                 'Email',
-                style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.btnPrimary,fontWeight: FontWeight.w600),
+                style: GoogleFonts.khula(fontSize: 16.sp,
+                    color: AppColors.btnPrimary,
+                    fontWeight: FontWeight.w600),
               ),
               SizedBox(height: 12.h),
               FormField<String>(
+
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -156,12 +163,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (val) {
                             field.didChange(val);
                           },
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 10.w),
                             hintText: 'Enter email',
                             hintStyle: GoogleFonts.khula(
                               color: AppColors.textDisabled,
@@ -170,13 +179,15 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
+                                color: field.hasError ? Colors.red : AppColors
+                                    .borderSecondary,
                                 width: 1,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
+                                color: field.hasError ? Colors.red : AppColors
+                                    .borderSecondary,
                                 width: 1,
                               ),
                             ),
@@ -194,7 +205,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           padding: EdgeInsets.only(top: 4.h, left: 4.w),
                           child: Text(
                             field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12.sp),
+                            style: TextStyle(
+                                color: Colors.red, fontSize: 12.sp),
                           ),
                         ),
                     ],
@@ -202,12 +214,16 @@ class _SignInScreenState extends State<SignInScreen> {
                 },
               ),
               SizedBox(height: 26.h),
-              Text(
-                'Is there an issue with your email?',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  color: AppColors.textBtn,
-                  fontWeight: FontWeight.w400,
+              GestureDetector(
+                onTap: () =>
+                    forgotPassword(context),
+                child: Text(
+                  'Is there an issue with your email?',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    color: AppColors.textBtn,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
 
@@ -229,19 +245,23 @@ class _SignInScreenState extends State<SignInScreen> {
                           left: 10.w,
                         ),
                         child: ElevatedButton(
-                          child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
+                          child: Text('Login', style: GoogleFonts.khula(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textWhite)),
                           onPressed: () {
-
                             if (_formKey.currentState!.validate()) {
                               // If the email is valid, navigate to signup OTP screen
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => _verificationcompleted()),
+                                MaterialPageRoute(builder: (context) =>
+                                    _verificationcompleted()),
                               );
                             } else {
                               // If form is invalid, stay on page and show validation error
                               print('Form is invalid');
-                            }                          },
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: AppColors.btnPrimary,
@@ -265,7 +285,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => SignScreen(),));
                           },
                           child: Text(
                             'Sign Up',
@@ -287,6 +308,34 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
+  void Function() getForgotPasswordCallback(BuildContext context) {
+    return () => forgotPassword(context);
+  }
+
+  void forgotPassword(BuildContext context) async {
+    String email = _emailController.text.trim();
+
+    if (email.isEmpty || !email.contains('@')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter a valid email')),
+      );
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Password reset email sent!')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.toString()}')),
+      );
+    }
+  }
+
+
   Widget _nophonelogin() {
     return Scaffold(
       body: SingleChildScrollView(
@@ -430,16 +479,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         GestureDetector(
                           onTap: () {
 
-                            if (_formKey2.currentState!.validate()) {
-                              // If the email is valid, navigate to signup OTP screen
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => _verificationcompleted()),
-                              );
-                            } else {
-                              // If form is invalid, stay on page and show validation error
-                              print('Form is invalid');
-                            }
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+
                           },
                           child: Text(
                             'Sign Up',
@@ -542,6 +583,24 @@ class _SignInScreenState extends State<SignInScreen> {
 
 
   @override
+
+  void initState() {
+    super.initState();
+
+    // Listen for changes in the text field
+    _emailController.addListener(() {
+      setState(() {
+        // Rebuild whenever the text changes
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // Always dispose controllers
+    _emailController.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     return _verifylogin();
   }
