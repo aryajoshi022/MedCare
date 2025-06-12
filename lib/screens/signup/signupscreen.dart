@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signin/signinscreen.dart';
 import 'package:medcare/util/constants/colors.dart';
+import '../../FirebaseServices/firebase_services.dart';
 
 class SignScreen extends StatefulWidget {
   const SignScreen({super.key});
@@ -24,6 +25,13 @@ class _SignScreenState extends State<SignScreen> {
 
   final _formKey = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _phoneNoController = TextEditingController();
+  String? _selectedGender;
+
 
 
   void _switchPage(int index) {
@@ -118,7 +126,12 @@ class _SignScreenState extends State<SignScreen> {
                             VerticalDivider(color: AppColors.textDisabled),
                             Expanded(
                               child: TextField(
-                                controller: _controller,
+                                style: GoogleFonts.khula(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textSecondary,
+                                ),
+                                controller: _phoneNoController,
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                 onChanged: field.didChange,
@@ -166,6 +179,12 @@ class _SignScreenState extends State<SignScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          style: GoogleFonts.khula(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
+                          ),
+                          controller: _nameController,
                           textAlign: TextAlign.start,
                           onChanged: (val) {
                             field.didChange(val);
@@ -210,139 +229,136 @@ class _SignScreenState extends State<SignScreen> {
               ),
               SizedBox(height: 26.h),
               Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: DropdownButtonFormField<String>(
-                          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
-                          padding: EdgeInsets.only(right: 14.w),
-                          dropdownColor: Colors.white,
-                          hint: Text(
-                            'Choose your gender',
-                            style: GoogleFonts.khula(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                          items: const [
-                            DropdownMenuItem(value: 'Male', child: Text('Male')),
-                            DropdownMenuItem(value: 'Female', child: Text('Female')),
-                            DropdownMenuItem(value: 'Other', child: Text('Other')),
-                          ],
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
+              SizedBox(
+                height: 44.h,
+                child: DropdownButtonFormField<String>(
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  value: _selectedGender,
+                  icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
+                  padding: EdgeInsets.only(right: 14.w),
+                  dropdownColor: Colors.white,
+                  hint: Text(
+                    'Choose your gender',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  items: [
+                    DropdownMenuItem(value: 'Male', child: Text('Male',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                    DropdownMenuItem(value: 'Female', child: Text('Female',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                    DropdownMenuItem(value: 'Other', child: Text('Other',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please select your gender';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                  ),
+                ),
               ),
               SizedBox(height: 26.h),
               Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your date of birth';
-                  }
-                  // You can add more validation like date format here if needed
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 45.h,
-                        child: TextField(
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            suffixIcon: Image.asset(
-                              'assets/icons/calender_icon.png',
-                              color: AppColors.textSecondary,
-                              height: 16.h,
-                              width: 16.w,
+              SizedBox(
+                height: 45.h,
+                child: TextFormField(
+                  controller: _dobController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  readOnly: true,
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                  decoration: InputDecoration(
+                    suffixIcon: Image.asset(
+                      'assets/icons/calender_icon.png',
+                      color: AppColors.textSecondary,
+                      height: 16.h,
+                      width: 16.w,
+                    ),
+                    hintText: 'Enter your date of birth',
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    hintStyle: GoogleFonts.khula(
+                      color: AppColors.textSecondary,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your date of birth';
+                    }
+                    return null;
+                  },
+                  onTap: () async {
+                    final date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime(2000),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                      builder: (context, child) {
+                        return Theme(
+                          data: Theme.of(context).copyWith(
+                            textTheme: TextTheme(
+                              bodyMedium: GoogleFonts.khula(),
                             ),
-                            hintText: 'Enter your date of birth',
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textSecondary,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
+                            colorScheme: ColorScheme.light(
+                              primary: AppColors.bgPrimary,
+                              onPrimary: AppColors.bgAlert,
+                              onSurface: AppColors.textNormal,
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
+                            textButtonTheme: TextButtonThemeData(
+                              style: TextButton.styleFrom(
+                                foregroundColor: AppColors.textNormal,
+                                textStyle: GoogleFonts.khula(),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText ?? '',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                        ),
-                    ],
-                  );
-                },
+                          child: child!,
+                        );
+                      },
+                    );
+                    if (date != null) {
+                      _dobController.text = "${date.toLocal()}".split(' ')[0];
+                    }
+                  },
+                ),
               ),
               Row(
                 children: [
@@ -377,7 +393,6 @@ class _SignScreenState extends State<SignScreen> {
               SizedBox(
                 height: 51.h,
                 width: 372.w,
-
                 child: Padding(
                   padding:  EdgeInsets.only(
                     right: 10.w,
@@ -385,19 +400,72 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   child: ElevatedButton(
                     child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: () {
-                      if (_formKey2.currentState!.validate()) {
+                    onPressed: ()  async{
+                      if (_formKey.currentState!.validate()) {
                         // If the email is valid, navigate to signup OTP screen
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => _signInotp()),
+                          MaterialPageRoute(builder: (context) => _signupotp()),
                         );
                       } else {
                         // If form is invalid, stay on page and show validation error
                         print('Form is invalid');
                       }
-                    },
+                      if (_emailController.text.isEmpty ||
+                          _nameController.text.isEmpty ||
+                          _selectedGender == null ||
+                          _dobController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Center(
+                              child: Text(
+                                'Please fill all fields',
+                                style: GoogleFonts.khula(),
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      else {
+                        final email = _emailController.text.trim();
 
+                        // Check if the email already exists
+                        final alreadyExists = await FirebaseServices.checkIfEmailExists(email);
+                        if (alreadyExists) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Center(
+                                child: Text(
+                                  'Email already registered!',
+                                  style: GoogleFonts.khula(),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        else {
+                          // Register if not already exists
+                          FirebaseServices.registerUserWithEmail(
+                            email: email,
+                            name: _nameController.text.trim(),
+                            gender: _selectedGender!,
+                            dob: _dobController.text.trim(),
+                            phone: _phoneNoController.text.trim(),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Center(
+                                child: Text(
+                                  'Registered successfully!',
+                                  style: GoogleFonts.khula(),
+                                ),
+                              ),
+                            ),
+                          );
+                          // Optional: Clear fields or navigate
+                        }
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: AppColors.btnPrimary,
@@ -408,15 +476,12 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ),
-
-
             ],
           ),
         ),
       ),
     );
   }
-
 
   Widget _signUpPage() {
     return Scaffold(  resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
@@ -448,6 +513,7 @@ class _SignScreenState extends State<SignScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (val) {
                             field.didChange(val);
@@ -510,6 +576,12 @@ class _SignScreenState extends State<SignScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          style: GoogleFonts.khula(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
+                          ),
+                          controller: _nameController,
                           textAlign: TextAlign.start,
                           onChanged: (val) {
                             field.didChange(val);
@@ -554,139 +626,136 @@ class _SignScreenState extends State<SignScreen> {
               ),
               SizedBox(height: 26.h),
               Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select your gender';
-                  }
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 44.h,
-                        child: DropdownButtonFormField<String>(
-                          icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
-                          padding: EdgeInsets.only(right: 14.w),
-                          dropdownColor: Colors.white,
-                          hint: Text(
-                            'Choose your gender',
-                            style: GoogleFonts.khula(
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                          items: const [
-                            DropdownMenuItem(value: 'Male', child: Text('Male')),
-                            DropdownMenuItem(value: 'Female', child: Text('Female')),
-                            DropdownMenuItem(value: 'Other', child: Text('Other')),
-                          ],
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                                width: 1,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4),
-                          child: Text(
-                            field.errorText!,
-                            style: TextStyle(color: Colors.red, fontSize: 12),
-                          ),
-                        ),
-                    ],
-                  );
-                },
+              SizedBox(
+                height: 44.h,
+                child: DropdownButtonFormField<String>(
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  value: _selectedGender,
+                  icon: Icon(Icons.keyboard_arrow_down, color: AppColors.btnSecondary, size: 16.sp),
+                  padding: EdgeInsets.only(right: 14.w),
+                  dropdownColor: Colors.white,
+                  hint: Text(
+                    'Choose your gender',
+                    style: GoogleFonts.khula(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColors.textSecondary,
+                    ),
+                  ),
+                  items: [
+                    DropdownMenuItem(value: 'Male', child: Text('Male',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                    DropdownMenuItem(value: 'Female', child: Text('Female',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                    DropdownMenuItem(value: 'Other', child: Text('Other',
+                        style: GoogleFonts.khula(fontSize: 14.sp, fontWeight: FontWeight.w400, color: AppColors.textSecondary))),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      _selectedGender = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please select your gender';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary, width: 1),
+                    ),
+                  ),
+                ),
               ),
               SizedBox(height: 26.h),
               Text('Date of Birth', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-              FormField<String>(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your date of birth';
-                  }
-                  // You can add more validation like date format here if needed
-                  return null;
-                },
-                builder: (FormFieldState<String> field) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 45.h,
-                        child: TextField(
-                          onChanged: (value) {
-                            field.didChange(value);
-                          },
-                          decoration: InputDecoration(
-                            suffixIcon: Image.asset(
-                              'assets/icons/calender_icon.png',
-                              color: AppColors.textSecondary,
-                              height: 16.h,
-                              width: 16.w,
+              SizedBox(
+                height: 45.h,
+                child: TextFormField(
+                  controller: _dobController,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  readOnly: true,
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.textSecondary,
+                  ),
+                  decoration: InputDecoration(
+                    suffixIcon: Image.asset(
+                      'assets/icons/calender_icon.png',
+                      color: AppColors.textSecondary,
+                      height: 16.h,
+                      width: 16.w,
+                    ),
+                    hintText: 'Enter your date of birth',
+                    contentPadding: EdgeInsets.only(left: 10.w),
+                    hintStyle: GoogleFonts.khula(
+                      color: AppColors.textSecondary,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.borderSecondary),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your date of birth';
+                    }
+                    return null;
+                  },
+                  onTap: () async {
+                    final date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime(2000),
+                      firstDate: DateTime(1900),
+                      lastDate: DateTime.now(),
+                      builder: (context, child) {
+                        return Theme(
+                          data: Theme.of(context).copyWith(
+                            textTheme: TextTheme(
+                              bodyMedium: GoogleFonts.khula(),
                             ),
-                            hintText: 'Enter your date of birth',
-                            contentPadding: EdgeInsets.only(left: 10.w),
-                            hintStyle: GoogleFonts.khula(
-                              color: AppColors.textSecondary,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w400,
+                            colorScheme: ColorScheme.light(
+                              primary: AppColors.bgPrimary,
+                              onPrimary: AppColors.bgAlert,
+                              onSurface: AppColors.textNormal,
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: field.hasError ? Colors.red : AppColors.borderSecondary,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.borderSecondary,
+                            textButtonTheme: TextButtonThemeData(
+                              style: TextButton.styleFrom(
+                                foregroundColor: AppColors.textNormal,
+                                textStyle: GoogleFonts.khula(),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                      if (field.hasError)
-                        Padding(
-                          padding: EdgeInsets.only(top: 4.h, left: 4.w),
-                          child: Text(
-                            field.errorText ?? '',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 12.sp,
-                            ),
-                          ),
-                        ),
-                    ],
-                  );
-                },
+                          child: child!,
+                        );
+                      },
+                    );
+                    if (date != null) {
+                      _dobController.text = "${date.toLocal()}".split(' ')[0];
+                    }
+                  },
+                ),
               ),
               Row(
                 children: [
@@ -718,7 +787,6 @@ class _SignScreenState extends State<SignScreen> {
                 ],
               ),
               SizedBox(height: 40.h,),
-
               SizedBox(
                 height: 51.h,
                 width: 372.w,
@@ -730,7 +798,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   child: ElevatedButton(
                     child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: () {
+                    onPressed: ()  async{
                       if (_formKey.currentState!.validate()) {
                         // If the email is valid, navigate to signup OTP screen
                         Navigator.push(
@@ -741,8 +809,61 @@ class _SignScreenState extends State<SignScreen> {
                         // If form is invalid, stay on page and show validation error
                         print('Form is invalid');
                       }
-                    },
+                      if (_emailController.text.isEmpty ||
+                          _nameController.text.isEmpty ||
+                          _selectedGender == null ||
+                          _dobController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Center(
+                              child: Text(
+                                'Please fill all fields',
+                                style: GoogleFonts.khula(),
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      else {
+                        final email = _emailController.text.trim();
 
+                        // Check if the email already exists
+                        final alreadyExists = await FirebaseServices.checkIfEmailExists(email);
+                        if (alreadyExists) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Center(
+                                child: Text(
+                                  'Email already registered!',
+                                  style: GoogleFonts.khula(),
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        else {
+                          // Register if not already exists
+                          FirebaseServices.registerUserWithEmail(
+                            email: email,
+                            name: _nameController.text.trim(),
+                            gender: _selectedGender!,
+                            dob: _dobController.text.trim(),
+                            phone: _phoneNoController.text.trim(),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Center(
+                                child: Text(
+                                  'Registered successfully!',
+                                  style: GoogleFonts.khula(),
+                                ),
+                              ),
+                            ),
+                          );
+                          // Optional: Clear fields or navigate
+                        }
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: AppColors.btnPrimary,
@@ -753,8 +874,6 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                 ),
               ),
-
-
             ],
           ),
         ),
