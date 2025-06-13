@@ -7,6 +7,7 @@ class FirebaseServices {
   // Phone users reference
   static final DatabaseReference phoneDbRef = FirebaseDatabase.instance.ref("phoneUsers");
 
+
   // EMAIL
 
   static Future<bool> registerUserWithEmail({
@@ -49,6 +50,7 @@ class FirebaseServices {
     }
     return false;
   }
+
 
   // PHONE
 
