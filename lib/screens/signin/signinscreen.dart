@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
+import '../../FirebaseServices/firebase_services.dart';
 import '../../util/constants/colors.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -19,15 +20,16 @@ class _SignInScreenState extends State<SignInScreen> {
   int _currentIndex = 0;
   PageController _pageController = PageController();
 
-  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
 
-  final TextEditingController _emailController = TextEditingController();
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNoController = TextEditingController();
 
   Widget _buildToggleTabs() {
     return Row(
@@ -122,9 +124,6 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
-
-
-
   Widget _emaillogin() {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -249,18 +248,38 @@ class _SignInScreenState extends State<SignInScreen> {
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w700,
                               color: AppColors.textWhite)),
-                          onPressed: () {
-                            if (_formKey.currentState!.validate()) {
-                              // If the email is valid, navigate to signup OTP screen
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>
-                                    _verificationcompleted()),
+                          onPressed: () async {
+                            // if (_formKey.currentState!.validate()) {
+                            //   // If the email is valid, navigate to signup OTP screen
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(builder: (context) =>
+                            //         _verificationcompleted()),
+                            //   );
+                            // }
+                            // else {
+                            //   // If form is invalid, stay on page and show validation error
+                            //   print('Form is invalid');
+                            // }
+                            final email = _emailController.text.trim();
+                            if (email.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Center(child: Text('Please enter your email',style: GoogleFonts.khula()))),
                               );
-                            } else {
-                              // If form is invalid, stay on page and show validation error
-                              print('Form is invalid');
+                              return;
                             }
+
+                            bool exists = await FirebaseServices.loginWithEmail(email);
+
+                            if (exists) {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => _verificationcompleted()));
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Center(child: Text('Email not found. Please Sign Up.',style: GoogleFonts.khula()))),
+                              );
+                            }
+
                           },
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
@@ -356,7 +375,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) return 'Please enter phone number';
                   if (!RegExp(r'^\d+$').hasMatch(value)) return 'Only digits allowed';
-                  if (value.length < 9) return 'Minimum 9 digits required';
+                  if (value.length < 10) return 'Minimum 10 digits required';
                   return null;
                 },
                 builder: (field) {
@@ -434,7 +453,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(
                       height: 91.h,
                       width: 372.w,
-
                       child: Padding(
                         padding:  EdgeInsets.only(
                           top: 20.h,
@@ -443,17 +461,37 @@ class _SignInScreenState extends State<SignInScreen> {
                           left: 10.w,
                         ),
                         child: ElevatedButton(
-                          onPressed: () {
-                            if (_formKey2.currentState!.validate()) {
-                              // If the email is valid, navigate to signup OTP screen
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => _verificationcompleted()),
+                          onPressed: () async{
+                            // if (_formKey2.currentState!.validate()) {
+                            //   // If the email is valid, navigate to signup OTP screen
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(builder: (context) => _verificationcompleted()),
+                            //   );
+                            // }
+                            // else {
+                            //   // If form is invalid, stay on page and show validation error
+                            //   print('Form is invalid');
+                            //   }
+                            final phone = "$selectedCode${_phoneNoController.text.trim()}";
+                            if (phone.isEmpty) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Center(child: Text('Please enter your Phone Number',style: GoogleFonts.khula()))),
                               );
+                              return;
+                            }
+
+                            bool exists = await FirebaseServices.loginWithPhone(phone);
+
+                            if (exists) {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => _verificationcompleted()));
                             } else {
-                              // If form is invalid, stay on page and show validation error
-                              print('Form is invalid');
-                            }                          },
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Center(child: Text('Phone Number not found. Please Sign Up.',style: GoogleFonts.khula()))),
+                              );
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: AppColors.btnPrimary,
@@ -478,9 +516,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-
                             Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
-
                           },
                           child: Text(
                             'Sign Up',
@@ -488,10 +524,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w600,
                               color: AppColors.btnPrimary,
-                            ),),
+                            ),
+                          ),
                         )
-
-
                       ],
                     ),
                   ],

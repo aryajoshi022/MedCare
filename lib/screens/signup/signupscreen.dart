@@ -19,7 +19,7 @@ class _SignScreenState extends State<SignScreen> {
   int _currentIndex = 0;
   bool value = false;
 
-  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91'; // 'Pilih' means 'Select' in Indonesian
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
 
@@ -99,7 +99,7 @@ class _SignScreenState extends State<SignScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) return 'Please enter phone number';
                   if (!RegExp(r'^\d+$').hasMatch(value)) return 'Only digits allowed';
-                  if (value.length < 9) return 'Minimum 9 digits required';
+                  if (value.length < 10) return 'Minimum 10 digits required';
                   return null;
                 },
                 builder: (field) {
@@ -400,18 +400,8 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   child: ElevatedButton(
                     child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: ()  async{
-                      if (_formKey.currentState!.validate()) {
-                        // If the email is valid, navigate to signup OTP screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => _signupotp()),
-                        );
-                      } else {
-                        // If form is invalid, stay on page and show validation error
-                        print('Form is invalid');
-                      }
-                      if (_emailController.text.isEmpty ||
+                    onPressed: () async {
+                      if (_phoneNoController.text.isEmpty ||
                           _nameController.text.isEmpty ||
                           _selectedGender == null ||
                           _dobController.text.isEmpty) {
@@ -425,32 +415,27 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           ),
                         );
-                      }
-                      else {
-                        final email = _emailController.text.trim();
+                      } else {
+                        final phone = "$selectedCode${_phoneNoController.text.trim()}";
 
-                        // Check if the email already exists
-                        final alreadyExists = await FirebaseServices.checkIfEmailExists(email);
-                        if (alreadyExists) {
+                        bool exists = await FirebaseServices.checkIfPhoneExists(phone);
+                        if (exists) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
                                 child: Text(
-                                  'Email already registered!',
+                                  'Phone Number already registered!',
                                   style: GoogleFonts.khula(),
                                 ),
                               ),
                             ),
                           );
-                        }
-                        else {
-                          // Register if not already exists
-                          FirebaseServices.registerUserWithEmail(
-                            email: email,
+                        } else {
+                          await FirebaseServices.registerUserWithPhone(
+                            phone: phone,
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
                             dob: _dobController.text.trim(),
-                            phone: _phoneNoController.text.trim(),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -462,7 +447,6 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          // Optional: Clear fields or navigate
                         }
                       }
                     },
@@ -798,17 +782,7 @@ class _SignScreenState extends State<SignScreen> {
                   ),
                   child: ElevatedButton(
                     child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                    onPressed: ()  async{
-                      if (_formKey.currentState!.validate()) {
-                        // If the email is valid, navigate to signup OTP screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => _signupotp()),
-                        );
-                      } else {
-                        // If form is invalid, stay on page and show validation error
-                        print('Form is invalid');
-                      }
+                    onPressed: () async {
                       if (_emailController.text.isEmpty ||
                           _nameController.text.isEmpty ||
                           _selectedGender == null ||
@@ -823,8 +797,7 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           ),
                         );
-                      }
-                      else {
+                      } else {
                         final email = _emailController.text.trim();
 
                         // Check if the email already exists
@@ -840,15 +813,13 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                        }
-                        else {
+                        } else {
                           // Register if not already exists
                           FirebaseServices.registerUserWithEmail(
                             email: email,
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
                             dob: _dobController.text.trim(),
-                            phone: _phoneNoController.text.trim(),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
