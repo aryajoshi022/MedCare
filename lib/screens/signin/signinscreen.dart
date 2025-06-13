@@ -471,35 +471,31 @@ class _SignInScreenState extends State<SignInScreen> {
                           left: 10.w,
                         ),
                         child: ElevatedButton(
-                          onPressed: () async{
-                            // if (_formKey2.currentState!.validate()) {
-                            //   // If the email is valid, navigate to signup OTP screen
-                            //   Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(builder: (context) => _verificationcompleted()),
-                            //   );
-                            // }
-                            // else {
-                            //   // If form is invalid, stay on page and show validation error
-                            //   print('Form is invalid');
-                            //   }
-                            final phone = "$selectedCode${_phoneNoController.text.trim()}";
+                          onPressed: () async {
+                            final phone = _phoneNoController.text.trim();
                             if (phone.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Center(child: Text('Please enter your Phone Number',style: GoogleFonts.khula()))),
+                                SnackBar(content: Center(child: Text(
+                                    'Please enter your Phone Number',
+                                    style: GoogleFonts.khula()))),
                               );
                               return;
                             }
+                            else {
+                              bool exists = await FirebaseServices.loginWithPhone(phone);
 
-                            bool exists = await FirebaseServices.loginWithPhone(phone);
-
-                            if (exists) {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => _verificationcompleted()));
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Center(child: Text('Phone Number not found. Please Sign Up.',style: GoogleFonts.khula()))),
-                              );
+                              if (exists) {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) =>
+                                        _verificationcompleted()));
+                              }
+                              else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Center(child: Text(
+                                      'Phone Number not found. Please Sign Up.',
+                                      style: GoogleFonts.khula()))),
+                                );
+                              }
                             }
                           },
                           style: ElevatedButton.styleFrom(

@@ -421,9 +421,8 @@ class _SignScreenState extends State<SignScreen> {
                       } else {
                         final phone = _phoneNoController.text.trim();
 
-                        // Check if the email already exists
-                        final alreadyExists = await FirebaseServices.checkIfPhoneExists(phone);
-                        if (alreadyExists) {
+                        bool exists = await FirebaseServices.checkIfPhoneExists(phone);
+                        if (exists) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
@@ -435,8 +434,7 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           );
                         } else {
-                          // Register if not already exists
-                          FirebaseServices.registerUserWithPhone(
+                          await FirebaseServices.registerUserWithPhone(
                             phone: phone,
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
@@ -452,7 +450,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          // Optional: Clear fields or navigate
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                         }
                       }
                     },
@@ -845,6 +843,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                           // Optional: Clear fields or navigate
                         }
                       }
