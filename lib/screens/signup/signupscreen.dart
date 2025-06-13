@@ -416,7 +416,7 @@ class _SignScreenState extends State<SignScreen> {
                           ),
                         );
                       } else {
-                        final phone = "$selectedCode${_phoneNoController.text.trim()}";
+                        final phone = _phoneNoController.text.trim();
 
                         bool exists = await FirebaseServices.checkIfPhoneExists(phone);
                         if (exists) {
@@ -447,6 +447,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                         }
                       }
                     },
@@ -831,6 +832,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
                           // Optional: Clear fields or navigate
                         }
                       }
