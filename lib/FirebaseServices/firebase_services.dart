@@ -76,18 +76,18 @@ class FirebaseServices {
     return true;
   }
 
-  static Future<bool> loginWithPhone(String phoneNumber) async {
-    return await checkIfPhoneExists(phoneNumber);
+  static Future<bool> loginWithPhone(String phone) async {
+    return await checkIfPhoneExists(phone);
   }
 
-  static Future<bool> checkIfPhoneExists(String phoneNumber) async {
+  static Future<bool> checkIfPhoneExists(String phone) async {
     final snapshot = await phoneDbRef.get();
 
     if (snapshot.exists) {
       for (final child in snapshot.children) {
         final data = child.value as Map?;
         if (data != null &&
-            data['phone']?.toString().toLowerCase() == phoneNumber.toLowerCase()) {
+            data['phone']?.toString().toLowerCase() == phone.toLowerCase()) {
           return true;
         }
       }

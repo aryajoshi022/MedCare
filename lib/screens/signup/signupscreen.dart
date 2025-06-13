@@ -19,7 +19,7 @@ class _SignScreenState extends State<SignScreen> {
   int _currentIndex = 0;
   bool value = false;
 
-  String selectedCode = '+91'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
 
@@ -404,22 +404,26 @@ class _SignScreenState extends State<SignScreen> {
                       if (_phoneNoController.text.isEmpty ||
                           _nameController.text.isEmpty ||
                           _selectedGender == null ||
-                          _dobController.text.isEmpty) {
+                          _dobController.text.isEmpty ||
+                          !value ) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Center(
                               child: Text(
-                                'Please fill all fields',
+                                !value
+                                    ? 'Please agree to the terms to continue'
+                                    : 'Please fill all fields',
                                 style: GoogleFonts.khula(),
                               ),
                             ),
                           ),
                         );
                       } else {
-                        final phone = "$selectedCode${_phoneNoController.text.trim()}";
+                        final phone = _phoneNoController.text.trim();
 
-                        bool exists = await FirebaseServices.checkIfPhoneExists(phone);
-                        if (exists) {
+                        // Check if the email already exists
+                        final alreadyExists = await FirebaseServices.checkIfPhoneExists(phone);
+                        if (alreadyExists) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
@@ -431,7 +435,8 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           );
                         } else {
-                          await FirebaseServices.registerUserWithPhone(
+                          // Register if not already exists
+                          FirebaseServices.registerUserWithPhone(
                             phone: phone,
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
@@ -447,6 +452,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
+                          // Optional: Clear fields or navigate
                         }
                       }
                     },
@@ -497,6 +503,11 @@ class _SignScreenState extends State<SignScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          style: GoogleFonts.khula(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
+                          ),
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (val) {
@@ -786,12 +797,15 @@ class _SignScreenState extends State<SignScreen> {
                       if (_emailController.text.isEmpty ||
                           _nameController.text.isEmpty ||
                           _selectedGender == null ||
-                          _dobController.text.isEmpty) {
+                          _dobController.text.isEmpty ||
+                          !value ) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Center(
                               child: Text(
-                                'Please fill all fields',
+                                !value
+                                    ? 'Please agree to the terms to continue'
+                                    : 'Please fill all fields',
                                 style: GoogleFonts.khula(),
                               ),
                             ),

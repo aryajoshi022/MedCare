@@ -20,7 +20,7 @@ class _SignInScreenState extends State<SignInScreen> {
   int _currentIndex = 0;
   PageController _pageController = PageController();
 
-  String selectedCode = '+91'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
   final TextEditingController _controller = TextEditingController();
 
@@ -162,6 +162,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(
                         height: 44.h,
                         child: TextFormField(
+                          style: GoogleFonts.khula(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
+                          ),
                           controller: _emailController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (val) {
@@ -402,6 +407,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             VerticalDivider(color: AppColors.textDisabled),
                             Expanded(
                               child: TextField(
+                                style: GoogleFonts.khula(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textSecondary,
+                                ),
                                 controller: _controller,
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
