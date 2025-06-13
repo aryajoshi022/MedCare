@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
 
+import '../../FirebaseServices/firebase_services.dart';
 import '../../util/constants/colors.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -17,9 +18,10 @@ class _SignInScreenState extends State<SignInScreen> {
   int _currentIndex = 0;
   PageController _pageController = PageController();
 
-  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNoController = TextEditingController();
 
   Widget _buildToggleTabs() {
     return Row(
@@ -69,7 +71,6 @@ class _SignInScreenState extends State<SignInScreen> {
       );
     });
   }
-
   Widget _verifylogin() {
     return Scaffold(
       appBar: AppBar(
@@ -127,7 +128,15 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(height: 12.h),
           SizedBox(height: 44.h,
             child: TextField(
+              style: GoogleFonts.khula(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.textSecondary,
+              ),
+              controller: _emailController,
+              textAlign: TextAlign.start,
               decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                 hintText: 'Enter phone email',
                 hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                 enabledBorder: OutlineInputBorder(
@@ -170,10 +179,28 @@ class _SignInScreenState extends State<SignInScreen> {
                   left: 10.w,
                 ),
                 child: ElevatedButton(
-                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  onPressed: () async {
+                    final email = _emailController.text.trim();
+
+                    if (email.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Center(child: Text('Please enter your email',style: GoogleFonts.khula()))),
+                      );
+                      return;
+                    }
+
+                    bool exists = await FirebaseServices.loginWithEmail(email);
+
+                    if (exists) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => _verificationcompleted()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Center(child: Text('Email not found. Please Sign Up.',style: GoogleFonts.khula()))),
+                      );
+                    }
                   },
+
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: AppColors.btnPrimary,
@@ -181,6 +208,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       borderRadius: BorderRadius.circular(24.r),
                     ),
                   ),
+                  child: Text('Login', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                 ),
               ),
             ),
@@ -270,9 +298,15 @@ class _SignInScreenState extends State<SignInScreen> {
                           Expanded(
                             child: SizedBox(height: 44.h,
                               child: TextField(
-                                controller: _controller,
+                                style: GoogleFonts.khula(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.textSecondary,
+                                ),
+                                controller: _phoneNoController,
                                 textAlign: TextAlign.start,
                                 decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                                   hintText: 'Enter phone number',maintainHintHeight: true,
                                   hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                                   border: InputBorder.none,isDense: true
@@ -319,8 +353,26 @@ class _SignInScreenState extends State<SignInScreen> {
                   left: 10.w,
                 ),
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted(),));
+                  onPressed: () async {
+                    final phone = "$selectedCode${_phoneNoController.text.trim()}";
+
+                    if (phone.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Center(child: Text('Please enter your Phone Number',style: GoogleFonts.khula()))),
+                      );
+                      return;
+                    }
+
+                    bool exists = await FirebaseServices.loginWithPhone(phone);
+
+                    if (exists) {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => _verificationcompleted()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Center(child: Text('Phone Number not found. Please Sign Up.',style: GoogleFonts.khula()))),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,

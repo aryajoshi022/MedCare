@@ -19,12 +19,12 @@ class _SignScreenState extends State<SignScreen> {
   int _currentIndex = 0;
   bool value = false;
 
-  String selectedCode = 'Pilih'; // 'Pilih' means 'Select' in Indonesian
+  String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
-  final TextEditingController _controller = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _phoneNoController = TextEditingController();
   String? _selectedGender;
 
   void _switchPage(int index) {
@@ -122,9 +122,15 @@ class _SignScreenState extends State<SignScreen> {
                     Expanded(
                       child: SizedBox(height: 44.h,
                         child: TextField(
-                          controller: _controller,
+                          style: GoogleFonts.khula(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.textSecondary,
+                          ),
+                          controller: _phoneNoController,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
                               hintText: 'Enter phone number',maintainHintHeight: true,
                               hintStyle: GoogleFonts.khula(color: AppColors.textDisabled,fontSize: 14.sp,fontWeight: FontWeight.w400),
                               border: InputBorder.none,isDense: true
@@ -145,6 +151,7 @@ class _SignScreenState extends State<SignScreen> {
                   fontWeight: FontWeight.w400,
                   color: AppColors.textSecondary,
                 ),
+                controller: _nameController,
                 textAlign: TextAlign.start,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.only(top: 0,bottom: 0,right: 15,left: 10),
@@ -164,7 +171,6 @@ class _SignScreenState extends State<SignScreen> {
             ),
             SizedBox(height: 26.h),
             Text('Gender', style: GoogleFonts.khula(fontWeight: FontWeight.w600, fontSize: 16.sp,color: AppColors.btnPrimary)),
-
             SizedBox(height: 44.h,
               child: DropdownButtonFormField<String>(
                 style: GoogleFonts.khula(
@@ -197,7 +203,7 @@ class _SignScreenState extends State<SignScreen> {
                 ],
                 dropdownColor: Colors.white,
 
-                onChanged: (value) {},
+                onChanged: (value) => setState(() => _selectedGender = value),
                 decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: AppColors.borderSecondary), // Red border when not focused
@@ -301,7 +307,64 @@ class _SignScreenState extends State<SignScreen> {
                 ),
               ],
             ),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () async {
+                    if (_phoneNoController.text.isEmpty ||
+                        _nameController.text.isEmpty ||
+                        _selectedGender == null ||
+                        _dobController.text.isEmpty ||
+                        !value) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              !value
+                                  ? 'Please agree to the terms to continue'
+                                  : 'Please fill all fields',
+                              style: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                      );
+                      return;
+                    }
+                    final phone = "$selectedCode${_phoneNoController.text.trim()}";
 
+                    bool exists = await FirebaseServices.checkIfPhoneExists(phone);
+                    if (exists) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              'Phone Number already registered!',
+                              style: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      await FirebaseServices.registerUserWithPhone(
+                        phone: phone,
+                        name: _nameController.text.trim(),
+                        gender: _selectedGender!,
+                        dob: _dobController.text.trim(),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              'Registered successfully!',
+                              style: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp)),
+              ),
+            ),
           ],
         ),
       ),
@@ -504,38 +567,60 @@ class _SignScreenState extends State<SignScreen> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_emailController.text.isEmpty ||
                       _nameController.text.isEmpty ||
                       _selectedGender == null ||
-                      _dobController.text.isEmpty) {
+                      _dobController.text.isEmpty ||
+                      !value) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Center(
                           child: Text(
-                            'Please fill all fields',
+                            !value
+                                ? 'Please agree to the terms to continue'
+                                : 'Please fill all fields',
                             style: GoogleFonts.khula(),
                           ),
                         ),
                       ),
                     );
                   } else {
-                    FirebaseServices.registerUserWithEmail(
-                      email: _emailController.text.trim(),
-                      name: _nameController.text.trim(),
-                      gender: _selectedGender!,
-                      dob: _dobController.text.trim(),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Center(
-                          child: Text(
-                            'Registered successfully!',
-                            style: GoogleFonts.khula(),
+                    final email = _emailController.text.trim();
+
+                    // Check if the email already exists
+                    final alreadyExists = await FirebaseServices.checkIfEmailExists(email);
+                    if (alreadyExists) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              'Email already registered!',
+                              style: GoogleFonts.khula(),
+                            ),
                           ),
                         ),
-                      ),
-                    );
+                      );
+                    } else {
+                      // Register if not already exists
+                      FirebaseServices.registerUserWithEmail(
+                        email: email,
+                        name: _nameController.text.trim(),
+                        gender: _selectedGender!,
+                        dob: _dobController.text.trim(),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Center(
+                            child: Text(
+                              'Registered successfully!',
+                              style: GoogleFonts.khula(),
+                            ),
+                          ),
+                        ),
+                      );
+                      // Optional: Clear fields or navigate
+                    }
                   }
                 },
                 child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp)),
@@ -773,7 +858,6 @@ class _SignScreenState extends State<SignScreen> {
       ),
     );
   }
-
 
 
   Widget _verificationcompleted() {
