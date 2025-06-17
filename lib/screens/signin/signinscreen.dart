@@ -30,6 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   Widget _buildToggleTabs() {
     return Row(
@@ -278,7 +279,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                             if (exists) {
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => _verificationcompleted()));
+                                  MaterialPageRoute(builder: (context) => _signupotp()));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Center(child: Text('Email not found. Please Sign Up.',style: GoogleFonts.khula()))),
@@ -412,7 +413,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   fontWeight: FontWeight.w400,
                                   color: AppColors.textSecondary,
                                 ),
-                                controller: _controller,
+                                controller: _phoneNoController,
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                 onChanged: field.didChange,
@@ -472,7 +473,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         child: ElevatedButton(
                           onPressed: () async {
-                            final phone = _phoneNoController.text.trim();
+                            final phone = "$selectedCode${_phoneNoController.text.trim()}";
                             if (phone.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Center(child: Text(
@@ -486,8 +487,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
                               if (exists) {
                                 Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) =>
-                                        _verificationcompleted()));
+                                    MaterialPageRoute(builder: (context) => _verificationcompleted()));
                               }
                               else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -522,7 +522,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => SignScreen(),));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => _verificationcompleted()));
                           },
                           child: Text(
                             'Sign Up',
@@ -622,9 +622,150 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+  //Otp Verification Screens
+  Widget _signupotp() {
+
+    return Scaffold(
+      resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
+
+      body: SingleChildScrollView(scrollDirection: Axis.vertical,
+        child: LayoutBuilder(
+            builder:(context, constraints) {
+              return SafeArea(
+                child: Padding(
+                  padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(Icons.chevron_left,
+                              size: 24.sp,
+                              color: AppColors.btnArrow,),
+                          ),
+                          Text(
+                            'Register',
+                            style: GoogleFonts.khula(
+                              color: AppColors.textSecondary,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 145.h),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding:  EdgeInsets.all(18.w),
+                            child: Text(
+                              textAlign: TextAlign.center,
+                              'Enter the 4-digit verification code (OTP) sent to your email',
+                              style: GoogleFonts.khula(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            'info@gmail.com',
+                            style: GoogleFonts.khula(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.textBtn,
+                            ),
+                          ),
+                          // SizedBox(height: 40.h),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: <Widget>[
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //
+                          //   ],
+                          // ),
+                          SizedBox(height: 40.h),
+
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            child: TextField(
+                              controller: _passwordController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 91.h,
+                            width: 372.w,
+
+                            child: Padding(
+                              padding:  EdgeInsets.only(
+                                top: 20.h,
+                                bottom: 20.h,
+                                right: 10.w,
+                                left: 10.w,
+                              ),
+                              child: ElevatedButton(
+                                child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
+                                onPressed: () async {
+                                  String password = _passwordController.text.trim();
+                                  if (password.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Please enter a password')),
+                                    );
+                                    return;
+                                  }
+
+                                  bool isValid = await FirebaseServices.checkPhonePassword(password);
+
+                                  if (isValid) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => _verificationcompleted(),
+                                      ),
+                                    );
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Incorrect password')),
+                                    );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.white,
+                                  backgroundColor: AppColors.btnPrimary,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(24.r),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Text('Resend in 60 seconds',style: GoogleFonts.khula(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16.sp),),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
+        ),
+      ),
+    );
+  }
 
   @override
-
   void initState() {
     super.initState();
 
@@ -646,3 +787,4 @@ class _SignInScreenState extends State<SignInScreen> {
     return _verifylogin();
   }
 }
+

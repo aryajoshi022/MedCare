@@ -15,7 +15,7 @@ class SignScreen extends StatefulWidget {
 }
 
 class _SignScreenState extends State<SignScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentIndex = 0;
   bool value = false;
 
@@ -30,6 +30,7 @@ class _SignScreenState extends State<SignScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   String? _selectedGender;
 
 
@@ -419,7 +420,7 @@ class _SignScreenState extends State<SignScreen> {
                           ),
                         );
                       } else {
-                        final phone = _phoneNoController.text.trim();
+                        final phone = "$selectedCode${_phoneNoController.text.trim()}";
 
                         bool exists = await FirebaseServices.checkIfPhoneExists(phone);
                         if (exists) {
@@ -439,6 +440,7 @@ class _SignScreenState extends State<SignScreen> {
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
                             dob: _dobController.text.trim(),
+                            password: _passwordController.text.trim(),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -450,7 +452,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
                         }
                       }
                     },
@@ -832,6 +834,7 @@ class _SignScreenState extends State<SignScreen> {
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
                             dob: _dobController.text.trim(),
+                            password: _passwordController.text.trim(),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -843,7 +846,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signupotp()));
                           // Optional: Clear fields or navigate
                         }
                       }
@@ -1037,18 +1040,30 @@ class _SignScreenState extends State<SignScreen> {
                               color: AppColors.textBtn,
                             ),
                           ),
+                          // SizedBox(height: 40.h),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: <Widget>[
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //
+                          //   ],
+                          // ),
                           SizedBox(height: 40.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
 
-                            ],
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            child: TextField(
+                              controller: _passwordController,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
                           ),
-                          SizedBox(height: 40.h),
                           SizedBox(
                             height: 91.h,
                             width: 372.w,
@@ -1062,7 +1077,15 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                               child: ElevatedButton(
                                 child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
-                                onPressed: () {
+                                onPressed: () async {
+                                  String password = _passwordController.text.trim();
+                                  if (password.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Please enter a password')),
+                                    );
+                                    return;
+                                  }
+
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(

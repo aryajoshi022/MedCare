@@ -15,6 +15,8 @@ class FirebaseServices {
     required String name,
     required String gender,
     required String dob,
+    required String password,
+
   }) async {
     final bool alreadyExists = await checkIfEmailExists(email);
 
@@ -28,6 +30,8 @@ class FirebaseServices {
       "name": name,
       "gender": gender,
       "dob": dob,
+      "password": password,
+
     });
     return true;
   }
@@ -51,6 +55,23 @@ class FirebaseServices {
     return false;
   }
 
+  static Future<bool> checkEmailPassword(String email, String password) async {
+    final snapshot = await emailDbRef.get();
+
+    if (snapshot.exists) {
+      for (final child in snapshot.children) {
+        final data = child.value as Map?;
+        if (data != null &&
+            data['email']?.toString().toLowerCase() == email.toLowerCase() &&
+            data['password']?.toString() == password) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+
 
   // PHONE
 
@@ -59,6 +80,7 @@ class FirebaseServices {
     required String name,
     required String gender,
     required String dob,
+    required String password,
   }) async {
     final bool alreadyExists = await checkIfPhoneExists(phone);
 
@@ -72,6 +94,7 @@ class FirebaseServices {
       "name": name,
       "gender": gender,
       "dob": dob,
+      "password": password,
     });
     return true;
   }
@@ -94,4 +117,20 @@ class FirebaseServices {
     }
     return false;
   }
+
+  static Future<bool> checkPhonePassword(String password) async {
+    final snapshot = await phoneDbRef.get();
+
+    if (snapshot.exists) {
+      for (final child in snapshot.children) {
+        final data = child.value as Map?;
+        if (data != null &&
+            data['password']?.toString() == password) {
+          return true;  // password matches
+        }
+      }
+    }
+    return false;  // no match found
+  }
+
 }
