@@ -30,6 +30,7 @@ class _SignScreenState extends State<SignScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   String? _selectedGender;
 
 
@@ -399,7 +400,6 @@ class _SignScreenState extends State<SignScreen> {
                     left: 10.w,
                   ),
                   child: ElevatedButton(
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     onPressed: () async {
                       if (_phoneNoController.text.isEmpty ||
                           _nameController.text.isEmpty ||
@@ -439,6 +439,7 @@ class _SignScreenState extends State<SignScreen> {
                             name: _nameController.text.trim(),
                             gender: _selectedGender!,
                             dob: _dobController.text.trim(),
+                            password: _passwordController.text.trim(),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -450,7 +451,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
                         }
                       }
                     },
@@ -461,6 +462,7 @@ class _SignScreenState extends State<SignScreen> {
                         borderRadius: BorderRadius.circular(24.r),
                       ),
                     ),
+                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                   ),
                 ),
               ),
@@ -790,7 +792,6 @@ class _SignScreenState extends State<SignScreen> {
                     left: 10.w,
                   ),
                   child: ElevatedButton(
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     onPressed: () async {
                       if (_emailController.text.isEmpty ||
                           _nameController.text.isEmpty ||
@@ -843,7 +844,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => SignInScreen()));
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signupotp()));
                           // Optional: Clear fields or navigate
                         }
                       }
@@ -855,6 +856,7 @@ class _SignScreenState extends State<SignScreen> {
                         borderRadius: BorderRadius.circular(24.r),
                       ),
                     ),
+                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                   ),
                 ),
               ),
@@ -909,7 +911,8 @@ class _SignScreenState extends State<SignScreen> {
                           Padding(
                             padding:  EdgeInsets.all(18.w),
                             child: Text(textAlign: TextAlign.center,
-                              'Enter the 4-digit verification code (OTP) sent to your phone',
+                              'Create a secure 4-digit password to complete your registration',
+                              // 'Enter the 4-digit verification code (OTP) sent to your phone',
                               style: GoogleFonts.khula(
                                 fontSize: 16.sp,
                                 fontWeight: FontWeight.w400,
@@ -917,7 +920,8 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           ),
                           Text(
-                            '(+66) 6152 625 612',
+                            'For number: $selectedCode ${_phoneNoController.text}',
+                            // '(+66) 6152 625 612',
                             style: GoogleFonts.khula(
                               fontSize: 18.sp,
                               fontWeight: FontWeight.bold,
@@ -925,15 +929,16 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           ),
                           SizedBox(height: 40.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                            ],
-                          ),
+                          _buildPasswordField(),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: <Widget>[
+                          //     _buildPinBox(context: context),
+                          //     // _buildPinBox(context: context),
+                          //     // _buildPinBox(context: context),
+                          //     // _buildPinBox(context: context),
+                          //   ],
+                          // ),
                           SizedBox(height: 40.h),
                           SizedBox(
                             height: 91.h,
@@ -966,7 +971,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           ),
-                          Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
+                          // Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
                         ],
                       ),
                     ],
@@ -1038,16 +1043,16 @@ class _SignScreenState extends State<SignScreen> {
                             ),
                           ),
                           SizedBox(height: 40.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          //   children: <Widget>[
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //     _buildPinBox(context: context),
+                          //
+                          //   ],
+                          // ),
                           SizedBox(height: 40.h),
                           SizedBox(
                             height: 91.h,
@@ -1094,38 +1099,75 @@ class _SignScreenState extends State<SignScreen> {
   }
 
   //For Otp verification Box
-
-  Widget _buildPinBox({required BuildContext context}) {
-    return Container(
-
-      width: 50,
+  Widget _buildPasswordField() {
+    return SizedBox(
       height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.borderSecondary),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      alignment: Alignment.center,
-      child: TextFormField(
-
-        textAlign: TextAlign.center,
+      width: double.infinity,
+      child: TextField(
+        controller: _passwordController,
+        obscureText: true,
         keyboardType: TextInputType.number,
-        maxLength: 1,
-        style: GoogleFonts.khula(fontSize: 24),
-        decoration: const InputDecoration(
+        maxLength: 4,
+        style: GoogleFonts.khula(fontSize: 16.sp, color: AppColors.textNormal),
+        decoration: InputDecoration(
           counterText: '',
-
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
+          hintText: 'Enter 4-digit password',
+          hintStyle: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textDisabled),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.borderSecondary),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.borderSecondary),
+          ),
         ),
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            FocusScope.of(context).nextFocus(); // Auto move to next
-          }
-        },
       ),
     );
   }
+  // Widget _buildPinBox({required BuildContext context}) {
+  //   return Container(
+  //
+  //     width: 200,
+  //     height: 50,
+  //     margin: const EdgeInsets.symmetric(horizontal: 5),
+  //     decoration: BoxDecoration(
+  //       border: Border.all(color: AppColors.borderSecondary),
+  //       borderRadius: BorderRadius.circular(8),
+  //     ),
+  //     alignment: Alignment.center,
+  //     child: TextField(
+  //       controller: _passwordController,
+  //       obscureText: true,
+  //       keyboardType: TextInputType.number,
+  //       maxLength: 4,
+  //       decoration: InputDecoration(
+  //         hintText: 'Enter 4-digit password',
+  //         hintStyle: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textDisabled),
+  //         enabledBorder: OutlineInputBorder(
+  //           borderSide: BorderSide(color: AppColors.borderSecondary),
+  //         ),
+  //         focusedBorder: OutlineInputBorder(
+  //           borderSide: BorderSide(color: AppColors.borderSecondary),
+  //         ),
+  //       ),
+  //     ),
+  //     // TextFormField(
+  //     //   textAlign: TextAlign.center,
+  //     //   keyboardType: TextInputType.number,
+  //     //   maxLength: 1,
+  //     //   style: GoogleFonts.khula(fontSize: 24),
+  //     //   decoration: InputDecoration(
+  //     //     counterText: '',
+  //     //     border: InputBorder.none,
+  //     //     contentPadding: EdgeInsets.zero,
+  //     //   ),
+  //     //   onChanged: (value) {
+  //     //     if (value.isNotEmpty) {
+  //     //       FocusScope.of(context).nextFocus(); // Auto move to next
+  //     //     }
+  //     //   },
+  //     // ),
+  //   );
+  // }
 
 
   Widget _verificationcompleted() {

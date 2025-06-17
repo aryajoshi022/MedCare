@@ -59,6 +59,7 @@ class FirebaseServices {
     required String name,
     required String gender,
     required String dob,
+    required String password,
   }) async {
     final bool alreadyExists = await checkIfPhoneExists(phone);
 
@@ -72,6 +73,7 @@ class FirebaseServices {
       "name": name,
       "gender": gender,
       "dob": dob,
+      "password": password,
     });
     return true;
   }
