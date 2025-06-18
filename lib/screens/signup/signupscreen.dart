@@ -331,18 +331,20 @@ class _SignScreenState extends State<SignScreen> {
                       builder: (context, child) {
                         return Theme(
                           data: Theme.of(context).copyWith(
-                            textTheme: TextTheme(
-                              bodyMedium: GoogleFonts.khula(),
-                            ),
                             colorScheme: ColorScheme.light(
                               primary: AppColors.bgPrimary,
                               onPrimary: AppColors.bgAlert,
                               onSurface: AppColors.textNormal,
                             ),
-                            textButtonTheme: TextButtonThemeData(
-                              style: TextButton.styleFrom(
-                                foregroundColor: AppColors.textNormal,
-                                textStyle: GoogleFonts.khula(),
+                            primaryTextTheme: TextTheme(
+                              titleMedium: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                color: AppColors.textNormal,
+                              ),
+                            ),
+                            inputDecorationTheme: InputDecorationTheme(
+                              hintStyle: GoogleFonts.khula(
+                                color: AppColors.textSecondary,
                               ),
                             ),
                           ),
@@ -734,18 +736,20 @@ class _SignScreenState extends State<SignScreen> {
                       builder: (context, child) {
                         return Theme(
                           data: Theme.of(context).copyWith(
-                            textTheme: TextTheme(
-                              bodyMedium: GoogleFonts.khula(),
-                            ),
                             colorScheme: ColorScheme.light(
                               primary: AppColors.bgPrimary,
                               onPrimary: AppColors.bgAlert,
                               onSurface: AppColors.textNormal,
                             ),
-                            textButtonTheme: TextButtonThemeData(
-                              style: TextButton.styleFrom(
-                                foregroundColor: AppColors.textNormal,
-                                textStyle: GoogleFonts.khula(),
+                            primaryTextTheme: TextTheme(
+                              titleMedium: GoogleFonts.khula(
+                                fontSize: 14.sp,
+                                color: AppColors.textNormal,
+                              ),
+                            ),
+                            inputDecorationTheme: InputDecorationTheme(
+                              hintStyle: GoogleFonts.khula(
+                                color: AppColors.textSecondary,
                               ),
                             ),
                           ),
