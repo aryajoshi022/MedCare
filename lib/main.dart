@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
@@ -6,10 +8,20 @@ import 'app.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  Platform.isAndroid
+      ? await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyBz1bFDqvOmrii2Un8qrJZ31u4Ig5pmBno",
+          appId: "1:826881375590:android:992742abc2bb7d1bce1ca7",
+          messagingSenderId: "826881375590",
+          projectId: "medcare-71f3a",
+        ),
+      )
+      : await Firebase.initializeApp();
+  await setOptimalDisplayMode();
+
   debugPrint("✅ Firebase Initialized Successfully");
   runApp(const App());
-  setOptimalDisplayMode();
 }
 
 Future<void> setOptimalDisplayMode() async {
