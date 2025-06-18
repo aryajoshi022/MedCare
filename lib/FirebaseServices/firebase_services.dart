@@ -73,7 +73,7 @@ class FirebaseServices {
       "name": name,
       "gender": gender,
       "dob": dob,
-      "password": password,
+      "password": password.toString(),
     });
     return true;
   }
@@ -95,5 +95,58 @@ class FirebaseServices {
       }
     }
     return false;
+  }
+
+  static Future<bool> verifyPhonePassword({
+    required String phone,
+    required String password,
+  }) async {
+    final snapshot = await phoneDbRef.get();
+
+    if (snapshot.exists) {
+      for (final child in snapshot.children) {
+        final data = child.value as Map?;
+        if (data != null &&
+            data['phone']?.toString().trim() == phone.trim() &&
+            data['password']?.toString().trim() == password.trim()) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  static Future<void> saveOrUpdateUserWithPhone({
+    required String phone,
+    required String name,
+    required String gender,
+    required String dob,
+    required String password,
+  }) async {
+    final snapshot = await phoneDbRef.get();
+
+    if (snapshot.exists) {
+      for (final child in snapshot.children) {
+        final data = child.value as Map?;
+        if (data != null && data['phone']?.toString().trim() == phone.trim()) {
+          await child.ref.update({
+            "name": name,
+            "gender": gender,
+            "dob": dob,
+            "password": password,
+          });
+          return;
+        }
+      }
+    }
+
+    final newUserRef = phoneDbRef.push();
+    await newUserRef.set({
+      "phone": phone,
+      "name": name,
+      "gender": gender,
+      "dob": dob,
+      "password": password,
+    });
   }
 }
