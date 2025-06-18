@@ -29,8 +29,6 @@ class _SignScreenState extends State<SignScreen> {
   final TextEditingController _passwordController = TextEditingController();
   String? _selectedGender;
 
-
-
   void _switchPage(int index) {
     setState(() {
       _currentIndex = index;
