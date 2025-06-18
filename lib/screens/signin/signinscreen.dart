@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
@@ -30,6 +34,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+
 
   Widget _buildToggleTabs() {
     return Row(
@@ -124,6 +131,8 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
+
   Widget _emaillogin() {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -220,7 +229,8 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 26.h),
               GestureDetector(
                 onTap: () =>
-                    forgotPassword(context),
+                    send4DigitOtpToEmail(context, _emailController as String),
+                    //forgotPassword(context),
                 child: Text(
                   'Is there an issue with your email?',
                   style: GoogleFonts.khula(
@@ -333,6 +343,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+  //Forgot Password via email link
   void Function() getForgotPasswordCallback(BuildContext context) {
     return () => forgotPassword(context);
   }
@@ -355,6 +366,44 @@ class _SignInScreenState extends State<SignInScreen> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.toString()}')),
+      );
+    }
+  }
+
+  //Via Email Api Otp
+  Future<void> send4DigitOtpToEmail(BuildContext context, String email) async {
+    if (email.isEmpty || !email.contains('@')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter a valid email')),
+      );
+      return;
+    }
+
+    // ✅ Generate 4-digit OTP
+    final otp = (1000 + Random().nextInt(9000)).toString();
+
+    // ✅ API endpoint (Replace with your actual API URL)
+    final url = Uri.parse('https://yourapi.com/send-otp');
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'email': email, 'otp': otp}),
+      );
+
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('OTP sent to your email')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to send OTP: ${response.body}')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error sending OTP: $e')),
       );
     }
   }
@@ -705,12 +754,17 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
 
               SizedBox(height: 26.h),
-              Text(
-                'Is there an issue with your phone number?',
-                style: GoogleFonts.khula(
-                  fontSize: 14.sp,
-                  color: AppColors.textBtn,
-                  fontWeight: FontWeight.w400,
+              GestureDetector(
+                onTap: () =>
+                    sendOtpViaPhone(context, _phoneNoController as String),
+
+                child: Text(
+                  'Is there an issue with your phone number?',
+                  style: GoogleFonts.khula(
+                    fontSize: 14.sp,
+                    color: AppColors.textBtn,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
               SizedBox(height: 360.h,),
@@ -881,259 +935,48 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
-  Widget _signInotp() {
-    return Scaffold(
-      resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
 
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: LayoutBuilder(
-            builder: (context, constraints) {
-              return SafeArea(
-                child: Padding(
-                  padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(Icons.chevron_left,
-                                size: 24.sp,
-                                color: AppColors.btnArrow),
-                          ),
-                          Text(
-                            'Register',
-                            style: GoogleFonts.khula(
-                              color: AppColors.textNormal,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 145.h),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding:  EdgeInsets.all(18.w),
-                            child: Text(textAlign: TextAlign.center,
-                              'Enter the 4-digit verification code (OTP) sent to your phone',
-                              style: GoogleFonts.khula(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            '(+66) 6152 625 612',
-                            style: GoogleFonts.khula(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textBtn,
-                            ),
-                          ),
-                          SizedBox(height: 40.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                            ],
-                          ),
-                          SizedBox(height: 40.h),
-                          SizedBox(
-                            height: 91.h,
-                            width: 372.w,
 
-                            child: Padding(
-                              padding:  EdgeInsets.only(
-                                top: 20.h,
-                                bottom: 20.h,
-                                right: 10.w,
-                                left: 10.w,
-                              ),
-                              child: ElevatedButton(
-                                child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => _verificationcompleted(),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: AppColors.btnPrimary,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(24.r),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text('Resend in 60 seconds',style: GoogleFonts.khula(fontSize: 16.sp,fontWeight: FontWeight.w400,color: AppColors.textDisabled),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }
-        ),
-      ),
-    );
+  //Send otp via Phone Number
+  Future<void> sendOtpViaPhone(BuildContext context, String phoneNumber) async {
+    if (phoneNumber.isEmpty || !phoneNumber.startsWith('+')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(
+            'Enter phone number with country code (e.g., +91...)')),
+      );
+      return;
+    }
 
-  }
-  Widget _signupotp() {
-    return Scaffold(
-      resizeToAvoidBottomInset: true, // ensures layout resizes when keyboard shows
+    FirebaseAuth auth = FirebaseAuth.instance;
 
-      body: SingleChildScrollView(scrollDirection: Axis.vertical,
-        child: LayoutBuilder(
-            builder:(context, constraints) {
-              return SafeArea(
-                child: Padding(
-                  padding:  EdgeInsets.only(left:28.w,right: 28.w,top: 24.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Icon(Icons.chevron_left,
-                              size: 24.sp,
-                              color: AppColors.btnArrow,),
-                          ),
-                          Text(
-                            'Register',
-                            style: GoogleFonts.khula(
-                              color: AppColors.textSecondary,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 145.h),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding:  EdgeInsets.all(18.w),
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              'Enter the 4-digit verification code (OTP) sent to your email',
-                              style: GoogleFonts.khula(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'info@gmail.com',
-                            style: GoogleFonts.khula(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.textBtn,
-                            ),
-                          ),
-                          SizedBox(height: 40.h),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
-                              _buildPinBox(context: context),
+    await auth.verifyPhoneNumber(
+      phoneNumber: phoneNumber,
+      timeout: Duration(seconds: 60),
 
-                            ],
-                          ),
-                          SizedBox(height: 40.h),
-                          SizedBox(
-                            height: 91.h,
-                            width: 372.w,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await auth.signInWithCredential(credential);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Phone number verified automatically')),
+        );
+      },
 
-                            child: Padding(
-                              padding:  EdgeInsets.only(
-                                top: 20.h,
-                                bottom: 20.h,
-                                right: 10.w,
-                                left: 10.w,
-                              ),
-                              child: ElevatedButton(
-                                child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp)),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => _verificationcompleted(),
-                                    ),
-                                  );
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: Colors.white,
-                                  backgroundColor: AppColors.btnPrimary,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(24.r),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Text('Resend in 60 seconds',style: GoogleFonts.khula(color: AppColors.textDisabled,fontWeight: FontWeight.w400,fontSize: 16.sp),),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }
-        ),
-      ),
-    );
-  }
-  //For Otp verification Box
-  Widget _buildPinBox({required BuildContext context}) {
-    return Container(
+      verificationFailed: (FirebaseAuthException e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Verification failed: ${e.message}')),
+        );
+      },
 
-      width: 50,
-      height: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.borderSecondary),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      alignment: Alignment.center,
-      child: TextFormField(
-        textAlign: TextAlign.center,
-        keyboardType: TextInputType.number,
-        maxLength: 1,
-        style: GoogleFonts.khula(fontSize: 24),
-        decoration: InputDecoration(
-          counterText: '',
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
-        ),
-        onChanged: (value) {
-          if (value.isNotEmpty) {
-            FocusScope.of(context).nextFocus(); // Auto move to next
-          }
-        },
-      ),
+      codeSent: (String verificationId, int? resendToken) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('OTP sent to $phoneNumber')),
+        );
+
+        // You can store verificationId if needed for manual code entry
+      },
+
+      codeAutoRetrievalTimeout: (String verificationId) {
+        // Optional: handle timeout
+      },
     );
   }
 
@@ -1149,6 +992,7 @@ class _SignInScreenState extends State<SignInScreen> {
       });
     });
   }
+
 
   @override
   void dispose() {
