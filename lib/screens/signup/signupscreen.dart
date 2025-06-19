@@ -1008,7 +1008,7 @@ class _SignScreenState extends State<SignScreen> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => _verificationcompleted()),
+                        MaterialPageRoute(builder: (_) => SignInScreen()),
                       );
                     },
                     child: Text('Continue', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.bold, color: Colors.white)),
