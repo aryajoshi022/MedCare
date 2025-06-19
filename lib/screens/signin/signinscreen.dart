@@ -888,6 +888,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     super.initState();
+
     // Listen for changes in the text field
     _emailController.addListener(() {
       setState(() {
@@ -902,9 +903,7 @@ class _SignInScreenState extends State<SignInScreen> {
     _emailController.dispose();
     super.dispose();
   }
-
   Widget build(BuildContext context) {
     return _verifylogin();
   }
-
 }
