@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
 import 'package:medcare/screens/signin/signinscreen.dart';
+import 'package:medcare/screens/signup/signup_otp_email.dart';
 import 'package:medcare/util/constants/colors.dart';
 import '../../FirebaseServices/firebase_services.dart';
 
@@ -15,13 +16,17 @@ class SignScreen extends StatefulWidget {
 }
 
 class _SignScreenState extends State<SignScreen> {
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
   int _currentIndex = 0;
   bool value = false;
+
   String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
+  final TextEditingController _controller = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
@@ -397,6 +402,7 @@ class _SignScreenState extends State<SignScreen> {
                     left: 10.w,
                   ),
                   child: ElevatedButton(
+                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     onPressed: () async {
                       if (_phoneNoController.text.isEmpty ||
                           _nameController.text.isEmpty ||
@@ -448,6 +454,7 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
                           // Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
                           Navigator.push(
                             context,
@@ -471,7 +478,6 @@ class _SignScreenState extends State<SignScreen> {
                         borderRadius: BorderRadius.circular(24.r),
                       ),
                     ),
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                   ),
                 ),
               ),
@@ -803,6 +809,7 @@ class _SignScreenState extends State<SignScreen> {
                     left: 10.w,
                   ),
                   child: ElevatedButton(
+                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                     onPressed: () async {
                       if (_emailController.text.isEmpty ||
                           _nameController.text.isEmpty ||
@@ -839,12 +846,35 @@ class _SignScreenState extends State<SignScreen> {
                           );
                         } else {
                           // Register if not already exists
-                          FirebaseServices.registerUserWithEmail(
-                            email: email,
-                            name: _nameController.text.trim(),
-                            gender: _selectedGender!,
-                            dob: _dobController.text.trim(),
-                          );
+                          if (_emailController.text.isEmpty ||
+                              _nameController.text.isEmpty ||
+                              _selectedGender == null ||
+                              _dobController.text.isEmpty ||
+                              !value) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Center(
+                                  child: Text(
+                                    !value
+                                        ? 'Please agree to the terms to continue'
+                                        : 'Please fill all fields',
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignupOtpScreen(
+                                  email: _emailController.text.trim(),
+                                  name: _nameController.text.trim(),
+                                  gender: _selectedGender!,
+                                  dob: _dobController.text.trim(),
+                                ),
+                              ),
+                            );
+                          }
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Center(
@@ -855,7 +885,18 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signupotp()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignupOtpScreen(
+                                email: _emailController.text.trim(),
+                                name: _nameController.text.trim(),
+                                gender: _selectedGender!,
+                                dob: _dobController.text.trim(),
+                              ),
+                            ),
+                          );
+
                           // Optional: Clear fields or navigate
                         }
                       }
@@ -867,7 +908,6 @@ class _SignScreenState extends State<SignScreen> {
                         borderRadius: BorderRadius.circular(24.r),
                       ),
                     ),
-                    child: Text('Register', style: GoogleFonts.khula(fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.textWhite)),
                   ),
                 ),
               ),
@@ -946,7 +986,7 @@ class _SignScreenState extends State<SignScreen> {
                   child: ElevatedButton(
                     onPressed: () async {
                       final password = _passwordController.text.trim();
-          
+
                       if (password.length != 4) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Center(child: Text('Please enter a valid 4-digit password',
@@ -954,7 +994,7 @@ class _SignScreenState extends State<SignScreen> {
                         );
                         return;
                       }
-          
+
                       await FirebaseServices.saveOrUpdateUserWithPhone(
                         phone: phone,
                         name: name,
@@ -962,12 +1002,12 @@ class _SignScreenState extends State<SignScreen> {
                         dob: dob,
                         password: password,
                       );
-          
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Center(child: Text('Password set successfully!',
                           style: GoogleFonts.khula()))),
                       );
-          
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => SignInScreen()),
@@ -986,6 +1026,7 @@ class _SignScreenState extends State<SignScreen> {
         ),
       ),
     );
+
   }
 
   Widget _signupotp() {
@@ -1102,51 +1143,39 @@ class _SignScreenState extends State<SignScreen> {
   }
 
   //For Otp verification Box
-  // Widget _buildPinBox({required BuildContext context}) {
-  //   return Container(
-  //
-  //     width: 200,
-  //     height: 50,
-  //     margin: const EdgeInsets.symmetric(horizontal: 5),
-  //     decoration: BoxDecoration(
-  //       border: Border.all(color: AppColors.borderSecondary),
-  //       borderRadius: BorderRadius.circular(8),
-  //     ),
-  //     alignment: Alignment.center,
-  //     child: TextField(
-  //       controller: _passwordController,
-  //       obscureText: true,
-  //       keyboardType: TextInputType.number,
-  //       maxLength: 4,
-  //       decoration: InputDecoration(
-  //         hintText: 'Enter 4-digit password',
-  //         hintStyle: GoogleFonts.khula(fontSize: 14.sp, color: AppColors.textDisabled),
-  //         enabledBorder: OutlineInputBorder(
-  //           borderSide: BorderSide(color: AppColors.borderSecondary),
-  //         ),
-  //         focusedBorder: OutlineInputBorder(
-  //           borderSide: BorderSide(color: AppColors.borderSecondary),
-  //         ),
-  //       ),
-  //     ),
-  //     // TextFormField(
-  //     //   textAlign: TextAlign.center,
-  //     //   keyboardType: TextInputType.number,
-  //     //   maxLength: 1,
-  //     //   style: GoogleFonts.khula(fontSize: 24),
-  //     //   decoration: InputDecoration(
-  //     //     counterText: '',
-  //     //     border: InputBorder.none,
-  //     //     contentPadding: EdgeInsets.zero,
-  //     //   ),
-  //     //   onChanged: (value) {
-  //     //     if (value.isNotEmpty) {
-  //     //       FocusScope.of(context).nextFocus(); // Auto move to next
-  //     //     }
-  //     //   },
-  //     // ),
-  //   );
-  // }
+
+  Widget _buildPinBox({required BuildContext context}) {
+    return Container(
+
+      width: 50,
+      height: 50,
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.borderSecondary),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center,
+      child: TextFormField(
+
+        textAlign: TextAlign.center,
+        keyboardType: TextInputType.number,
+        maxLength: 1,
+        style: GoogleFonts.khula(fontSize: 24),
+        decoration: const InputDecoration(
+          counterText: '',
+
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        onChanged: (value) {
+          if (value.isNotEmpty) {
+            FocusScope.of(context).nextFocus(); // Auto move to next
+          }
+        },
+      ),
+    );
+  }
+
 
   Widget _verificationcompleted() {
     return Scaffold(

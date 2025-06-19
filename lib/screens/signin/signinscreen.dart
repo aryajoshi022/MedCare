@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:medcare/screens/home/home_screen.dart';
+import 'package:medcare/screens/signin/sineup_otp.dart';
 import 'package:medcare/screens/signup/signupscreen.dart';
-
 import '../../FirebaseServices/firebase_services.dart';
 import '../../util/constants/colors.dart';
 
@@ -19,13 +19,19 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   int _currentIndex = 0;
   PageController _pageController = PageController();
+
   String selectedCode = '+91';
   final List<String> codes = ['Pilih', '+62', '+91', '+44'];
+  final TextEditingController _controller = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
+
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
 
   Widget _buildToggleTabs() {
     return Row(
@@ -246,6 +252,10 @@ class _SignInScreenState extends State<SignInScreen> {
                           left: 10.w,
                         ),
                         child: ElevatedButton(
+                          child: Text('Login', style: GoogleFonts.khula(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.textWhite)),
                           onPressed: () async {
                             // if (_formKey.currentState!.validate()) {
                             //   // If the email is valid, navigate to signup OTP screen
@@ -270,8 +280,10 @@ class _SignInScreenState extends State<SignInScreen> {
                             bool exists = await FirebaseServices.loginWithEmail(email);
 
                             if (exists) {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => _signupotp()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SignupOtp(email: email)),
+                              );
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Center(child: Text('Email not found. Please Sign Up.',style: GoogleFonts.khula()))),
@@ -286,10 +298,6 @@ class _SignInScreenState extends State<SignInScreen> {
                               borderRadius: BorderRadius.circular(24.r),
                             ),
                           ),
-                          child: Text('Login', style: GoogleFonts.khula(
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.textWhite)),
                         ),
                       ),
                     ),
@@ -907,3 +915,4 @@ class _SignInScreenState extends State<SignInScreen> {
     return _verifylogin();
   }
 }
+
