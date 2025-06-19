@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKey2 = GlobalKey<FormState>();
 
 
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController() ;
   final TextEditingController _phoneNoController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -229,7 +229,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 26.h),
               GestureDetector(
                 onTap: () =>
-                    send4DigitOtpToEmail(context, _emailController as String),
+                    send4DigitOtpToEmail(context, _emailController.text),
                     //forgotPassword(context),
                 child: Text(
                   'Is there an issue with your email?',
@@ -756,7 +756,7 @@ class _SignInScreenState extends State<SignInScreen> {
               SizedBox(height: 26.h),
               GestureDetector(
                 onTap: () =>
-                    sendOtpViaPhone(context, _phoneNoController as String),
+                    sendOtpViaPhone(context, _phoneNoController.text),
 
                 child: Text(
                   'Is there an issue with your phone number?',
