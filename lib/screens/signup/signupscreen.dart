@@ -454,8 +454,6 @@ class _SignScreenState extends State<SignScreen> {
                               ),
                             ),
                           );
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
-                          // Navigator.push(context,MaterialPageRoute(builder: (context) => _signInotp()));
                           Navigator.push(
                             context,
                             MaterialPageRoute(
